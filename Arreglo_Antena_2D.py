@@ -79,7 +79,7 @@ class ArregloGeneral(object):
 #==============================================================================
 def Beamwidth(phi_0, theta_0,N_phi,N_theta ,D):
 
-    beamwidth_theta = np.arcsin(np.sin(theta_0) + (0.4429/(N_theta*D))) - np.arcsin(np.sin(theta_0) - (0.4429/(N_theta*D)))
+    beamwidth_theta = np.arcsin(np.sin(theta_0) + (0.4429/(N_theta*D))) - np.arcsin(np.sin(theta_0) - (0.4429/(N_phi*D)))
     phi_aux = np.arcsin(np.sin(phi_0) + (0.4429/(N_phi*D))) - np.arcsin(np.sin(phi_0) - (0.4429/(N_phi*D)))
     #beamwidth_phi = 2* np.arcsin(np.sin(phi_0)*np.sin(phi_aux))
 
@@ -252,7 +252,7 @@ def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
     exitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
     return [posiciones, exitaciones]
 #==============================================================================
-def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, phi_apuntado,theta_apuntado):
+def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     
     a1 = arreglo #Arreglo variable definida como un objeto de la clase Arreglo general
     THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
@@ -260,46 +260,10 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, phi_apuntado,theta_apun
     R = f(PHI,THETA) #matriz de 50*50
     
     Rmax = np.max(R)
-    Rhp= Rmax*corteLobuloPrincipal #calculo del modulo del vector de media potencia
-    
-    """
-    pos_phi = np.arange(np.size(phi,0))
-    pos_theta = np.arange(np.size(theta,0))
-    phi_hp= np.array([[0]])
-    theta_hp= np.array([[0]])
-    R_hp= np.array([[0]])
-
-    for i in pos_phi:
-        for j in pos_theta:
-            if (R[i][j] >= (Rhp - (Rhp*0.02) ) and R[i][j] <= (Rhp + (Rhp*0.02) ) ):
-                aux_phi= np.array([[phi[i]]])
-                aux_theta= np.array([[theta[j]]])
-                aux_R= np.array([[R[i][j]]])
-                phi_hp= np.append(phi_hp,aux_phi,axis=0)
-                theta_hp= np.append(theta_hp,aux_theta,axis=0)
-                R_hp= np.append(R_hp,aux_R,axis=0)
-    
-    R_hp = R_hp[1:]
-    theta_hp = theta_hp[1:]
-    phi_hp = phi_hp[1:]
-    
-
-    print("Ancho phi : %2.2f" % (np.max(np.degrees(phi_hp))- np.min(np.degrees(phi_hp))))
-    print("Ancho theta : %2.2f" % (np.max(np.degrees(theta_hp))- np.min(np.degrees(theta_hp))))
-    
-
-    fig = plt.figure() #fig variable definida como un objeto de la funcion figure de la libreria plt
-    ax = fig.add_subplot(projection = '3d')    
-   
-    
-    X = R_hp * np.cos(phi_hp) * np.sin(theta_hp)
-    Y = R_hp * np.sin(phi_hp) * np.sin(theta_hp)
-    Z = R_hp * np.cos(theta_hp)
-    ax.scatter(X,Y,Z, c = 'blue',  marker='o' , linewidth = 2) #Grafica las posiciones de cada antena indicando su ubicacion con un marcador
-    ax.set_title("Ancho del Haz (Lobulo Principal)")
-    """
-
-
+    i_phi,i_theta = np.where(R == Rmax)
+    theta_apuntado = np.degrees(theta[int(i_theta)])
+    phi_apuntado = np.degrees(phi[int(i_phi)])  
+  
     fig = plt.figure()    
 
     ax1 = fig.add_subplot(2,1,1)
@@ -307,14 +271,32 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, phi_apuntado,theta_apun
     x_theta = np.degrees(theta)
     ax1.plot(x_theta,y_campo_phi)
     ax1.set_title("Patron $\\theta$"), ax1.grid(True)
-    aux = [0]
-    aux1 = [0]
-
+    
+    
+    x = [0]
+    y = [0]
+    Rmax= np.max(y_campo_phi)
+    Rrange = Rmax*0.3
     for i in np.arange(np.size(y_campo_phi,0)):
-        if (y_campo_phi[i] >= (Rhp - (Rhp*0.02)) ):
-            aux = np.append(aux,np.array([x_theta[i]]),axis=0)
-    aux = aux[1:]
-    Ancho_theta =  np.max(aux)- np.min(aux)
+        if (y_campo_phi[i] >= Rrange):
+            x = np.append(x,np.array([y_campo_phi[i]]),axis=0)
+            y = np.append(y,np.array([x_theta[i]]),axis=0)
+    y = y[1:]
+    x = x[1:]
+
+    index_Rmax = np.where( x == Rmax )
+    index = int(index_Rmax[0])
+
+    R_left = x[0:index] 
+    theta_left = y[0:index]
+    R_right = x[index:-1] 
+    theta_right = y[index:-1]
+
+    theta_hp_min = np.interp(Rmax*(2**-0.5),R_left,theta_left)
+    theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
+    #print(theta_hp_max,theta_hp_min)
+    ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
+    Ancho_theta =  theta_hp_max - theta_hp_min
     
 
     ax1 = fig.add_subplot(2,1,2)
@@ -323,12 +305,30 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, phi_apuntado,theta_apun
     ax1.plot(x_phi,y_campo_theta)
     ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
 
+    xx = [0]
+    yy = [0]
+    Rmax= np.max(y_campo_theta)
+    Rrange = Rmax*0.3
     for i in np.arange(np.size(y_campo_theta,0)):
-        if (y_campo_theta[i] >= (Rhp - (Rhp*0.02))):
-            aux1 = np.append(aux1,np.array([x_phi[i]]),axis=0)
-    aux1 = aux1[1:]
-    Ancho_phi = np.max(aux1)- np.min(aux1)
+        if (y_campo_theta[i] >= Rrange):
+            xx = np.append(xx,np.array([y_campo_theta[i]]),axis=0)
+            yy = np.append(yy,np.array([x_phi[i]]),axis=0)
+    yy = yy[1:]
+    xx = xx[1:]
 
+    index_Rmax = np.where( xx == Rmax )
+    index = int(index_Rmax[0])
+    R_left = xx[0:index] 
+    phi_left = yy[0:index]
+    R_right = xx[index:-1]
+    phi_right = yy[index:-1]
+
+    phi_hp_min = np.interp(Rmax*corteLobuloPrincipal,R_left,phi_left)
+    phi_hp_max = np.interp(-Rmax*corteLobuloPrincipal,-R_right,phi_right)
+    #print(phi_hp_max,phi_hp_min)
+    ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or')
+    Ancho_phi = phi_hp_max - phi_hp_min
+    
     return [Ancho_theta,Ancho_phi]
 #==============================================================================
 def patronMonopoloCuartoOnda():
@@ -351,33 +351,41 @@ def patronMonopoloCuartoOnda():
     return self.patron
 #==============================================================================
 
-
-
-
 def main():
 
     D = 0.25 # separacion entre elementos
-    Nx = 20 # cantidad de elementos en la direccion x
-    Ny = 10 # cantidad de elementos en la direccion y
+    Nx = 15 # cantidad de elementos en la direccion x
+    Ny = 15 # cantidad de elementos en la direccion y
     Nz = 1 # cantidad de elementos en la direccion z
     
     [posiciones,exitaciones] = Geom_Arreglo(D, Nx, Ny, Nz)
     #arreglo = Arreglo_2D(posiciones,exitaciones)
     arreglo = ArregloGeneral(posiciones,exitaciones,[patronMonopoloCuartoOnda()])
     phi_apuntado = 50   
-    theta_apuntado = 20
+    theta_apuntado = 30
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
-    theta = np.linspace(0,np.pi,500)
-    phi = np.linspace(-np.pi,np.pi,500)
-    Graficar_2D(arreglo, phi, theta,"Arreglo en 2D Rectangular",posiciones,(D*(Nx-1))/2,(D*(Ny-1))/2,(D*(Nz-1))/2)
-    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut] = Ancho_Haz(arreglo, phi, theta, 2**-0.5, phi_apuntado,theta_apuntado)
+    theta = np.linspace(0,np.pi,100)
+    phi = np.linspace(-np.pi,np.pi,100)
+    #Graficar_2D(arreglo, phi, theta,"Arreglo en 2D Rectangular",posiciones,(D*(Nx-1))/2,(D*(Ny-1))/2,(D*(Nz-1))/2)
+
     print("\n")
+    #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
     #print("Directividad Max: %2.2f " % Directividad)   
+    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut] = Ancho_Haz(arreglo, phi, theta, 2**-0.5)
+    print("Ancho del Haz (Elevacion): %2.2f " % Ancho_Haz_Elevacion)
     print("Ancho del Haz (Acimut): %2.2f " % Ancho_Haz_Acimut)
-    print("Ancho del Haz (Elevacion): %2.2f " % Ancho_Haz_Elevacion)  
-        
 
+    
+    #[a, b] = Beamwidth(math.radians(phi_apuntado),math.radians(theta_apuntado),Nx,Ny,D)
+    #print(a)
+    #print(b) 
 
+    plt.show()
+    
+
+    # INICIO    
+if __name__ == '__main__':
+    main()
 
 
     """
@@ -401,14 +409,7 @@ def main():
 
     """
     
-    #[a, b] = Beamwidth(math.radians(phi_apuntado),math.radians(theta_apuntado),Nx,Ny,D)
-    
-    #print(a)
-    #print(b)
-    #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
 
-    
-    
     """    
     D=0.25
     Nx=8
@@ -427,11 +428,5 @@ def main():
     ax.set_ylim(-4,4)
     ax.set_zlim(-4,4)
     """    
-    plt.show()
-    
-
-    # INICIO    
-if __name__ == '__main__':
-    main()
 
 
