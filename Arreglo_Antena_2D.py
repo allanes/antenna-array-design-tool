@@ -20,7 +20,12 @@ import math
 import scipy.spatial.distance as distance
 import scipy.integrate as integrate
 from scipy.interpolate import interp1d
+import logging
+from enum import Enum
 
+class Disposiciones(Enum):
+    RECTANGULAR = 0
+    CIRCULAR = 1
 
 class ArregloGeneral(object):
     
@@ -89,7 +94,7 @@ def Beamwidth(phi_0, theta_0,N_phi,N_theta ,D):
 class Arreglo_2D(object):
     """
         Genera el patron de radiacion (campo lejado) de un arreglo de antena en 2D, en funcion
-        de la distribucion geometrica del arreglo y de las exitaciones de cada uno 
+        de la distribucion geometrica del arreglo y de las excitaciones de cada uno 
         de los elementos del arreglo
     
     """
@@ -135,7 +140,7 @@ class Arreglo_2D(object):
 #==============================================================================        
 def amplitudCosElev(posiciones,escala=0.8):
     """
-    Aplica un peso a los valores de las exitaciones, de cada fuente del arreglo.
+    Aplica un peso a los valores de las excitaciones, de cada fuente del arreglo.
     Los pesos seguiran la forma de un coseno alzado. Se alcanza el maximo valor de 
     los pesos en el medio del arreglo
     """
@@ -158,9 +163,7 @@ def Graficar_2D(arreglo,phi,theta,nombre,posiciones,dx,dy,dz):
 
     f = lambda x,y: np.abs(a1.campo(x,y))   #R = np.abs(a1.campo(PHI,THETA))
     #f = lambda x,y: np.abs(a1.directividad(x,y))   #R = np.abs(a1.campo(PHI,THETA))
-    R = f(PHI,THETA)
-
-    
+    R = f(PHI,THETA)    
 
     X = R * np.cos(PHI) * np.sin(THETA)
     Y = R * np.sin(PHI) * np.sin(THETA)
@@ -183,7 +186,7 @@ def Graficar_2D(arreglo,phi,theta,nombre,posiciones,dx,dy,dz):
 
 
     [xi, yi , zi] = 50*np.transpose(posiciones-np.array(((dx,dy,dz))))
-    ax.scatter(xi,yi,zi, c = 'blue',  marker='o' , linewidth = 2)
+    ax.scatter(xi,yi,zi, c = 'green',  marker='+' , linewidth = 2)
     # xi = [:,0] ; yi = [:,1], zi = [:,2]   # selecciona columnas, use la transpuesta de puntos
 #==============================================================================
 def Geom_Arreglo(D = 1, Nx = 1, Ny = 1, Nz = 1):
@@ -196,7 +199,7 @@ def Geom_Arreglo(D = 1, Nx = 1, Ny = 1, Nz = 1):
                 Ny: Num de antenas en la direccion y
             Salida: 
                 posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
-                exitaciones: Son las exitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
+                excitaciones: Son las excitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
     """
     
     pos_x = np.arange(Nx)
@@ -210,9 +213,9 @@ def Geom_Arreglo(D = 1, Nx = 1, Ny = 1, Nz = 1):
                 B = np.append(B,Aux,axis=0)
     
     posiciones = B[1:]   
-    exitaciones = np.array(Nx*Ny*Nz*[1])
+    excitaciones = np.array(Nx*Ny*Nz*[1])
     
-    return [posiciones, exitaciones]
+    return [posiciones, excitaciones]
 #==============================================================================        
 def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
     """
@@ -227,11 +230,11 @@ def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
                 Nz: Num de antenas en la direccion z
             Salida: 
                 posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
-                exitaciones: Exitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
+                excitaciones: excitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
     ----------------------------------------------------------------------------------------------
     """
     paso_ang = 360/N
-    pos_r = np.linspace(1,Nr,Nr)
+    pos_r = np.linspace(1,Nr,num=Nr)
     pos_z = np.arange(Nz)
     angulo = np.arange(N)
     B = np.array([[0,0,0]])
@@ -249,11 +252,11 @@ def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
         Aux2 = np.array([[0, 0, k*Dz]]) 
         posiciones = np.append(posiciones,Aux2,axis=0)
 
-    exitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
-    return [posiciones, exitaciones]
+    excitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
+    return [posiciones, excitaciones]
 #==============================================================================
 def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
-    
+    print('Entro a ANCHO_HAZ')
     a1 = arreglo #Arreglo variable definida como un objeto de la clase Arreglo general
     THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
     f = lambda x,y: np.abs(a1.directividad(x,y))   #R = np.abs(a1.campo(PHI,THETA))
@@ -351,50 +354,88 @@ def patronMonopoloCuartoOnda():
     return self.patron
 #==============================================================================
 
-def main():
+def main(param1,param2,param3,param4,param5):
+    logging.info('Empezando Log')
 
-    D = 0.25 # separacion entre elementos
-    Nx = 15 # cantidad de elementos en la direccion x
-    Ny = 15 # cantidad de elementos en la direccion y
-    Nz = 1 # cantidad de elementos en la direccion z
+    disposicion_arreglo = Disposiciones.CIRCULAR
+    logging.info('Comenzando Geom_Arreglo')
+    if disposicion_arreglo == Disposiciones.RECTANGULAR:
+        D = 0.25 # separacion entre elementos
+        Nx = 15 # cantidad de elementos en la direccion x
+        Ny = 15 # cantidad de elementos en la direccion y
+        Nz = 1 # cantidad de elementos en la direccion z
+        
+        [posiciones,excitaciones] = Geom_Arreglo(D, Nx, Ny, Nz)
+    elif disposicion_arreglo == Disposiciones.CIRCULAR: #el arreglo es circular
+        
+        [posiciones,excitaciones] = Geom_Arreglo_circular(param1,param2,param3,param4,param5)
+        #exi = amplitudCosElev(pos,0.7)
+        #arreglo = Arreglo_2D(pos,exi)
     
-    [posiciones,exitaciones] = Geom_Arreglo(D, Nx, Ny, Nz)
-    #arreglo = Arreglo_2D(posiciones,exitaciones)
-    arreglo = ArregloGeneral(posiciones,exitaciones,[patronMonopoloCuartoOnda()])
-    phi_apuntado = 50   
+    arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
+    phi_apuntado = 50
     theta_apuntado = 30
+    # logging.info('Apuntamiento deseado:')
+    # logging.info(f' -Azimuth = {phi_apuntado}')
+    # logging.info(f' -Elevac. = {theta_apuntado}')
+
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
     theta = np.linspace(0,np.pi,100)
     phi = np.linspace(-np.pi,np.pi,100)
-    #Graficar_2D(arreglo, phi, theta,"Arreglo en 2D Rectangular",posiciones,(D*(Nx-1))/2,(D*(Ny-1))/2,(D*(Nz-1))/2)
-
-    print("\n")
+    Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
+    
     #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
     #print("Directividad Max: %2.2f " % Directividad)   
+    
     [Ancho_Haz_Elevacion, Ancho_Haz_Acimut] = Ancho_Haz(arreglo, phi, theta, 2**-0.5)
-    print("Ancho del Haz (Elevacion): %2.2f " % Ancho_Haz_Elevacion)
-    print("Ancho del Haz (Acimut): %2.2f " % Ancho_Haz_Acimut)
-
+    logging.info('Resultados:')
+    logging.info(f' -Ancho de Elevacion  = {Ancho_Haz_Elevacion}')
+    logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')    
     
     #[a, b] = Beamwidth(math.radians(phi_apuntado),math.radians(theta_apuntado),Nx,Ny,D)
     #print(a)
     #print(b) 
-
-    plt.show()
-    
+    logging.info('mostrando...')
+    plt.show()    
 
     # INICIO    
 if __name__ == '__main__':
-    main()
+    logging.basicConfig(
+        filename='antenas_log.log',
+        level=logging.INFO,
+        # handlers=logging.StreamHandler(),
+        format='%(asctime)s - %(message)s',
+    )
+
+    DR = 0.25 #separacion radial entre elementos
+    Nr = 10 # Num. de anillos   (Para un unico elemento Nr = 0)
+    N = 10 # Num. de elementos por anillo
+    Dz = 0.25 # separacion sobre el eje z
+    Nz = 1 # Num de elementos sobre el eje z
+    #Logueo los datos:
+    logging.info(f'Datos CONSTANTES del arreglo CIRCULAR:')
+    logging.info(f'  -DR = {DR}')
+    logging.info(f'  -Dz = {Dz}')
+    logging.info(f'  -Nz = {Nz}')
+
+   for aux in range(5,7):#20):
+        logging.info(f'----------Cantidad de Anillos {aux}-------------')
+        # main(DR,aux,N,Dz,Nz)
+        for aux2 in range(10,14):
+            logging.info(f'Cantidad de Elementos: {aux2}')
+            main(DR,aux,aux2,Dz,Nz)
+        logging.info("-------------------------------------------")
+    
 
 
-    """
+"""
+    # ------------
     DR = 0.25 #Distancias entre radios
     Nr = 15 # Num. de anillos   (Para un unico elemento Nr = 0)
     N = 15 # Num. de elementos por anillo
     Dz = 0.25 # separacion sobre el eje z
     Nz = 1 # Num de elementos sobre el eje z    
-    
+
     [pos,exi] = Geom_Arreglo_circular(DR,Nr,N,Dz,Nz)
     #exi = amplitudCosElev(pos,0.7)
     #arreglo = Arreglo_2D(pos,exi)
@@ -406,11 +447,9 @@ if __name__ == '__main__':
     theta = np.linspace(0,np.pi)
     phi = np.linspace(-np.pi,np.pi)
     Graficar_2D(arreglo2, phi, theta,"Arreglo en 2D Circular",pos,0,0,0)
+    # ------------
 
-    """
-    
-
-    """    
+    # ------------
     D=0.25
     Nx=8
     Ny=8
@@ -419,7 +458,7 @@ if __name__ == '__main__':
     #arreglo sobre superficie esférica
     posiciones=D*np.array([(x,y,np.sqrt(2*1.5**2-(x-1.5)**2-(y-1.5)**2)) for x in range(Nx) for y in range(Ny)])
 
-    
+
     fig = plt.figure()
     ax = fig.add_subplot(projection = '3d')
     [xi, yi, zi] = np.transpose(posiciones)
@@ -427,6 +466,5 @@ if __name__ == '__main__':
     ax.set_xlim(-4,4)
     ax.set_ylim(-4,4)
     ax.set_zlim(-4,4)
-    """    
-
-
+    # ------------
+"""
