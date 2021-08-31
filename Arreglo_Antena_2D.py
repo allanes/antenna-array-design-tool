@@ -350,6 +350,17 @@ def patronMonopoloCuartoOnda():
         self.patron = patron
     return self.patron
 #==============================================================================
+def Unnormalisation_Freq(Freq,D):
+
+    C = 3e8 # Speed Light
+    n = np.size(Freq)
+    Dn = np.zeros(n)
+    Lambda = C/Freq
+    d_real = D*Lambda[0]
+    D_unnorm = d_real/Lambda
+
+    return [D_unnorm,D_unnorm*Lambda]
+
 
 def main():
 
@@ -366,7 +377,7 @@ def main():
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
     theta = np.linspace(0,np.pi,100)
     phi = np.linspace(-np.pi,np.pi,100)
-    #Graficar_2D(arreglo, phi, theta,"Arreglo en 2D Rectangular",posiciones,(D*(Nx-1))/2,(D*(Ny-1))/2,(D*(Nz-1))/2)
+    Graficar_2D(arreglo, phi, theta,"Arreglo en 2D Rectangular",posiciones,(D*(Nx-1))/2,(D*(Ny-1))/2,(D*(Nz-1))/2)
 
     print("\n")
     #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
@@ -375,6 +386,10 @@ def main():
     print("Ancho del Haz (Elevacion): %2.2f " % Ancho_Haz_Elevacion)
     print("Ancho del Haz (Acimut): %2.2f " % Ancho_Haz_Acimut)
 
+    freq = np.array([20e6,15e6,10e6,5e6,1e6])
+    Dn,d = Unnormalisation_Freq(freq,D)
+    print("Distancia en Lambda:",Dn)
+    print("Distancia en [m]:",d)
     
     #[a, b] = Beamwidth(math.radians(phi_apuntado),math.radians(theta_apuntado),Nx,Ny,D)
     #print(a)
