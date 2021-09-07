@@ -357,7 +357,7 @@ def patronMonopoloCuartoOnda():
 def main(param1,param2,param3,param4,param5):
     logging.info('Empezando Log')
 
-    disposicion_arreglo = Disposiciones.CIRCULAR
+    disposicion_arreglo = Disposiciones.RECTANGULAR
     logging.info('Comenzando Geom_Arreglo')
     if disposicion_arreglo == Disposiciones.RECTANGULAR:
         D = 0.25 # separacion entre elementos
@@ -365,7 +365,7 @@ def main(param1,param2,param3,param4,param5):
         Ny = 15 # cantidad de elementos en la direccion y
         Nz = 1 # cantidad de elementos en la direccion z
         
-        [posiciones,excitaciones] = Geom_Arreglo(D, Nx, Ny, Nz)
+        [posiciones,excitaciones] = Geom_Arreglo(param1,param2,param3,param4)
     elif disposicion_arreglo == Disposiciones.CIRCULAR: #el arreglo es circular
         
         [posiciones,excitaciones] = Geom_Arreglo_circular(param1,param2,param3,param4,param5)
@@ -418,15 +418,15 @@ if __name__ == '__main__':
     logging.info(f'  -Dz = {Dz}')
     logging.info(f'  -Nz = {Nz}')
 
-    
-
+    main(DR,10,10,1,Nz)
+    """"
     for aux in range(10,11):#20):
         logging.info(f'----------Cantidad de Anillos {aux}-------------')
         for aux2 in range(30,31):
             logging.info(f'Cantidad de Elementos: {aux2}')
             main(DR,aux,aux2,Dz,Nz)
         logging.info("-------------------------------------------")
-    
+    """    
 
 
 """
