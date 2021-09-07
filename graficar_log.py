@@ -2,6 +2,7 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
+import heatmap
 
 
 def main():
@@ -10,7 +11,7 @@ def main():
     valores_elevacion_raw = []
     valores_azimuth_raw = []
 
-    with open('antenas_log_bak.log', 'r') as f:
+    with open('antenas_log_backup.log', 'r') as f:
         aux_cant_anillos_actual = 0
         aux_cant_elementos_actual = 0
         aux_elevacion_actual = 0.0
@@ -39,14 +40,36 @@ def main():
                 valores_azimuth_raw.append(float(aux_azimuth_actual))
                 continue
         
+    # Reacomodo un poco los datos
     indice_truncar_arreglo = len(valores_eje_cantidad_anillos)*len(valores_eje_cantidad_elementos)
     valores_elevacion_raw = valores_elevacion_raw[:indice_truncar_arreglo]
+    valores_azimuth_raw = valores_azimuth_raw[:indice_truncar_arreglo]
 
     valores_elevacion = np.reshape(
             np.array(valores_elevacion_raw), 
             (len(valores_eje_cantidad_anillos), len(valores_eje_cantidad_elementos))
         )
 
+    valores_azimuth = np.reshape(
+            np.array(valores_azimuth_raw), 
+            (len(valores_eje_cantidad_anillos), len(valores_eje_cantidad_elementos))
+        )
+
+    fig, ax = plt.subplots()
+    im, cbar = heatmap.heatmap(
+        data=valores_elevacion,
+        row_labels=valores_eje_cantidad_anillos,
+        col_labels=valores_eje_cantidad_elementos,
+        ax=ax,
+        cmap="YlGn", 
+        cbarlabel="ancho_theta"
+    )
+    texts = heatmap.annotate_heatmap(im, valfmt="{x:.1f}")
+
+    fig.tight_layout()
+    plt.show()
+
+    """
     fig, ax = plt.subplots()
     im = ax.imshow(valores_elevacion)
     
@@ -74,11 +97,13 @@ def main():
     ax.set_title('Ancho del patrón de radiación en la coordenada/eje de Elevación')
     fig.tight_layout()
     """
-    """
     plt.show()
 
     return
 
 if __name__ == '__main__':
     main()
+    
+
+
     

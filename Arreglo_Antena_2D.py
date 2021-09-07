@@ -418,10 +418,11 @@ if __name__ == '__main__':
     logging.info(f'  -Dz = {Dz}')
     logging.info(f'  -Nz = {Nz}')
 
-   for aux in range(5,7):#20):
+    
+
+    for aux in range(10,11):#20):
         logging.info(f'----------Cantidad de Anillos {aux}-------------')
-        # main(DR,aux,N,Dz,Nz)
-        for aux2 in range(10,14):
+        for aux2 in range(30,31):
             logging.info(f'Cantidad de Elementos: {aux2}')
             main(DR,aux,aux2,Dz,Nz)
         logging.info("-------------------------------------------")
