@@ -296,7 +296,11 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     theta_right = y[index:-1]
 
     theta_hp_min = np.interp(Rmax*(2**-0.5),R_left,theta_left)
-    theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
+    if len(R_right)==0:
+        theta_hp_max = 90
+    else:
+        theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
+    
     #print(theta_hp_max,theta_hp_min)
     ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
     Ancho_theta =  theta_hp_max - theta_hp_min
@@ -332,7 +336,7 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or')
     Ancho_phi = phi_hp_max - phi_hp_min
     
-    return [Ancho_theta,Ancho_phi]
+    return [Ancho_theta,Ancho_phi,Rmax]
 #==============================================================================
 def patronMonopoloCuartoOnda():
     self = patronMonopoloCuartoOnda
@@ -354,24 +358,23 @@ def patronMonopoloCuartoOnda():
     return self.patron
 #==============================================================================
 
+ 
 def main(param1,param2,param3,param4,param5):
     logging.info('Empezando Log')
 
     disposicion_arreglo = Disposiciones.RECTANGULAR
     logging.info('Comenzando Geom_Arreglo')
     if disposicion_arreglo == Disposiciones.RECTANGULAR:
-        D = 0.25 # separacion entre elementos
-        Nx = 15 # cantidad de elementos en la direccion x
-        Ny = 15 # cantidad de elementos en la direccion y
-        Nz = 1 # cantidad de elementos en la direccion z
-        
+
         [posiciones,excitaciones] = Geom_Arreglo(param1,param2,param3,param4)
+
     elif disposicion_arreglo == Disposiciones.CIRCULAR: #el arreglo es circular
         
         [posiciones,excitaciones] = Geom_Arreglo_circular(param1,param2,param3,param4,param5)
         #exi = amplitudCosElev(pos,0.7)
         #arreglo = Arreglo_2D(pos,exi)
     
+
     arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
     phi_apuntado = 50
     theta_apuntado = 30
@@ -382,20 +385,24 @@ def main(param1,param2,param3,param4,param5):
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
     theta = np.linspace(0,np.pi,100)
     phi = np.linspace(-np.pi,np.pi,100)
-    Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
+    #Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
     
     #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
     #print("Directividad Max: %2.2f " % Directividad)   
     
-    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut] = Ancho_Haz(arreglo, phi, theta, 2**-0.5)
+    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut, Directividad] = Ancho_Haz(arreglo, phi, theta, 2**-0.5)
     logging.info('Resultados:')
     logging.info(f' -Ancho de Elevacion  = {Ancho_Haz_Elevacion}')
-    logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')    
+    logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')  
+    #logging.info(f' -Directividad = {Directividad}')  
     
     #[a, b] = Beamwidth(math.radians(phi_apuntado),math.radians(theta_apuntado),Nx,Ny,D)
     #print(a)
     #print(b) 
-    logging.info('mostrando...')
+    #logging.info('mostrando...')
+    
+    
+    
     plt.show()    
 
     # INICIO    
@@ -406,28 +413,40 @@ if __name__ == '__main__':
         # handlers=logging.StreamHandler(),
         format='%(asctime)s - %(message)s',
     )
+    D = 0.25 # separacion entre elementos
+    Nx = 15 # cantidad de elementos en la direccion x
+    Ny = 15 # cantidad de elementos en la direccion y
+    Nz = 1 # cantidad de elementos en la direccion z
 
-    DR = 0.25 #separacion radial entre elementos
-    Nr = 10 # Num. de anillos   (Para un unico elemento Nr = 0)
-    N = 10 # Num. de elementos por anillo
-    Dz = 0.25 # separacion sobre el eje z
-    Nz = 1 # Num de elementos sobre el eje z
+ #  Freq= np.arange(1e6,20e6,1e6) #Valores de frecuencia aleatorios
+ #  FreqPatron= 1e6 #Frecuencia de diseño
+    C = 3e8 # Speed Light
+
     #Logueo los datos:
-    logging.info(f'Datos CONSTANTES del arreglo CIRCULAR:')
-    logging.info(f'  -DR = {DR}')
-    logging.info(f'  -Dz = {Dz}')
-    logging.info(f'  -Nz = {Nz}')
+ #   logging.info(f'Datos CONSTANTES del arreglo RECTANGULAR:')
+ #   logging.info(f'  -D = {D}')
+ #   logging.info(f'  -Nx = {Nx}')
+ #   logging.info(f'  -Ny = {Ny}')
 
-    main(DR,10,10,1,Nz)
-    """"
-    for aux in range(10,11):#20):
-        logging.info(f'----------Cantidad de Anillos {aux}-------------')
-        for aux2 in range(30,31):
-            logging.info(f'Cantidad de Elementos: {aux2}')
-            main(DR,aux,aux2,Dz,Nz)
-        logging.info("-------------------------------------------")
-    """    
+    
+#Cantidades de elementos en el eje X y Cantidad de elementos en el eje Y
+#    for aux in range(15,16):#20):
+#        logging.info(f'-TT---------Cantidad de Elementos en X {aux} -------------')
+#        for aux2 in range(15,16):
+#            logging.info(f'Cantidad de Elementos en Y: {aux2}')
+#            main(D,aux,aux2,1,1)
+#    logging.info("-------------------------------------------")
+ 
+#Valores de Frecuencias 
+    for i in range(20,0,-1):
+        logging.info(f'----------Frecuencia de trabajo: {i} Mhz')
+        Lambda = C/(i*1e6)
+        d_real = 0.25*C/20e6
+        D_lambda = d_real/Lambda 
+        print(f'Distancia {i}: {D_lambda}')
+        main(D_lambda,Nx,Ny,1,1)
 
+#main(D,Nx,Ny,1,1)
 
 """
     # ------------

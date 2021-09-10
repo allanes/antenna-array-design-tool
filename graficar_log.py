@@ -10,24 +10,26 @@ def main():
     valores_eje_cantidad_elementos = []
     valores_elevacion_raw = []
     valores_azimuth_raw = []
+   # valores_directividad = []
 
-    with open('antenas_log_backup.log', 'r') as f:
+    with open('antenas_log.log', 'r') as f:
         aux_cant_anillos_actual = 0
         aux_cant_elementos_actual = 0
         aux_elevacion_actual = 0.0
         aux_azimuth_actual = 0.0
+    #    aux_directividad_actual = 0.0
         paso_por_aca_flag = 0
 
         for line in f:
             if line[26:].startswith('-TT'):
-                aux_cant_anillos_actual = line[58:].split()[0]
+                aux_cant_anillos_actual = line[65:].split()[0]
                 valores_eje_cantidad_anillos.append(int(aux_cant_anillos_actual))
                 paso_por_aca_flag += 1
                 continue
             if line[26:].startswith('Cantidad'): #'Cantidad de Elementos'
                 if (paso_por_aca_flag > 1): 
                     continue
-                aux_cant_elementos_actual = line[49:].split()[0]
+                aux_cant_elementos_actual = line[54:].split()[0]
                 if not aux_cant_anillos_actual in valores_eje_cantidad_elementos:
                     valores_eje_cantidad_elementos.append(int(aux_cant_elementos_actual))
                 continue
@@ -39,6 +41,11 @@ def main():
                 aux_azimuth_actual = line[47:].split()[0]
                 valores_azimuth_raw.append(float(aux_azimuth_actual))
                 continue
+            #if line[26].startswith(' -Directividad'):
+            #    aux_directividad_actual = line[43:].split()[0]
+            #    valores_directividad.append(float(aux_directividad_actual))
+            #    continue
+
         
     # Reacomodo un poco los datos
     indice_truncar_arreglo = len(valores_eje_cantidad_anillos)*len(valores_eje_cantidad_elementos)
@@ -66,7 +73,24 @@ def main():
     )
     texts = heatmap.annotate_heatmap(im, valfmt="{x:.1f}")
 
+    fig, ax = plt.subplots()
+    im, cbar = heatmap.heatmap(
+        data=valores_azimuth,
+        row_labels=valores_eje_cantidad_anillos,
+        col_labels=valores_eje_cantidad_elementos,
+        ax=ax,
+        cmap="YlGn", 
+        cbarlabel="ancho_phi"
+    )
+    texts = heatmap.annotate_heatmap(im, valfmt="{x:.1f}")
+
+    
+
+
+
+
     fig.tight_layout()
+
     plt.show()
 
     """
