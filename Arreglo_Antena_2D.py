@@ -391,11 +391,11 @@ def main(set_parametros,graficar=False):
     if disposicion_arreglo == Disposiciones.RECTANGULAR:
         [posiciones,excitaciones] = Geom_Arreglo_Rectangular(set_parametros[1],set_parametros[2],set_parametros[3])
     
-    elif disposicion_arreglo == Disposiciones.CIRCULAR: #el arreglo es circular        
+    elif disposicion_arreglo == Disposiciones.CIRCULAR:
         [posiciones,excitaciones] = Geom_Arreglo_Circular(set_parametros[1],set_parametros[3],set_parametros[2],set_parametros[4],set_parametros[5])
 
-    
-    arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
+    patron_elemento = [patronMonopoloCuartoOnda()]
+    arreglo = ArregloGeneral(posiciones,excitaciones,patron_elemento)
     phi_apuntado = 50
     theta_apuntado = 30
     logging.info('Apuntamiento configurado:')
@@ -503,9 +503,7 @@ def etapaDos(disposicion, separacion_elementos, cantidad_elementos_abcisas, cant
 
     # INICIO    
 if __name__ == '__main__':
-    # # ----Prueba 
-    # main(DR,Nr,N,Dz,Nz,disposicion_arreglo=Disposiciones.CIRCULAR,graficar=True)
-    
+       
     eleccion_disposicion = Disposiciones.CIRCULAR
     eleccion_separacion = 0.25
 
@@ -520,10 +518,14 @@ if __name__ == '__main__':
     eleccion_ordenada = 15
     eleccion_frec_disenio = 1e6
     
-    etapaDos(
-        disposicion=eleccion_disposicion,
-        separacion_elementos=eleccion_separacion,
-        cantidad_elementos_abcisas=eleccion_abcisa,
-        cantidad_elementos_ordenadas=eleccion_ordenada,
-        frec_disenio=eleccion_frec_disenio,
-    )
+    # etapaDos(
+    #     disposicion=eleccion_disposicion,
+    #     separacion_elementos=eleccion_separacion,
+    #     cantidad_elementos_abcisas=eleccion_abcisa,
+    #     cantidad_elementos_ordenadas=eleccion_ordenada,
+    #     frec_disenio=eleccion_frec_disenio,
+    # )
+
+    # # ----Prueba 
+    set_parametros = [Disposiciones.RECTANGULAR,eleccion_separacion,eleccion_ordenada,eleccion_abcisa,1,1]
+    main(set_parametros,graficar=True)
