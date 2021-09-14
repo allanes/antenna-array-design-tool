@@ -373,15 +373,26 @@ def Unnormalisation_Freq(Freq,D):
 
 
 def main(set_parametros,graficar=False):
+    """
+    set_parametros:
+        [0] : enum. Disposicion del arreglo. Usar enumeracion 'Disposiciones'
+        [1] : float. Separacion entre elementos, en [λ]
+        [2] : int. Cantidad de elementos en el eje de abcisas
+        [3] : int. Cantidad de elementos en el eje de ordenadas
+        [4] : float. Separacion vertical
+        [5] : int. Cantidad de elementos en el eje z
+    graficar: Grafica el arreglo si es True.
+    """
+    
     logging.info('Empezando Log')
     logging.info('Comenzando Geom_Arreglo')
     disposicion_arreglo = set_parametros[0]
 
     if disposicion_arreglo == Disposiciones.RECTANGULAR:
-        [posiciones,excitaciones] = Geom_Arreglo_Rectangular(set_parametros[1],set_parametros[2],set_parametros[3],set_parametros[4])
+        [posiciones,excitaciones] = Geom_Arreglo_Rectangular(set_parametros[1],set_parametros[2],set_parametros[3])
     
     elif disposicion_arreglo == Disposiciones.CIRCULAR: #el arreglo es circular        
-        [posiciones,excitaciones] = Geom_Arreglo_Circular(set_parametros[1],set_parametros[2],set_parametros[3],set_parametros[4],set_parametros[5])
+        [posiciones,excitaciones] = Geom_Arreglo_Circular(set_parametros[1],set_parametros[3],set_parametros[2],set_parametros[4],set_parametros[5])
 
     
     arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
@@ -416,6 +427,34 @@ def main(set_parametros,graficar=False):
     if graficar: plt.show()  
     return [Ancho_Haz_Elevacion, Ancho_Haz_Acimut]
 
+def etapaUno(disposicion, separacion_elementos, rango_abcisas, rango_ordenadas):
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    logging.basicConfig(
+        filename=f'logs/log_etapa1_{timestamp}.log',
+        level=logging.INFO,
+        # handlers=logging.StreamHandler(),
+        format='%(asctime)s - %(message)s',
+    )
+    # ----ETAPA 1. Genera datos para Heatmap
+    Dz = 0.25 # separacion sobre el eje z
+    Nz = 1 # Num de elementos sobre el eje z
+    # Logueo los datos:
+    logging.info(f'Datos CONSTANTES del arreglo CIRCULAR:')
+    logging.info(f'  -DR = {separacion_elementos}')
+    logging.info(f'  -Dz = {Dz}')
+    logging.info(f'  -Nz = {Nz}')    
+
+    set_parametros = [disposicion,separacion_elementos,0,0,Dz,Nz]
+    for ordenada in range(rango_ordenadas[0],rango_ordenadas[1]+1):
+        set_parametros[3] = ordenada
+        logging.info(f'----------Cantidad de Anillos {ordenada} -------------')
+        for abcisa in range(rango_abcisas[0],rango_abcisas[1]+1):
+            logging.info(f'Cantidad de Elementos: {abcisa}')
+            set_parametros[2] = abcisa
+            main(set_parametros,graficar=False)
+        logging.info("-------------------------------------------")
+
+
 def etapaDos(cantidad_elementos_abcisas, cantidad_elementos_ordenadas, frec_disenio, disposicion):
     # # -----ETAPA 2. Evalua la respuesta en frecuencia
     # Desnormalizo en frec
@@ -427,7 +466,7 @@ def etapaDos(cantidad_elementos_abcisas, cantidad_elementos_ordenadas, frec_dise
     # Recalculo los anchos para las frecuencias desnormalizadas
     anchos_elevacion = []
     anchos_azimut = []
-    set_parametros_arreglo = [disposicion,0.0,cantidad_elementos_ordenadas,cantidad_elementos_abcisas,Dz,Nz]
+    set_parametros_arreglo = [disposicion,0.0,cantidad_elementos_ordenadas,cantidad_elementos_abcisas,1,1]
     for index in range(len(Dn)):
         logging.info(f"Distancia en Lambda: {Dn[index]}")
         logging.info(f"Distancia en [m]: {d[index]}")
@@ -445,42 +484,20 @@ def etapaDos(cantidad_elementos_abcisas, cantidad_elementos_ordenadas, frec_dise
 
     # INICIO    
 if __name__ == '__main__':
-    logging.basicConfig(
-        
-        filename='logs/log_desnormalizado.log',
-        level=logging.INFO,
-        # handlers=logging.StreamHandler(),
-        format='%(asctime)s - %(message)s',
-    )
-
-    DR = 0.25 #separacion radial entre elementos
-    Nr = 13 # Num. de anillos   (Para un unico elemento Nr = 0)
-    N = 17 # Num. de elementos por anillo
-    Dz = 0.25 # separacion sobre el eje z
-    Nz = 1 # Num de elementos sobre el eje z
-    
-    
     # # ----Prueba 
     # main(DR,Nr,N,Dz,Nz,disposicion_arreglo=Disposiciones.CIRCULAR,graficar=True)
     
-    # # ----ETAPA 1. Genera datos para Heatmap
-    # Logueo los datos:
-    # logging.info(f'Datos CONSTANTES del arreglo CIRCULAR:')
-    # logging.info(f'  -DR = {DR}')
-    # logging.info(f'  -Dz = {Dz}')
-    # logging.info(f'  -Nz = {Nz}')    
-
-    # for aux in range(5,16):
-    #     logging.info(f'----------Cantidad de Anillos {aux} -------------')
-    #     for aux2 in range(10,51):
-    #         logging.info(f'Cantidad de Elementos: {aux2}')
-    #         main(DR,aux,aux2,Dz,Nz,disposicion_arreglo=Disposiciones.CIRCULAR,graficar=False)
-    #     logging.info("-------------------------------------------")
-
-
-    etapaDos(
-        cantidad_elementos_abcisas=15,
-        cantidad_elementos_ordenadas=12,
-        frec_disenio=1e6,
-        disposicion=Disposiciones.CIRCULAR
+    etapaUno(
+        disposicion=Disposiciones.CIRCULAR,
+        separacion_elementos=0.25,
+        rango_abcisas=[10,11],
+        rango_ordenadas=[14,15]
     )
+
+
+    # etapaDos(
+    #     cantidad_elementos_abcisas=15,
+    #     cantidad_elementos_ordenadas=12,
+    #     frec_disenio=1e6,
+    #     disposicion=Disposiciones.CIRCULAR
+    # )
