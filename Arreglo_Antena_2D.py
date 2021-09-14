@@ -428,6 +428,7 @@ def main(set_parametros,graficar=False):
     return [Ancho_Haz_Elevacion, Ancho_Haz_Acimut]
 
 def etapaUno(disposicion, separacion_elementos, rango_abcisas, rango_ordenadas):
+    # ----ETAPA 1. Genera datos para Heatmap
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     logging.basicConfig(
         filename=f'logs/log_etapa1_{timestamp}.log',
@@ -435,11 +436,11 @@ def etapaUno(disposicion, separacion_elementos, rango_abcisas, rango_ordenadas):
         # handlers=logging.StreamHandler(),
         format='%(asctime)s - %(message)s',
     )
-    # ----ETAPA 1. Genera datos para Heatmap
     Dz = 0.25 # separacion sobre el eje z
     Nz = 1 # Num de elementos sobre el eje z
     # Logueo los datos:
-    logging.info(f'Datos CONSTANTES del arreglo CIRCULAR:')
+    logging.info(f'Iniciando Etapa 1. Obtencion de datos para evaluar ancho de haz en funcion de lambda. Configuracion inicial:')
+    logging.info(f'Arreglo tipo {disposicion}')
     logging.info(f'  -DR = {separacion_elementos}')
     logging.info(f'  -Dz = {Dz}')
     logging.info(f'  -Nz = {Nz}')    
@@ -447,29 +448,47 @@ def etapaUno(disposicion, separacion_elementos, rango_abcisas, rango_ordenadas):
     set_parametros = [disposicion,separacion_elementos,0,0,Dz,Nz]
     for ordenada in range(rango_ordenadas[0],rango_ordenadas[1]+1):
         set_parametros[3] = ordenada
-        logging.info(f'----------Cantidad de Anillos {ordenada} -------------')
+        if disposicion == Disposiciones.CIRCULAR:
+            logging.info(f'----------Cantidad de Anillos {ordenada} -------------')
+        else:
+            logging.info(f'----------Cantidad de Elementos en Eje Y {ordenada} -------------')
+        
         for abcisa in range(rango_abcisas[0],rango_abcisas[1]+1):
-            logging.info(f'Cantidad de Elementos: {abcisa}')
+            logging.info(f'Cantidad de Elementos en Abcisas: {abcisa}')
             set_parametros[2] = abcisa
             main(set_parametros,graficar=False)
         logging.info("-------------------------------------------")
 
 
-def etapaDos(cantidad_elementos_abcisas, cantidad_elementos_ordenadas, frec_disenio, disposicion):
+def etapaDos(disposicion, separacion_elementos, cantidad_elementos_abcisas, cantidad_elementos_ordenadas, frec_disenio):
     # # -----ETAPA 2. Evalua la respuesta en frecuencia
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    logging.basicConfig(
+        filename=f'logs/log_etapa2_{timestamp}.log',
+        level=logging.INFO,
+        # handlers=logging.StreamHandler(),
+        format='%(asctime)s - %(message)s',
+    )
     # Desnormalizo en frec
-    logging.info(f'Desnormalizando para {cantidad_elementos_ordenadas} y {cantidad_elementos_abcisas} elementos por anillo:')
     # El primer elemento del siguiente arreglo es usado como frecuencia de diseño en la llamada a Unnormalisation_Freq()
     rango_frecuencias = [frec_disenio,2e6,3e6]#,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6]
     freq = np.array(rango_frecuencias)
-    Dn,d = Unnormalisation_Freq(freq,DR)
+    Dn,d = Unnormalisation_Freq(freq,separacion_elementos)
+    
+    logging.info(f'Iniciando Etapa 2. Obtencion de datos para evaluar la respuesta en frecuencia. Configuracion inicial:')
+    logging.info(f'Arreglo tipo {disposicion}')
+    logging.info(f'Separacion entre elementos: {separacion_elementos} [lambda]')
+    logging.info(f"Separacion entre elementos: {d[0]} [m]")
+    logging.info(f'Desnormalizando para frecuencia de disenio f = {frec_disenio} [Hz]')
+    logging.info(f'Desnormalizando para {cantidad_elementos_abcisas} elementos en X y {cantidad_elementos_ordenadas} elementos en Y')
+    logging.info('----------------Seccion de Datos Generados----------------')
+    
     # Recalculo los anchos para las frecuencias desnormalizadas
     anchos_elevacion = []
     anchos_azimut = []
     set_parametros_arreglo = [disposicion,0.0,cantidad_elementos_ordenadas,cantidad_elementos_abcisas,1,1]
     for index in range(len(Dn)):
         logging.info(f"Distancia en Lambda: {Dn[index]}")
-        logging.info(f"Distancia en [m]: {d[index]}")
         logging.info(f"Frecuencia: {freq[index]}")
         set_parametros_arreglo[1] = Dn[index]
         [elev, azi] = main(set_parametros_arreglo,graficar=False)
@@ -487,17 +506,24 @@ if __name__ == '__main__':
     # # ----Prueba 
     # main(DR,Nr,N,Dz,Nz,disposicion_arreglo=Disposiciones.CIRCULAR,graficar=True)
     
-    etapaUno(
-        disposicion=Disposiciones.CIRCULAR,
-        separacion_elementos=0.25,
-        rango_abcisas=[10,11],
-        rango_ordenadas=[14,15]
-    )
+    eleccion_disposicion = Disposiciones.CIRCULAR
+    eleccion_separacion = 0.25
 
-
-    # etapaDos(
-    #     cantidad_elementos_abcisas=15,
-    #     cantidad_elementos_ordenadas=12,
-    #     frec_disenio=1e6,
-    #     disposicion=Disposiciones.CIRCULAR
+    # etapaUno(
+    #     disposicion=eleccion_disposicion,
+    #     separacion_elementos=eleccion_separacion,
+    #     rango_abcisas=[10,10],
+    #     rango_ordenadas=[14,14]
     # )
+
+    eleccion_abcisa = 12
+    eleccion_ordenada = 15
+    eleccion_frec_disenio = 1e6
+    
+    etapaDos(
+        disposicion=eleccion_disposicion,
+        separacion_elementos=eleccion_separacion,
+        cantidad_elementos_abcisas=eleccion_abcisa,
+        cantidad_elementos_ordenadas=eleccion_ordenada,
+        frec_disenio=eleccion_frec_disenio,
+    )
