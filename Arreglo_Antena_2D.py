@@ -22,6 +22,7 @@ import scipy.integrate as integrate
 from scipy.interpolate import interp1d
 import logging
 from enum import Enum
+from datetime import datetime
 
 class Disposiciones(Enum):
     RECTANGULAR = 0
@@ -189,7 +190,7 @@ def Graficar_2D(arreglo,phi,theta,nombre,posiciones,dx,dy,dz):
     ax.scatter(xi,yi,zi, c = 'green',  marker='+' , linewidth = 2)
     # xi = [:,0] ; yi = [:,1], zi = [:,2]   # selecciona columnas, use la transpuesta de puntos
 #==============================================================================
-def Geom_Arreglo(D = 1, Nx = 1, Ny = 1, Nz = 1):
+def Geom_Arreglo_Rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
     """Posiciona en un plano x,y,z a cada una de las antenas del arreglo
             
         Array(n,2) plot Geom_Arreglo( int D, int Nx ,int Ny)
@@ -217,7 +218,7 @@ def Geom_Arreglo(D = 1, Nx = 1, Ny = 1, Nz = 1):
     
     return [posiciones, excitaciones]
 #==============================================================================        
-def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
+def Geom_Arreglo_Circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
     """
         Posiciona en un plano x,y,z a cada una de las antenas del arreglo
     ----------------------------------------------------------------------------------------------        
@@ -371,15 +372,16 @@ def Unnormalisation_Freq(Freq,D):
     return [D_unnorm,D_unnorm*Lambda]
 
 
-def main(param1,param2,param3,param4,param5,disposicion_arreglo,graficar=False):
+def main(set_parametros,graficar=False):
     logging.info('Empezando Log')
     logging.info('Comenzando Geom_Arreglo')
-    
+    disposicion_arreglo = set_parametros[0]
+
     if disposicion_arreglo == Disposiciones.RECTANGULAR:
-        [posiciones,excitaciones] = Geom_Arreglo(param1,param2,param3,param4)
+        [posiciones,excitaciones] = Geom_Arreglo_Rectangular(set_parametros[1],set_parametros[2],set_parametros[3],set_parametros[4])
     
     elif disposicion_arreglo == Disposiciones.CIRCULAR: #el arreglo es circular        
-        [posiciones,excitaciones] = Geom_Arreglo_circular(param1,param2,param3,param4,param5)
+        [posiciones,excitaciones] = Geom_Arreglo_Circular(set_parametros[1],set_parametros[2],set_parametros[3],set_parametros[4],set_parametros[5])
 
     
     arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
@@ -401,7 +403,7 @@ def main(param1,param2,param3,param4,param5,disposicion_arreglo,graficar=False):
     elif graficar and disposicion_arreglo == Disposiciones.RECTANGULAR:
         Graficar_2D(
             arreglo, phi, theta,"Arreglo en 2D Rectangular",posiciones,
-            (param1*(param2-1))/2,(param1*(param3-1))/2,(param1*(param4-1))/2
+            (set_parametros[1]*(set_parametros[2]-1))/2,(set_parametros[1]*(set_parametros[3]-1))/2,(set_parametros[1]*(set_parametros[4]-1))/2
             )
 
     #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
@@ -413,12 +415,39 @@ def main(param1,param2,param3,param4,param5,disposicion_arreglo,graficar=False):
     logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')  
     if graficar: plt.show()  
     return [Ancho_Haz_Elevacion, Ancho_Haz_Acimut]
-    
+
+def etapaDos(cantidad_elementos_abcisas, cantidad_elementos_ordenadas, frec_disenio, disposicion):
+    # # -----ETAPA 2. Evalua la respuesta en frecuencia
+    # Desnormalizo en frec
+    logging.info(f'Desnormalizando para {cantidad_elementos_ordenadas} y {cantidad_elementos_abcisas} elementos por anillo:')
+    # El primer elemento del siguiente arreglo es usado como frecuencia de diseño en la llamada a Unnormalisation_Freq()
+    rango_frecuencias = [frec_disenio,2e6,3e6]#,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6]
+    freq = np.array(rango_frecuencias)
+    Dn,d = Unnormalisation_Freq(freq,DR)
+    # Recalculo los anchos para las frecuencias desnormalizadas
+    anchos_elevacion = []
+    anchos_azimut = []
+    set_parametros_arreglo = [disposicion,0.0,cantidad_elementos_ordenadas,cantidad_elementos_abcisas,Dz,Nz]
+    for index in range(len(Dn)):
+        logging.info(f"Distancia en Lambda: {Dn[index]}")
+        logging.info(f"Distancia en [m]: {d[index]}")
+        logging.info(f"Frecuencia: {freq[index]}")
+        set_parametros_arreglo[1] = Dn[index]
+        [elev, azi] = main(set_parametros_arreglo,graficar=False)
+        anchos_elevacion.append(elev)
+        anchos_azimut.append(azi)
+    logging.info('Fin de desnormalizacion')
+
+    [elev, azi] = main(set_parametros_arreglo)
+
+    plt.plot(freq,np.array(anchos_elevacion))
+    plt.show  
 
     # INICIO    
 if __name__ == '__main__':
     logging.basicConfig(
-        filename='log_normalizado.log',
+        
+        filename='logs/log_desnormalizado.log',
         level=logging.INFO,
         # handlers=logging.StreamHandler(),
         format='%(asctime)s - %(message)s',
@@ -431,46 +460,27 @@ if __name__ == '__main__':
     Nz = 1 # Num de elementos sobre el eje z
     
     
-    # # ----Llama una sola vez
+    # # ----Prueba 
     # main(DR,Nr,N,Dz,Nz,disposicion_arreglo=Disposiciones.CIRCULAR,graficar=True)
     
-    # # ----Genera datos para Heatmap
+    # # ----ETAPA 1. Genera datos para Heatmap
     # Logueo los datos:
-    logging.info(f'Datos CONSTANTES del arreglo CIRCULAR:')
-    logging.info(f'  -DR = {DR}')
-    logging.info(f'  -Dz = {Dz}')
-    logging.info(f'  -Nz = {Nz}')    
+    # logging.info(f'Datos CONSTANTES del arreglo CIRCULAR:')
+    # logging.info(f'  -DR = {DR}')
+    # logging.info(f'  -Dz = {Dz}')
+    # logging.info(f'  -Nz = {Nz}')    
 
-    for aux in range(5,16):
-        logging.info(f'----------Cantidad de Anillos {aux} -------------')
-        for aux2 in range(10,51):
-            logging.info(f'Cantidad de Elementos: {aux2}')
-            main(DR,aux,aux2,Dz,Nz,disposicion_arreglo=Disposiciones.CIRCULAR,graficar=False)
-        logging.info("-------------------------------------------")
+    # for aux in range(5,16):
+    #     logging.info(f'----------Cantidad de Anillos {aux} -------------')
+    #     for aux2 in range(10,51):
+    #         logging.info(f'Cantidad de Elementos: {aux2}')
+    #         main(DR,aux,aux2,Dz,Nz,disposicion_arreglo=Disposiciones.CIRCULAR,graficar=False)
+    #     logging.info("-------------------------------------------")
 
 
-    # # -----Evalua la respuesta en frecuencia
-    # # Elijo un par
-    # cant_anillos_analizar = 13
-    # cant_elementos_anillo_analizar = 17    
-    # # Desnormalizo en frec
-    # logging.info(f'Desnormalizando para {cant_anillos_analizar} Anillos y {cant_elementos_anillo_analizar} elementos por anillo:')
-    # rango_frecuencias = [1e6,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6]
-    # freq = np.array(rango_frecuencias)
-    # Dn,d = Unnormalisation_Freq(freq,DR)
-    # # Recalculo los anchos para las frecuencias desnormalizadas
-    # anchos_elevacion = []
-    # anchos_azimut = []
-    # for index in range(len(Dn)):
-    #     logging.info(f"Distancia en Lambda: {Dn[index]}")
-    #     logging.info(f"Distancia en [m]: {d[index]}")
-    #     logging.info(f"Frecuencia: {freq[index]}")
-    #     [elev, azi] = main(Dn[index],10,13,Dz,Nz, graficar=False)
-    #     anchos_elevacion.append(elev)
-    #     anchos_azimut.append(azi)
-    # logging.info('Fin de desnormalizacion')
-
-    # [elev, azi] = main(Dn[16],10,13,Dz,Nz)
-
-    # plt.plot(freq,np.array(anchos_elevacion))
-    # plt.show
+    etapaDos(
+        cantidad_elementos_abcisas=15,
+        cantidad_elementos_ordenadas=12,
+        frec_disenio=1e6,
+        disposicion=Disposiciones.CIRCULAR
+    )
