@@ -504,28 +504,53 @@ def etapaDos(disposicion, separacion_elementos, cantidad_elementos_abcisas, cant
     # INICIO    
 if __name__ == '__main__':
        
-    eleccion_disposicion = Disposiciones.CIRCULAR
+    # Para etapas 1 y 2
+    eleccion_disposicion = Disposiciones.RECTANGULAR
     eleccion_separacion = 0.25
-
-    # etapaUno(
-    #     disposicion=eleccion_disposicion,
-    #     separacion_elementos=eleccion_separacion,
-    #     rango_abcisas=[10,10],
-    #     rango_ordenadas=[14,14]
-    # )
-
-    eleccion_abcisa = 12
-    eleccion_ordenada = 15
+    # Solo para etapa 1
+    eleccion_rango_abcisas = [2,20]
+    eleccion_rango_ordenadas = [2,20]
+    # Solo para etapa 2
     eleccion_frec_disenio = 1e6
+    eleccion_abcisa = 18
+    eleccion_ordenada = 18
     
-    # etapaDos(
-    #     disposicion=eleccion_disposicion,
-    #     separacion_elementos=eleccion_separacion,
-    #     cantidad_elementos_abcisas=eleccion_abcisa,
-    #     cantidad_elementos_ordenadas=eleccion_ordenada,
-    #     frec_disenio=eleccion_frec_disenio,
-    # )
+    
+    print('Analisis de Arreglos de Antenas. Seleccione una opcion:')
+    print('1. Etapa 1. Calcular anchos de haz para el arreglo normalizado')
+    print('2. Etapa 2. Calcular respuesta en frecuencia para el arreglo desnormalizado')
+    print('3. Calcular y graficar el arreglo configurado')
 
-    # # ----Prueba 
-    set_parametros = [Disposiciones.RECTANGULAR,eleccion_separacion,eleccion_ordenada,eleccion_abcisa,1,1]
-    main(set_parametros,graficar=True)
+    print('\n\nDatos configurados:')
+    print(f'  Disposicion: {eleccion_disposicion}')
+    print(f'  Separacion: {eleccion_separacion} [lambda]')
+    print(f'  Rango_abcisas: {eleccion_rango_abcisas} (utilizado en Opcion 1)')
+    print(f'  Rango_ordenadas: {eleccion_rango_ordenadas} (utilizado en Opcion 1)')
+    print(f'  Frecuencia de disenio: {eleccion_frec_disenio} [Hz] (utilizado en Opciones 2 y 3)')
+    print(f'  Elementos en X: {eleccion_abcisa} (utilizado en Opciones 2 y 3)')
+    print(f'  Elementos en Y: {eleccion_ordenada} (utilizado en Opciones 2 y 3)')
+
+
+    print('Elija una opcion')
+    opcion = input('>>')
+    
+    if opcion == '1':
+        etapaUno(
+            disposicion=eleccion_disposicion,
+            separacion_elementos=eleccion_separacion,
+            rango_abcisas=eleccion_rango_abcisas,
+            rango_ordenadas=eleccion_rango_ordenadas
+        )
+
+    elif opcion == '2':
+        etapaDos(
+            disposicion=eleccion_disposicion,
+            separacion_elementos=eleccion_separacion,
+            cantidad_elementos_abcisas=eleccion_abcisa,
+            cantidad_elementos_ordenadas=eleccion_ordenada,
+            frec_disenio=eleccion_frec_disenio,
+        )
+
+    elif opcion == '3':
+        set_parametros = [eleccion_disposicion,eleccion_separacion,eleccion_ordenada,eleccion_abcisa,1,1]
+        main(set_parametros,graficar=True)
