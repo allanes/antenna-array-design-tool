@@ -403,8 +403,8 @@ def main(set_parametros,graficar=False):
     logging.info(f' -Elevac. = {theta_apuntado}')
 
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
-    theta = np.linspace(0,np.pi,300)
-    phi = np.linspace(-np.pi,np.pi,300)
+    theta = np.linspace(0,np.pi,150)
+    phi = np.linspace(-np.pi,np.pi,150)
 
     if graficar and disposicion_arreglo == Disposiciones.CIRCULAR:
         Graficar_2D(
@@ -471,7 +471,7 @@ def etapaDos(disposicion, separacion_elementos, cantidad_elementos_abcisas, cant
     )
     # Desnormalizo en frec
     # El primer elemento del siguiente arreglo es usado como frecuencia de diseño en la llamada a Unnormalisation_Freq()
-    rango_frecuencias = [frec_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6]
+    rango_frecuencias = [frec_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6] # 
     freq = np.array(rango_frecuencias)
     Dn,d = Unnormalisation_Freq(freq,separacion_elementos)
     
@@ -505,15 +505,15 @@ def etapaDos(disposicion, separacion_elementos, cantidad_elementos_abcisas, cant
 if __name__ == '__main__':
        
     # Para etapas 1 y 2
-    eleccion_disposicion = Disposiciones.RECTANGULAR
+    eleccion_disposicion = Disposiciones.CIRCULAR
     eleccion_separacion = 0.25
     # Solo para etapa 1
-    eleccion_rango_abcisas = [2,20]
-    eleccion_rango_ordenadas = [2,20]
+    eleccion_rango_abcisas = [10,15]
+    eleccion_rango_ordenadas = [12,15]
     # Solo para etapa 2
     eleccion_frec_disenio = 1e6
-    eleccion_abcisa = 18
-    eleccion_ordenada = 18
+    eleccion_abcisa = 37
+    eleccion_ordenada = 11
     
     
     print('Analisis de Arreglos de Antenas. Seleccione una opcion:')
@@ -552,5 +552,12 @@ if __name__ == '__main__':
         )
 
     elif opcion == '3':
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        logging.basicConfig(
+            filename=f'logs/log_opcion3_{timestamp}.log',
+            level=logging.INFO,
+            # handlers=logging.StreamHandler(),
+            format='%(asctime)s - %(message)s',
+        )
         set_parametros = [eleccion_disposicion,eleccion_separacion,eleccion_ordenada,eleccion_abcisa,1,1]
         main(set_parametros,graficar=True)

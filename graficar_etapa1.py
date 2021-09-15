@@ -9,7 +9,7 @@ def main():
     valores_elevacion_raw = []
     valores_azimuth_raw = []
 
-    with open('logs/log_etapa1_20210914_192200_LEANDRO.log', 'r') as f:
+    with open('logs/log_etapa1_20210915_032146.log', 'r') as f:
         aux_cant_anillos_actual = 0
         aux_cant_elementos_actual = 0
         aux_elevacion_actual = 0.0
@@ -17,8 +17,8 @@ def main():
         paso_por_aca_flag = 0
 
         for line in f:
-            if line[26:].startswith('----------Cantidad de Elementos'):
-                aux_cant_anillos_actual = line[67:].split()[0]
+            if line[26:].startswith('----------Cantidad de'):
+                aux_cant_anillos_actual = line[56:].split()[0]
                 valores_eje_cantidad_anillos.append(int(aux_cant_anillos_actual))
                 paso_por_aca_flag += 1
                 continue
