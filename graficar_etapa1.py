@@ -9,7 +9,7 @@ def main():
     valores_elevacion_raw = []
     valores_azimuth_raw = []
 
-    with open('logs/log_etapa1_20210915_032146.log', 'r') as f:
+    with open('logs/log_etapa1_informe.log', 'r') as f:
         aux_cant_anillos_actual = 0
         aux_cant_elementos_actual = 0
         aux_elevacion_actual = 0.0
@@ -25,7 +25,7 @@ def main():
             if line[26:].startswith('Cantidad de E'): #'Cantidad de Elementos'
                 if (paso_por_aca_flag > 1): 
                     continue
-                aux_cant_elementos_actual = line[60:].split()[0]
+                aux_cant_elementos_actual = line[49:].split()[0]
                 if not aux_cant_anillos_actual in valores_eje_cantidad_elementos:
                     valores_eje_cantidad_elementos.append(int(aux_cant_elementos_actual))
                 continue

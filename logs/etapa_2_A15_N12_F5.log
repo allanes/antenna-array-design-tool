@@ -1,0 +1,215 @@
+2021-09-15 17:20:53,852 - Datos CONSTANTES del arreglo CIRCULAR:
+2021-09-15 17:20:53,852 -   -DR = 0.1
+2021-09-15 17:20:53,852 -   -Dz = 0.25
+2021-09-15 17:20:53,852 -   -Nz = 1
+2021-09-15 17:22:06,433 - Desnormalizando para 15 Anillos y 12 elementos por anillo:
+2021-09-15 17:22:15,010 - Distancia en Lambda: 0.06
+2021-09-15 17:22:15,010 - Distancia en [m]: 9.0
+2021-09-15 17:22:15,010 - Frecuencia: 2000000.0
+2021-09-15 17:22:15,010 - Empezando Log
+2021-09-15 17:22:15,010 - Comenzando Geom_Arreglo
+2021-09-15 17:22:15,012 - Apuntamiento configurado:
+2021-09-15 17:22:15,012 -  -Azimuth = 50
+2021-09-15 17:22:15,013 -  -Elevac. = 30
+2021-09-15 17:22:20,113 - Resultados:
+2021-09-15 17:22:20,113 -  -Ancho de Elevacion  = 48.15706333773462
+2021-09-15 17:22:20,113 -  -Ancho de Azimuth = 44.177561851363194
+2021-09-15 17:22:20,113 - Distancia en Lambda: 0.09
+2021-09-15 17:22:20,114 - Distancia en [m]: 9.0
+2021-09-15 17:22:20,114 - Frecuencia: 3000000.0
+2021-09-15 17:22:20,114 - Empezando Log
+2021-09-15 17:22:20,114 - Comenzando Geom_Arreglo
+2021-09-15 17:22:20,116 - Apuntamiento configurado:
+2021-09-15 17:22:20,116 -  -Azimuth = 50
+2021-09-15 17:22:20,116 -  -Elevac. = 30
+2021-09-15 17:22:25,973 - Resultados:
+2021-09-15 17:22:25,973 -  -Ancho de Elevacion  = 22.47072533441698
+2021-09-15 17:22:25,973 -  -Ancho de Azimuth = 32.598473265034016
+2021-09-15 17:22:25,973 - Distancia en Lambda: 0.12
+2021-09-15 17:22:25,973 - Distancia en [m]: 9.0
+2021-09-15 17:22:25,973 - Frecuencia: 4000000.0
+2021-09-15 17:22:25,973 - Empezando Log
+2021-09-15 17:22:25,973 - Comenzando Geom_Arreglo
+2021-09-15 17:22:25,976 - Apuntamiento configurado:
+2021-09-15 17:22:25,976 -  -Azimuth = 50
+2021-09-15 17:22:25,976 -  -Elevac. = 30
+2021-09-15 17:22:32,544 - Resultados:
+2021-09-15 17:22:32,544 -  -Ancho de Elevacion  = 16.19800988270516
+2021-09-15 17:22:32,544 -  -Ancho de Azimuth = 25.68459171365506
+2021-09-15 17:22:32,544 - Distancia en Lambda: 0.15
+2021-09-15 17:22:32,544 - Distancia en [m]: 9.0
+2021-09-15 17:22:32,544 - Frecuencia: 5000000.0
+2021-09-15 17:22:32,544 - Empezando Log
+2021-09-15 17:22:32,544 - Comenzando Geom_Arreglo
+2021-09-15 17:22:32,547 - Apuntamiento configurado:
+2021-09-15 17:22:32,547 -  -Azimuth = 50
+2021-09-15 17:22:32,547 -  -Elevac. = 30
+2021-09-15 17:22:41,146 - Resultados:
+2021-09-15 17:22:41,146 -  -Ancho de Elevacion  = 12.824417368169435
+2021-09-15 17:22:41,146 -  -Ancho de Azimuth = 21.031635597414116
+2021-09-15 17:22:41,146 - Distancia en Lambda: 0.18
+2021-09-15 17:22:41,146 - Distancia en [m]: 9.0
+2021-09-15 17:22:41,146 - Frecuencia: 6000000.0
+2021-09-15 17:22:41,146 - Empezando Log
+2021-09-15 17:22:41,146 - Comenzando Geom_Arreglo
+2021-09-15 17:22:41,149 - Apuntamiento configurado:
+2021-09-15 17:22:41,149 -  -Azimuth = 50
+2021-09-15 17:22:41,149 -  -Elevac. = 30
+2021-09-15 17:22:50,355 - Resultados:
+2021-09-15 17:22:50,355 -  -Ancho de Elevacion  = 10.659208123988762
+2021-09-15 17:22:50,355 -  -Ancho de Azimuth = 17.819252720210848
+2021-09-15 17:22:50,355 - Distancia en Lambda: 0.21000000000000002
+2021-09-15 17:22:50,355 - Distancia en [m]: 9.0
+2021-09-15 17:22:50,355 - Frecuencia: 7000000.0
+2021-09-15 17:22:50,355 - Empezando Log
+2021-09-15 17:22:50,355 - Comenzando Geom_Arreglo
+2021-09-15 17:22:50,357 - Apuntamiento configurado:
+2021-09-15 17:22:50,358 -  -Azimuth = 50
+2021-09-15 17:22:50,358 -  -Elevac. = 30
+2021-09-15 17:23:00,109 - Resultados:
+2021-09-15 17:23:00,109 -  -Ancho de Elevacion  = 9.12723755750677
+2021-09-15 17:23:00,109 -  -Ancho de Azimuth = 15.401177730955439
+2021-09-15 17:23:00,109 - Distancia en Lambda: 0.24
+2021-09-15 17:23:00,109 - Distancia en [m]: 9.0
+2021-09-15 17:23:00,109 - Frecuencia: 8000000.0
+2021-09-15 17:23:00,109 - Empezando Log
+2021-09-15 17:23:00,109 - Comenzando Geom_Arreglo
+2021-09-15 17:23:00,112 - Apuntamiento configurado:
+2021-09-15 17:23:00,112 -  -Azimuth = 50
+2021-09-15 17:23:00,112 -  -Elevac. = 30
+2021-09-15 17:23:14,824 - Resultados:
+2021-09-15 17:23:14,824 -  -Ancho de Elevacion  = 7.999897113767982
+2021-09-15 17:23:14,825 -  -Ancho de Azimuth = 13.593363331219479
+2021-09-15 17:23:14,825 - Distancia en Lambda: 0.26999999999999996
+2021-09-15 17:23:14,825 - Distancia en [m]: 9.0
+2021-09-15 17:23:14,825 - Frecuencia: 9000000.0
+2021-09-15 17:23:14,825 - Empezando Log
+2021-09-15 17:23:14,825 - Comenzando Geom_Arreglo
+2021-09-15 17:23:14,827 - Apuntamiento configurado:
+2021-09-15 17:23:14,827 -  -Azimuth = 50
+2021-09-15 17:23:14,827 -  -Elevac. = 30
+2021-09-15 17:23:32,028 - Resultados:
+2021-09-15 17:23:32,028 -  -Ancho de Elevacion  = 7.10154366853671
+2021-09-15 17:23:32,028 -  -Ancho de Azimuth = 12.092190317617401
+2021-09-15 17:23:32,028 - Distancia en Lambda: 0.3
+2021-09-15 17:23:32,028 - Distancia en [m]: 9.0
+2021-09-15 17:23:32,028 - Frecuencia: 10000000.0
+2021-09-15 17:23:32,028 - Empezando Log
+2021-09-15 17:23:32,028 - Comenzando Geom_Arreglo
+2021-09-15 17:23:32,031 - Apuntamiento configurado:
+2021-09-15 17:23:32,031 -  -Azimuth = 50
+2021-09-15 17:23:32,031 -  -Elevac. = 30
+2021-09-15 17:23:52,388 - Resultados:
+2021-09-15 17:23:52,388 -  -Ancho de Elevacion  = 6.415409354807288
+2021-09-15 17:23:52,388 -  -Ancho de Azimuth = 10.965788955780809
+2021-09-15 17:23:52,388 - Distancia en Lambda: 0.33
+2021-09-15 17:23:52,388 - Distancia en [m]: 9.0
+2021-09-15 17:23:52,388 - Frecuencia: 11000000.0
+2021-09-15 17:23:52,388 - Empezando Log
+2021-09-15 17:23:52,388 - Comenzando Geom_Arreglo
+2021-09-15 17:23:52,390 - Apuntamiento configurado:
+2021-09-15 17:23:52,390 -  -Azimuth = 50
+2021-09-15 17:23:52,390 -  -Elevac. = 30
+2021-09-15 17:24:16,782 - Resultados:
+2021-09-15 17:24:16,782 -  -Ancho de Elevacion  = 5.813701470280357
+2021-09-15 17:24:16,782 -  -Ancho de Azimuth = 9.979182508350036
+2021-09-15 17:24:16,782 - Distancia en Lambda: 0.36
+2021-09-15 17:24:16,782 - Distancia en [m]: 9.0
+2021-09-15 17:24:16,782 - Frecuencia: 12000000.0
+2021-09-15 17:24:16,782 - Empezando Log
+2021-09-15 17:24:16,782 - Comenzando Geom_Arreglo
+2021-09-15 17:24:16,785 - Apuntamiento configurado:
+2021-09-15 17:24:16,785 -  -Azimuth = 50
+2021-09-15 17:24:16,785 -  -Elevac. = 30
+2021-09-15 17:24:44,866 - Resultados:
+2021-09-15 17:24:44,866 -  -Ancho de Elevacion  = 5.321707398484129
+2021-09-15 17:24:44,866 -  -Ancho de Azimuth = 9.132418670057973
+2021-09-15 17:24:44,866 - Distancia en Lambda: 0.39
+2021-09-15 17:24:44,866 - Distancia en [m]: 9.0
+2021-09-15 17:24:44,866 - Frecuencia: 13000000.0
+2021-09-15 17:24:44,866 - Empezando Log
+2021-09-15 17:24:44,866 - Comenzando Geom_Arreglo
+2021-09-15 17:24:44,869 - Apuntamiento configurado:
+2021-09-15 17:24:44,869 -  -Azimuth = 50
+2021-09-15 17:24:44,869 -  -Elevac. = 30
+2021-09-15 17:25:14,144 - Resultados:
+2021-09-15 17:25:14,144 -  -Ancho de Elevacion  = 4.922381940347417
+2021-09-15 17:25:14,144 -  -Ancho de Azimuth = 8.419448164244145
+2021-09-15 17:25:14,144 - Distancia en Lambda: 0.42000000000000004
+2021-09-15 17:25:14,144 - Distancia en [m]: 9.0
+2021-09-15 17:25:14,144 - Frecuencia: 14000000.0
+2021-09-15 17:25:14,144 - Empezando Log
+2021-09-15 17:25:14,144 - Comenzando Geom_Arreglo
+2021-09-15 17:25:14,147 - Apuntamiento configurado:
+2021-09-15 17:25:14,147 -  -Azimuth = 50
+2021-09-15 17:25:14,147 -  -Elevac. = 30
+2021-09-15 17:25:44,366 - Resultados:
+2021-09-15 17:25:44,366 -  -Ancho de Elevacion  = 4.57985198520667
+2021-09-15 17:25:44,366 -  -Ancho de Azimuth = 7.8259064854987415
+2021-09-15 17:25:44,366 - Distancia en Lambda: 0.45
+2021-09-15 17:25:44,366 - Distancia en [m]: 9.0
+2021-09-15 17:25:44,367 - Frecuencia: 15000000.0
+2021-09-15 17:25:44,367 - Empezando Log
+2021-09-15 17:25:44,367 - Comenzando Geom_Arreglo
+2021-09-15 17:25:44,369 - Apuntamiento configurado:
+2021-09-15 17:25:44,369 -  -Azimuth = 50
+2021-09-15 17:25:44,369 -  -Elevac. = 30
+2021-09-15 17:26:15,111 - Resultados:
+2021-09-15 17:26:15,111 -  -Ancho de Elevacion  = 4.294083484670033
+2021-09-15 17:26:15,111 -  -Ancho de Azimuth = 7.317215261953983
+2021-09-15 17:26:15,111 - Distancia en Lambda: 0.48
+2021-09-15 17:26:15,111 - Distancia en [m]: 9.0
+2021-09-15 17:26:15,112 - Frecuencia: 16000000.0
+2021-09-15 17:26:15,112 - Empezando Log
+2021-09-15 17:26:15,112 - Comenzando Geom_Arreglo
+2021-09-15 17:26:15,114 - Apuntamiento configurado:
+2021-09-15 17:26:15,114 -  -Azimuth = 50
+2021-09-15 17:26:15,114 -  -Elevac. = 30
+2021-09-15 17:26:55,778 - Resultados:
+2021-09-15 17:26:55,778 -  -Ancho de Elevacion  = 4.03439546316908
+2021-09-15 17:26:55,778 -  -Ancho de Azimuth = 6.909034767248478
+2021-09-15 17:26:55,778 - Distancia en Lambda: 0.51
+2021-09-15 17:26:55,778 - Distancia en [m]: 9.0
+2021-09-15 17:26:55,778 - Frecuencia: 17000000.0
+2021-09-15 17:26:55,778 - Empezando Log
+2021-09-15 17:26:55,778 - Comenzando Geom_Arreglo
+2021-09-15 17:26:55,781 - Apuntamiento configurado:
+2021-09-15 17:26:55,781 -  -Azimuth = 50
+2021-09-15 17:26:55,781 -  -Elevac. = 30
+2021-09-15 17:27:39,349 - Resultados:
+2021-09-15 17:27:39,350 -  -Ancho de Elevacion  = 3.7832532719497785
+2021-09-15 17:27:39,350 -  -Ancho de Azimuth = 6.483796053145888
+2021-09-15 17:27:39,350 - Distancia en Lambda: 0.5399999999999999
+2021-09-15 17:27:39,350 - Distancia en [m]: 9.0
+2021-09-15 17:27:39,350 - Frecuencia: 18000000.0
+2021-09-15 17:27:39,351 - Empezando Log
+2021-09-15 17:27:39,351 - Comenzando Geom_Arreglo
+2021-09-15 17:27:39,353 - Apuntamiento configurado:
+2021-09-15 17:27:39,353 -  -Azimuth = 50
+2021-09-15 17:27:39,353 -  -Elevac. = 30
+2021-09-15 17:28:25,643 - Resultados:
+2021-09-15 17:28:25,644 -  -Ancho de Elevacion  = 3.5676920046109935
+2021-09-15 17:28:25,644 -  -Ancho de Azimuth = 6.118381518217738
+2021-09-15 17:28:25,644 - Distancia en Lambda: 0.5700000000000001
+2021-09-15 17:28:25,644 - Distancia en [m]: 9.0
+2021-09-15 17:28:25,644 - Frecuencia: 19000000.0
+2021-09-15 17:28:25,644 - Empezando Log
+2021-09-15 17:28:25,644 - Comenzando Geom_Arreglo
+2021-09-15 17:28:25,647 - Apuntamiento configurado:
+2021-09-15 17:28:25,647 -  -Azimuth = 50
+2021-09-15 17:28:25,647 -  -Elevac. = 30
+2021-09-15 17:29:13,841 - Resultados:
+2021-09-15 17:29:13,841 -  -Ancho de Elevacion  = 3.378697131492146
+2021-09-15 17:29:13,841 -  -Ancho de Azimuth = 5.799649976559181
+2021-09-15 17:29:13,842 - Distancia en Lambda: 0.6
+2021-09-15 17:29:13,842 - Distancia en [m]: 9.0
+2021-09-15 17:29:13,842 - Frecuencia: 20000000.0
+2021-09-15 17:29:13,842 - Empezando Log
+2021-09-15 17:29:13,842 - Comenzando Geom_Arreglo
+2021-09-15 17:29:13,844 - Apuntamiento configurado:
+2021-09-15 17:29:13,844 -  -Azimuth = 50
+2021-09-15 17:29:13,844 -  -Elevac. = 30
+2021-09-15 17:30:04,894 - Resultados:
+2021-09-15 17:30:04,894 -  -Ancho de Elevacion  = 3.2055262554236847
+2021-09-15 17:30:04,894 -  -Ancho de Azimuth = 5.517583258274023
+2021-09-15 17:30:04,894 - Fin de desnormalizacion

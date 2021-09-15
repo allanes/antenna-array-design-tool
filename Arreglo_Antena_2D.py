@@ -510,14 +510,14 @@ if __name__ == '__main__':
        
     # Para etapas 1 y 2
     eleccion_disposicion = Disposiciones.CIRCULAR
-    eleccion_separacion = 0.25
+    eleccion_separacion = 0.15
     # Solo para etapa 1
     eleccion_rango_abcisas = [10,15]
     eleccion_rango_ordenadas = [12,15]
     # Solo para etapa 2
     eleccion_frec_disenio = 1e6
-    eleccion_abcisa = 37
-    eleccion_ordenada = 11
+    eleccion_abcisa = 17
+    eleccion_ordenada = 13
     
     
     print('Analisis de Arreglos de Antenas. Seleccione una opcion:')
