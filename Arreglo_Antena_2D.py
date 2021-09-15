@@ -486,7 +486,7 @@ def etapaDos(disposicion, separacion_elementos, cantidad_elementos_abcisas, cant
     # Recalculo los anchos para las frecuencias desnormalizadas
     anchos_elevacion = []
     anchos_azimut = []
-    set_parametros_arreglo = [disposicion,0.0,cantidad_elementos_ordenadas,cantidad_elementos_abcisas,1,1]
+    set_parametros_arreglo = [disposicion,0.0,cantidad_elementos_abcisas,cantidad_elementos_ordenadas,1,1]
     for index in range(len(Dn)):
         logging.info(f"Distancia en Lambda: {Dn[index]}")
         logging.info(f"Frecuencia: {freq[index]}")
