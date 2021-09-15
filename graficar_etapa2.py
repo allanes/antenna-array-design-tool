@@ -6,7 +6,7 @@ def main():
     valores_elevacion_raw = []
     valores_azimuth_raw = []
 
-    with open('log_desnormalizado.log', 'r') as f:
+    with open('logs\log_etapa2_20210914_195724_informe_invalido.log', 'r') as f:
         aux_frec = 0
         aux_elevacion_actual = 0.0
         aux_azimuth_actual = 0.0
@@ -25,10 +25,12 @@ def main():
                 valores_azimuth_raw.append(float(aux_azimuth_actual))
                 continue
     
-    plt.plot(
-        valores_eje_frecuencia,valores_elevacion_raw, 
-        valores_eje_frecuencia, valores_azimuth_raw
-        )
+    plt.plot(valores_eje_frecuencia,valores_elevacion_raw, label='Ancho en Elevación')
+    plt.plot(valores_eje_frecuencia, valores_azimuth_raw, label='Ancho en Azimuth')
+    plt.xlabel('Frecuencia [MHz]')
+    plt.ticklabel_format(axis='x', style='sci', scilimits=(6,6))
+    plt.ylabel('Ancho del Haz Principal [°]')
+    plt.legend()
     plt.show()
 
     return
