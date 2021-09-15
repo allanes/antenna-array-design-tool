@@ -430,12 +430,14 @@ def main(set_parametros,graficar=False):
 def etapaUno(disposicion, separacion_elementos, rango_abcisas, rango_ordenadas):
     # ----ETAPA 1. Genera datos para Heatmap
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename=f'logs/log_etapa1_{timestamp}.log'
     logging.basicConfig(
-        filename=f'logs/log_etapa1_{timestamp}.log',
+        filename=filename,
         level=logging.INFO,
         # handlers=logging.StreamHandler(),
         format='%(asctime)s - %(message)s',
     )
+    print(f'Archivo creado: {filename}')
     Dz = 0.25 # separacion sobre el eje z
     Nz = 1 # Num de elementos sobre el eje z
     # Logueo los datos:
@@ -463,12 +465,14 @@ def etapaUno(disposicion, separacion_elementos, rango_abcisas, rango_ordenadas):
 def etapaDos(disposicion, separacion_elementos, cantidad_elementos_abcisas, cantidad_elementos_ordenadas, frec_disenio):
     # # -----ETAPA 2. Evalua la respuesta en frecuencia
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename=f'logs/log_etapa2_{timestamp}.log'
     logging.basicConfig(
-        filename=f'logs/log_etapa2_{timestamp}.log',
+        filename=filename,
         level=logging.INFO,
         # handlers=logging.StreamHandler(),
         format='%(asctime)s - %(message)s',
     )
+    print(f'Archivo creado: {filename}')
     # Desnormalizo en frec
     # El primer elemento del siguiente arreglo es usado como frecuencia de diseño en la llamada a Unnormalisation_Freq()
     rango_frecuencias = [frec_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6] # 
@@ -521,7 +525,7 @@ if __name__ == '__main__':
     print('2. Etapa 2. Calcular respuesta en frecuencia para el arreglo desnormalizado')
     print('3. Calcular y graficar el arreglo configurado')
 
-    print('\n\nDatos configurados:')
+    print('\nDatos configurados:')
     print(f'  Disposicion: {eleccion_disposicion}')
     print(f'  Separacion: {eleccion_separacion} [lambda]')
     print(f'  Rango_abcisas: {eleccion_rango_abcisas} (utilizado en Opcion 1)')
@@ -535,29 +539,62 @@ if __name__ == '__main__':
     opcion = input('>>')
     
     if opcion == '1':
-        etapaUno(
-            disposicion=eleccion_disposicion,
-            separacion_elementos=eleccion_separacion,
-            rango_abcisas=eleccion_rango_abcisas,
-            rango_ordenadas=eleccion_rango_ordenadas
-        )
+        print('    1. Configurar Arreglo')
+        print('    2. Usar Arreglo Configurado')
+        opcion2 = input('>>')
+
+        if opcion2 == '1':
+            print('      Disposicion. 1: Rectangular, 2: Circular')
+            eleccion_disposicion = Disposiciones.CIRCULAR if (input('     Disposicion>>')=='1') else Disposiciones.RECTANGULAR
+            eleccion_separacion = float(input('     Separacion [lambda]>>'))     
+            print('      Rango de elementos en el eje X')
+            eleccion_rango_abcisas[0] = int(input('     Valor inicial>>'))
+            eleccion_rango_abcisas[1] = int(input('     Valor final>>'))
+            print('      Rango de elementos en el eje Y')
+            eleccion_rango_ordenadas[0] = int(input('     Valor inicial>>'))
+            eleccion_rango_ordenadas[1] = int(input('     Valor final>>'))
+            opcion2 = '2'
+
+        if opcion2 == '2':
+            etapaUno(
+                disposicion=eleccion_disposicion,
+                separacion_elementos=eleccion_separacion,
+                rango_abcisas=eleccion_rango_abcisas,
+                rango_ordenadas=eleccion_rango_ordenadas
+            )
 
     elif opcion == '2':
-        etapaDos(
-            disposicion=eleccion_disposicion,
-            separacion_elementos=eleccion_separacion,
-            cantidad_elementos_abcisas=eleccion_abcisa,
-            cantidad_elementos_ordenadas=eleccion_ordenada,
-            frec_disenio=eleccion_frec_disenio,
-        )
+        print('    1. Configurar Arreglo')
+        print('    2. Usar Arreglo Configurado')
+        opcion2 = input('>>')
+
+        if opcion2 == '1':
+            eleccion_disposicion = Disposiciones.CIRCULAR if (input('     Disposicion>>')=='1') else Disposiciones.RECTANGULAR
+            eleccion_separacion = float(input('     Separacion [lambda]>>'))
+            print('      Rango de elementos en el eje X')
+            eleccion_abcisa = int(input('     Cantidad de elementos en X>>'))
+            eleccion_ordenada = int(input('     Cantidad de elementos en Y>>'))
+            eleccion_frec_disenio = int(input('     Frecuencia de disenio>>'))
+            opcion2 = '2'
+
+        if opcion2 == '2':
+            etapaDos(
+                disposicion=eleccion_disposicion,
+                separacion_elementos=eleccion_separacion,
+                cantidad_elementos_abcisas=eleccion_abcisa,
+                cantidad_elementos_ordenadas=eleccion_ordenada,
+                frec_disenio=eleccion_frec_disenio,
+            )
 
     elif opcion == '3':
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f'logs/log_opcion3_{timestamp}.log'
         logging.basicConfig(
-            filename=f'logs/log_opcion3_{timestamp}.log',
+            filename=filename,
             level=logging.INFO,
             # handlers=logging.StreamHandler(),
             format='%(asctime)s - %(message)s',
         )
+        print(f'Archivo creado: {filename}')
         set_parametros = [eleccion_disposicion,eleccion_separacion,eleccion_ordenada,eleccion_abcisa,1,1]
         main(set_parametros,graficar=True)
