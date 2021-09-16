@@ -62,7 +62,7 @@ class ArregloGeneral(object):
         return (np.abs(self._campo_dirUnica(phi_i,theta_i))**2)/(2*120*np.pi)
 
     def _potencia_media(self):
-        promedio = integrate.dblquad(lambda phi,theta: self._densidadPotencia(phi,theta)*np.sin(theta),0,np.pi,-np.pi,np.pi)[0]/(4*np.pi)
+        promedio = integrate.dblquad(lambda phi,theta: self._densidadPotencia(phi,theta)*np.sin(theta),0,np.pi,-np.pi,np.pi,epsabs=1.49e-03, epsrel=50*1.49e-03)[0]/(4*np.pi)
         return promedio
     
     def directividad(self,phi,theta):
@@ -77,15 +77,6 @@ class ArregloGeneral(object):
         campo_vec = np.vectorize(self._campo_dirUnica)
         return campo_vec(phi,theta)
 #==============================================================================
-def Beamwidth(phi_0, theta_0,N_phi,N_theta ,D):
-
-    beamwidth_theta = np.arcsin(np.sin(theta_0) + (0.4429/(N_theta*D))) - np.arcsin(np.sin(theta_0) - (0.4429/(N_phi*D)))
-    phi_aux = np.arcsin(np.sin(phi_0) + (0.4429/(N_phi*D))) - np.arcsin(np.sin(phi_0) - (0.4429/(N_phi*D)))
-    #beamwidth_phi = 2* np.arcsin(np.sin(phi_0)*np.sin(phi_aux))
-
-
-    return [math.degrees(beamwidth_theta), math.degrees(phi_aux)]
-#==============================================================================        
 class Arreglo_2D(object):
     """
         Genera el patron de radiacion (campo lejado) de un arreglo de antena en 2D, en funcion
@@ -252,6 +243,52 @@ def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
     exitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
     return [posiciones, exitaciones]
 #==============================================================================
+def Geom_Arreglo_circular_2(Nr = 1,n= 1, Dr = 1,Dz =1, Nz = 1):
+    """
+        Posiciona en un plano x,y,z a cada una de las antenas del arreglo
+    ----------------------------------------------------------------------------------------------        
+        Array(n,2)  Geom_Arreglo_Circular( int Nr, int n ,int Dr, int Dz, int Nz)
+            Entrada:
+                Nr: Num de anillos 
+                n: numero de elementos en el primer anillo 
+                Dr: radio del primer anillo 
+                Dz: Distancia entre elementos en las direccion z [en Nº long. de onda] 
+                Nz: Num de antenas en la direccion z
+            Salida: 
+                posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
+                exitaciones: Exitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
+    ----------------------------------------------------------------------------------------------
+    """
+    pos_r = np.arange(Nr)
+    pos_z = np.arange(Nz)
+    B = np.array([[0,0,0]])
+
+    for k in pos_z:
+        for i in pos_r:
+            N = i*n
+            theta = np.linspace(0,2*np.pi,N+1)
+            #print(np.degrees(theta))
+            for j in np.arange(np.size(theta)-1):
+                x = i*Dr*np.cos(theta[j])
+                y = round(i*Dr*np.sin(theta[j]),5)
+                Aux = np.array([[x, y, k*Dz]]) 
+                B = np.append(B,Aux,axis=0)
+        Aux2 = np.array([[0, 0, k*Dz]]) 
+        B = np.append(B,Aux2,axis=0)
+ 
+
+    posiciones = B[1:]
+    #print(np.size(posiciones,axis=0))
+    #print(posiciones)
+    
+    #fig = plt.figure()
+    #ax = fig.add_subplot(projection = '3d')
+    
+    [xi, yi , zi] = 1*np.transpose(posiciones)
+    #ax.scatter(xi,yi,zi, c = 'blue',  marker='o' , linewidth = 2)
+    exitaciones = np.array(np.size(posiciones,axis=0)*[1])
+    return [posiciones, exitaciones]
+#==============================================================================
 def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     
     a1 = arreglo #Arreglo variable definida como un objeto de la clase Arreglo general
@@ -328,8 +365,8 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     #print(phi_hp_max,phi_hp_min)
     ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or')
     Ancho_phi = phi_hp_max - phi_hp_min
-    
-    return [Ancho_theta,Ancho_phi]
+    Directividad = Rmax
+    return [Ancho_theta,Ancho_phi,Directividad]
 #==============================================================================
 def patronMonopoloCuartoOnda():
     self = patronMonopoloCuartoOnda
