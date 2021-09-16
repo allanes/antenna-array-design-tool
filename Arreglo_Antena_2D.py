@@ -457,7 +457,7 @@ def main(set_parametros,graficar=False):
     #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
     #print("Directividad Max: %2.2f " % Directividad)   
     
-    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut] = Ancho_Haz(arreglo, phi, theta, 2**-0.5, graficar)
+    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut, directividad] = Ancho_Haz(arreglo, phi, theta, 2**-0.5, graficar)
     logging.info('Resultados:')
     logging.info(f' -Ancho de Elevacion  = {Ancho_Haz_Elevacion}')
     logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')  
