@@ -582,7 +582,7 @@ if __name__ == '__main__':
 
         if opcion2 == '1':
             print('      Disposicion. 1: Rectangular, 2: Circular')
-            eleccion_disposicion = Disposiciones.CIRCULAR if (input('     Disposicion>>')=='1') else Disposiciones.RECTANGULAR
+            eleccion_disposicion = Disposiciones.CIRCULAR if (input('     Disposicion>>')=='2') else Disposiciones.RECTANGULAR
             eleccion_separacion = float(input('     Separacion [lambda]>>'))     
             print('      Rango de elementos en el eje X')
             eleccion_rango_abcisas[0] = int(input('     Valor inicial>>'))
@@ -606,12 +606,13 @@ if __name__ == '__main__':
         opcion2 = input('>>')
 
         if opcion2 == '1':
-            eleccion_disposicion = Disposiciones.CIRCULAR if (input('     Disposicion>>')=='1') else Disposiciones.RECTANGULAR
+            print('      Disposicion. 1: Rectangular, 2: Circular')
+            eleccion_disposicion = Disposiciones.CIRCULAR if (input('     Disposicion>>')=='2') else Disposiciones.RECTANGULAR
             eleccion_separacion = float(input('     Separacion [lambda]>>'))
             print('      Rango de elementos en el eje X')
             eleccion_abcisa = int(input('     Cantidad de elementos en X>>'))
             eleccion_ordenada = int(input('     Cantidad de elementos en Y>>'))
-            eleccion_frec_disenio = int(input('     Frecuencia de disenio>>'))
+            eleccion_frec_disenio = float(input('     Frecuencia de disenio>>'))
             opcion2 = '2'
 
         if opcion2 == '2':

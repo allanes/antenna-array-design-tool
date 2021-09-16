@@ -19,8 +19,17 @@ El software presente en este repositorio está separado en 2 partes:
 El archivo de Jupyter Notebook Patron_arreglo_v3 fue tomado de las clases
 y representa el core del funcionamiento.
 
-Para correr una simulación de prueba, ejecutar:
-    Arreglo_Antena_2D.py
-y seguir las instrucciones
+Para la simulación 1 arreglo de prueba, ejecutar:
+    Arreglo_Antena_2D.py,
+y elegir la opción 3
+
+Para la simulación completa, se requieren 2 etapas:
+
+-Etapa 1: Calcula el ancho del haz principal en elevación y azimuth. El ancho se evalúa para un conjunto de arreglos con un apuntamiento dado, variando la cantidad de elementos
+en 2 ejes. Para arreglos rectangulares, los ejes corresponden con los ejes cartesianos. 
+Para otros arreglos, la forma esta dada por la función que genera la distribucion. Está 
+pensada para ser usada con la frecuencia normalizada. La visualización de estos datos es de utilidad para elegir arreglo a desnormalizar en la Etapa 2.
+
+-Etapa 2. Calcula el ancho del haz en función de la frecuencia. Trabaja sobre el arreglo elegido en la Etapa 1 y lo desnormaliza en frecuencia, de forma que esta etapa evalúa la respuesta en frecuencia de un arreglo completamente parametrizado.
 
 
