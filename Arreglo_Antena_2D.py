@@ -81,15 +81,7 @@ class ArregloGeneral(object):
     def campo(self,phi,theta):
         campo_vec = np.vectorize(self._campo_dirUnica)
         return campo_vec(phi,theta)
-#==============================================================================
-def Beamwidth(phi_0, theta_0,N_phi,N_theta ,D):
 
-    beamwidth_theta = np.arcsin(np.sin(theta_0) + (0.4429/(N_theta*D))) - np.arcsin(np.sin(theta_0) - (0.4429/(N_phi*D)))
-    phi_aux = np.arcsin(np.sin(phi_0) + (0.4429/(N_phi*D))) - np.arcsin(np.sin(phi_0) - (0.4429/(N_phi*D)))
-    #beamwidth_phi = 2* np.arcsin(np.sin(phi_0)*np.sin(phi_aux))
-
-
-    return [math.degrees(beamwidth_theta), math.degrees(phi_aux)]
 #==============================================================================        
 class Arreglo_2D(object):
     """
@@ -267,13 +259,13 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     theta_apuntado = np.degrees(theta[int(i_theta)])
     phi_apuntado = np.degrees(phi[int(i_phi)])  
   
-    fig = plt.figure()    
+    # fig = plt.figure()    
 
-    ax1 = fig.add_subplot(2,1,1)
+    # ax1 = fig.add_subplot(2,1,1)
     y_campo_phi = np.abs(a1.directividad(math.radians(phi_apuntado),theta))
     x_theta = np.degrees(theta)
-    ax1.plot(x_theta,y_campo_phi)
-    ax1.set_title("Patron $\\theta$"), ax1.grid(True)
+    # ax1.plot(x_theta,y_campo_phi)
+    # ax1.set_title("Patron $\\theta$"), ax1.grid(True)
     
     
     x = [0]
@@ -301,16 +293,16 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     else:
         theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
     
-    #print(theta_hp_max,theta_hp_min)
-    ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
+    # print(theta_hp_max,theta_hp_min)
+    # ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
     Ancho_theta =  theta_hp_max - theta_hp_min
     
 
-    ax1 = fig.add_subplot(2,1,2)
+    # ax1 = fig.add_subplot(2,1,2)
     x_phi = np.degrees(phi)
     y_campo_theta = np.abs(a1.directividad(phi,math.radians(theta_apuntado)))
-    ax1.plot(x_phi,y_campo_theta)
-    ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
+    # ax1.plot(x_phi,y_campo_theta)
+    # ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
 
     xx = [0]
     yy = [0]
@@ -332,8 +324,8 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
 
     phi_hp_min = np.interp(Rmax*corteLobuloPrincipal,R_left,phi_left)
     phi_hp_max = np.interp(-Rmax*corteLobuloPrincipal,-R_right,phi_right)
-    #print(phi_hp_max,phi_hp_min)
-    ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or')
+    # print(phi_hp_max,phi_hp_min)
+    # ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or')
     Ancho_phi = phi_hp_max - phi_hp_min
     
     return [Ancho_theta,Ancho_phi,Rmax]
@@ -378,14 +370,14 @@ def main(param1,param2,param3,param4,param5):
     arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
     phi_apuntado = 50
     theta_apuntado = 30
-    # logging.info('Apuntamiento deseado:')
-    # logging.info(f' -Azimuth = {phi_apuntado}')
-    # logging.info(f' -Elevac. = {theta_apuntado}')
+    logging.info('Apuntamiento deseado:')
+    logging.info(f' -Azimuth = {phi_apuntado}')
+    logging.info(f' -Elevac. = {theta_apuntado}')
 
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
     theta = np.linspace(0,np.pi,100)
     phi = np.linspace(-np.pi,np.pi,100)
-    #Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
+    #Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,(D*(Nx-1))/2,(D*(Ny-1))/2,(D*(Nz-1))/2)
     
     #Directividad = arreglo2.directividad(math.radians(phi_apuntado),math.radians(theta_apuntado))
     #print("Directividad Max: %2.2f " % Directividad)   
@@ -430,61 +422,21 @@ if __name__ == '__main__':
 
     
 #Cantidades de elementos en el eje X y Cantidad de elementos en el eje Y
-#    for aux in range(15,16):#20):
-#        logging.info(f'-TT---------Cantidad de Elementos en X {aux} -------------')
-#        for aux2 in range(15,16):
-#            logging.info(f'Cantidad de Elementos en Y: {aux2}')
-#            main(D,aux,aux2,1,1)
-#    logging.info("-------------------------------------------")
+    for aux in range(5,21):#20):
+       logging.info(f'-TT---------Cantidad de Elementos en X {aux} -------------')
+       for aux2 in range(5,21):
+           logging.info(f'Cantidad de Elementos en Y: {aux2}')
+           main(D,aux,aux2,1,1)
+    logging.info("-------------------------------------------")
  
 #Valores de Frecuencias 
-    for i in range(20,0,-1):
-        logging.info(f'----------Frecuencia de trabajo: {i} Mhz')
-        Lambda = C/(i*1e6)
-        d_real = 0.25*C/20e6
-        D_lambda = d_real/Lambda 
-        print(f'Distancia {i}: {D_lambda}')
-        main(D_lambda,Nx,Ny,1,1)
+    # for i in range(20,0,-1):
+    #     logging.info(f'Frecuencia de trabajo en Mhz: {i}')
+    #     Lambda = C/(i*1e6)
+    #     d_real = 0.25*C/20e6
+    #     D_lambda = d_real/Lambda 
+    #     print(f'Distancia {i}: {D_lambda}')
+    #     main(D_lambda,Nx,Ny,1,1)
 
 #main(D,Nx,Ny,1,1)
 
-"""
-    # ------------
-    DR = 0.25 #Distancias entre radios
-    Nr = 15 # Num. de anillos   (Para un unico elemento Nr = 0)
-    N = 15 # Num. de elementos por anillo
-    Dz = 0.25 # separacion sobre el eje z
-    Nz = 1 # Num de elementos sobre el eje z    
-
-    [pos,exi] = Geom_Arreglo_circular(DR,Nr,N,Dz,Nz)
-    #exi = amplitudCosElev(pos,0.7)
-    #arreglo = Arreglo_2D(pos,exi)
-    arreglo2 = ArregloGeneral(pos,exi,[patronMonopoloCuartoOnda()])
-    phi_apuntado = 60
-    theta_apuntado = 20
-    #arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
-    arreglo2.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
-    theta = np.linspace(0,np.pi)
-    phi = np.linspace(-np.pi,np.pi)
-    Graficar_2D(arreglo2, phi, theta,"Arreglo en 2D Circular",pos,0,0,0)
-    # ------------
-
-    # ------------
-    D=0.25
-    Nx=8
-    Ny=8
-    N=Nx*Ny
-
-    #arreglo sobre superficie esférica
-    posiciones=D*np.array([(x,y,np.sqrt(2*1.5**2-(x-1.5)**2-(y-1.5)**2)) for x in range(Nx) for y in range(Ny)])
-
-
-    fig = plt.figure()
-    ax = fig.add_subplot(projection = '3d')
-    [xi, yi, zi] = np.transpose(posiciones)
-    ax.scatter(xi,yi,zi, c = 'red',  marker='o' , linewidth = 5)
-    ax.set_xlim(-4,4)
-    ax.set_ylim(-4,4)
-    ax.set_zlim(-4,4)
-    # ------------
-"""
