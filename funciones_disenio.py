@@ -7,13 +7,13 @@ import Arreglo_Antena_2D
 class ConfiguracionEntrada:
     def __init__(
         self,
-        disposicion=Arreglo_Antena_2D.Disposiciones.RECTANGULAR,
+        disposicion=Arreglo_Antena_2D.Disposiciones.CIRCULAR.value,
         separacion=0.25, 
         parametro1=10,
-        parametro2=10,
+        parametro2=15,
         apuntamiento=[50,30], 
-        rango_parametro1 = [20,21],
-        rango_parametro2 = [20,21],
+        rango_parametro1 = [10,15],
+        rango_parametro2 = [10,50],
         frecuencia_disenio = 5e6
         ):
         """
@@ -30,7 +30,7 @@ class ConfiguracionEntrada:
 
     def mostrar_configuracion(self):
         print('\nArreglo configurado:')
-        print(f'  Disposicion: {self.disposicion}')
+        print(f'  Disposicion: {Arreglo_Antena_2D.Disposiciones(self.disposicion).name}')
         print(f'  Separacion: {self.separacion} [lambda]')
         print(f'  Apuntamiento: phi={self.apuntamiento[0]},')
         print(f'                theta={self.apuntamiento[1]}')
@@ -59,7 +59,7 @@ class ConfiguracionEntrada:
                 print('      Disposiciones:')
                 for index, disp in enumerate(Arreglo_Antena_2D.Disposiciones):
                     print(f'{index}. {disp}')
-                self.disposicion = Arreglo_Antena_2D.Disposiciones(int(input('Disposicion>>'))).name
+                self.disposicion = int(input('Disposicion>>'))
                 self.apuntamiento[0] = float(input("    Apuntamiento Phi>>"))
                 self.apuntamiento[1] = float(input("    Apuntamiento Theta>>"))
                 self.separacion = float(input('    Separacion [lambda]>>'))
@@ -185,12 +185,8 @@ def main():
 
         if opcion == '3':
             config.configurar_log(etapa=3)
-            main(config.disposicion, config.separacion, config.parametro1, config.parametro2,graficar=True)
+            Arreglo_Antena_2D.main(config.disposicion, config.separacion, config.parametro1, config.parametro2,graficar=True)
             opcion = 'q'
-
-
-
-
 
 
 if __name__ == '__main__':
