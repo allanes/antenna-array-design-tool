@@ -247,7 +247,7 @@ def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
     excitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
     return [posiciones, excitaciones]
 #==============================================================================
-def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
+def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, graficar=False):
     print('Entro a ANCHO_HAZ')
     a1 = arreglo #Arreglo variable definida como un objeto de la clase Arreglo general
     THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
@@ -259,17 +259,19 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     theta_apuntado = np.degrees(theta[int(i_theta)])
     phi_apuntado = np.degrees(phi[int(i_phi)])  
   
-    fig = plt.figure()    
+    if graficar: fig = plt.figure()    
 
-    ax1 = fig.add_subplot(2,1,1)
+    if graficar: ax1 = fig.add_subplot(2,1,1)
     y_campo_phi = np.abs(a1.directividad(math.radians(phi_apuntado),theta))
     x_theta = np.degrees(theta)
-    ax1.plot(x_theta,y_campo_phi)
-    ax1.set_title("Patron $\\theta$"), ax1.grid(True)
+    if graficar: 
+        ax1.plot(x_theta,y_campo_phi)
+        ax1.set_title("Patron $\\theta$"), ax1.grid(True)
     
     
     x = [0]
     y = [0]
+
     Rmax= np.max(y_campo_phi)
     Rrange = Rmax*0.3
     for i in np.arange(np.size(y_campo_phi,0)):
@@ -292,16 +294,17 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
         theta_hp_max = 90
     else:
         theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
-    #print(theta_hp_max,theta_hp_min)
-    ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
+    
+    if graficar: ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
     Ancho_theta =  theta_hp_max - theta_hp_min
     
 
-    ax1 = fig.add_subplot(2,1,2)
+    if graficar: ax1 = fig.add_subplot(2,1,2)
     x_phi = np.degrees(phi)
     y_campo_theta = np.abs(a1.directividad(phi,math.radians(theta_apuntado)))
-    ax1.plot(x_phi,y_campo_theta)
-    ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
+    if graficar:
+        ax1.plot(x_phi,y_campo_theta)
+        ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
 
     xx = [0]
     yy = [0]
@@ -324,7 +327,7 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal):
     phi_hp_min = np.interp(Rmax*corteLobuloPrincipal,R_left,phi_left)
     phi_hp_max = np.interp(-Rmax*corteLobuloPrincipal,-R_right,phi_right)
     
-    ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or')
+    if graficar: ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or')
     Ancho_phi = phi_hp_max - phi_hp_min
     
     return [Ancho_theta,Ancho_phi]
@@ -360,7 +363,7 @@ def Unnormalisation_Freq(Freq,D):
 
     return [D_unnorm,D_unnorm*Lambda]
 
-def main(param1,param2,param3,param4,param5):
+def main(separacion,param1,param2,graficar=False):
     logging.info('Empezando Log')
 
     disposicion_arreglo = Disposiciones.CIRCULAR
@@ -374,7 +377,7 @@ def main(param1,param2,param3,param4,param5):
         [posiciones,excitaciones] = Geom_Arreglo_Rectangular(D, Nx, Ny, Nz)
     elif disposicion_arreglo == Disposiciones.CIRCULAR: #el arreglo es circular
         
-        [posiciones,excitaciones] = Geom_Arreglo_circular(param1,param2,param3,param4,param5)
+        [posiciones,excitaciones] = Geom_Arreglo_circular(separacion,param1,param2)
     
     arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
     phi_apuntado = 50
@@ -383,7 +386,6 @@ def main(param1,param2,param3,param4,param5):
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
     theta = np.linspace(0,np.pi,100)
     phi = np.linspace(-np.pi,np.pi,100)
-    Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
     
     [Ancho_Haz_Elevacion, Ancho_Haz_Acimut] = Ancho_Haz(arreglo, phi, theta, 2**-0.5)
     logging.info('Resultados:')
@@ -391,7 +393,9 @@ def main(param1,param2,param3,param4,param5):
     logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')    
     
     logging.info('mostrando...')
-    plt.show()    
+    if graficar: 
+        Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
+        plt.show()    
 
     # INICIO    
 if __name__ == '__main__':

@@ -1,22 +1,17 @@
 from datetime import datetime
 import logging
 import Arreglo_Antena_2D
-from enum import Enum
-
-class Disposiciones(Enum):
-    RECTANGULAR = 0
-    CIRCULAR = 1
 
 class ConfiguracionEntrada:
     def __init__(
         self,
-        disposicion=Disposiciones.RECTANGULAR,
+        disposicion=Arreglo_Antena_2D.Disposiciones.RECTANGULAR,
         separacion=0.25, 
         parametro1=10,
         parametro2=10,
         apuntamiento=[50,30], 
-        rango_parametro1 = [10,12],
-        rango_parametro2 = [10,12]
+        rango_parametro1 = [20,21],
+        rango_parametro2 = [20,21]
         ):
         """
         
@@ -39,7 +34,7 @@ class ConfiguracionEntrada:
 
     def configurar_parametros(self):
         print('      Disposicion. 1: Rectangular, 2: Circular')
-        self.disposicion = Disposiciones.CIRCULAR if (input('     Disposicion>>')=='2') else Disposiciones.RECTANGULAR
+        self.disposicion = Arreglo_Antena_2D.Disposiciones.CIRCULAR if (input('     Disposicion>>')=='2') else Arreglo_Antena_2D.Disposiciones.RECTANGULAR
         self.separacion = float(input('     Separacion [lambda]>>'))     
         print('      Rango de elementos en el eje X')
         self.rango_parametro1[0] = int(input('     Valor inicial>>'))
@@ -77,7 +72,7 @@ def etapaUno(configuracion):
         
         for aux_param2 in range(configuracion.rango_parametro2[0],configuracion.rango_parametro2[1]+1):
             logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
-            Arreglo_Antena_2D.main(configuracion.separacion,aux_param1,aux_param2,1,1)
+            Arreglo_Antena_2D.main(configuracion.separacion,aux_param1,aux_param2,graficar=False)
         logging.info("-------------------------------------------")
 
 def menu_principal(config):
