@@ -32,10 +32,13 @@ class ConfiguracionEntrada:
         print('\nArreglo configurado:')
         print(f'  Disposicion: {self.disposicion}')
         print(f'  Separacion: {self.separacion} [lambda]')
+        print(f'  Apuntamiento: phi={self.apuntamiento[0]},')
+        print(f'                theta={self.apuntamiento[1]}')
+        print(f'  Rango de elementos para X: {self.rango_parametro1}')
+        print(f'  Rango de elementos para Y: {self.rango_parametro2}')
+        print(f'  Frecuencia de disenio: {self.frecuencia_disenio}')
         print(f'  Elementos en X: {self.parametro1} (utilizado en Opciones 2 y 3)')
         print(f'  Elementos en Y: {self.parametro2} (utilizado en Opciones 2 y 3)')
-        print(f'  Apuntamiento:     phi={self.apuntamiento[0]},')
-        print(f'                    theta={self.apuntamiento[1]}')
 
     def __configurar_parametros_principal(self):
         print("Configuracion del Arreglo de Antenas")
@@ -43,7 +46,7 @@ class ConfiguracionEntrada:
         print("    2. Config. etapa 1: Rangos para generar arreglos")
         print("    3. Config. etapa 2: Frecuencia y cantidad de elementos para desnormalizar")
         print("    4. Volver")
-        return input("Que desea configurar? >>")
+        return input("\nQue desea configurar? >>")
     
     def configurar_parametros(self):        
         opcion_configuracion = ""
@@ -156,7 +159,7 @@ def menu_principal(config):
     
     config.mostrar_configuracion()
 
-    return input('Seleccione una opcion>>')
+    return input('\nSeleccione una opcion>>')
 
 def main():
     

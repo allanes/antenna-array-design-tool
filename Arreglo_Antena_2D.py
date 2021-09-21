@@ -209,7 +209,8 @@ def Geom_Arreglo_Rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
     
     return [posiciones, excitaciones]
 #==============================================================================        
-def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
+def Geom_Arreglo_circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1
+):
     """
         Posiciona en un plano x,y,z a cada una de las antenas del arreglo
     ----------------------------------------------------------------------------------------------        
@@ -372,7 +373,6 @@ def main(disposicion,separacion,param1,param2,graficar=False):
         [posiciones,excitaciones] = Geom_Arreglo_Rectangular(separacion, Nx=param1, Ny=param2)
     elif disposicion == Disposiciones.CIRCULAR.name: #el arreglo es circular
         [posiciones,excitaciones] = Geom_Arreglo_circular(separacion,Nr=param1,N=param2)
-        print(f'posiciones_type: {type(posiciones)}')
     
     arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
     phi_apuntado = 50
