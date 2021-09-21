@@ -72,7 +72,7 @@ def etapaUno(configuracion):
         
         for aux_param2 in range(configuracion.rango_parametro2[0],configuracion.rango_parametro2[1]+1):
             logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
-            Arreglo_Antena_2D.main(configuracion.separacion,aux_param1,aux_param2,graficar=False)
+            Arreglo_Antena_2D.main(configuracion.disposicion,configuracion.separacion,aux_param1,aux_param2,graficar=False)
         logging.info("-------------------------------------------")
 
 def menu_principal(config):
