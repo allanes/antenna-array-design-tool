@@ -5,28 +5,18 @@ import numpy as np
 import Arreglo_Antena_2D
 
 class ConfiguracionEntrada:
-    def __init__(
-        self,
-        disposicion=Arreglo_Antena_2D.Disposiciones.CIRCULAR.value,
-        separacion=0.25, 
-        parametro1=10,
-        parametro2=15,
-        apuntamiento=[50,30], 
-        rango_parametro1 = [10,15],
-        rango_parametro2 = [10,50],
-        frecuencia_disenio = 5e6
-        ):
+    def __init__(self):
         """
         
         """
-        self.disposicion = disposicion
-        self.separacion = separacion
-        self.parametro1 = parametro1
-        self.parametro2 = parametro2
-        self.apuntamiento = apuntamiento
-        self.rango_parametro1 = rango_parametro1
-        self.rango_parametro2 = rango_parametro2
-        self.frecuencia_disenio = frecuencia_disenio
+        self.disposicion = Arreglo_Antena_2D.Disposiciones.CIRCULAR.value
+        self.separacion = 0.25
+        self.parametro1 = 10
+        self.parametro2 = 15
+        self.apuntamiento = [50,30]
+        self.rango_parametro1 = [10,15]
+        self.rango_parametro2 = [10,50]
+        self.frecuencia_disenio = 5e6
 
     def mostrar_configuracion(self):
         print('\nArreglo configurado:')

@@ -12,15 +12,18 @@ Para correr graficar los datos simulados para este informe, correr:
 
 El software presente en este repositorio está separado en 2 partes:
     A. Las que simulan, hacen cálculos y generan datos
-        Archivos: Arreglo_Antena_2D.py
+        Archivos: Arreglo_Antena_2D.py (backend de simulacion)
+                  funciones_disenio.py (programa principal)
+    
     B. Las que grafican los datos generados
-        Archivos: graficar_etapa1.py, graficar_etapa2.py, heatmap.py
+        Archivos: graficar_etapa1.py
+                  graficar_etapa2.py, heatmap.py
 
 El archivo de Jupyter Notebook Patron_arreglo_v3 fue tomado de las clases
 y representa el core del funcionamiento.
 
 Para la simulación 1 arreglo de prueba, ejecutar:
-    Arreglo_Antena_2D.py,
+    funciones_disenio.py,
 y elegir la opción 3
 
 Para la simulación completa, se requieren 2 etapas:
