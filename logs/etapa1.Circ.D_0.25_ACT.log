@@ -1,0 +1,1860 @@
+2021-09-21 01:46:33,104 - Empezando Log
+2021-09-21 01:46:33,104 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 01:48:49,572 - Empezando Log
+2021-09-21 01:48:49,572 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:21:54,502 - Iniciando Etapa 1. Obtencion de datos para evaluar ancho de haz en funcion de lambda. Configuracion inicial:
+2021-09-21 02:21:54,502 - Arreglo tipo 1
+2021-09-21 02:21:54,502 -   -DR = 0.25
+2021-09-21 02:21:54,503 - Cantidad de Elementos en Parametro 1: 10
+2021-09-21 02:21:54,503 - ----------Cantidad de Elementos en Parametro 2: 10 -------------
+2021-09-21 02:21:54,505 - Empezando Log
+2021-09-21 02:21:54,505 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:21:59,098 - Resultados:
+2021-09-21 02:21:59,098 -  -Ancho de Elevacion  = 11.239326355746883
+2021-09-21 02:21:59,098 -  -Ancho de Azimuth = 18.781148939425087
+2021-09-21 02:21:59,098 - mostrando...
+2021-09-21 02:21:59,098 - ----------Cantidad de Elementos en Parametro 2: 11 -------------
+2021-09-21 02:21:59,098 - Empezando Log
+2021-09-21 02:21:59,098 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:03,776 - Resultados:
+2021-09-21 02:22:03,776 -  -Ancho de Elevacion  = 11.232940728709071
+2021-09-21 02:22:03,776 -  -Ancho de Azimuth = 18.7714560416357
+2021-09-21 02:22:03,776 - mostrando...
+2021-09-21 02:22:03,776 - ----------Cantidad de Elementos en Parametro 2: 12 -------------
+2021-09-21 02:22:03,776 - Empezando Log
+2021-09-21 02:22:03,776 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:08,438 - Resultados:
+2021-09-21 02:22:08,438 -  -Ancho de Elevacion  = 11.227622990651355
+2021-09-21 02:22:08,439 -  -Ancho de Azimuth = 18.7633777702031
+2021-09-21 02:22:08,439 - mostrando...
+2021-09-21 02:22:08,439 - ----------Cantidad de Elementos en Parametro 2: 13 -------------
+2021-09-21 02:22:08,439 - Empezando Log
+2021-09-21 02:22:08,439 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:13,438 - Resultados:
+2021-09-21 02:22:13,438 -  -Ancho de Elevacion  = 11.223125795911585
+2021-09-21 02:22:13,438 -  -Ancho de Azimuth = 18.756541563544353
+2021-09-21 02:22:13,438 - mostrando...
+2021-09-21 02:22:13,438 - ----------Cantidad de Elementos en Parametro 2: 14 -------------
+2021-09-21 02:22:13,438 - Empezando Log
+2021-09-21 02:22:13,438 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:18,476 - Resultados:
+2021-09-21 02:22:18,476 -  -Ancho de Elevacion  = 11.21927278386886
+2021-09-21 02:22:18,476 -  -Ancho de Azimuth = 18.75068141534171
+2021-09-21 02:22:18,476 - mostrando...
+2021-09-21 02:22:18,476 - ----------Cantidad de Elementos en Parametro 2: 15 -------------
+2021-09-21 02:22:18,476 - Empezando Log
+2021-09-21 02:22:18,476 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:23,474 - Resultados:
+2021-09-21 02:22:23,474 -  -Ancho de Elevacion  = 11.215934804237076
+2021-09-21 02:22:23,474 -  -Ancho de Azimuth = 18.74560221339926
+2021-09-21 02:22:23,474 - mostrando...
+2021-09-21 02:22:23,474 - ----------Cantidad de Elementos en Parametro 2: 16 -------------
+2021-09-21 02:22:23,474 - Empezando Log
+2021-09-21 02:22:23,474 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:28,614 - Resultados:
+2021-09-21 02:22:28,614 -  -Ancho de Elevacion  = 11.213015058031608
+2021-09-21 02:22:28,614 -  -Ancho de Azimuth = 18.741157601240296
+2021-09-21 02:22:28,615 - mostrando...
+2021-09-21 02:22:28,615 - ----------Cantidad de Elementos en Parametro 2: 17 -------------
+2021-09-21 02:22:28,615 - Empezando Log
+2021-09-21 02:22:28,615 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:33,876 - Resultados:
+2021-09-21 02:22:33,877 -  -Ancho de Elevacion  = 11.210439574058455
+2021-09-21 02:22:33,877 -  -Ancho de Azimuth = 18.737235643623578
+2021-09-21 02:22:33,877 - mostrando...
+2021-09-21 02:22:33,877 - ----------Cantidad de Elementos en Parametro 2: 18 -------------
+2021-09-21 02:22:33,877 - Empezando Log
+2021-09-21 02:22:33,877 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:39,194 - Resultados:
+2021-09-21 02:22:39,194 -  -Ancho de Elevacion  = 11.208150854153637
+2021-09-21 02:22:39,194 -  -Ancho de Azimuth = 18.73374926913293
+2021-09-21 02:22:39,194 - mostrando...
+2021-09-21 02:22:39,194 - ----------Cantidad de Elementos en Parametro 2: 19 -------------
+2021-09-21 02:22:39,194 - Empezando Log
+2021-09-21 02:22:39,194 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:44,689 - Resultados:
+2021-09-21 02:22:44,690 -  -Ancho de Elevacion  = 11.206103529389203
+2021-09-21 02:22:44,690 -  -Ancho de Azimuth = 18.730629729711993
+2021-09-21 02:22:44,690 - mostrando...
+2021-09-21 02:22:44,690 - ----------Cantidad de Elementos en Parametro 2: 20 -------------
+2021-09-21 02:22:44,690 - Empezando Log
+2021-09-21 02:22:44,690 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:50,215 - Resultados:
+2021-09-21 02:22:50,215 -  -Ancho de Elevacion  = 11.204261321934627
+2021-09-21 02:22:50,215 -  -Ancho de Azimuth = 18.7278220215859
+2021-09-21 02:22:50,215 - mostrando...
+2021-09-21 02:22:50,215 - ----------Cantidad de Elementos en Parametro 2: 21 -------------
+2021-09-21 02:22:50,215 - Empezando Log
+2021-09-21 02:22:50,215 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:22:55,747 - Resultados:
+2021-09-21 02:22:55,747 -  -Ancho de Elevacion  = 11.202594876554393
+2021-09-21 02:22:55,747 -  -Ancho de Azimuth = 18.72528161401462
+2021-09-21 02:22:55,747 - mostrando...
+2021-09-21 02:22:55,747 - ----------Cantidad de Elementos en Parametro 2: 22 -------------
+2021-09-21 02:22:55,747 - Empezando Log
+2021-09-21 02:22:55,747 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:01,316 - Resultados:
+2021-09-21 02:23:01,317 -  -Ancho de Elevacion  = 11.20108018455268
+2021-09-21 02:23:01,317 -  -Ancho de Azimuth = 18.722972069893885
+2021-09-21 02:23:01,317 - mostrando...
+2021-09-21 02:23:01,317 - ----------Cantidad de Elementos en Parametro 2: 23 -------------
+2021-09-21 02:23:01,317 - Empezando Log
+2021-09-21 02:23:01,317 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:06,968 - Resultados:
+2021-09-21 02:23:06,968 -  -Ancho de Elevacion  = 11.199697419550578
+2021-09-21 02:23:06,969 -  -Ancho de Azimuth = 18.720863286860826
+2021-09-21 02:23:06,969 - mostrando...
+2021-09-21 02:23:06,969 - ----------Cantidad de Elementos en Parametro 2: 24 -------------
+2021-09-21 02:23:06,969 - Empezando Log
+2021-09-21 02:23:06,969 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:12,455 - Resultados:
+2021-09-21 02:23:12,456 -  -Ancho de Elevacion  = 11.198430064785114
+2021-09-21 02:23:12,456 -  -Ancho de Azimuth = 18.71893017798272
+2021-09-21 02:23:12,456 - mostrando...
+2021-09-21 02:23:12,456 - ----------Cantidad de Elementos en Parametro 2: 25 -------------
+2021-09-21 02:23:12,456 - Empezando Log
+2021-09-21 02:23:12,456 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:17,995 - Resultados:
+2021-09-21 02:23:17,996 -  -Ancho de Elevacion  = 11.197264250177557
+2021-09-21 02:23:17,996 -  -Ancho de Azimuth = 18.71715166898236
+2021-09-21 02:23:17,996 - mostrando...
+2021-09-21 02:23:17,996 - ----------Cantidad de Elementos en Parametro 2: 26 -------------
+2021-09-21 02:23:17,996 - Empezando Log
+2021-09-21 02:23:17,996 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:23,560 - Resultados:
+2021-09-21 02:23:23,560 -  -Ancho de Elevacion  = 11.196188242610944
+2021-09-21 02:23:23,560 -  -Ancho de Azimuth = 18.71550992680416
+2021-09-21 02:23:23,560 - mostrando...
+2021-09-21 02:23:23,560 - ----------Cantidad de Elementos en Parametro 2: 27 -------------
+2021-09-21 02:23:23,560 - Empezando Log
+2021-09-21 02:23:23,560 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:29,022 - Resultados:
+2021-09-21 02:23:29,022 -  -Ancho de Elevacion  = 11.195192049639743
+2021-09-21 02:23:29,022 -  -Ancho de Azimuth = 18.713989759561002
+2021-09-21 02:23:29,022 - mostrando...
+2021-09-21 02:23:29,022 - ----------Cantidad de Elementos en Parametro 2: 28 -------------
+2021-09-21 02:23:29,022 - Empezando Log
+2021-09-21 02:23:29,022 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:34,697 - Resultados:
+2021-09-21 02:23:34,697 -  -Ancho de Elevacion  = 11.194267108234534
+2021-09-21 02:23:34,697 -  -Ancho de Azimuth = 18.712578145028353
+2021-09-21 02:23:34,697 - mostrando...
+2021-09-21 02:23:34,697 - ----------Cantidad de Elementos en Parametro 2: 29 -------------
+2021-09-21 02:23:34,697 - Empezando Log
+2021-09-21 02:23:34,697 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:40,209 - Resultados:
+2021-09-21 02:23:40,209 -  -Ancho de Elevacion  = 11.193406038008952
+2021-09-21 02:23:40,209 -  -Ancho de Azimuth = 18.711263856665212
+2021-09-21 02:23:40,209 - mostrando...
+2021-09-21 02:23:40,209 - ----------Cantidad de Elementos en Parametro 2: 30 -------------
+2021-09-21 02:23:40,209 - Empezando Log
+2021-09-21 02:23:40,209 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:45,679 - Resultados:
+2021-09-21 02:23:45,680 -  -Ancho de Elevacion  = 11.192602443863638
+2021-09-21 02:23:45,680 -  -Ancho de Azimuth = 18.710037164410956
+2021-09-21 02:23:45,680 - mostrando...
+2021-09-21 02:23:45,680 - ----------Cantidad de Elementos en Parametro 2: 31 -------------
+2021-09-21 02:23:45,680 - Empezando Log
+2021-09-21 02:23:45,680 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:50,967 - Resultados:
+2021-09-21 02:23:50,967 -  -Ancho de Elevacion  = 11.191850756875208
+2021-09-21 02:23:50,967 -  -Ancho de Azimuth = 18.708889593378956
+2021-09-21 02:23:50,967 - mostrando...
+2021-09-21 02:23:50,967 - ----------Cantidad de Elementos en Parametro 2: 32 -------------
+2021-09-21 02:23:50,967 - Empezando Log
+2021-09-21 02:23:50,967 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:23:56,538 - Resultados:
+2021-09-21 02:23:56,538 -  -Ancho de Elevacion  = 11.191146105053992
+2021-09-21 02:23:56,538 -  -Ancho de Azimuth = 18.707813727783375
+2021-09-21 02:23:56,538 - mostrando...
+2021-09-21 02:23:56,538 - ----------Cantidad de Elementos en Parametro 2: 33 -------------
+2021-09-21 02:23:56,538 - Empezando Log
+2021-09-21 02:23:56,538 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:01,777 - Resultados:
+2021-09-21 02:24:01,777 -  -Ancho de Elevacion  = 11.190484207626866
+2021-09-21 02:24:01,777 -  -Ancho de Azimuth = 18.70680305050712
+2021-09-21 02:24:01,777 - mostrando...
+2021-09-21 02:24:01,777 - ----------Cantidad de Elementos en Parametro 2: 34 -------------
+2021-09-21 02:24:01,777 - Empezando Log
+2021-09-21 02:24:01,777 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:07,260 - Resultados:
+2021-09-21 02:24:07,260 -  -Ancho de Elevacion  = 11.189861287997498
+2021-09-21 02:24:07,260 -  -Ancho de Azimuth = 18.705851810975588
+2021-09-21 02:24:07,260 - mostrando...
+2021-09-21 02:24:07,260 - ----------Cantidad de Elementos en Parametro 2: 35 -------------
+2021-09-21 02:24:07,260 - Empezando Log
+2021-09-21 02:24:07,261 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:12,555 - Resultados:
+2021-09-21 02:24:12,555 -  -Ancho de Elevacion  = 11.189274001643515
+2021-09-21 02:24:12,555 -  -Ancho de Azimuth = 18.704954915674946
+2021-09-21 02:24:12,556 - mostrando...
+2021-09-21 02:24:12,556 - ----------Cantidad de Elementos en Parametro 2: 36 -------------
+2021-09-21 02:24:12,556 - Empezando Log
+2021-09-21 02:24:12,556 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:18,238 - Resultados:
+2021-09-21 02:24:18,238 -  -Ancho de Elevacion  = 11.188719376043185
+2021-09-21 02:24:18,238 -  -Ancho de Azimuth = 18.704107836913423
+2021-09-21 02:24:18,238 - mostrando...
+2021-09-21 02:24:18,238 - ----------Cantidad de Elementos en Parametro 2: 37 -------------
+2021-09-21 02:24:18,238 - Empezando Log
+2021-09-21 02:24:18,238 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:23,798 - Resultados:
+2021-09-21 02:24:23,800 -  -Ancho de Elevacion  = 11.188194760354204
+2021-09-21 02:24:23,800 -  -Ancho de Azimuth = 18.70330653637528
+2021-09-21 02:24:23,800 - mostrando...
+2021-09-21 02:24:23,800 - ----------Cantidad de Elementos en Parametro 2: 38 -------------
+2021-09-21 02:24:23,800 - Empezando Log
+2021-09-21 02:24:23,800 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:29,650 - Resultados:
+2021-09-21 02:24:29,650 -  -Ancho de Elevacion  = 11.187697783045472
+2021-09-21 02:24:29,651 -  -Ancho de Azimuth = 18.702547400742418
+2021-09-21 02:24:29,651 - mostrando...
+2021-09-21 02:24:29,651 - ----------Cantidad de Elementos en Parametro 2: 39 -------------
+2021-09-21 02:24:29,651 - Empezando Log
+2021-09-21 02:24:29,651 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:35,299 - Resultados:
+2021-09-21 02:24:35,299 -  -Ancho de Elevacion  = 11.187226316053351
+2021-09-21 02:24:35,299 -  -Ancho de Azimuth = 18.70182718721867
+2021-09-21 02:24:35,299 - mostrando...
+2021-09-21 02:24:35,299 - ----------Cantidad de Elementos en Parametro 2: 40 -------------
+2021-09-21 02:24:35,299 - Empezando Log
+2021-09-21 02:24:35,299 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:41,376 - Resultados:
+2021-09-21 02:24:41,376 -  -Ancho de Elevacion  = 11.186778444319817
+2021-09-21 02:24:41,376 -  -Ancho de Azimuth = 18.701142977223398
+2021-09-21 02:24:41,376 - mostrando...
+2021-09-21 02:24:41,376 - ----------Cantidad de Elementos en Parametro 2: 41 -------------
+2021-09-21 02:24:41,376 - Empezando Log
+2021-09-21 02:24:41,376 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:47,288 - Resultados:
+2021-09-21 02:24:47,288 -  -Ancho de Elevacion  = 11.186352439792223
+2021-09-21 02:24:47,288 -  -Ancho de Azimuth = 18.700492136860746
+2021-09-21 02:24:47,288 - mostrando...
+2021-09-21 02:24:47,288 - ----------Cantidad de Elementos en Parametro 2: 42 -------------
+2021-09-21 02:24:47,288 - Empezando Log
+2021-09-21 02:24:47,288 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:53,515 - Resultados:
+2021-09-21 02:24:53,515 -  -Ancho de Elevacion  = 11.185946739140977
+2021-09-21 02:24:53,515 -  -Ancho de Azimuth = 18.699872283034978
+2021-09-21 02:24:53,515 - mostrando...
+2021-09-21 02:24:53,515 - ----------Cantidad de Elementos en Parametro 2: 43 -------------
+2021-09-21 02:24:53,515 - Empezando Log
+2021-09-21 02:24:53,515 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:24:59,549 - Resultados:
+2021-09-21 02:24:59,550 -  -Ancho de Elevacion  = 11.185559924588894
+2021-09-21 02:24:59,550 -  -Ancho de Azimuth = 18.699281254293034
+2021-09-21 02:24:59,550 - mostrando...
+2021-09-21 02:24:59,550 - ----------Cantidad de Elementos en Parametro 2: 44 -------------
+2021-09-21 02:24:59,550 - Empezando Log
+2021-09-21 02:24:59,550 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:05,722 - Resultados:
+2021-09-21 02:25:05,722 -  -Ancho de Elevacion  = 11.185190707357151
+2021-09-21 02:25:05,722 -  -Ancho de Azimuth = 18.698717085642137
+2021-09-21 02:25:05,722 - mostrando...
+2021-09-21 02:25:05,722 - ----------Cantidad de Elementos en Parametro 2: 45 -------------
+2021-09-21 02:25:05,722 - Empezando Log
+2021-09-21 02:25:05,722 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:11,959 - Resultados:
+2021-09-21 02:25:11,959 -  -Ancho de Elevacion  = 11.184837913320031
+2021-09-21 02:25:11,959 -  -Ancho de Azimuth = 18.698177986724822
+2021-09-21 02:25:11,959 - mostrando...
+2021-09-21 02:25:11,960 - ----------Cantidad de Elementos en Parametro 2: 46 -------------
+2021-09-21 02:25:11,960 - Empezando Log
+2021-09-21 02:25:11,960 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:18,344 - Resultados:
+2021-09-21 02:25:18,344 -  -Ancho de Elevacion  = 11.184500470532747
+2021-09-21 02:25:18,344 -  -Ancho de Azimuth = 18.697662322840436
+2021-09-21 02:25:18,344 - mostrando...
+2021-09-21 02:25:18,344 - ----------Cantidad de Elementos en Parametro 2: 47 -------------
+2021-09-21 02:25:18,344 - Empezando Log
+2021-09-21 02:25:18,344 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:24,953 - Resultados:
+2021-09-21 02:25:24,953 -  -Ancho de Elevacion  = 11.184177398352208
+2021-09-21 02:25:24,953 -  -Ancho de Azimuth = 18.697168598388018
+2021-09-21 02:25:24,953 - mostrando...
+2021-09-21 02:25:24,953 - ----------Cantidad de Elementos en Parametro 2: 48 -------------
+2021-09-21 02:25:24,953 - Empezando Log
+2021-09-21 02:25:24,953 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:31,578 - Resultados:
+2021-09-21 02:25:31,579 -  -Ancho de Elevacion  = 11.183867797919287
+2021-09-21 02:25:31,579 -  -Ancho de Azimuth = 18.696695442379912
+2021-09-21 02:25:31,579 - mostrando...
+2021-09-21 02:25:31,579 - ----------Cantidad de Elementos en Parametro 2: 49 -------------
+2021-09-21 02:25:31,579 - Empezando Log
+2021-09-21 02:25:31,579 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:38,187 - Resultados:
+2021-09-21 02:25:38,187 -  -Ancho de Elevacion  = 11.183570843806663
+2021-09-21 02:25:38,187 -  -Ancho de Azimuth = 18.696241595727088
+2021-09-21 02:25:38,187 - mostrando...
+2021-09-21 02:25:38,187 - ----------Cantidad de Elementos en Parametro 2: 50 -------------
+2021-09-21 02:25:38,187 - Empezando Log
+2021-09-21 02:25:38,187 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:44,966 - Resultados:
+2021-09-21 02:25:44,966 -  -Ancho de Elevacion  = 11.183285776670836
+2021-09-21 02:25:44,967 -  -Ancho de Azimuth = 18.69580590005239
+2021-09-21 02:25:44,967 - mostrando...
+2021-09-21 02:25:44,967 - -------------------------------------------
+2021-09-21 02:25:44,967 - Cantidad de Elementos en Parametro 1: 11
+2021-09-21 02:25:44,967 - ----------Cantidad de Elementos en Parametro 2: 10 -------------
+2021-09-21 02:25:44,967 - Empezando Log
+2021-09-21 02:25:44,967 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:50,059 - Resultados:
+2021-09-21 02:25:50,059 -  -Ancho de Elevacion  = 10.260912288540904
+2021-09-21 02:25:50,059 -  -Ancho de Azimuth = 17.17834977506991
+2021-09-21 02:25:50,059 - mostrando...
+2021-09-21 02:25:50,059 - ----------Cantidad de Elementos en Parametro 2: 11 -------------
+2021-09-21 02:25:50,059 - Empezando Log
+2021-09-21 02:25:50,059 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:53,975 - Resultados:
+2021-09-21 02:25:53,975 -  -Ancho de Elevacion  = 10.255830888312982
+2021-09-21 02:25:53,975 -  -Ancho de Azimuth = 17.17046013929798
+2021-09-21 02:25:53,975 - mostrando...
+2021-09-21 02:25:53,975 - ----------Cantidad de Elementos en Parametro 2: 12 -------------
+2021-09-21 02:25:53,975 - Empezando Log
+2021-09-21 02:25:53,975 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:25:59,171 - Resultados:
+2021-09-21 02:25:59,171 -  -Ancho de Elevacion  = 10.251599727076659
+2021-09-21 02:25:59,171 -  -Ancho de Azimuth = 17.163884531897537
+2021-09-21 02:25:59,171 - mostrando...
+2021-09-21 02:25:59,171 - ----------Cantidad de Elementos en Parametro 2: 13 -------------
+2021-09-21 02:25:59,172 - Empezando Log
+2021-09-21 02:25:59,172 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:04,582 - Resultados:
+2021-09-21 02:26:04,582 -  -Ancho de Elevacion  = 10.24802187250102
+2021-09-21 02:26:04,582 -  -Ancho de Azimuth = 17.158319717962897
+2021-09-21 02:26:04,582 - mostrando...
+2021-09-21 02:26:04,582 - ----------Cantidad de Elementos en Parametro 2: 14 -------------
+2021-09-21 02:26:04,583 - Empezando Log
+2021-09-21 02:26:04,583 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:10,115 - Resultados:
+2021-09-21 02:26:10,116 -  -Ancho de Elevacion  = 10.244956832258055
+2021-09-21 02:26:10,116 -  -Ancho de Azimuth = 17.153549268317605
+2021-09-21 02:26:10,116 - mostrando...
+2021-09-21 02:26:10,116 - ----------Cantidad de Elementos en Parametro 2: 15 -------------
+2021-09-21 02:26:10,116 - Empezando Log
+2021-09-21 02:26:10,116 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:15,761 - Resultados:
+2021-09-21 02:26:15,761 -  -Ancho de Elevacion  = 10.242301733239522
+2021-09-21 02:26:15,761 -  -Ancho de Azimuth = 17.149414421763254
+2021-09-21 02:26:15,761 - mostrando...
+2021-09-21 02:26:15,761 - ----------Cantidad de Elementos en Parametro 2: 16 -------------
+2021-09-21 02:26:15,761 - Empezando Log
+2021-09-21 02:26:15,761 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:21,449 - Resultados:
+2021-09-21 02:26:21,450 -  -Ancho de Elevacion  = 10.239979487136402
+2021-09-21 02:26:21,450 -  -Ancho de Azimuth = 17.145796082425875
+2021-09-21 02:26:21,450 - mostrando...
+2021-09-21 02:26:21,450 - ----------Cantidad de Elementos en Parametro 2: 17 -------------
+2021-09-21 02:26:21,450 - Empezando Log
+2021-09-21 02:26:21,450 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:27,501 - Resultados:
+2021-09-21 02:26:27,501 -  -Ancho de Elevacion  = 10.237931194007533
+2021-09-21 02:26:27,501 -  -Ancho de Azimuth = 17.142603159473317
+2021-09-21 02:26:27,501 - mostrando...
+2021-09-21 02:26:27,501 - ----------Cantidad de Elementos en Parametro 2: 18 -------------
+2021-09-21 02:26:27,501 - Empezando Log
+2021-09-21 02:26:27,501 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:33,755 - Resultados:
+2021-09-21 02:26:33,755 -  -Ancho de Elevacion  = 10.236111076780851
+2021-09-21 02:26:33,755 -  -Ancho de Azimuth = 17.139764792489018
+2021-09-21 02:26:33,755 - mostrando...
+2021-09-21 02:26:33,755 - ----------Cantidad de Elementos en Parametro 2: 19 -------------
+2021-09-21 02:26:33,755 - Empezando Log
+2021-09-21 02:26:33,755 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:39,997 - Resultados:
+2021-09-21 02:26:39,997 -  -Ancho de Elevacion  = 10.234483019353519
+2021-09-21 02:26:39,997 -  -Ancho de Azimuth = 17.137225030652097
+2021-09-21 02:26:39,997 - mostrando...
+2021-09-21 02:26:39,997 - ----------Cantidad de Elementos en Parametro 2: 20 -------------
+2021-09-21 02:26:39,997 - Empezando Log
+2021-09-21 02:26:39,997 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:46,289 - Resultados:
+2021-09-21 02:26:46,289 -  -Ancho de Elevacion  = 10.233018145699265
+2021-09-21 02:26:46,289 -  -Ancho de Azimuth = 17.13493910731834
+2021-09-21 02:26:46,289 - mostrando...
+2021-09-21 02:26:46,289 - ----------Cantidad de Elementos en Parametro 2: 21 -------------
+2021-09-21 02:26:46,289 - Empezando Log
+2021-09-21 02:26:46,289 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:52,682 - Resultados:
+2021-09-21 02:26:52,682 -  -Ancho de Elevacion  = 10.231693092202391
+2021-09-21 02:26:52,682 -  -Ancho de Azimuth = 17.132870778470924
+2021-09-21 02:26:52,682 - mostrando...
+2021-09-21 02:26:52,682 - ----------Cantidad de Elementos en Parametro 2: 22 -------------
+2021-09-21 02:26:52,682 - Empezando Log
+2021-09-21 02:26:52,682 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:26:59,185 - Resultados:
+2021-09-21 02:26:59,185 -  -Ancho de Elevacion  = 10.230488752176825
+2021-09-21 02:26:59,185 -  -Ancho de Azimuth = 17.130990386699146
+2021-09-21 02:26:59,185 - mostrando...
+2021-09-21 02:26:59,186 - ----------Cantidad de Elementos en Parametro 2: 23 -------------
+2021-09-21 02:26:59,186 - Empezando Log
+2021-09-21 02:26:59,186 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:27:05,607 - Resultados:
+2021-09-21 02:27:05,607 -  -Ancho de Elevacion  = 10.229389348568066
+2021-09-21 02:27:05,608 -  -Ancho de Azimuth = 17.12927342999231
+2021-09-21 02:27:05,608 - mostrando...
+2021-09-21 02:27:05,608 - ----------Cantidad de Elementos en Parametro 2: 24 -------------
+2021-09-21 02:27:05,608 - Empezando Log
+2021-09-21 02:27:05,608 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:27:12,000 - Resultados:
+2021-09-21 02:27:12,000 -  -Ancho de Elevacion  = 10.228381738931464
+2021-09-21 02:27:12,000 -  -Ancho de Azimuth = 17.127699488177136
+2021-09-21 02:27:12,000 - mostrando...
+2021-09-21 02:27:12,000 - ----------Cantidad de Elementos en Parametro 2: 25 -------------
+2021-09-21 02:27:12,000 - Empezando Log
+2021-09-21 02:27:12,000 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:27:21,759 - Resultados:
+2021-09-21 02:27:21,759 -  -Ancho de Elevacion  = 10.227454887527664
+2021-09-21 02:27:21,760 -  -Ancho de Azimuth = 17.126251406900302
+2021-09-21 02:27:21,760 - mostrando...
+2021-09-21 02:27:21,760 - ----------Cantidad de Elementos en Parametro 2: 26 -------------
+2021-09-21 02:27:21,760 - Empezando Log
+2021-09-21 02:27:21,760 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:27:31,975 - Resultados:
+2021-09-21 02:27:31,975 -  -Ancho de Elevacion  = 10.226599459460338
+2021-09-21 02:27:31,975 -  -Ancho de Azimuth = 17.124914669844735
+2021-09-21 02:27:31,975 - mostrando...
+2021-09-21 02:27:31,975 - ----------Cantidad de Elementos en Parametro 2: 27 -------------
+2021-09-21 02:27:31,975 - Empezando Log
+2021-09-21 02:27:31,975 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:27:41,671 - Resultados:
+2021-09-21 02:27:41,671 -  -Ancho de Elevacion  = 10.22580750516249
+2021-09-21 02:27:41,671 -  -Ancho de Azimuth = 17.12367691039953
+2021-09-21 02:27:41,671 - mostrando...
+2021-09-21 02:27:41,671 - ----------Cantidad de Elementos en Parametro 2: 28 -------------
+2021-09-21 02:27:41,671 - Empezando Log
+2021-09-21 02:27:41,671 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:27:51,743 - Resultados:
+2021-09-21 02:27:51,743 -  -Ancho de Elevacion  = 10.225072212604275
+2021-09-21 02:27:51,743 -  -Ancho de Azimuth = 17.122527527930558
+2021-09-21 02:27:51,743 - mostrando...
+2021-09-21 02:27:51,743 - ----------Cantidad de Elementos en Parametro 2: 29 -------------
+2021-09-21 02:27:51,743 - Empezando Log
+2021-09-21 02:27:51,743 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:28:01,501 - Resultados:
+2021-09-21 02:28:01,501 -  -Ancho de Elevacion  = 10.224387710851651
+2021-09-21 02:28:01,501 -  -Ancho de Azimuth = 17.12145738341531
+2021-09-21 02:28:01,501 - mostrando...
+2021-09-21 02:28:01,501 - ----------Cantidad de Elementos en Parametro 2: 30 -------------
+2021-09-21 02:28:01,501 - Empezando Log
+2021-09-21 02:28:01,501 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:28:11,290 - Resultados:
+2021-09-21 02:28:11,291 -  -Ancho de Elevacion  = 10.22374891297352
+2021-09-21 02:28:11,291 -  -Ancho de Azimuth = 17.120458555927854
+2021-09-21 02:28:11,291 - mostrando...
+2021-09-21 02:28:11,291 - ----------Cantidad de Elementos en Parametro 2: 31 -------------
+2021-09-21 02:28:11,291 - Empezando Log
+2021-09-21 02:28:11,291 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:28:21,001 - Resultados:
+2021-09-21 02:28:21,001 -  -Ancho de Elevacion  = 10.223151389400051
+2021-09-21 02:28:21,001 -  -Ancho de Azimuth = 17.119524146240416
+2021-09-21 02:28:21,002 - mostrando...
+2021-09-21 02:28:21,002 - ----------Cantidad de Elementos en Parametro 2: 32 -------------
+2021-09-21 02:28:21,002 - Empezando Log
+2021-09-21 02:28:21,002 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:28:30,645 - Resultados:
+2021-09-21 02:28:30,646 -  -Ancho de Elevacion  = 10.222591265060895
+2021-09-21 02:28:30,646 -  -Ancho de Azimuth = 17.11864811723678
+2021-09-21 02:28:30,646 - mostrando...
+2021-09-21 02:28:30,646 - ----------Cantidad de Elementos en Parametro 2: 33 -------------
+2021-09-21 02:28:30,646 - Empezando Log
+2021-09-21 02:28:30,646 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:28:40,055 - Resultados:
+2021-09-21 02:28:40,055 -  -Ancho de Elevacion  = 10.22206513525159
+2021-09-21 02:28:40,055 -  -Ancho de Azimuth = 17.1178251633318
+2021-09-21 02:28:40,055 - mostrando...
+2021-09-21 02:28:40,055 - ----------Cantidad de Elementos en Parametro 2: 34 -------------
+2021-09-21 02:28:40,055 - Empezando Log
+2021-09-21 02:28:40,055 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:28:49,686 - Resultados:
+2021-09-21 02:28:49,686 -  -Ancho de Elevacion  = 10.221569996367627
+2021-09-21 02:28:49,686 -  -Ancho de Azimuth = 17.117050602927826
+2021-09-21 02:28:49,686 - mostrando...
+2021-09-21 02:28:49,686 - ----------Cantidad de Elementos en Parametro 2: 35 -------------
+2021-09-21 02:28:49,687 - Empezando Log
+2021-09-21 02:28:49,687 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:28:58,670 - Resultados:
+2021-09-21 02:28:58,670 -  -Ancho de Elevacion  = 10.221103188528744
+2021-09-21 02:28:58,670 -  -Ancho de Azimuth = 17.116320289301242
+2021-09-21 02:28:58,670 - mostrando...
+2021-09-21 02:28:58,670 - ----------Cantidad de Elementos en Parametro 2: 36 -------------
+2021-09-21 02:28:58,670 - Empezando Log
+2021-09-21 02:28:58,670 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:29:08,114 - Resultados:
+2021-09-21 02:29:08,114 -  -Ancho de Elevacion  = 10.220662347777264
+2021-09-21 02:29:08,114 -  -Ancho de Azimuth = 17.115630536336198
+2021-09-21 02:29:08,114 - mostrando...
+2021-09-21 02:29:08,114 - ----------Cantidad de Elementos en Parametro 2: 37 -------------
+2021-09-21 02:29:08,115 - Empezando Log
+2021-09-21 02:29:08,115 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:29:16,595 - Resultados:
+2021-09-21 02:29:16,595 -  -Ancho de Elevacion  = 10.220245366038974
+2021-09-21 02:29:16,595 -  -Ancho de Azimuth = 17.11497805629915
+2021-09-21 02:29:16,596 - mostrando...
+2021-09-21 02:29:16,596 - ----------Cantidad de Elementos en Parametro 2: 38 -------------
+2021-09-21 02:29:16,596 - Empezando Log
+2021-09-21 02:29:16,596 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:29:25,762 - Resultados:
+2021-09-21 02:29:25,762 -  -Ancho de Elevacion  = 10.219850357412803
+2021-09-21 02:29:25,762 -  -Ancho de Azimuth = 17.11435990743457
+2021-09-21 02:29:25,762 - mostrando...
+2021-09-21 02:29:25,762 - ----------Cantidad de Elementos en Parametro 2: 39 -------------
+2021-09-21 02:29:25,762 - Empezando Log
+2021-09-21 02:29:25,762 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:29:34,537 - Resultados:
+2021-09-21 02:29:34,537 -  -Ancho de Elevacion  = 10.219475629653225
+2021-09-21 02:29:34,537 -  -Ancho de Azimuth = 17.113773449621533
+2021-09-21 02:29:34,537 - mostrando...
+2021-09-21 02:29:34,537 - ----------Cantidad de Elementos en Parametro 2: 40 -------------
+2021-09-21 02:29:34,537 - Empezando Log
+2021-09-21 02:29:34,537 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:29:44,027 - Resultados:
+2021-09-21 02:29:44,028 -  -Ancho de Elevacion  = 10.219119659935394
+2021-09-21 02:29:44,028 -  -Ancho de Azimuth = 17.11321630667932
+2021-09-21 02:29:44,028 - mostrando...
+2021-09-21 02:29:44,028 - ----------Cantidad de Elementos en Parametro 2: 41 -------------
+2021-09-21 02:29:44,028 - Empezando Log
+2021-09-21 02:29:44,028 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:29:53,519 - Resultados:
+2021-09-21 02:29:53,519 -  -Ancho de Elevacion  = 10.218781074170511
+2021-09-21 02:29:53,519 -  -Ancho de Azimuth = 17.112686334188226
+2021-09-21 02:29:53,519 - mostrando...
+2021-09-21 02:29:53,520 - ----------Cantidad de Elementos en Parametro 2: 42 -------------
+2021-09-21 02:29:53,520 - Empezando Log
+2021-09-21 02:29:53,520 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:30:03,359 - Resultados:
+2021-09-21 02:30:03,359 -  -Ancho de Elevacion  = 10.218458629279805
+2021-09-21 02:30:03,359 -  -Ancho de Azimuth = 17.11218159190605
+2021-09-21 02:30:03,359 - mostrando...
+2021-09-21 02:30:03,359 - ----------Cantidad de Elementos en Parametro 2: 43 -------------
+2021-09-21 02:30:03,359 - Empezando Log
+2021-09-21 02:30:03,359 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:30:12,731 - Resultados:
+2021-09-21 02:30:12,731 -  -Ancho de Elevacion  = 10.218151197944184
+2021-09-21 02:30:12,731 -  -Ancho de Azimuth = 17.111700320032675
+2021-09-21 02:30:12,731 - mostrando...
+2021-09-21 02:30:12,731 - ----------Cantidad de Elementos en Parametro 2: 44 -------------
+2021-09-21 02:30:12,731 - Empezando Log
+2021-09-21 02:30:12,732 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:30:22,294 - Resultados:
+2021-09-21 02:30:22,294 -  -Ancho de Elevacion  = 10.217857755436068
+2021-09-21 02:30:22,294 -  -Ancho de Azimuth = 17.11124091871006
+2021-09-21 02:30:22,294 - mostrando...
+2021-09-21 02:30:22,294 - ----------Cantidad de Elementos en Parametro 2: 45 -------------
+2021-09-21 02:30:22,294 - Empezando Log
+2021-09-21 02:30:22,294 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:30:31,966 - Resultados:
+2021-09-21 02:30:31,966 -  -Ancho de Elevacion  = 10.21757736820831
+2021-09-21 02:30:31,966 -  -Ancho de Azimuth = 17.110801930255256
+2021-09-21 02:30:31,966 - mostrando...
+2021-09-21 02:30:31,966 - ----------Cantidad de Elementos en Parametro 2: 46 -------------
+2021-09-21 02:30:31,966 - Empezando Log
+2021-09-21 02:30:31,966 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:30:41,964 - Resultados:
+2021-09-21 02:30:41,964 -  -Ancho de Elevacion  = 10.217309183973622
+2021-09-21 02:30:41,964 -  -Ancho de Azimuth = 17.1103820237106
+2021-09-21 02:30:41,964 - mostrando...
+2021-09-21 02:30:41,964 - ----------Cantidad de Elementos en Parametro 2: 47 -------------
+2021-09-21 02:30:41,964 - Empezando Log
+2021-09-21 02:30:41,964 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:30:52,012 - Resultados:
+2021-09-21 02:30:52,012 -  -Ancho de Elevacion  = 10.217052423051264
+2021-09-21 02:30:52,012 -  -Ancho de Azimuth = 17.10997998136495
+2021-09-21 02:30:52,013 - mostrando...
+2021-09-21 02:30:52,013 - ----------Cantidad de Elementos en Parametro 2: 48 -------------
+2021-09-21 02:30:52,013 - Empezando Log
+2021-09-21 02:30:52,013 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:02,393 - Resultados:
+2021-09-21 02:31:02,393 -  -Ancho de Elevacion  = 10.216806370796515
+2021-09-21 02:31:02,393 -  -Ancho de Azimuth = 17.109594686960257
+2021-09-21 02:31:02,393 - mostrando...
+2021-09-21 02:31:02,393 - ----------Cantidad de Elementos en Parametro 2: 49 -------------
+2021-09-21 02:31:02,393 - Empezando Log
+2021-09-21 02:31:02,393 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:12,952 - Resultados:
+2021-09-21 02:31:12,953 -  -Ancho de Elevacion  = 10.2165703709579
+2021-09-21 02:31:12,953 -  -Ancho de Azimuth = 17.10922511534087
+2021-09-21 02:31:12,953 - mostrando...
+2021-09-21 02:31:12,953 - ----------Cantidad de Elementos en Parametro 2: 50 -------------
+2021-09-21 02:31:12,953 - Empezando Log
+2021-09-21 02:31:12,953 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:23,540 - Resultados:
+2021-09-21 02:31:23,541 -  -Ancho de Elevacion  = 10.216343819832932
+2021-09-21 02:31:23,541 -  -Ancho de Azimuth = 17.10887032334611
+2021-09-21 02:31:23,541 - mostrando...
+2021-09-21 02:31:23,541 - -------------------------------------------
+2021-09-21 02:31:23,541 - Cantidad de Elementos en Parametro 1: 12
+2021-09-21 02:31:23,541 - ----------Cantidad de Elementos en Parametro 2: 10 -------------
+2021-09-21 02:31:23,541 - Empezando Log
+2021-09-21 02:31:23,541 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:28,933 - Resultados:
+2021-09-21 02:31:28,933 -  -Ancho de Elevacion  = 9.515140204024156
+2021-09-21 02:31:28,933 -  -Ancho de Azimuth = 15.820237240665122
+2021-09-21 02:31:28,933 - mostrando...
+2021-09-21 02:31:28,933 - ----------Cantidad de Elementos en Parametro 2: 11 -------------
+2021-09-21 02:31:28,933 - Empezando Log
+2021-09-21 02:31:28,934 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:34,590 - Resultados:
+2021-09-21 02:31:34,590 -  -Ancho de Elevacion  = 9.511381925144786
+2021-09-21 02:31:34,590 -  -Ancho de Azimuth = 15.813122400227087
+2021-09-21 02:31:34,590 - mostrando...
+2021-09-21 02:31:34,590 - ----------Cantidad de Elementos en Parametro 2: 12 -------------
+2021-09-21 02:31:34,590 - Empezando Log
+2021-09-21 02:31:34,590 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:40,281 - Resultados:
+2021-09-21 02:31:40,281 -  -Ancho de Elevacion  = 9.508251479460633
+2021-09-21 02:31:40,281 -  -Ancho de Azimuth = 15.807193234054196
+2021-09-21 02:31:40,281 - mostrando...
+2021-09-21 02:31:40,281 - ----------Cantidad de Elementos en Parametro 2: 13 -------------
+2021-09-21 02:31:40,281 - Empezando Log
+2021-09-21 02:31:40,281 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:46,314 - Resultados:
+2021-09-21 02:31:46,314 -  -Ancho de Elevacion  = 9.505603689066486
+2021-09-21 02:31:46,314 -  -Ancho de Azimuth = 15.802175898287473
+2021-09-21 02:31:46,314 - mostrando...
+2021-09-21 02:31:46,314 - ----------Cantidad de Elementos en Parametro 2: 14 -------------
+2021-09-21 02:31:46,314 - Empezando Log
+2021-09-21 02:31:46,314 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:31:55,811 - Resultados:
+2021-09-21 02:31:55,811 -  -Ancho de Elevacion  = 9.503334888943737
+2021-09-21 02:31:55,811 -  -Ancho de Azimuth = 15.797875072551953
+2021-09-21 02:31:55,811 - mostrando...
+2021-09-21 02:31:55,811 - ----------Cantidad de Elementos en Parametro 2: 15 -------------
+2021-09-21 02:31:55,811 - Empezando Log
+2021-09-21 02:31:55,811 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:01,909 - Resultados:
+2021-09-21 02:32:01,909 -  -Ancho de Elevacion  = 9.50136915113092
+2021-09-21 02:32:01,909 -  -Ancho de Azimuth = 15.794147500731796
+2021-09-21 02:32:01,909 - mostrando...
+2021-09-21 02:32:01,909 - ----------Cantidad de Elementos en Parametro 2: 16 -------------
+2021-09-21 02:32:01,909 - Empezando Log
+2021-09-21 02:32:01,909 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:08,370 - Resultados:
+2021-09-21 02:32:08,370 -  -Ancho de Elevacion  = 9.499649553039454
+2021-09-21 02:32:08,371 -  -Ancho de Azimuth = 15.790885730826552
+2021-09-21 02:32:08,371 - mostrando...
+2021-09-21 02:32:08,371 - ----------Cantidad de Elementos en Parametro 2: 17 -------------
+2021-09-21 02:32:08,371 - Empezando Log
+2021-09-21 02:32:08,371 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:14,777 - Resultados:
+2021-09-21 02:32:14,777 -  -Ancho de Elevacion  = 9.498132587582884
+2021-09-21 02:32:14,777 -  -Ancho de Azimuth = 15.788007586357509
+2021-09-21 02:32:14,777 - mostrando...
+2021-09-21 02:32:14,777 - ----------Cantidad de Elementos en Parametro 2: 18 -------------
+2021-09-21 02:32:14,777 - Empezando Log
+2021-09-21 02:32:14,777 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:21,576 - Resultados:
+2021-09-21 02:32:21,576 -  -Ancho de Elevacion  = 9.496784430844635
+2021-09-21 02:32:21,576 -  -Ancho de Azimuth = 15.785449147310366
+2021-09-21 02:32:21,576 - mostrando...
+2021-09-21 02:32:21,576 - ----------Cantidad de Elementos en Parametro 2: 19 -------------
+2021-09-21 02:32:21,576 - Empezando Log
+2021-09-21 02:32:21,576 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:28,433 - Resultados:
+2021-09-21 02:32:28,433 -  -Ancho de Elevacion  = 9.49557839012973
+2021-09-21 02:32:28,433 -  -Ancho de Azimuth = 15.783159947033461
+2021-09-21 02:32:28,433 - mostrando...
+2021-09-21 02:32:28,433 - ----------Cantidad de Elementos en Parametro 2: 20 -------------
+2021-09-21 02:32:28,433 - Empezando Log
+2021-09-21 02:32:28,433 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:35,557 - Resultados:
+2021-09-21 02:32:35,557 -  -Ancho de Elevacion  = 9.494493118676811
+2021-09-21 02:32:35,557 -  -Ancho de Azimuth = 15.781099609719654
+2021-09-21 02:32:35,557 - mostrando...
+2021-09-21 02:32:35,557 - ----------Cantidad de Elementos en Parametro 2: 21 -------------
+2021-09-21 02:32:35,557 - Empezando Log
+2021-09-21 02:32:35,557 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:38,678 - Iniciando Etapa 1. Obtencion de datos para evaluar ancho de haz en funcion de lambda. Configuracion inicial:
+2021-09-21 02:32:38,679 - Arreglo tipo 1
+2021-09-21 02:32:38,679 -   -DR = 0.25
+2021-09-21 02:32:38,679 - Cantidad de Elementos en Parametro 1: 10
+2021-09-21 02:32:38,679 - ----------Cantidad de Elementos en Parametro 2: 10 -------------
+2021-09-21 02:32:38,679 - Empezando Log
+2021-09-21 02:32:38,679 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:42,594 - Resultados:
+2021-09-21 02:32:42,595 -  -Ancho de Elevacion  = 9.493511341130137
+2021-09-21 02:32:42,595 -  -Ancho de Azimuth = 15.779235448384995
+2021-09-21 02:32:42,595 - mostrando...
+2021-09-21 02:32:42,595 - ----------Cantidad de Elementos en Parametro 2: 22 -------------
+2021-09-21 02:32:42,595 - Empezando Log
+2021-09-21 02:32:42,595 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:44,432 - Resultados:
+2021-09-21 02:32:44,432 -  -Ancho de Elevacion  = 11.239326355746883
+2021-09-21 02:32:44,433 -  -Ancho de Azimuth = 18.781148939425087
+2021-09-21 02:32:44,433 - mostrando...
+2021-09-21 02:32:44,433 - ----------Cantidad de Elementos en Parametro 2: 11 -------------
+2021-09-21 02:32:44,433 - Empezando Log
+2021-09-21 02:32:44,433 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:50,180 - Resultados:
+2021-09-21 02:32:50,180 -  -Ancho de Elevacion  = 11.232940728709071
+2021-09-21 02:32:50,180 -  -Ancho de Azimuth = 18.7714560416357
+2021-09-21 02:32:50,180 - mostrando...
+2021-09-21 02:32:50,181 - ----------Cantidad de Elementos en Parametro 2: 12 -------------
+2021-09-21 02:32:50,181 - Empezando Log
+2021-09-21 02:32:50,181 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:50,190 - Resultados:
+2021-09-21 02:32:50,190 -  -Ancho de Elevacion  = 9.49261892705223
+2021-09-21 02:32:50,190 -  -Ancho de Azimuth = 15.777540717799482
+2021-09-21 02:32:50,190 - mostrando...
+2021-09-21 02:32:50,190 - ----------Cantidad de Elementos en Parametro 2: 23 -------------
+2021-09-21 02:32:50,190 - Empezando Log
+2021-09-21 02:32:50,190 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:55,924 - Resultados:
+2021-09-21 02:32:55,924 -  -Ancho de Elevacion  = 11.227622990651355
+2021-09-21 02:32:55,924 -  -Ancho de Azimuth = 18.7633777702031
+2021-09-21 02:32:55,924 - mostrando...
+2021-09-21 02:32:55,925 - ----------Cantidad de Elementos en Parametro 2: 13 -------------
+2021-09-21 02:32:55,925 - Empezando Log
+2021-09-21 02:32:55,925 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:32:57,616 - Resultados:
+2021-09-21 02:32:57,616 -  -Ancho de Elevacion  = 9.491804206421406
+2021-09-21 02:32:57,616 -  -Ancho de Azimuth = 15.775993323077124
+2021-09-21 02:32:57,617 - mostrando...
+2021-09-21 02:32:57,617 - ----------Cantidad de Elementos en Parametro 2: 24 -------------
+2021-09-21 02:32:57,617 - Empezando Log
+2021-09-21 02:32:57,617 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:01,953 - Resultados:
+2021-09-21 02:33:01,953 -  -Ancho de Elevacion  = 11.223125795911585
+2021-09-21 02:33:01,953 -  -Ancho de Azimuth = 18.756541563544353
+2021-09-21 02:33:01,953 - mostrando...
+2021-09-21 02:33:01,953 - ----------Cantidad de Elementos en Parametro 2: 14 -------------
+2021-09-21 02:33:01,954 - Empezando Log
+2021-09-21 02:33:01,954 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:05,235 - Resultados:
+2021-09-21 02:33:05,235 -  -Ancho de Elevacion  = 9.491057456453465
+2021-09-21 02:33:05,235 -  -Ancho de Azimuth = 15.774574851053238
+2021-09-21 02:33:05,235 - mostrando...
+2021-09-21 02:33:05,235 - ----------Cantidad de Elementos en Parametro 2: 25 -------------
+2021-09-21 02:33:05,235 - Empezando Log
+2021-09-21 02:33:05,235 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:08,168 - Resultados:
+2021-09-21 02:33:08,169 -  -Ancho de Elevacion  = 11.21927278386886
+2021-09-21 02:33:08,169 -  -Ancho de Azimuth = 18.75068141534171
+2021-09-21 02:33:08,169 - mostrando...
+2021-09-21 02:33:08,169 - ----------Cantidad de Elementos en Parametro 2: 15 -------------
+2021-09-21 02:33:08,169 - Empezando Log
+2021-09-21 02:33:08,169 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:12,974 - Resultados:
+2021-09-21 02:33:12,975 -  -Ancho de Elevacion  = 9.490370511723555
+2021-09-21 02:33:12,975 -  -Ancho de Azimuth = 15.773269834085703
+2021-09-21 02:33:12,975 - mostrando...
+2021-09-21 02:33:12,975 - ----------Cantidad de Elementos en Parametro 2: 26 -------------
+2021-09-21 02:33:12,975 - Empezando Log
+2021-09-21 02:33:12,975 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:14,241 - Resultados:
+2021-09-21 02:33:14,241 -  -Ancho de Elevacion  = 11.215934804237076
+2021-09-21 02:33:14,242 -  -Ancho de Azimuth = 18.74560221339926
+2021-09-21 02:33:14,242 - mostrando...
+2021-09-21 02:33:14,242 - ----------Cantidad de Elementos en Parametro 2: 16 -------------
+2021-09-21 02:33:14,242 - Empezando Log
+2021-09-21 02:33:14,242 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:20,561 - Resultados:
+2021-09-21 02:33:20,561 -  -Ancho de Elevacion  = 11.213015058031608
+2021-09-21 02:33:20,561 -  -Ancho de Azimuth = 18.741157601240296
+2021-09-21 02:33:20,561 - mostrando...
+2021-09-21 02:33:20,561 - ----------Cantidad de Elementos en Parametro 2: 17 -------------
+2021-09-21 02:33:20,561 - Empezando Log
+2021-09-21 02:33:20,561 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:20,729 - Resultados:
+2021-09-21 02:33:20,729 -  -Ancho de Elevacion  = 9.489736464355154
+2021-09-21 02:33:20,730 -  -Ancho de Azimuth = 15.772065183715192
+2021-09-21 02:33:20,730 - mostrando...
+2021-09-21 02:33:20,730 - ----------Cantidad de Elementos en Parametro 2: 27 -------------
+2021-09-21 02:33:20,730 - Empezando Log
+2021-09-21 02:33:20,730 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:26,859 - Resultados:
+2021-09-21 02:33:26,859 -  -Ancho de Elevacion  = 11.210439574058455
+2021-09-21 02:33:26,859 -  -Ancho de Azimuth = 18.737235643623578
+2021-09-21 02:33:26,859 - mostrando...
+2021-09-21 02:33:26,859 - ----------Cantidad de Elementos en Parametro 2: 18 -------------
+2021-09-21 02:33:26,859 - Empezando Log
+2021-09-21 02:33:26,859 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:28,336 - Resultados:
+2021-09-21 02:33:28,336 -  -Ancho de Elevacion  = 9.489149430903197
+2021-09-21 02:33:28,336 -  -Ancho de Azimuth = 15.770949750157293
+2021-09-21 02:33:28,336 - mostrando...
+2021-09-21 02:33:28,336 - ----------Cantidad de Elementos en Parametro 2: 28 -------------
+2021-09-21 02:33:28,336 - Empezando Log
+2021-09-21 02:33:28,336 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:33,267 - Resultados:
+2021-09-21 02:33:33,267 -  -Ancho de Elevacion  = 11.208150854153637
+2021-09-21 02:33:33,267 -  -Ancho de Azimuth = 18.73374926913293
+2021-09-21 02:33:33,268 - mostrando...
+2021-09-21 02:33:33,268 - ----------Cantidad de Elementos en Parametro 2: 19 -------------
+2021-09-21 02:33:33,268 - Empezando Log
+2021-09-21 02:33:33,268 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:36,255 - Resultados:
+2021-09-21 02:33:36,255 -  -Ancho de Elevacion  = 9.488604369239184
+2021-09-21 02:33:36,255 -  -Ancho de Azimuth = 15.769913976170997
+2021-09-21 02:33:36,255 - mostrando...
+2021-09-21 02:33:36,255 - ----------Cantidad de Elementos en Parametro 2: 29 -------------
+2021-09-21 02:33:36,255 - Empezando Log
+2021-09-21 02:33:36,255 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:39,805 - Resultados:
+2021-09-21 02:33:39,805 -  -Ancho de Elevacion  = 11.206103529389203
+2021-09-21 02:33:39,805 -  -Ancho de Azimuth = 18.730629729711993
+2021-09-21 02:33:39,806 - mostrando...
+2021-09-21 02:33:39,806 - ----------Cantidad de Elementos en Parametro 2: 20 -------------
+2021-09-21 02:33:39,806 - Empezando Log
+2021-09-21 02:33:39,806 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:43,814 - Resultados:
+2021-09-21 02:33:43,814 -  -Ancho de Elevacion  = 9.488096933359149
+2021-09-21 02:33:43,814 -  -Ancho de Azimuth = 15.768949622529632
+2021-09-21 02:33:43,814 - mostrando...
+2021-09-21 02:33:43,814 - ----------Cantidad de Elementos en Parametro 2: 30 -------------
+2021-09-21 02:33:43,814 - Empezando Log
+2021-09-21 02:33:43,814 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:46,330 - Resultados:
+2021-09-21 02:33:46,333 -  -Ancho de Elevacion  = 11.204261321934627
+2021-09-21 02:33:46,335 -  -Ancho de Azimuth = 18.7278220215859
+2021-09-21 02:33:46,336 - mostrando...
+2021-09-21 02:33:46,336 - ----------Cantidad de Elementos en Parametro 2: 21 -------------
+2021-09-21 02:33:46,336 - Empezando Log
+2021-09-21 02:33:46,336 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:51,544 - Resultados:
+2021-09-21 02:33:51,544 -  -Ancho de Elevacion  = 9.487623357256151
+2021-09-21 02:33:51,544 -  -Ancho de Azimuth = 15.768049548387687
+2021-09-21 02:33:51,544 - mostrando...
+2021-09-21 02:33:51,544 - ----------Cantidad de Elementos en Parametro 2: 31 -------------
+2021-09-21 02:33:51,544 - Empezando Log
+2021-09-21 02:33:51,544 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:33:59,031 - Resultados:
+2021-09-21 02:33:59,031 -  -Ancho de Elevacion  = 9.487180361289429
+2021-09-21 02:33:59,031 -  -Ancho de Azimuth = 15.767207534151225
+2021-09-21 02:33:59,031 - mostrando...
+2021-09-21 02:33:59,031 - ----------Cantidad de Elementos en Parametro 2: 32 -------------
+2021-09-21 02:33:59,031 - Empezando Log
+2021-09-21 02:33:59,031 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:34:06,539 - Resultados:
+2021-09-21 02:34:06,539 -  -Ancho de Elevacion  = 9.486765076124364
+2021-09-21 02:34:06,539 -  -Ancho de Azimuth = 15.766418137554503
+2021-09-21 02:34:06,539 - mostrando...
+2021-09-21 02:34:06,539 - ----------Cantidad de Elementos en Parametro 2: 33 -------------
+2021-09-21 02:34:06,539 - Empezando Log
+2021-09-21 02:34:06,540 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:34:13,831 - Resultados:
+2021-09-21 02:34:13,831 -  -Ancho de Elevacion  = 9.486374980513158
+2021-09-21 02:34:13,831 -  -Ancho de Azimuth = 15.7656765759006
+2021-09-21 02:34:13,831 - mostrando...
+2021-09-21 02:34:13,831 - ----------Cantidad de Elementos en Parametro 2: 34 -------------
+2021-09-21 02:34:13,831 - Empezando Log
+2021-09-21 02:34:13,831 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:34:21,580 - Resultados:
+2021-09-21 02:34:21,580 -  -Ancho de Elevacion  = 9.486007850064144
+2021-09-21 02:34:21,580 -  -Ancho de Azimuth = 15.764978629080403
+2021-09-21 02:34:21,580 - mostrando...
+2021-09-21 02:34:21,580 - ----------Cantidad de Elementos en Parametro 2: 35 -------------
+2021-09-21 02:34:21,580 - Empezando Log
+2021-09-21 02:34:21,580 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:34:28,780 - Resultados:
+2021-09-21 02:34:28,780 -  -Ancho de Elevacion  = 9.485661714800791
+2021-09-21 02:34:28,780 -  -Ancho de Azimuth = 15.764320559214397
+2021-09-21 02:34:28,780 - mostrando...
+2021-09-21 02:34:28,780 - ----------Cantidad de Elementos en Parametro 2: 36 -------------
+2021-09-21 02:34:28,780 - Empezando Log
+2021-09-21 02:34:28,780 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:34:36,467 - Resultados:
+2021-09-21 02:34:36,467 -  -Ancho de Elevacion  = 9.485334823798791
+2021-09-21 02:34:36,467 -  -Ancho de Azimuth = 15.763699043685001
+2021-09-21 02:34:36,467 - mostrando...
+2021-09-21 02:34:36,467 - ----------Cantidad de Elementos en Parametro 2: 37 -------------
+2021-09-21 02:34:36,467 - Empezando Log
+2021-09-21 02:34:36,468 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:34:46,262 - Resultados:
+2021-09-21 02:34:46,262 -  -Ancho de Elevacion  = 9.485025615563153
+2021-09-21 02:34:46,262 -  -Ancho de Azimuth = 15.763111119028487
+2021-09-21 02:34:46,262 - mostrando...
+2021-09-21 02:34:46,262 - ----------Cantidad de Elementos en Parametro 2: 38 -------------
+2021-09-21 02:34:46,262 - Empezando Log
+2021-09-21 02:34:46,262 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:34:53,846 - Resultados:
+2021-09-21 02:34:53,846 -  -Ancho de Elevacion  = 9.48473269308479
+2021-09-21 02:34:53,846 -  -Ancho de Azimuth = 15.76255413368338
+2021-09-21 02:34:53,846 - mostrando...
+2021-09-21 02:34:53,846 - ----------Cantidad de Elementos en Parametro 2: 39 -------------
+2021-09-21 02:34:53,846 - Empezando Log
+2021-09-21 02:34:53,846 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:00,722 - Resultados:
+2021-09-21 02:35:00,723 -  -Ancho de Elevacion  = 9.484454802738043
+2021-09-21 02:35:00,723 -  -Ancho de Azimuth = 15.762025708008622
+2021-09-21 02:35:00,723 - mostrando...
+2021-09-21 02:35:00,723 - ----------Cantidad de Elementos en Parametro 2: 40 -------------
+2021-09-21 02:35:00,723 - Empezando Log
+2021-09-21 02:35:00,723 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:08,288 - Resultados:
+2021-09-21 02:35:08,288 -  -Ancho de Elevacion  = 9.484190816345311
+2021-09-21 02:35:08,288 -  -Ancho de Azimuth = 15.761523700297204
+2021-09-21 02:35:08,288 - mostrando...
+2021-09-21 02:35:08,288 - ----------Cantidad de Elementos en Parametro 2: 41 -------------
+2021-09-21 02:35:08,288 - Empezando Log
+2021-09-21 02:35:08,288 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:15,423 - Resultados:
+2021-09-21 02:35:15,423 -  -Ancho de Elevacion  = 9.48393971586853
+2021-09-21 02:35:15,423 -  -Ancho de Azimuth = 15.761046177764008
+2021-09-21 02:35:15,423 - mostrando...
+2021-09-21 02:35:15,423 - ----------Cantidad de Elementos en Parametro 2: 42 -------------
+2021-09-21 02:35:15,423 - Empezando Log
+2021-09-21 02:35:15,423 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:23,232 - Resultados:
+2021-09-21 02:35:23,232 -  -Ancho de Elevacion  = 9.483700580288534
+2021-09-21 02:35:23,232 -  -Ancho de Azimuth = 15.76059139167645
+2021-09-21 02:35:23,232 - mostrando...
+2021-09-21 02:35:23,232 - ----------Cantidad de Elementos en Parametro 2: 43 -------------
+2021-09-21 02:35:23,232 - Empezando Log
+2021-09-21 02:35:23,232 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:30,592 - Resultados:
+2021-09-21 02:35:30,592 -  -Ancho de Elevacion  = 9.48347257431671
+2021-09-21 02:35:30,592 -  -Ancho de Azimuth = 15.7601577559561
+2021-09-21 02:35:30,592 - mostrando...
+2021-09-21 02:35:30,592 - ----------Cantidad de Elementos en Parametro 2: 44 -------------
+2021-09-21 02:35:30,592 - Empezando Log
+2021-09-21 02:35:30,592 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:38,277 - Resultados:
+2021-09-21 02:35:38,278 -  -Ancho de Elevacion  = 9.483254938646919
+2021-09-21 02:35:38,278 -  -Ancho de Azimuth = 15.75974382869682
+2021-09-21 02:35:38,278 - mostrando...
+2021-09-21 02:35:38,278 - ----------Cantidad de Elementos en Parametro 2: 45 -------------
+2021-09-21 02:35:38,278 - Empezando Log
+2021-09-21 02:35:38,278 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:45,871 - Resultados:
+2021-09-21 02:35:45,871 -  -Ancho de Elevacion  = 9.483046981507663
+2021-09-21 02:35:45,871 -  -Ancho de Azimuth = 15.759348296147763
+2021-09-21 02:35:45,871 - mostrando...
+2021-09-21 02:35:45,871 - ----------Cantidad de Elementos en Parametro 2: 46 -------------
+2021-09-21 02:35:45,871 - Empezando Log
+2021-09-21 02:35:45,871 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:35:53,742 - Resultados:
+2021-09-21 02:35:53,742 -  -Ancho de Elevacion  = 9.48284807131726
+2021-09-21 02:35:53,742 -  -Ancho de Azimuth = 15.758969958784874
+2021-09-21 02:35:53,743 - mostrando...
+2021-09-21 02:35:53,743 - ----------Cantidad de Elementos en Parametro 2: 47 -------------
+2021-09-21 02:35:53,743 - Empezando Log
+2021-09-21 02:35:53,743 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:01,762 - Resultados:
+2021-09-21 02:36:01,762 -  -Ancho de Elevacion  = 9.48265763027688
+2021-09-21 02:36:01,762 -  -Ancho de Azimuth = 15.758607719160352
+2021-09-21 02:36:01,762 - mostrando...
+2021-09-21 02:36:01,762 - ----------Cantidad de Elementos en Parametro 2: 48 -------------
+2021-09-21 02:36:01,762 - Empezando Log
+2021-09-21 02:36:01,762 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:02,512 - Resultados:
+2021-09-21 02:36:02,512 -  -Ancho de Elevacion  = 11.202594876554393
+2021-09-21 02:36:02,512 -  -Ancho de Azimuth = 18.72528161401462
+2021-09-21 02:36:02,512 - mostrando...
+2021-09-21 02:36:02,513 - ----------Cantidad de Elementos en Parametro 2: 22 -------------
+2021-09-21 02:36:02,513 - Empezando Log
+2021-09-21 02:36:02,513 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:09,677 - Resultados:
+2021-09-21 02:36:09,677 -  -Ancho de Elevacion  = 9.48247512876478
+2021-09-21 02:36:09,677 -  -Ancho de Azimuth = 15.758260571270846
+2021-09-21 02:36:09,677 - mostrando...
+2021-09-21 02:36:09,677 - ----------Cantidad de Elementos en Parametro 2: 49 -------------
+2021-09-21 02:36:09,677 - Empezando Log
+2021-09-21 02:36:09,677 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:17,962 - Resultados:
+2021-09-21 02:36:17,962 -  -Ancho de Elevacion  = 9.482300080417627
+2021-09-21 02:36:17,962 -  -Ancho de Azimuth = 15.757927591227109
+2021-09-21 02:36:17,962 - mostrando...
+2021-09-21 02:36:17,962 - ----------Cantidad de Elementos en Parametro 2: 50 -------------
+2021-09-21 02:36:17,963 - Empezando Log
+2021-09-21 02:36:17,963 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:26,391 - Resultados:
+2021-09-21 02:36:26,392 -  -Ancho de Elevacion  = 9.48213203780261
+2021-09-21 02:36:26,392 -  -Ancho de Azimuth = 15.75760792904402
+2021-09-21 02:36:26,392 - mostrando...
+2021-09-21 02:36:26,392 - -------------------------------------------
+2021-09-21 02:36:26,392 - Cantidad de Elementos en Parametro 1: 13
+2021-09-21 02:36:26,392 - ----------Cantidad de Elementos en Parametro 2: 10 -------------
+2021-09-21 02:36:26,392 - Empezando Log
+2021-09-21 02:36:26,392 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:35,324 - Resultados:
+2021-09-21 02:36:35,324 -  -Ancho de Elevacion  = 8.938778589895026
+2021-09-21 02:36:35,324 -  -Ancho de Azimuth = 13.66360684638962
+2021-09-21 02:36:35,324 - mostrando...
+2021-09-21 02:36:35,324 - ----------Cantidad de Elementos en Parametro 2: 11 -------------
+2021-09-21 02:36:35,324 - Empezando Log
+2021-09-21 02:36:35,324 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:44,741 - Resultados:
+2021-09-21 02:36:44,741 -  -Ancho de Elevacion  = 8.935774220600209
+2021-09-21 02:36:44,741 -  -Ancho de Azimuth = 13.66049437297658
+2021-09-21 02:36:44,741 - mostrando...
+2021-09-21 02:36:44,741 - ----------Cantidad de Elementos en Parametro 2: 12 -------------
+2021-09-21 02:36:44,741 - Empezando Log
+2021-09-21 02:36:44,741 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:36:54,368 - Resultados:
+2021-09-21 02:36:54,368 -  -Ancho de Elevacion  = 8.933270976974729
+2021-09-21 02:36:54,368 -  -Ancho de Azimuth = 13.657900764890854
+2021-09-21 02:36:54,368 - mostrando...
+2021-09-21 02:36:54,368 - ----------Cantidad de Elementos en Parametro 2: 13 -------------
+2021-09-21 02:36:54,368 - Empezando Log
+2021-09-21 02:36:54,368 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:37:04,330 - Resultados:
+2021-09-21 02:37:04,330 -  -Ancho de Elevacion  = 8.931153198089373
+2021-09-21 02:37:04,331 -  -Ancho de Azimuth = 13.655706086924091
+2021-09-21 02:37:04,331 - mostrando...
+2021-09-21 02:37:04,331 - ----------Cantidad de Elementos en Parametro 2: 14 -------------
+2021-09-21 02:37:04,331 - Empezando Log
+2021-09-21 02:37:04,331 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:37:14,617 - Resultados:
+2021-09-21 02:37:14,617 -  -Ancho de Elevacion  = 8.929338199490044
+2021-09-21 02:37:14,617 -  -Ancho de Azimuth = 13.653824867431418
+2021-09-21 02:37:14,617 - mostrando...
+2021-09-21 02:37:14,617 - ----------Cantidad de Elementos en Parametro 2: 15 -------------
+2021-09-21 02:37:14,617 - Empezando Log
+2021-09-21 02:37:14,617 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:37:25,331 - Resultados:
+2021-09-21 02:37:25,331 -  -Ancho de Elevacion  = 8.927765383323372
+2021-09-21 02:37:25,331 -  -Ancho de Azimuth = 13.652194428205128
+2021-09-21 02:37:25,331 - mostrando...
+2021-09-21 02:37:25,331 - ----------Cantidad de Elementos en Parametro 2: 16 -------------
+2021-09-21 02:37:25,331 - Empezando Log
+2021-09-21 02:37:25,331 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:37:36,266 - Resultados:
+2021-09-21 02:37:36,266 -  -Ancho de Elevacion  = 8.926389307696901
+2021-09-21 02:37:36,266 -  -Ancho de Azimuth = 13.650767756519855
+2021-09-21 02:37:36,266 - mostrando...
+2021-09-21 02:37:36,266 - ----------Cantidad de Elementos en Parametro 2: 17 -------------
+2021-09-21 02:37:36,266 - Empezando Log
+2021-09-21 02:37:36,266 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:37:47,360 - Resultados:
+2021-09-21 02:37:47,360 -  -Ancho de Elevacion  = 8.925175230280018
+2021-09-21 02:37:47,360 -  -Ancho de Azimuth = 13.649508899565511
+2021-09-21 02:37:47,360 - mostrando...
+2021-09-21 02:37:47,360 - ----------Cantidad de Elementos en Parametro 2: 18 -------------
+2021-09-21 02:37:47,360 - Empezando Log
+2021-09-21 02:37:47,360 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:37:58,850 - Resultados:
+2021-09-21 02:37:58,850 -  -Ancho de Elevacion  = 8.924096134255795
+2021-09-21 02:37:58,850 -  -Ancho de Azimuth = 13.648389892760733
+2021-09-21 02:37:58,850 - mostrando...
+2021-09-21 02:37:58,850 - ----------Cantidad de Elementos en Parametro 2: 19 -------------
+2021-09-21 02:37:58,850 - Empezando Log
+2021-09-21 02:37:58,850 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:38:10,624 - Resultados:
+2021-09-21 02:38:10,624 -  -Ancho de Elevacion  = 8.923130694024046
+2021-09-21 02:38:10,624 -  -Ancho de Azimuth = 13.647388657903427
+2021-09-21 02:38:10,624 - mostrando...
+2021-09-21 02:38:10,624 - ----------Cantidad de Elementos en Parametro 2: 20 -------------
+2021-09-21 02:38:10,624 - Empezando Log
+2021-09-21 02:38:10,624 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:38:22,853 - Resultados:
+2021-09-21 02:38:22,854 -  -Ancho de Elevacion  = 8.922261851562581
+2021-09-21 02:38:22,854 -  -Ancho de Azimuth = 13.646487531788786
+2021-09-21 02:38:22,854 - mostrando...
+2021-09-21 02:38:22,854 - ----------Cantidad de Elementos en Parametro 2: 21 -------------
+2021-09-21 02:38:22,854 - Empezando Log
+2021-09-21 02:38:22,854 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:38:35,086 - Resultados:
+2021-09-21 02:38:35,086 -  -Ancho de Elevacion  = 8.921475799772114
+2021-09-21 02:38:35,086 -  -Ancho de Azimuth = 13.64567221516473
+2021-09-21 02:38:35,086 - mostrando...
+2021-09-21 02:38:35,087 - ----------Cantidad de Elementos en Parametro 2: 22 -------------
+2021-09-21 02:38:35,087 - Empezando Log
+2021-09-21 02:38:35,087 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:38:47,598 - Resultados:
+2021-09-21 02:38:47,599 -  -Ancho de Elevacion  = 8.92076124323983
+2021-09-21 02:38:47,599 -  -Ancho de Azimuth = 13.644931008298151
+2021-09-21 02:38:47,599 - mostrando...
+2021-09-21 02:38:47,599 - ----------Cantidad de Elementos en Parametro 2: 23 -------------
+2021-09-21 02:38:47,599 - Empezando Log
+2021-09-21 02:38:47,599 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:39:00,187 - Resultados:
+2021-09-21 02:39:00,187 -  -Ancho de Elevacion  = 8.92010885194587
+2021-09-21 02:39:00,188 -  -Ancho de Azimuth = 13.644254245933453
+2021-09-21 02:39:00,188 - mostrando...
+2021-09-21 02:39:00,188 - ----------Cantidad de Elementos en Parametro 2: 24 -------------
+2021-09-21 02:39:00,188 - Empezando Log
+2021-09-21 02:39:00,188 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:39:13,208 - Resultados:
+2021-09-21 02:39:13,208 -  -Ancho de Elevacion  = 8.91951085160963
+2021-09-21 02:39:13,208 -  -Ancho de Azimuth = 13.64363387349465
+2021-09-21 02:39:13,208 - mostrando...
+2021-09-21 02:39:13,208 - ----------Cantidad de Elementos en Parametro 2: 25 -------------
+2021-09-21 02:39:13,208 - Empezando Log
+2021-09-21 02:39:13,208 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:39:26,460 - Resultados:
+2021-09-21 02:39:26,460 -  -Ancho de Elevacion  = 8.918960712399087
+2021-09-21 02:39:26,460 -  -Ancho de Azimuth = 13.643063124986845
+2021-09-21 02:39:26,460 - mostrando...
+2021-09-21 02:39:26,460 - ----------Cantidad de Elementos en Parametro 2: 26 -------------
+2021-09-21 02:39:26,460 - Empezando Log
+2021-09-21 02:39:26,460 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:39:40,190 - Resultados:
+2021-09-21 02:39:40,191 -  -Ancho de Elevacion  = 8.918452909508176
+2021-09-21 02:39:40,191 -  -Ancho de Azimuth = 13.642536275220046
+2021-09-21 02:39:40,191 - mostrando...
+2021-09-21 02:39:40,191 - ----------Cantidad de Elementos en Parametro 2: 27 -------------
+2021-09-21 02:39:40,191 - Empezando Log
+2021-09-21 02:39:40,191 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:39:54,763 - Resultados:
+2021-09-21 02:39:54,763 -  -Ancho de Elevacion  = 8.91798273696239
+2021-09-21 02:39:54,763 -  -Ancho de Azimuth = 13.642048447088477
+2021-09-21 02:39:54,763 - mostrando...
+2021-09-21 02:39:54,763 - ----------Cantidad de Elementos en Parametro 2: 28 -------------
+2021-09-21 02:39:54,763 - Empezando Log
+2021-09-21 02:39:54,763 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:40:10,109 - Resultados:
+2021-09-21 02:40:10,109 -  -Ancho de Elevacion  = 8.917546161339235
+2021-09-21 02:40:10,109 -  -Ancho de Azimuth = 13.64159546014271
+2021-09-21 02:40:10,109 - mostrando...
+2021-09-21 02:40:10,109 - ----------Cantidad de Elementos en Parametro 2: 29 -------------
+2021-09-21 02:40:10,109 - Empezando Log
+2021-09-21 02:40:10,109 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:40:24,550 - Resultados:
+2021-09-21 02:40:24,550 -  -Ancho de Elevacion  = 8.91713970576565
+2021-09-21 02:40:24,550 -  -Ancho de Azimuth = 13.641173710488559
+2021-09-21 02:40:24,550 - mostrando...
+2021-09-21 02:40:24,550 - ----------Cantidad de Elementos en Parametro 2: 30 -------------
+2021-09-21 02:40:24,550 - Empezando Log
+2021-09-21 02:40:24,550 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:40:40,188 - Resultados:
+2021-09-21 02:40:40,189 -  -Ancho de Elevacion  = 8.916760357124755
+2021-09-21 02:40:40,189 -  -Ancho de Azimuth = 13.64078007470404
+2021-09-21 02:40:40,189 - mostrando...
+2021-09-21 02:40:40,189 - ----------Cantidad de Elementos en Parametro 2: 31 -------------
+2021-09-21 02:40:40,189 - Empezando Log
+2021-09-21 02:40:40,189 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:40:55,821 - Resultados:
+2021-09-21 02:40:55,821 -  -Ancho de Elevacion  = 8.916405491229131
+2021-09-21 02:40:55,822 -  -Ancho de Azimuth = 13.640411832351099
+2021-09-21 02:40:55,822 - mostrando...
+2021-09-21 02:40:55,822 - ----------Cantidad de Elementos en Parametro 2: 32 -------------
+2021-09-21 02:40:55,822 - Empezando Log
+2021-09-21 02:40:55,822 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:41:08,762 - Resultados:
+2021-09-21 02:41:08,762 -  -Ancho de Elevacion  = 11.20108018455268
+2021-09-21 02:41:08,763 -  -Ancho de Azimuth = 18.722972069893885
+2021-09-21 02:41:08,763 - mostrando...
+2021-09-21 02:41:08,763 - ----------Cantidad de Elementos en Parametro 2: 23 -------------
+2021-09-21 02:41:08,763 - Empezando Log
+2021-09-21 02:41:08,763 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:41:11,398 - Resultados:
+2021-09-21 02:41:11,398 -  -Ancho de Elevacion  = 8.916072812029142
+2021-09-21 02:41:11,399 -  -Ancho de Azimuth = 13.640066603015121
+2021-09-21 02:41:11,399 - mostrando...
+2021-09-21 02:41:11,399 - ----------Cantidad de Elementos en Parametro 2: 33 -------------
+2021-09-21 02:41:11,399 - Empezando Log
+2021-09-21 02:41:11,399 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:41:26,695 - Resultados:
+2021-09-21 02:41:26,695 -  -Ancho de Elevacion  = 8.915760301878244
+2021-09-21 02:41:26,695 -  -Ancho de Azimuth = 13.6397422947909
+2021-09-21 02:41:26,695 - mostrando...
+2021-09-21 02:41:26,695 - ----------Cantidad de Elementos en Parametro 2: 34 -------------
+2021-09-21 02:41:26,695 - Empezando Log
+2021-09-21 02:41:26,695 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:41:38,720 - Resultados:
+2021-09-21 02:41:38,721 -  -Ancho de Elevacion  = 11.199697419550578
+2021-09-21 02:41:38,721 -  -Ancho de Azimuth = 18.720863286860826
+2021-09-21 02:41:38,721 - mostrando...
+2021-09-21 02:41:38,721 - ----------Cantidad de Elementos en Parametro 2: 24 -------------
+2021-09-21 02:41:38,721 - Empezando Log
+2021-09-21 02:41:38,721 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:41:41,196 - Resultados:
+2021-09-21 02:41:41,196 -  -Ancho de Elevacion  = 8.91546618057772
+2021-09-21 02:41:41,196 -  -Ancho de Azimuth = 13.639437061858409
+2021-09-21 02:41:41,196 - mostrando...
+2021-09-21 02:41:41,196 - ----------Cantidad de Elementos en Parametro 2: 35 -------------
+2021-09-21 02:41:41,196 - Empezando Log
+2021-09-21 02:41:41,196 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:41:55,856 - Resultados:
+2021-09-21 02:41:55,856 -  -Ancho de Elevacion  = 8.915188871444826
+2021-09-21 02:41:55,856 -  -Ancho de Azimuth = 13.63914926933073
+2021-09-21 02:41:55,856 - mostrando...
+2021-09-21 02:41:55,856 - ----------Cantidad de Elementos en Parametro 2: 36 -------------
+2021-09-21 02:41:55,856 - Empezando Log
+2021-09-21 02:41:55,856 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:42:08,829 - Resultados:
+2021-09-21 02:42:08,829 -  -Ancho de Elevacion  = 11.198430064785114
+2021-09-21 02:42:08,829 -  -Ancho de Azimuth = 18.71893017798272
+2021-09-21 02:42:08,829 - mostrando...
+2021-09-21 02:42:08,829 - ----------Cantidad de Elementos en Parametro 2: 25 -------------
+2021-09-21 02:42:08,830 - Empezando Log
+2021-09-21 02:42:08,830 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:42:10,225 - Resultados:
+2021-09-21 02:42:10,225 -  -Ancho de Elevacion  = 8.914926973037577
+2021-09-21 02:42:10,225 -  -Ancho de Azimuth = 13.638877463960114
+2021-09-21 02:42:10,225 - mostrando...
+2021-09-21 02:42:10,225 - ----------Cantidad de Elementos en Parametro 2: 37 -------------
+2021-09-21 02:42:10,225 - Empezando Log
+2021-09-21 02:42:10,225 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:42:29,678 - Resultados:
+2021-09-21 02:42:29,678 -  -Ancho de Elevacion  = 8.91467923546685
+2021-09-21 02:42:29,678 -  -Ancho de Azimuth = 13.638620349594241
+2021-09-21 02:42:29,678 - mostrando...
+2021-09-21 02:42:29,678 - ----------Cantidad de Elementos en Parametro 2: 38 -------------
+2021-09-21 02:42:29,678 - Empezando Log
+2021-09-21 02:42:29,678 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:42:43,959 - Resultados:
+2021-09-21 02:42:43,961 -  -Ancho de Elevacion  = 8.914444540448951
+2021-09-21 02:42:43,961 -  -Ancho de Azimuth = 13.638376766507164
+2021-09-21 02:42:43,961 - mostrando...
+2021-09-21 02:42:43,961 - ----------Cantidad de Elementos en Parametro 2: 39 -------------
+2021-09-21 02:42:43,961 - Empezando Log
+2021-09-21 02:42:43,961 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:42:57,113 - Resultados:
+2021-09-21 02:42:57,113 -  -Ancho de Elevacion  = 8.914221884428578
+2021-09-21 02:42:57,113 -  -Ancho de Azimuth = 13.638145673910344
+2021-09-21 02:42:57,113 - mostrando...
+2021-09-21 02:42:57,113 - ----------Cantidad de Elementos en Parametro 2: 40 -------------
+2021-09-21 02:42:57,113 - Empezando Log
+2021-09-21 02:42:57,113 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:43:11,662 - Resultados:
+2021-09-21 02:43:11,662 -  -Ancho de Elevacion  = 8.914010364233572
+2021-09-21 02:43:11,662 -  -Ancho de Azimuth = 13.63792613508626
+2021-09-21 02:43:11,662 - mostrando...
+2021-09-21 02:43:11,662 - ----------Cantidad de Elementos en Parametro 2: 41 -------------
+2021-09-21 02:43:11,662 - Empezando Log
+2021-09-21 02:43:11,662 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:43:24,073 - Resultados:
+2021-09-21 02:43:24,073 -  -Ancho de Elevacion  = 8.913809164830006
+2021-09-21 02:43:24,073 -  -Ancho de Azimuth = 13.637717304698022
+2021-09-21 02:43:24,073 - mostrando...
+2021-09-21 02:43:24,073 - ----------Cantidad de Elementos en Parametro 2: 42 -------------
+2021-09-21 02:43:24,073 - Empezando Log
+2021-09-21 02:43:24,073 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:43:38,482 - Resultados:
+2021-09-21 02:43:38,482 -  -Ancho de Elevacion  = 8.913617548826377
+2021-09-21 02:43:38,482 -  -Ancho de Azimuth = 13.637518417911167
+2021-09-21 02:43:38,482 - mostrando...
+2021-09-21 02:43:38,482 - ----------Cantidad de Elementos en Parametro 2: 43 -------------
+2021-09-21 02:43:38,482 - Empezando Log
+2021-09-21 02:43:38,482 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:43:51,603 - Resultados:
+2021-09-21 02:43:51,603 -  -Ancho de Elevacion  = 8.913434847443497
+2021-09-21 02:43:51,603 -  -Ancho de Azimuth = 13.637328781033936
+2021-09-21 02:43:51,603 - mostrando...
+2021-09-21 02:43:51,603 - ----------Cantidad de Elementos en Parametro 2: 44 -------------
+2021-09-21 02:43:51,603 - Empezando Log
+2021-09-21 02:43:51,603 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:44:05,451 - Resultados:
+2021-09-21 02:44:05,451 -  -Ancho de Elevacion  = 8.913260452715456
+2021-09-21 02:44:05,451 -  -Ancho de Azimuth = 13.637147763433141
+2021-09-21 02:44:05,451 - mostrando...
+2021-09-21 02:44:05,451 - ----------Cantidad de Elementos en Parametro 2: 45 -------------
+2021-09-21 02:44:05,451 - Empezando Log
+2021-09-21 02:44:05,452 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:44:18,806 - Resultados:
+2021-09-21 02:44:18,806 -  -Ancho de Elevacion  = 8.913093810730803
+2021-09-21 02:44:18,807 -  -Ancho de Azimuth = 13.636974790528122
+2021-09-21 02:44:18,807 - mostrando...
+2021-09-21 02:44:18,807 - ----------Cantidad de Elementos en Parametro 2: 46 -------------
+2021-09-21 02:44:18,807 - Empezando Log
+2021-09-21 02:44:18,807 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:44:33,062 - Resultados:
+2021-09-21 02:44:33,062 -  -Ancho de Elevacion  = 8.912934415756062
+2021-09-21 02:44:33,062 -  -Ancho de Azimuth = 13.63680933769868
+2021-09-21 02:44:33,062 - mostrando...
+2021-09-21 02:44:33,062 - ----------Cantidad de Elementos en Parametro 2: 47 -------------
+2021-09-21 02:44:33,062 - Empezando Log
+2021-09-21 02:44:33,062 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:44:47,028 - Resultados:
+2021-09-21 02:44:47,028 -  -Ancho de Elevacion  = 8.912781805108835
+2021-09-21 02:44:47,028 -  -Ancho de Azimuth = 13.636650924970183
+2021-09-21 02:44:47,028 - mostrando...
+2021-09-21 02:44:47,028 - ----------Cantidad de Elementos en Parametro 2: 48 -------------
+2021-09-21 02:44:47,028 - Empezando Log
+2021-09-21 02:44:47,028 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:45:01,323 - Resultados:
+2021-09-21 02:45:01,323 -  -Ancho de Elevacion  = 8.912635554672363
+2021-09-21 02:45:01,323 -  -Ancho de Azimuth = 13.636499112363595
+2021-09-21 02:45:01,323 - mostrando...
+2021-09-21 02:45:01,323 - ----------Cantidad de Elementos en Parametro 2: 49 -------------
+2021-09-21 02:45:01,323 - Empezando Log
+2021-09-21 02:45:01,323 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:45:15,683 - Resultados:
+2021-09-21 02:45:15,684 -  -Ancho de Elevacion  = 8.912495274959383
+2021-09-21 02:45:15,684 -  -Ancho de Azimuth = 13.63635349581417
+2021-09-21 02:45:15,684 - mostrando...
+2021-09-21 02:45:15,684 - ----------Cantidad de Elementos en Parametro 2: 50 -------------
+2021-09-21 02:45:15,684 - Empezando Log
+2021-09-21 02:45:15,684 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:45:30,149 - Resultados:
+2021-09-21 02:45:30,149 -  -Ancho de Elevacion  = 8.912360607648562
+2021-09-21 02:45:30,149 -  -Ancho de Azimuth = 13.636213703580594
+2021-09-21 02:45:30,149 - mostrando...
+2021-09-21 02:45:30,149 - -------------------------------------------
+2021-09-21 02:45:30,149 - Cantidad de Elementos en Parametro 1: 14
+2021-09-21 02:45:30,149 - ----------Cantidad de Elementos en Parametro 2: 10 -------------
+2021-09-21 02:45:30,149 - Empezando Log
+2021-09-21 02:45:30,149 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:45:40,409 - Resultados:
+2021-09-21 02:45:40,409 -  -Ancho de Elevacion  = 8.255055007620818
+2021-09-21 02:45:40,409 -  -Ancho de Azimuth = 13.356404643272015
+2021-09-21 02:45:40,409 - mostrando...
+2021-09-21 02:45:40,409 - ----------Cantidad de Elementos en Parametro 2: 11 -------------
+2021-09-21 02:45:40,409 - Empezando Log
+2021-09-21 02:45:40,409 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:45:51,033 - Resultados:
+2021-09-21 02:45:51,033 -  -Ancho de Elevacion  = 8.25152843157137
+2021-09-21 02:45:51,033 -  -Ancho de Azimuth = 13.35384451782138
+2021-09-21 02:45:51,033 - mostrando...
+2021-09-21 02:45:51,033 - ----------Cantidad de Elementos en Parametro 2: 12 -------------
+2021-09-21 02:45:51,033 - Empezando Log
+2021-09-21 02:45:51,033 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:46:00,548 - Resultados:
+2021-09-21 02:46:00,548 -  -Ancho de Elevacion  = 11.197264250177557
+2021-09-21 02:46:00,549 -  -Ancho de Azimuth = 18.71715166898236
+2021-09-21 02:46:00,549 - mostrando...
+2021-09-21 02:46:00,549 - ----------Cantidad de Elementos en Parametro 2: 26 -------------
+2021-09-21 02:46:00,549 - Empezando Log
+2021-09-21 02:46:00,549 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:46:01,640 - Resultados:
+2021-09-21 02:46:01,640 -  -Ancho de Elevacion  = 8.248590401573452
+2021-09-21 02:46:01,640 -  -Ancho de Azimuth = 13.351710872102004
+2021-09-21 02:46:01,640 - mostrando...
+2021-09-21 02:46:01,641 - ----------Cantidad de Elementos en Parametro 2: 13 -------------
+2021-09-21 02:46:01,641 - Empezando Log
+2021-09-21 02:46:01,641 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:46:12,994 - Resultados:
+2021-09-21 02:46:12,995 -  -Ancho de Elevacion  = 8.246105035384439
+2021-09-21 02:46:12,995 -  -Ancho de Azimuth = 13.349905400727494
+2021-09-21 02:46:12,995 - mostrando...
+2021-09-21 02:46:12,995 - ----------Cantidad de Elementos en Parametro 2: 14 -------------
+2021-09-21 02:46:12,995 - Empezando Log
+2021-09-21 02:46:12,995 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:46:24,693 - Resultados:
+2021-09-21 02:46:24,693 -  -Ancho de Elevacion  = 8.24397518576323
+2021-09-21 02:46:24,693 -  -Ancho de Azimuth = 13.348357797205345
+2021-09-21 02:46:24,693 - mostrando...
+2021-09-21 02:46:24,693 - ----------Cantidad de Elementos en Parametro 2: 15 -------------
+2021-09-21 02:46:24,693 - Empezando Log
+2021-09-21 02:46:24,693 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:46:37,809 - Resultados:
+2021-09-21 02:46:37,809 -  -Ancho de Elevacion  = 8.24212966675745
+2021-09-21 02:46:37,809 -  -Ancho de Azimuth = 13.347016498189227
+2021-09-21 02:46:37,809 - mostrando...
+2021-09-21 02:46:37,809 - ----------Cantidad de Elementos en Parametro 2: 16 -------------
+2021-09-21 02:46:37,809 - Empezando Log
+2021-09-21 02:46:37,809 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:46:50,985 - Resultados:
+2021-09-21 02:46:50,985 -  -Ancho de Elevacion  = 8.240515104388205
+2021-09-21 02:46:50,985 -  -Ancho de Azimuth = 13.345842829040151
+2021-09-21 02:46:50,985 - mostrando...
+2021-09-21 02:46:50,985 - ----------Cantidad de Elementos en Parametro 2: 17 -------------
+2021-09-21 02:46:50,985 - Empezando Log
+2021-09-21 02:46:50,985 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:47:03,534 - Resultados:
+2021-09-21 02:47:03,535 -  -Ancho de Elevacion  = 8.23909069704256
+2021-09-21 02:47:03,535 -  -Ancho de Azimuth = 13.34480721338953
+2021-09-21 02:47:03,535 - mostrando...
+2021-09-21 02:47:03,535 - ----------Cantidad de Elementos en Parametro 2: 18 -------------
+2021-09-21 02:47:03,535 - Empezando Log
+2021-09-21 02:47:03,535 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:47:16,509 - Resultados:
+2021-09-21 02:47:16,510 -  -Ancho de Elevacion  = 8.237824719539162
+2021-09-21 02:47:16,510 -  -Ancho de Azimuth = 13.343886646273198
+2021-09-21 02:47:16,510 - mostrando...
+2021-09-21 02:47:16,510 - ----------Cantidad de Elementos en Parametro 2: 19 -------------
+2021-09-21 02:47:16,510 - Empezando Log
+2021-09-21 02:47:16,510 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:47:29,409 - Resultados:
+2021-09-21 02:47:29,409 -  -Ancho de Elevacion  = 8.236692132231376
+2021-09-21 02:47:29,409 -  -Ancho de Azimuth = 13.343062965092457
+2021-09-21 02:47:29,409 - mostrando...
+2021-09-21 02:47:29,409 - ----------Cantidad de Elementos en Parametro 2: 20 -------------
+2021-09-21 02:47:29,409 - Empezando Log
+2021-09-21 02:47:29,409 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:47:42,948 - Resultados:
+2021-09-21 02:47:42,948 -  -Ancho de Elevacion  = 8.235672908061673
+2021-09-21 02:47:42,948 -  -Ancho de Azimuth = 13.342321639208485
+2021-09-21 02:47:42,948 - mostrando...
+2021-09-21 02:47:42,948 - ----------Cantidad de Elementos en Parametro 2: 21 -------------
+2021-09-21 02:47:42,948 - Empezando Log
+2021-09-21 02:47:42,948 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:47:56,660 - Resultados:
+2021-09-21 02:47:56,660 -  -Ancho de Elevacion  = 8.234750838026404
+2021-09-21 02:47:56,660 -  -Ancho de Azimuth = 13.341650905316314
+2021-09-21 02:47:56,661 - mostrando...
+2021-09-21 02:47:56,661 - ----------Cantidad de Elementos en Parametro 2: 22 -------------
+2021-09-21 02:47:56,661 - Empezando Log
+2021-09-21 02:47:56,661 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:48:10,844 - Resultados:
+2021-09-21 02:48:10,844 -  -Ancho de Elevacion  = 8.233912662700671
+2021-09-21 02:48:10,844 -  -Ancho de Azimuth = 13.341041138593319
+2021-09-21 02:48:10,844 - mostrando...
+2021-09-21 02:48:10,844 - ----------Cantidad de Elementos en Parametro 2: 23 -------------
+2021-09-21 02:48:10,844 - Empezando Log
+2021-09-21 02:48:10,844 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:48:25,247 - Resultados:
+2021-09-21 02:48:25,247 -  -Ancho de Elevacion  = 8.233147430506435
+2021-09-21 02:48:25,247 -  -Ancho de Azimuth = 13.34048438787405
+2021-09-21 02:48:25,247 - mostrando...
+2021-09-21 02:48:25,247 - ----------Cantidad de Elementos en Parametro 2: 24 -------------
+2021-09-21 02:48:25,247 - Empezando Log
+2021-09-21 02:48:25,247 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:48:39,853 - Resultados:
+2021-09-21 02:48:39,853 -  -Ancho de Elevacion  = 8.232446016538066
+2021-09-21 02:48:39,853 -  -Ancho de Azimuth = 13.339974027016233
+2021-09-21 02:48:39,853 - mostrando...
+2021-09-21 02:48:39,853 - ----------Cantidad de Elementos en Parametro 2: 25 -------------
+2021-09-21 02:48:39,853 - Empezando Log
+2021-09-21 02:48:39,853 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:48:55,040 - Resultados:
+2021-09-21 02:48:55,040 -  -Ancho de Elevacion  = 8.231800756956375
+2021-09-21 02:48:55,040 -  -Ancho de Azimuth = 13.339504489929084
+2021-09-21 02:48:55,040 - mostrando...
+2021-09-21 02:48:55,040 - ----------Cantidad de Elementos en Parametro 2: 26 -------------
+2021-09-21 02:48:55,040 - Empezando Log
+2021-09-21 02:48:55,040 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:49:10,353 - Resultados:
+2021-09-21 02:49:10,354 -  -Ancho de Elevacion  = 8.231205167813414
+2021-09-21 02:49:10,354 -  -Ancho de Azimuth = 13.33907106674124
+2021-09-21 02:49:10,354 - mostrando...
+2021-09-21 02:49:10,354 - ----------Cantidad de Elementos en Parametro 2: 27 -------------
+2021-09-21 02:49:10,354 - Empezando Log
+2021-09-21 02:49:10,354 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:49:26,191 - Resultados:
+2021-09-21 02:49:26,191 -  -Ancho de Elevacion  = 8.230653726404235
+2021-09-21 02:49:26,191 -  -Ancho de Azimuth = 13.338669745260063
+2021-09-21 02:49:26,191 - mostrando...
+2021-09-21 02:49:26,191 - ----------Cantidad de Elementos en Parametro 2: 28 -------------
+2021-09-21 02:49:26,191 - Empezando Log
+2021-09-21 02:49:26,191 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:49:42,657 - Resultados:
+2021-09-21 02:49:42,657 -  -Ancho de Elevacion  = 8.230141699502312
+2021-09-21 02:49:42,657 -  -Ancho de Azimuth = 13.338297086399493
+2021-09-21 02:49:42,658 - mostrando...
+2021-09-21 02:49:42,658 - ----------Cantidad de Elementos en Parametro 2: 29 -------------
+2021-09-21 02:49:42,658 - Empezando Log
+2021-09-21 02:49:42,658 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:49:59,812 - Resultados:
+2021-09-21 02:49:59,812 -  -Ancho de Elevacion  = 8.229665007155852
+2021-09-21 02:49:59,812 -  -Ancho de Azimuth = 13.337950125379585
+2021-09-21 02:49:59,812 - mostrando...
+2021-09-21 02:49:59,812 - ----------Cantidad de Elementos en Parametro 2: 30 -------------
+2021-09-21 02:49:59,812 - Empezando Log
+2021-09-21 02:49:59,812 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:50:18,009 - Resultados:
+2021-09-21 02:50:18,009 -  -Ancho de Elevacion  = 8.229220113741398
+2021-09-21 02:50:18,009 -  -Ancho de Azimuth = 13.337626292683304
+2021-09-21 02:50:18,009 - mostrando...
+2021-09-21 02:50:18,009 - ----------Cantidad de Elementos en Parametro 2: 31 -------------
+2021-09-21 02:50:18,009 - Empezando Log
+2021-09-21 02:50:18,009 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:50:36,508 - Resultados:
+2021-09-21 02:50:36,509 -  -Ancho de Elevacion  = 8.228803940116524
+2021-09-21 02:50:36,509 -  -Ancho de Azimuth = 13.337323350311003
+2021-09-21 02:50:36,509 - mostrando...
+2021-09-21 02:50:36,509 - ----------Cantidad de Elementos en Parametro 2: 32 -------------
+2021-09-21 02:50:36,509 - Empezando Log
+2021-09-21 02:50:36,509 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:50:54,954 - Resultados:
+2021-09-21 02:50:54,954 -  -Ancho de Elevacion  = 8.228413792253335
+2021-09-21 02:50:54,954 -  -Ancho de Azimuth = 13.337039339985694
+2021-09-21 02:50:54,954 - mostrando...
+2021-09-21 02:50:54,954 - ----------Cantidad de Elementos en Parametro 2: 33 -------------
+2021-09-21 02:50:54,954 - Empezando Log
+2021-09-21 02:50:54,954 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:51:12,944 - Resultados:
+2021-09-21 02:51:12,944 -  -Ancho de Elevacion  = 8.228047302855341
+2021-09-21 02:51:12,944 -  -Ancho de Azimuth = 13.33677254077503
+2021-09-21 02:51:12,944 - mostrando...
+2021-09-21 02:51:12,944 - ----------Cantidad de Elementos en Parametro 2: 34 -------------
+2021-09-21 02:51:12,944 - Empezando Log
+2021-09-21 02:51:12,944 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:51:30,707 - Resultados:
+2021-09-21 02:51:30,707 -  -Ancho de Elevacion  = 8.227702383282388
+2021-09-21 02:51:30,707 -  -Ancho de Azimuth = 13.336521434190708
+2021-09-21 02:51:30,707 - mostrando...
+2021-09-21 02:51:30,707 - ----------Cantidad de Elementos en Parametro 2: 35 -------------
+2021-09-21 02:51:30,707 - Empezando Log
+2021-09-21 02:51:30,707 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:51:48,768 - Resultados:
+2021-09-21 02:51:48,769 -  -Ancho de Elevacion  = 8.227377183721675
+2021-09-21 02:51:48,769 -  -Ancho de Azimuth = 13.336284675270441
+2021-09-21 02:51:48,769 - mostrando...
+2021-09-21 02:51:48,769 - ----------Cantidad de Elementos en Parametro 2: 36 -------------
+2021-09-21 02:51:48,769 - Empezando Log
+2021-09-21 02:51:48,769 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:52:06,603 - Resultados:
+2021-09-21 02:52:06,603 -  -Ancho de Elevacion  = 8.227070060000308
+2021-09-21 02:52:06,603 -  -Ancho de Azimuth = 13.336061068479317
+2021-09-21 02:52:06,603 - mostrando...
+2021-09-21 02:52:06,603 - ----------Cantidad de Elementos en Parametro 2: 37 -------------
+2021-09-21 02:52:06,603 - Empezando Log
+2021-09-21 02:52:06,603 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:52:23,979 - Resultados:
+2021-09-21 02:52:23,979 -  -Ancho de Elevacion  = 8.2267795457823
+2021-09-21 02:52:23,979 -  -Ancho de Azimuth = 13.33584954751862
+2021-09-21 02:52:23,979 - mostrando...
+2021-09-21 02:52:23,979 - ----------Cantidad de Elementos en Parametro 2: 38 -------------
+2021-09-21 02:52:23,979 - Empezando Log
+2021-09-21 02:52:23,979 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:52:41,683 - Resultados:
+2021-09-21 02:52:41,683 -  -Ancho de Elevacion  = 8.226504329157436
+2021-09-21 02:52:41,683 -  -Ancho de Azimuth = 13.33564915832224
+2021-09-21 02:52:41,683 - mostrando...
+2021-09-21 02:52:41,683 - ----------Cantidad de Elementos en Parametro 2: 39 -------------
+2021-09-21 02:52:41,684 - Empezando Log
+2021-09-21 02:52:41,684 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:52:58,087 - Resultados:
+2021-09-21 02:52:58,087 -  -Ancho de Elevacion  = 8.226243232834019
+2021-09-21 02:52:58,087 -  -Ancho de Azimuth = 13.3354590446693
+2021-09-21 02:52:58,087 - mostrando...
+2021-09-21 02:52:58,088 - ----------Cantidad de Elementos en Parametro 2: 40 -------------
+2021-09-21 02:52:58,088 - Empezando Log
+2021-09-21 02:52:58,088 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:53:15,462 - Resultados:
+2021-09-21 02:53:15,462 -  -Ancho de Elevacion  = 8.225995197303511
+2021-09-21 02:53:15,462 -  -Ancho de Azimuth = 13.33527843595428
+2021-09-21 02:53:15,463 - mostrando...
+2021-09-21 02:53:15,463 - ----------Cantidad de Elementos en Parametro 2: 41 -------------
+2021-09-21 02:53:15,463 - Empezando Log
+2021-09-21 02:53:15,463 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:53:31,268 - Resultados:
+2021-09-21 02:53:31,268 -  -Ancho de Elevacion  = 8.225759266470572
+2021-09-21 02:53:31,268 -  -Ancho de Azimuth = 13.335106636746957
+2021-09-21 02:53:31,268 - mostrando...
+2021-09-21 02:53:31,268 - ----------Cantidad de Elementos en Parametro 2: 42 -------------
+2021-09-21 02:53:31,268 - Empezando Log
+2021-09-21 02:53:31,268 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:53:48,445 - Resultados:
+2021-09-21 02:53:48,445 -  -Ancho de Elevacion  = 8.225534575336237
+2021-09-21 02:53:48,445 -  -Ancho de Azimuth = 13.334943017843692
+2021-09-21 02:53:48,445 - mostrando...
+2021-09-21 02:53:48,445 - ----------Cantidad de Elementos en Parametro 2: 43 -------------
+2021-09-21 02:53:48,445 - Empezando Log
+2021-09-21 02:53:48,445 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:54:04,267 - Resultados:
+2021-09-21 02:54:04,267 -  -Ancho de Elevacion  = 8.22532033940102
+2021-09-21 02:54:04,267 -  -Ancho de Azimuth = 13.334787008567062
+2021-09-21 02:54:04,267 - mostrando...
+2021-09-21 02:54:04,267 - ----------Cantidad de Elementos en Parametro 2: 44 -------------
+2021-09-21 02:54:04,267 - Empezando Log
+2021-09-21 02:54:04,267 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:54:21,043 - Resultados:
+2021-09-21 02:54:21,043 -  -Ancho de Elevacion  = 8.22511584551344
+2021-09-21 02:54:21,043 -  -Ancho de Azimuth = 13.334638090115853
+2021-09-21 02:54:21,043 - mostrando...
+2021-09-21 02:54:21,043 - ----------Cantidad de Elementos en Parametro 2: 45 -------------
+2021-09-21 02:54:21,043 - Empezando Log
+2021-09-21 02:54:21,043 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:54:37,036 - Resultados:
+2021-09-21 02:54:37,036 -  -Ancho de Elevacion  = 8.224920443938977
+2021-09-21 02:54:37,036 -  -Ancho de Azimuth = 13.334495789801231
+2021-09-21 02:54:37,036 - mostrando...
+2021-09-21 02:54:37,036 - ----------Cantidad de Elementos en Parametro 2: 46 -------------
+2021-09-21 02:54:37,036 - Empezando Log
+2021-09-21 02:54:37,036 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:54:54,213 - Resultados:
+2021-09-21 02:54:54,213 -  -Ancho de Elevacion  = 8.224733541464417
+2021-09-21 02:54:54,213 -  -Ancho de Azimuth = 13.334359676034957
+2021-09-21 02:54:54,213 - mostrando...
+2021-09-21 02:54:54,213 - ----------Cantidad de Elementos en Parametro 2: 47 -------------
+2021-09-21 02:54:54,213 - Empezando Log
+2021-09-21 02:54:54,213 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:55:10,320 - Resultados:
+2021-09-21 02:55:10,321 -  -Ancho de Elevacion  = 8.22455459538249
+2021-09-21 02:55:10,321 -  -Ancho de Azimuth = 13.334229353957248
+2021-09-21 02:55:10,321 - mostrando...
+2021-09-21 02:55:10,321 - ----------Cantidad de Elementos en Parametro 2: 48 -------------
+2021-09-21 02:55:10,321 - Empezando Log
+2021-09-21 02:55:10,321 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:55:26,968 - Resultados:
+2021-09-21 02:55:26,968 -  -Ancho de Elevacion  = 8.224383108228814
+2021-09-21 02:55:26,968 -  -Ancho de Azimuth = 13.334104461611211
+2021-09-21 02:55:26,968 - mostrando...
+2021-09-21 02:55:26,968 - ----------Cantidad de Elementos en Parametro 2: 49 -------------
+2021-09-21 02:55:26,968 - Empezando Log
+2021-09-21 02:55:26,968 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:55:43,575 - Resultados:
+2021-09-21 02:55:43,575 -  -Ancho de Elevacion  = 8.22421862316357
+2021-09-21 02:55:43,575 -  -Ancho de Azimuth = 13.333984666585543
+2021-09-21 02:55:43,575 - mostrando...
+2021-09-21 02:55:43,576 - ----------Cantidad de Elementos en Parametro 2: 50 -------------
+2021-09-21 02:55:43,576 - Empezando Log
+2021-09-21 02:55:43,576 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:56:00,534 - Resultados:
+2021-09-21 02:56:00,534 -  -Ancho de Elevacion  = 8.224060719907492
+2021-09-21 02:56:00,534 -  -Ancho de Azimuth = 13.33386966306022
+2021-09-21 02:56:00,534 - mostrando...
+2021-09-21 02:56:00,534 - -------------------------------------------
+2021-09-21 02:56:00,534 - Cantidad de Elementos en Parametro 1: 15
+2021-09-21 02:56:00,534 - ----------Cantidad de Elementos en Parametro 2: 10 -------------
+2021-09-21 02:56:00,534 - Empezando Log
+2021-09-21 02:56:00,534 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:56:12,146 - Resultados:
+2021-09-21 02:56:12,146 -  -Ancho de Elevacion  = 7.677494967082563
+2021-09-21 02:56:12,146 -  -Ancho de Azimuth = 12.909910965296305
+2021-09-21 02:56:12,146 - mostrando...
+2021-09-21 02:56:12,146 - ----------Cantidad de Elementos en Parametro 2: 11 -------------
+2021-09-21 02:56:12,146 - Empezando Log
+2021-09-21 02:56:12,147 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:56:24,297 - Resultados:
+2021-09-21 02:56:24,298 -  -Ancho de Elevacion  = 7.674617671762864
+2021-09-21 02:56:24,298 -  -Ancho de Azimuth = 12.907745493525162
+2021-09-21 02:56:24,298 - mostrando...
+2021-09-21 02:56:24,298 - ----------Cantidad de Elementos en Parametro 2: 12 -------------
+2021-09-21 02:56:24,298 - Empezando Log
+2021-09-21 02:56:24,298 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:56:36,878 - Resultados:
+2021-09-21 02:56:36,878 -  -Ancho de Elevacion  = 7.672220165806909
+2021-09-21 02:56:36,878 -  -Ancho de Azimuth = 12.90594067993785
+2021-09-21 02:56:36,878 - mostrando...
+2021-09-21 02:56:36,878 - ----------Cantidad de Elementos en Parametro 2: 13 -------------
+2021-09-21 02:56:36,878 - Empezando Log
+2021-09-21 02:56:36,878 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:56:49,961 - Resultados:
+2021-09-21 02:56:49,961 -  -Ancho de Elevacion  = 7.670191796830945
+2021-09-21 02:56:49,962 -  -Ancho de Azimuth = 12.904413445555711
+2021-09-21 02:56:49,962 - mostrando...
+2021-09-21 02:56:49,962 - ----------Cantidad de Elementos en Parametro 2: 14 -------------
+2021-09-21 02:56:49,962 - Empezando Log
+2021-09-21 02:56:49,962 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:57:02,685 - Resultados:
+2021-09-21 02:57:02,685 -  -Ancho de Elevacion  = 7.66845338702176
+2021-09-21 02:57:02,685 -  -Ancho de Azimuth = 12.903104327402858
+2021-09-21 02:57:02,685 - mostrando...
+2021-09-21 02:57:02,685 - ----------Cantidad de Elementos en Parametro 2: 15 -------------
+2021-09-21 02:57:02,685 - Empezando Log
+2021-09-21 02:57:02,685 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:57:17,482 - Resultados:
+2021-09-21 02:57:17,482 -  -Ancho de Elevacion  = 7.66694691369241
+2021-09-21 02:57:17,482 -  -Ancho de Azimuth = 12.901969712933393
+2021-09-21 02:57:17,482 - mostrando...
+2021-09-21 02:57:17,482 - ----------Cantidad de Elementos en Parametro 2: 16 -------------
+2021-09-21 02:57:17,482 - Empezando Log
+2021-09-21 02:57:17,482 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:57:32,356 - Resultados:
+2021-09-21 02:57:32,357 -  -Ancho de Elevacion  = 7.6656288624114595
+2021-09-21 02:57:32,357 -  -Ancho de Azimuth = 12.900976890650547
+2021-09-21 02:57:32,357 - mostrando...
+2021-09-21 02:57:32,357 - ----------Cantidad de Elementos en Parametro 2: 17 -------------
+2021-09-21 02:57:32,357 - Empezando Log
+2021-09-21 02:57:32,357 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:57:47,112 - Resultados:
+2021-09-21 02:57:47,112 -  -Ancho de Elevacion  = 7.664465963296028
+2021-09-21 02:57:47,112 -  -Ancho de Azimuth = 12.90010084412647
+2021-09-21 02:57:47,113 - mostrando...
+2021-09-21 02:57:47,113 - ----------Cantidad de Elementos en Parametro 2: 18 -------------
+2021-09-21 02:57:47,113 - Empezando Log
+2021-09-21 02:57:47,113 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:58:01,766 - Resultados:
+2021-09-21 02:58:01,766 -  -Ancho de Elevacion  = 7.663432343786653
+2021-09-21 02:58:01,766 -  -Ancho de Azimuth = 12.899322114944383
+2021-09-21 02:58:01,766 - mostrando...
+2021-09-21 02:58:01,766 - ----------Cantidad de Elementos en Parametro 2: 19 -------------
+2021-09-21 02:58:01,766 - Empezando Log
+2021-09-21 02:58:01,766 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:58:16,605 - Resultados:
+2021-09-21 02:58:16,605 -  -Ancho de Elevacion  = 7.662507580966217
+2021-09-21 02:58:16,605 -  -Ancho de Azimuth = 12.89862534036022
+2021-09-21 02:58:16,605 - mostrando...
+2021-09-21 02:58:16,605 - ----------Cantidad de Elementos en Parametro 2: 20 -------------
+2021-09-21 02:58:16,605 - Empezando Log
+2021-09-21 02:58:16,605 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:58:31,859 - Resultados:
+2021-09-21 02:58:31,859 -  -Ancho de Elevacion  = 7.661675338482972
+2021-09-21 02:58:31,859 -  -Ancho de Azimuth = 12.897998229582235
+2021-09-21 02:58:31,859 - mostrando...
+2021-09-21 02:58:31,859 - ----------Cantidad de Elementos en Parametro 2: 21 -------------
+2021-09-21 02:58:31,859 - Empezando Log
+2021-09-21 02:58:31,859 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:58:46,956 - Resultados:
+2021-09-21 02:58:46,956 -  -Ancho de Elevacion  = 7.660922393105825
+2021-09-21 02:58:46,956 -  -Ancho de Azimuth = 12.897430832488503
+2021-09-21 02:58:46,956 - mostrando...
+2021-09-21 02:58:46,956 - ----------Cantidad de Elementos en Parametro 2: 22 -------------
+2021-09-21 02:58:46,956 - Empezando Log
+2021-09-21 02:58:46,956 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:59:02,644 - Resultados:
+2021-09-21 02:59:02,644 -  -Ancho de Elevacion  = 7.6602379268833545
+2021-09-21 02:59:02,644 -  -Ancho de Azimuth = 12.896915007750188
+2021-09-21 02:59:02,644 - mostrando...
+2021-09-21 02:59:02,644 - ----------Cantidad de Elementos en Parametro 2: 23 -------------
+2021-09-21 02:59:02,645 - Empezando Log
+2021-09-21 02:59:02,645 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:59:18,782 - Resultados:
+2021-09-21 02:59:18,783 -  -Ancho de Elevacion  = 7.659613004036046
+2021-09-21 02:59:18,783 -  -Ancho de Azimuth = 12.896444029682044
+2021-09-21 02:59:18,783 - mostrando...
+2021-09-21 02:59:18,783 - ----------Cantidad de Elementos en Parametro 2: 24 -------------
+2021-09-21 02:59:18,783 - Empezando Log
+2021-09-21 02:59:18,783 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:59:35,375 - Resultados:
+2021-09-21 02:59:35,375 -  -Ancho de Elevacion  = 7.659040178678417
+2021-09-21 02:59:35,376 -  -Ancho de Azimuth = 12.896012293364194
+2021-09-21 02:59:35,376 - mostrando...
+2021-09-21 02:59:35,376 - ----------Cantidad de Elementos en Parametro 2: 25 -------------
+2021-09-21 02:59:35,376 - Empezando Log
+2021-09-21 02:59:35,376 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 02:59:52,230 - Resultados:
+2021-09-21 02:59:52,230 -  -Ancho de Elevacion  = 7.65851319672479
+2021-09-21 02:59:52,230 -  -Ancho de Azimuth = 12.895615090524117
+2021-09-21 02:59:52,230 - mostrando...
+2021-09-21 02:59:52,230 - ----------Cantidad de Elementos en Parametro 2: 26 -------------
+2021-09-21 02:59:52,230 - Empezando Log
+2021-09-21 02:59:52,230 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:00:10,064 - Resultados:
+2021-09-21 03:00:10,064 -  -Ancho de Elevacion  = 7.658026766611719
+2021-09-21 03:00:10,064 -  -Ancho de Azimuth = 12.895248437130007
+2021-09-21 03:00:10,064 - mostrando...
+2021-09-21 03:00:10,064 - ----------Cantidad de Elementos en Parametro 2: 27 -------------
+2021-09-21 03:00:10,064 - Empezando Log
+2021-09-21 03:00:10,064 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:00:27,966 - Resultados:
+2021-09-21 03:00:27,966 -  -Ancho de Elevacion  = 7.657576380989678
+2021-09-21 03:00:27,966 -  -Ancho de Azimuth = 12.894908939291824
+2021-09-21 03:00:27,966 - mostrando...
+2021-09-21 03:00:27,966 - ----------Cantidad de Elementos en Parametro 2: 28 -------------
+2021-09-21 03:00:27,966 - Empezando Log
+2021-09-21 03:00:27,966 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:00:47,260 - Resultados:
+2021-09-21 03:00:47,261 -  -Ancho de Elevacion  = 7.657158176636255
+2021-09-21 03:00:47,261 -  -Ancho de Azimuth = 12.894593687893014
+2021-09-21 03:00:47,261 - mostrando...
+2021-09-21 03:00:47,261 - ----------Cantidad de Elementos en Parametro 2: 29 -------------
+2021-09-21 03:00:47,261 - Empezando Log
+2021-09-21 03:00:47,261 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:01:08,491 - Resultados:
+2021-09-21 03:01:08,492 -  -Ancho de Elevacion  = 7.656768823363201
+2021-09-21 03:01:08,492 -  -Ancho de Azimuth = 12.894300175020582
+2021-09-21 03:01:08,492 - mostrando...
+2021-09-21 03:01:08,492 - ----------Cantidad de Elementos en Parametro 2: 30 -------------
+2021-09-21 03:01:08,492 - Empezando Log
+2021-09-21 03:01:08,492 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:01:30,659 - Resultados:
+2021-09-21 03:01:30,659 -  -Ancho de Elevacion  = 7.656405435148798
+2021-09-21 03:01:30,659 -  -Ancho de Azimuth = 12.894026227106245
+2021-09-21 03:01:30,659 - mostrando...
+2021-09-21 03:01:30,659 - ----------Cantidad de Elementos en Parametro 2: 31 -------------
+2021-09-21 03:01:30,659 - Empezando Log
+2021-09-21 03:01:30,659 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:01:52,209 - Resultados:
+2021-09-21 03:01:52,210 -  -Ancho de Elevacion  = 7.656065498475886
+2021-09-21 03:01:52,210 -  -Ancho de Azimuth = 12.893769951006718
+2021-09-21 03:01:52,210 - mostrando...
+2021-09-21 03:01:52,210 - ----------Cantidad de Elementos en Parametro 2: 32 -------------
+2021-09-21 03:01:52,210 - Empezando Log
+2021-09-21 03:01:52,210 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:02:14,197 - Resultados:
+2021-09-21 03:02:14,197 -  -Ancho de Elevacion  = 7.6557468141106
+2021-09-21 03:02:14,197 -  -Ancho de Azimuth = 12.893529690192636
+2021-09-21 03:02:14,197 - mostrando...
+2021-09-21 03:02:14,197 - ----------Cantidad de Elementos en Parametro 2: 33 -------------
+2021-09-21 03:02:14,197 - Empezando Log
+2021-09-21 03:02:14,197 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:02:36,171 - Resultados:
+2021-09-21 03:02:36,171 -  -Ancho de Elevacion  = 7.655447449469932
+2021-09-21 03:02:36,171 -  -Ancho de Azimuth = 12.89330398890229
+2021-09-21 03:02:36,171 - mostrando...
+2021-09-21 03:02:36,171 - ----------Cantidad de Elementos en Parametro 2: 34 -------------
+2021-09-21 03:02:36,171 - Empezando Log
+2021-09-21 03:02:36,171 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:02:58,278 - Resultados:
+2021-09-21 03:02:58,278 -  -Ancho de Elevacion  = 7.655165699397205
+2021-09-21 03:02:58,278 -  -Ancho de Azimuth = 12.89309156262032
+2021-09-21 03:02:58,278 - mostrando...
+2021-09-21 03:02:58,278 - ----------Cantidad de Elementos en Parametro 2: 35 -------------
+2021-09-21 03:02:58,278 - Empezando Log
+2021-09-21 03:02:58,278 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:03:21,073 - Resultados:
+2021-09-21 03:03:21,073 -  -Ancho de Elevacion  = 7.654900053663802
+2021-09-21 03:03:21,073 -  -Ancho de Azimuth = 12.892891273616613
+2021-09-21 03:03:21,073 - mostrando...
+2021-09-21 03:03:21,073 - ----------Cantidad de Elementos en Parametro 2: 36 -------------
+2021-09-21 03:03:21,073 - Empezando Log
+2021-09-21 03:03:21,073 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:03:43,209 - Resultados:
+2021-09-21 03:03:43,209 -  -Ancho de Elevacion  = 7.654649169888597
+2021-09-21 03:03:43,209 -  -Ancho de Azimuth = 12.892702110561743
+2021-09-21 03:03:43,209 - mostrando...
+2021-09-21 03:03:43,209 - ----------Cantidad de Elementos en Parametro 2: 37 -------------
+2021-09-21 03:03:43,209 - Empezando Log
+2021-09-21 03:03:43,209 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:04:05,045 - Resultados:
+2021-09-21 03:04:05,046 -  -Ancho de Elevacion  = 7.654411850850078
+2021-09-21 03:04:05,046 -  -Ancho de Azimuth = 12.8925231714477
+2021-09-21 03:04:05,046 - mostrando...
+2021-09-21 03:04:05,046 - ----------Cantidad de Elementos en Parametro 2: 38 -------------
+2021-09-21 03:04:05,046 - Empezando Log
+2021-09-21 03:04:05,046 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:04:27,148 - Resultados:
+2021-09-21 03:04:27,148 -  -Ancho de Elevacion  = 7.654187025381489
+2021-09-21 03:04:27,148 -  -Ancho de Azimuth = 12.892353649204786
+2021-09-21 03:04:27,148 - mostrando...
+2021-09-21 03:04:27,148 - ----------Cantidad de Elementos en Parametro 2: 39 -------------
+2021-09-21 03:04:27,148 - Empezando Log
+2021-09-21 03:04:27,148 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:04:48,590 - Resultados:
+2021-09-21 03:04:48,590 -  -Ancho de Elevacion  = 7.6539737322061185
+2021-09-21 03:04:48,590 -  -Ancho de Azimuth = 12.892192819531353
+2021-09-21 03:04:48,590 - mostrando...
+2021-09-21 03:04:48,590 - ----------Cantidad de Elementos en Parametro 2: 40 -------------
+2021-09-21 03:04:48,590 - Empezando Log
+2021-09-21 03:04:48,590 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:05:10,829 - Resultados:
+2021-09-21 03:05:10,829 -  -Ancho de Elevacion  = 7.653771106197681
+2021-09-21 03:05:10,829 -  -Ancho de Azimuth = 12.892040030548841
+2021-09-21 03:05:10,829 - mostrando...
+2021-09-21 03:05:10,829 - ----------Cantidad de Elementos en Parametro 2: 41 -------------
+2021-09-21 03:05:10,829 - Empezando Log
+2021-09-21 03:05:10,829 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:05:31,825 - Resultados:
+2021-09-21 03:05:31,825 -  -Ancho de Elevacion  = 7.653578366652027
+2021-09-21 03:05:31,825 -  -Ancho de Azimuth = 12.8918946939705
+2021-09-21 03:05:31,825 - mostrando...
+2021-09-21 03:05:31,825 - ----------Cantidad de Elementos en Parametro 2: 42 -------------
+2021-09-21 03:05:31,826 - Empezando Log
+2021-09-21 03:05:31,826 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:05:53,125 - Resultados:
+2021-09-21 03:05:53,126 -  -Ancho de Elevacion  = 7.653394807234509
+2021-09-21 03:05:53,126 -  -Ancho de Azimuth = 12.891756277531634
+2021-09-21 03:05:53,126 - mostrando...
+2021-09-21 03:05:53,126 - ----------Cantidad de Elementos en Parametro 2: 43 -------------
+2021-09-21 03:05:53,126 - Empezando Log
+2021-09-21 03:05:53,126 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:06:12,858 - Resultados:
+2021-09-21 03:06:12,858 -  -Ancho de Elevacion  = 7.6532197873305385
+2021-09-21 03:06:12,858 -  -Ancho de Azimuth = 12.891624298476017
+2021-09-21 03:06:12,858 - mostrando...
+2021-09-21 03:06:12,858 - ----------Cantidad de Elementos en Parametro 2: 44 -------------
+2021-09-21 03:06:12,858 - Empezando Log
+2021-09-21 03:06:12,858 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:06:33,610 - Resultados:
+2021-09-21 03:06:33,610 -  -Ancho de Elevacion  = 7.653052724575776
+2021-09-21 03:06:33,610 -  -Ancho de Azimuth = 12.891498317930498
+2021-09-21 03:06:33,610 - mostrando...
+2021-09-21 03:06:33,610 - ----------Cantidad de Elementos en Parametro 2: 45 -------------
+2021-09-21 03:06:33,610 - Empezando Log
+2021-09-21 03:06:33,610 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:06:53,119 - Resultados:
+2021-09-21 03:06:53,119 -  -Ancho de Elevacion  = 7.652893088382378
+2021-09-21 03:06:53,119 -  -Ancho de Azimuth = 12.891377936029343
+2021-09-21 03:06:53,119 - mostrando...
+2021-09-21 03:06:53,119 - ----------Cantidad de Elementos en Parametro 2: 46 -------------
+2021-09-21 03:06:53,119 - Empezando Log
+2021-09-21 03:06:53,119 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:07:14,491 - Resultados:
+2021-09-21 03:07:14,491 -  -Ancho de Elevacion  = 7.652740394310172
+2021-09-21 03:07:14,491 -  -Ancho de Azimuth = 12.891262787674826
+2021-09-21 03:07:14,491 - mostrando...
+2021-09-21 03:07:14,491 - ----------Cantidad de Elementos en Parametro 2: 47 -------------
+2021-09-21 03:07:14,491 - Empezando Log
+2021-09-21 03:07:14,491 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:07:34,231 - Resultados:
+2021-09-21 03:07:34,231 -  -Ancho de Elevacion  = 7.652594199156219
+2021-09-21 03:07:34,231 -  -Ancho de Azimuth = 12.891152538838838
+2021-09-21 03:07:34,231 - mostrando...
+2021-09-21 03:07:34,231 - ----------Cantidad de Elementos en Parametro 2: 48 -------------
+2021-09-21 03:07:34,231 - Empezando Log
+2021-09-21 03:07:34,231 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:07:55,158 - Resultados:
+2021-09-21 03:07:55,158 -  -Ancho de Elevacion  = 7.652454096658378
+2021-09-21 03:07:55,158 -  -Ancho de Azimuth = 12.89104688332656
+2021-09-21 03:07:55,158 - mostrando...
+2021-09-21 03:07:55,158 - ----------Cantidad de Elementos en Parametro 2: 49 -------------
+2021-09-21 03:07:55,158 - Empezando Log
+2021-09-21 03:07:55,158 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:08:14,801 - Resultados:
+2021-09-21 03:08:14,801 -  -Ancho de Elevacion  = 7.652319713725198
+2021-09-21 03:08:14,801 -  -Ancho de Azimuth = 12.89094553993673
+2021-09-21 03:08:14,801 - mostrando...
+2021-09-21 03:08:14,801 - ----------Cantidad de Elementos en Parametro 2: 50 -------------
+2021-09-21 03:08:14,801 - Empezando Log
+2021-09-21 03:08:14,801 - Comenzando Geom_Arreglo_Rectangular
+2021-09-21 03:08:35,507 - Resultados:
+2021-09-21 03:08:35,507 -  -Ancho de Elevacion  = 7.652190707118219
+2021-09-21 03:08:35,507 -  -Ancho de Azimuth = 12.890848249962438
+2021-09-21 03:08:35,507 - mostrando...
+2021-09-21 03:08:35,507 - -------------------------------------------

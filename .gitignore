@@ -1,4 +1,4 @@
 .venv/*
 .vscode/*
 logs/log_*
-__pycache__/heatmap.cpython-39.pyc
+__pycache__/*

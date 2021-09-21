@@ -1,0 +1,654 @@
+2021-09-21 13:43:36,494 - -TT---------Cantidad de Elementos en X 10 -------------
+2021-09-21 13:43:36,495 - Cantidad de Elementos en Y: 10
+2021-09-21 13:43:36,495 - Empezando Log
+2021-09-21 13:43:36,495 - Comenzando Geom_Arreglo
+2021-09-21 13:43:41,178 - Resultados:
+2021-09-21 13:43:41,178 -  -Ancho de Elevacion  = 11.239326355746883
+2021-09-21 13:43:41,178 -  -Ancho de Azimuth = 18.781148939425087
+2021-09-21 13:43:41,178 - Cantidad de Elementos en Y: 11
+2021-09-21 13:43:41,178 - Empezando Log
+2021-09-21 13:43:41,178 - Comenzando Geom_Arreglo
+2021-09-21 13:43:45,944 - Resultados:
+2021-09-21 13:43:45,945 -  -Ancho de Elevacion  = 11.232940728709071
+2021-09-21 13:43:45,945 -  -Ancho de Azimuth = 18.7714560416357
+2021-09-21 13:43:45,945 - Cantidad de Elementos en Y: 12
+2021-09-21 13:43:45,945 - Empezando Log
+2021-09-21 13:43:45,945 - Comenzando Geom_Arreglo
+2021-09-21 13:43:50,743 - Resultados:
+2021-09-21 13:43:50,743 -  -Ancho de Elevacion  = 11.227622990651355
+2021-09-21 13:43:50,743 -  -Ancho de Azimuth = 18.7633777702031
+2021-09-21 13:43:50,743 - Cantidad de Elementos en Y: 13
+2021-09-21 13:43:50,743 - Empezando Log
+2021-09-21 13:43:50,743 - Comenzando Geom_Arreglo
+2021-09-21 13:43:55,841 - Resultados:
+2021-09-21 13:43:55,841 -  -Ancho de Elevacion  = 11.223125795911585
+2021-09-21 13:43:55,841 -  -Ancho de Azimuth = 18.756541563544353
+2021-09-21 13:43:55,841 - Cantidad de Elementos en Y: 14
+2021-09-21 13:43:55,842 - Empezando Log
+2021-09-21 13:43:55,842 - Comenzando Geom_Arreglo
+2021-09-21 13:44:00,892 - Resultados:
+2021-09-21 13:44:00,892 -  -Ancho de Elevacion  = 11.21927278386886
+2021-09-21 13:44:00,892 -  -Ancho de Azimuth = 18.75068141534171
+2021-09-21 13:44:00,892 - Cantidad de Elementos en Y: 15
+2021-09-21 13:44:00,892 - Empezando Log
+2021-09-21 13:44:00,892 - Comenzando Geom_Arreglo
+2021-09-21 13:44:06,084 - Resultados:
+2021-09-21 13:44:06,084 -  -Ancho de Elevacion  = 11.215934804237076
+2021-09-21 13:44:06,084 -  -Ancho de Azimuth = 18.74560221339926
+2021-09-21 13:44:06,084 - Cantidad de Elementos en Y: 16
+2021-09-21 13:44:06,084 - Empezando Log
+2021-09-21 13:44:06,084 - Comenzando Geom_Arreglo
+2021-09-21 13:44:11,539 - Resultados:
+2021-09-21 13:44:11,539 -  -Ancho de Elevacion  = 11.213015058031608
+2021-09-21 13:44:11,539 -  -Ancho de Azimuth = 18.741157601240296
+2021-09-21 13:44:11,539 - Cantidad de Elementos en Y: 17
+2021-09-21 13:44:11,539 - Empezando Log
+2021-09-21 13:44:11,539 - Comenzando Geom_Arreglo
+2021-09-21 13:44:17,070 - Resultados:
+2021-09-21 13:44:17,070 -  -Ancho de Elevacion  = 11.210439574058455
+2021-09-21 13:44:17,070 -  -Ancho de Azimuth = 18.737235643623578
+2021-09-21 13:44:17,070 - Cantidad de Elementos en Y: 18
+2021-09-21 13:44:17,070 - Empezando Log
+2021-09-21 13:44:17,070 - Comenzando Geom_Arreglo
+2021-09-21 13:44:22,504 - Resultados:
+2021-09-21 13:44:22,504 -  -Ancho de Elevacion  = 11.208150854153637
+2021-09-21 13:44:22,504 -  -Ancho de Azimuth = 18.73374926913293
+2021-09-21 13:44:22,504 - Cantidad de Elementos en Y: 19
+2021-09-21 13:44:22,504 - Empezando Log
+2021-09-21 13:44:22,504 - Comenzando Geom_Arreglo
+2021-09-21 13:44:28,094 - Resultados:
+2021-09-21 13:44:28,094 -  -Ancho de Elevacion  = 11.206103529389203
+2021-09-21 13:44:28,094 -  -Ancho de Azimuth = 18.730629729711993
+2021-09-21 13:44:28,094 - Cantidad de Elementos en Y: 20
+2021-09-21 13:44:28,094 - Empezando Log
+2021-09-21 13:44:28,094 - Comenzando Geom_Arreglo
+2021-09-21 13:44:33,638 - Resultados:
+2021-09-21 13:44:33,639 -  -Ancho de Elevacion  = 11.204261321934627
+2021-09-21 13:44:33,639 -  -Ancho de Azimuth = 18.7278220215859
+2021-09-21 13:44:33,639 - Cantidad de Elementos en Y: 21
+2021-09-21 13:44:33,639 - Empezando Log
+2021-09-21 13:44:33,639 - Comenzando Geom_Arreglo
+2021-09-21 13:44:39,266 - Resultados:
+2021-09-21 13:44:39,266 -  -Ancho de Elevacion  = 11.202594876554393
+2021-09-21 13:44:39,266 -  -Ancho de Azimuth = 18.72528161401462
+2021-09-21 13:44:39,266 - Cantidad de Elementos en Y: 22
+2021-09-21 13:44:39,267 - Empezando Log
+2021-09-21 13:44:39,267 - Comenzando Geom_Arreglo
+2021-09-21 13:44:44,918 - Resultados:
+2021-09-21 13:44:44,918 -  -Ancho de Elevacion  = 11.20108018455268
+2021-09-21 13:44:44,918 -  -Ancho de Azimuth = 18.722972069893885
+2021-09-21 13:44:44,918 - Cantidad de Elementos en Y: 23
+2021-09-21 13:44:44,918 - Empezando Log
+2021-09-21 13:44:44,918 - Comenzando Geom_Arreglo
+2021-09-21 13:44:50,612 - Resultados:
+2021-09-21 13:44:50,612 -  -Ancho de Elevacion  = 11.199697419550578
+2021-09-21 13:44:50,612 -  -Ancho de Azimuth = 18.720863286860826
+2021-09-21 13:44:50,612 - Cantidad de Elementos en Y: 24
+2021-09-21 13:44:50,612 - Empezando Log
+2021-09-21 13:44:50,612 - Comenzando Geom_Arreglo
+2021-09-21 13:44:56,244 - Resultados:
+2021-09-21 13:44:56,244 -  -Ancho de Elevacion  = 11.198430064785114
+2021-09-21 13:44:56,244 -  -Ancho de Azimuth = 18.71893017798272
+2021-09-21 13:44:56,244 - Cantidad de Elementos en Y: 25
+2021-09-21 13:44:56,244 - Empezando Log
+2021-09-21 13:44:56,244 - Comenzando Geom_Arreglo
+2021-09-21 13:45:01,808 - Resultados:
+2021-09-21 13:45:01,808 -  -Ancho de Elevacion  = 11.197264250177557
+2021-09-21 13:45:01,808 -  -Ancho de Azimuth = 18.71715166898236
+2021-09-21 13:45:01,808 - Cantidad de Elementos en Y: 26
+2021-09-21 13:45:01,808 - Empezando Log
+2021-09-21 13:45:01,808 - Comenzando Geom_Arreglo
+2021-09-21 13:45:07,371 - Resultados:
+2021-09-21 13:45:07,371 -  -Ancho de Elevacion  = 11.196188242610944
+2021-09-21 13:45:07,371 -  -Ancho de Azimuth = 18.71550992680416
+2021-09-21 13:45:07,371 - Cantidad de Elementos en Y: 27
+2021-09-21 13:45:07,371 - Empezando Log
+2021-09-21 13:45:07,371 - Comenzando Geom_Arreglo
+2021-09-21 13:45:12,952 - Resultados:
+2021-09-21 13:45:12,952 -  -Ancho de Elevacion  = 11.195192049639743
+2021-09-21 13:45:12,953 -  -Ancho de Azimuth = 18.713989759561002
+2021-09-21 13:45:12,953 - Cantidad de Elementos en Y: 28
+2021-09-21 13:45:12,953 - Empezando Log
+2021-09-21 13:45:12,953 - Comenzando Geom_Arreglo
+2021-09-21 13:45:18,625 - Resultados:
+2021-09-21 13:45:18,625 -  -Ancho de Elevacion  = 11.194267108234534
+2021-09-21 13:45:18,625 -  -Ancho de Azimuth = 18.712578145028353
+2021-09-21 13:45:18,625 - Cantidad de Elementos en Y: 29
+2021-09-21 13:45:18,625 - Empezando Log
+2021-09-21 13:45:18,625 - Comenzando Geom_Arreglo
+2021-09-21 13:45:24,181 - Resultados:
+2021-09-21 13:45:24,181 -  -Ancho de Elevacion  = 11.193406038008952
+2021-09-21 13:45:24,181 -  -Ancho de Azimuth = 18.711263856665212
+2021-09-21 13:45:24,181 - Cantidad de Elementos en Y: 30
+2021-09-21 13:45:24,181 - Empezando Log
+2021-09-21 13:45:24,181 - Comenzando Geom_Arreglo
+2021-09-21 13:45:29,740 - Resultados:
+2021-09-21 13:45:29,740 -  -Ancho de Elevacion  = 11.192602443863638
+2021-09-21 13:45:29,740 -  -Ancho de Azimuth = 18.710037164410956
+2021-09-21 13:45:29,740 - Cantidad de Elementos en Y: 31
+2021-09-21 13:45:29,740 - Empezando Log
+2021-09-21 13:45:29,740 - Comenzando Geom_Arreglo
+2021-09-21 13:45:35,193 - Resultados:
+2021-09-21 13:45:35,194 -  -Ancho de Elevacion  = 11.191850756875208
+2021-09-21 13:45:35,194 -  -Ancho de Azimuth = 18.708889593378956
+2021-09-21 13:45:35,194 - Cantidad de Elementos en Y: 32
+2021-09-21 13:45:35,194 - Empezando Log
+2021-09-21 13:45:35,194 - Comenzando Geom_Arreglo
+2021-09-21 13:45:40,855 - Resultados:
+2021-09-21 13:45:40,855 -  -Ancho de Elevacion  = 11.191146105053992
+2021-09-21 13:45:40,855 -  -Ancho de Azimuth = 18.707813727783375
+2021-09-21 13:45:40,855 - Cantidad de Elementos en Y: 33
+2021-09-21 13:45:40,855 - Empezando Log
+2021-09-21 13:45:40,855 - Comenzando Geom_Arreglo
+2021-09-21 13:45:46,196 - Resultados:
+2021-09-21 13:45:46,196 -  -Ancho de Elevacion  = 11.190484207626866
+2021-09-21 13:45:46,196 -  -Ancho de Azimuth = 18.70680305050712
+2021-09-21 13:45:46,196 - Cantidad de Elementos en Y: 34
+2021-09-21 13:45:46,196 - Empezando Log
+2021-09-21 13:45:46,196 - Comenzando Geom_Arreglo
+2021-09-21 13:45:51,705 - Resultados:
+2021-09-21 13:45:51,705 -  -Ancho de Elevacion  = 11.189861287997498
+2021-09-21 13:45:51,705 -  -Ancho de Azimuth = 18.705851810975588
+2021-09-21 13:45:51,706 - Cantidad de Elementos en Y: 35
+2021-09-21 13:45:51,706 - Empezando Log
+2021-09-21 13:45:51,706 - Comenzando Geom_Arreglo
+2021-09-21 13:45:57,063 - Resultados:
+2021-09-21 13:45:57,063 -  -Ancho de Elevacion  = 11.189274001643515
+2021-09-21 13:45:57,063 -  -Ancho de Azimuth = 18.704954915674946
+2021-09-21 13:45:57,063 - Cantidad de Elementos en Y: 36
+2021-09-21 13:45:57,063 - Empezando Log
+2021-09-21 13:45:57,063 - Comenzando Geom_Arreglo
+2021-09-21 13:46:02,740 - Resultados:
+2021-09-21 13:46:02,740 -  -Ancho de Elevacion  = 11.188719376043185
+2021-09-21 13:46:02,740 -  -Ancho de Azimuth = 18.704107836913423
+2021-09-21 13:46:02,740 - Cantidad de Elementos en Y: 37
+2021-09-21 13:46:02,741 - Empezando Log
+2021-09-21 13:46:02,741 - Comenzando Geom_Arreglo
+2021-09-21 13:46:08,285 - Resultados:
+2021-09-21 13:46:08,285 -  -Ancho de Elevacion  = 11.188194760354204
+2021-09-21 13:46:08,285 -  -Ancho de Azimuth = 18.70330653637528
+2021-09-21 13:46:08,286 - Cantidad de Elementos en Y: 38
+2021-09-21 13:46:08,286 - Empezando Log
+2021-09-21 13:46:08,286 - Comenzando Geom_Arreglo
+2021-09-21 13:46:14,117 - Resultados:
+2021-09-21 13:46:14,117 -  -Ancho de Elevacion  = 11.187697783045472
+2021-09-21 13:46:14,117 -  -Ancho de Azimuth = 18.702547400742418
+2021-09-21 13:46:14,117 - Cantidad de Elementos en Y: 39
+2021-09-21 13:46:14,117 - Empezando Log
+2021-09-21 13:46:14,117 - Comenzando Geom_Arreglo
+2021-09-21 13:46:19,836 - Resultados:
+2021-09-21 13:46:19,836 -  -Ancho de Elevacion  = 11.187226316053351
+2021-09-21 13:46:19,836 -  -Ancho de Azimuth = 18.70182718721867
+2021-09-21 13:46:19,836 - Cantidad de Elementos en Y: 40
+2021-09-21 13:46:19,836 - Empezando Log
+2021-09-21 13:46:19,836 - Comenzando Geom_Arreglo
+2021-09-21 13:46:25,848 - Resultados:
+2021-09-21 13:46:25,848 -  -Ancho de Elevacion  = 11.186778444319817
+2021-09-21 13:46:25,848 -  -Ancho de Azimuth = 18.701142977223398
+2021-09-21 13:46:25,848 - Cantidad de Elementos en Y: 41
+2021-09-21 13:46:25,848 - Empezando Log
+2021-09-21 13:46:25,848 - Comenzando Geom_Arreglo
+2021-09-21 13:46:31,752 - Resultados:
+2021-09-21 13:46:31,752 -  -Ancho de Elevacion  = 11.186352439792223
+2021-09-21 13:46:31,752 -  -Ancho de Azimuth = 18.700492136860746
+2021-09-21 13:46:31,752 - Cantidad de Elementos en Y: 42
+2021-09-21 13:46:31,752 - Empezando Log
+2021-09-21 13:46:31,752 - Comenzando Geom_Arreglo
+2021-09-21 13:46:37,868 - Resultados:
+2021-09-21 13:46:37,869 -  -Ancho de Elevacion  = 11.185946739140977
+2021-09-21 13:46:37,869 -  -Ancho de Azimuth = 18.699872283034978
+2021-09-21 13:46:37,869 - Cantidad de Elementos en Y: 43
+2021-09-21 13:46:37,869 - Empezando Log
+2021-09-21 13:46:37,869 - Comenzando Geom_Arreglo
+2021-09-21 13:46:43,966 - Resultados:
+2021-09-21 13:46:43,966 -  -Ancho de Elevacion  = 11.185559924588894
+2021-09-21 13:46:43,966 -  -Ancho de Azimuth = 18.699281254293034
+2021-09-21 13:46:43,966 - Cantidad de Elementos en Y: 44
+2021-09-21 13:46:43,966 - Empezando Log
+2021-09-21 13:46:43,966 - Comenzando Geom_Arreglo
+2021-09-21 13:46:50,147 - Resultados:
+2021-09-21 13:46:50,148 -  -Ancho de Elevacion  = 11.185190707357151
+2021-09-21 13:46:50,148 -  -Ancho de Azimuth = 18.698717085642137
+2021-09-21 13:46:50,148 - Cantidad de Elementos en Y: 45
+2021-09-21 13:46:50,148 - Empezando Log
+2021-09-21 13:46:50,148 - Comenzando Geom_Arreglo
+2021-09-21 13:46:56,427 - Resultados:
+2021-09-21 13:46:56,427 -  -Ancho de Elevacion  = 11.184837913320031
+2021-09-21 13:46:56,427 -  -Ancho de Azimuth = 18.698177986724822
+2021-09-21 13:46:56,427 - Cantidad de Elementos en Y: 46
+2021-09-21 13:46:56,427 - Empezando Log
+2021-09-21 13:46:56,427 - Comenzando Geom_Arreglo
+2021-09-21 13:47:02,806 - Resultados:
+2021-09-21 13:47:02,807 -  -Ancho de Elevacion  = 11.184500470532747
+2021-09-21 13:47:02,807 -  -Ancho de Azimuth = 18.697662322840436
+2021-09-21 13:47:02,807 - Cantidad de Elementos en Y: 47
+2021-09-21 13:47:02,807 - Empezando Log
+2021-09-21 13:47:02,807 - Comenzando Geom_Arreglo
+2021-09-21 13:47:09,280 - Resultados:
+2021-09-21 13:47:09,280 -  -Ancho de Elevacion  = 11.184177398352208
+2021-09-21 13:47:09,280 -  -Ancho de Azimuth = 18.697168598388018
+2021-09-21 13:47:09,280 - Cantidad de Elementos en Y: 48
+2021-09-21 13:47:09,280 - Empezando Log
+2021-09-21 13:47:09,280 - Comenzando Geom_Arreglo
+2021-09-21 13:47:15,893 - Resultados:
+2021-09-21 13:47:15,893 -  -Ancho de Elevacion  = 11.183867797919287
+2021-09-21 13:47:15,893 -  -Ancho de Azimuth = 18.696695442379912
+2021-09-21 13:47:15,893 - Cantidad de Elementos en Y: 49
+2021-09-21 13:47:15,893 - Empezando Log
+2021-09-21 13:47:15,893 - Comenzando Geom_Arreglo
+2021-09-21 13:47:22,687 - Resultados:
+2021-09-21 13:47:22,687 -  -Ancho de Elevacion  = 11.183570843806663
+2021-09-21 13:47:22,687 -  -Ancho de Azimuth = 18.696241595727088
+2021-09-21 13:47:22,687 - Cantidad de Elementos en Y: 50
+2021-09-21 13:47:22,687 - Empezando Log
+2021-09-21 13:47:22,687 - Comenzando Geom_Arreglo
+2021-09-21 13:47:29,502 - Resultados:
+2021-09-21 13:47:29,502 -  -Ancho de Elevacion  = 11.183285776670836
+2021-09-21 13:47:29,502 -  -Ancho de Azimuth = 18.69580590005239
+2021-09-21 13:47:29,502 - -TT---------Cantidad de Elementos en X 11 -------------
+2021-09-21 13:47:29,502 - Cantidad de Elementos en Y: 10
+2021-09-21 13:47:29,502 - Empezando Log
+2021-09-21 13:47:29,503 - Comenzando Geom_Arreglo
+2021-09-21 13:47:34,642 - Resultados:
+2021-09-21 13:47:34,642 -  -Ancho de Elevacion  = 10.260912288540904
+2021-09-21 13:47:34,642 -  -Ancho de Azimuth = 17.17834977506991
+2021-09-21 13:47:34,642 - Cantidad de Elementos en Y: 11
+2021-09-21 13:47:34,642 - Empezando Log
+2021-09-21 13:47:34,642 - Comenzando Geom_Arreglo
+2021-09-21 13:47:38,622 - Resultados:
+2021-09-21 13:47:38,622 -  -Ancho de Elevacion  = 10.255830888312982
+2021-09-21 13:47:38,622 -  -Ancho de Azimuth = 17.17046013929798
+2021-09-21 13:47:38,622 - Cantidad de Elementos en Y: 12
+2021-09-21 13:47:38,623 - Empezando Log
+2021-09-21 13:47:38,623 - Comenzando Geom_Arreglo
+2021-09-21 13:47:43,849 - Resultados:
+2021-09-21 13:47:43,850 -  -Ancho de Elevacion  = 10.251599727076659
+2021-09-21 13:47:43,850 -  -Ancho de Azimuth = 17.163884531897537
+2021-09-21 13:47:43,850 - Cantidad de Elementos en Y: 13
+2021-09-21 13:47:43,850 - Empezando Log
+2021-09-21 13:47:43,850 - Comenzando Geom_Arreglo
+2021-09-21 13:47:49,219 - Resultados:
+2021-09-21 13:47:49,219 -  -Ancho de Elevacion  = 10.24802187250102
+2021-09-21 13:47:49,219 -  -Ancho de Azimuth = 17.158319717962897
+2021-09-21 13:47:49,219 - Cantidad de Elementos en Y: 14
+2021-09-21 13:47:49,219 - Empezando Log
+2021-09-21 13:47:49,219 - Comenzando Geom_Arreglo
+2021-09-21 13:47:54,761 - Resultados:
+2021-09-21 13:47:54,761 -  -Ancho de Elevacion  = 10.244956832258055
+2021-09-21 13:47:54,761 -  -Ancho de Azimuth = 17.153549268317605
+2021-09-21 13:47:54,761 - Cantidad de Elementos en Y: 15
+2021-09-21 13:47:54,761 - Empezando Log
+2021-09-21 13:47:54,762 - Comenzando Geom_Arreglo
+2021-09-21 13:48:00,489 - Resultados:
+2021-09-21 13:48:00,489 -  -Ancho de Elevacion  = 10.242301733239522
+2021-09-21 13:48:00,489 -  -Ancho de Azimuth = 17.149414421763254
+2021-09-21 13:48:00,489 - Cantidad de Elementos en Y: 16
+2021-09-21 13:48:00,489 - Empezando Log
+2021-09-21 13:48:00,489 - Comenzando Geom_Arreglo
+2021-09-21 13:48:06,411 - Resultados:
+2021-09-21 13:48:06,411 -  -Ancho de Elevacion  = 10.239979487136402
+2021-09-21 13:48:06,411 -  -Ancho de Azimuth = 17.145796082425875
+2021-09-21 13:48:06,411 - Cantidad de Elementos en Y: 17
+2021-09-21 13:48:06,411 - Empezando Log
+2021-09-21 13:48:06,411 - Comenzando Geom_Arreglo
+2021-09-21 13:48:12,412 - Resultados:
+2021-09-21 13:48:12,412 -  -Ancho de Elevacion  = 10.237931194007533
+2021-09-21 13:48:12,412 -  -Ancho de Azimuth = 17.142603159473317
+2021-09-21 13:48:12,412 - Cantidad de Elementos en Y: 18
+2021-09-21 13:48:12,412 - Empezando Log
+2021-09-21 13:48:12,412 - Comenzando Geom_Arreglo
+2021-09-21 13:48:18,624 - Resultados:
+2021-09-21 13:48:18,624 -  -Ancho de Elevacion  = 10.236111076780851
+2021-09-21 13:48:18,624 -  -Ancho de Azimuth = 17.139764792489018
+2021-09-21 13:48:18,624 - Cantidad de Elementos en Y: 19
+2021-09-21 13:48:18,624 - Empezando Log
+2021-09-21 13:48:18,624 - Comenzando Geom_Arreglo
+2021-09-21 13:48:25,050 - Resultados:
+2021-09-21 13:48:25,050 -  -Ancho de Elevacion  = 10.234483019353519
+2021-09-21 13:48:25,051 -  -Ancho de Azimuth = 17.137225030652097
+2021-09-21 13:48:25,051 - Cantidad de Elementos en Y: 20
+2021-09-21 13:48:25,051 - Empezando Log
+2021-09-21 13:48:25,051 - Comenzando Geom_Arreglo
+2021-09-21 13:48:31,497 - Resultados:
+2021-09-21 13:48:31,497 -  -Ancho de Elevacion  = 10.233018145699265
+2021-09-21 13:48:31,497 -  -Ancho de Azimuth = 17.13493910731834
+2021-09-21 13:48:31,497 - Cantidad de Elementos en Y: 21
+2021-09-21 13:48:31,497 - Empezando Log
+2021-09-21 13:48:31,497 - Comenzando Geom_Arreglo
+2021-09-21 13:48:38,107 - Resultados:
+2021-09-21 13:48:38,108 -  -Ancho de Elevacion  = 10.231693092202391
+2021-09-21 13:48:38,108 -  -Ancho de Azimuth = 17.132870778470924
+2021-09-21 13:48:38,108 - Cantidad de Elementos en Y: 22
+2021-09-21 13:48:38,108 - Empezando Log
+2021-09-21 13:48:38,108 - Comenzando Geom_Arreglo
+2021-09-21 13:48:44,736 - Resultados:
+2021-09-21 13:48:44,737 -  -Ancho de Elevacion  = 10.230488752176825
+2021-09-21 13:48:44,737 -  -Ancho de Azimuth = 17.130990386699146
+2021-09-21 13:48:44,737 - Cantidad de Elementos en Y: 23
+2021-09-21 13:48:44,737 - Empezando Log
+2021-09-21 13:48:44,737 - Comenzando Geom_Arreglo
+2021-09-21 13:48:51,273 - Resultados:
+2021-09-21 13:48:51,274 -  -Ancho de Elevacion  = 10.229389348568066
+2021-09-21 13:48:51,274 -  -Ancho de Azimuth = 17.12927342999231
+2021-09-21 13:48:51,274 - Cantidad de Elementos en Y: 24
+2021-09-21 13:48:51,274 - Empezando Log
+2021-09-21 13:48:51,274 - Comenzando Geom_Arreglo
+2021-09-21 13:48:57,712 - Resultados:
+2021-09-21 13:48:57,712 -  -Ancho de Elevacion  = 10.228381738931464
+2021-09-21 13:48:57,712 -  -Ancho de Azimuth = 17.127699488177136
+2021-09-21 13:48:57,712 - Cantidad de Elementos en Y: 25
+2021-09-21 13:48:57,712 - Empezando Log
+2021-09-21 13:48:57,712 - Comenzando Geom_Arreglo
+2021-09-21 13:49:07,499 - Resultados:
+2021-09-21 13:49:07,499 -  -Ancho de Elevacion  = 10.227454887527664
+2021-09-21 13:49:07,499 -  -Ancho de Azimuth = 17.126251406900302
+2021-09-21 13:49:07,500 - Cantidad de Elementos en Y: 26
+2021-09-21 13:49:07,500 - Empezando Log
+2021-09-21 13:49:07,500 - Comenzando Geom_Arreglo
+2021-09-21 13:49:17,685 - Resultados:
+2021-09-21 13:49:17,685 -  -Ancho de Elevacion  = 10.226599459460338
+2021-09-21 13:49:17,685 -  -Ancho de Azimuth = 17.124914669844735
+2021-09-21 13:49:17,685 - Cantidad de Elementos en Y: 27
+2021-09-21 13:49:17,685 - Empezando Log
+2021-09-21 13:49:17,685 - Comenzando Geom_Arreglo
+2021-09-21 13:49:27,471 - Resultados:
+2021-09-21 13:49:27,471 -  -Ancho de Elevacion  = 10.22580750516249
+2021-09-21 13:49:27,471 -  -Ancho de Azimuth = 17.12367691039953
+2021-09-21 13:49:27,471 - Cantidad de Elementos en Y: 28
+2021-09-21 13:49:27,471 - Empezando Log
+2021-09-21 13:49:27,471 - Comenzando Geom_Arreglo
+2021-09-21 13:49:37,474 - Resultados:
+2021-09-21 13:49:37,474 -  -Ancho de Elevacion  = 10.225072212604275
+2021-09-21 13:49:37,474 -  -Ancho de Azimuth = 17.122527527930558
+2021-09-21 13:49:37,474 - Cantidad de Elementos en Y: 29
+2021-09-21 13:49:37,474 - Empezando Log
+2021-09-21 13:49:37,474 - Comenzando Geom_Arreglo
+2021-09-21 13:49:47,215 - Resultados:
+2021-09-21 13:49:47,215 -  -Ancho de Elevacion  = 10.224387710851651
+2021-09-21 13:49:47,215 -  -Ancho de Azimuth = 17.12145738341531
+2021-09-21 13:49:47,216 - Cantidad de Elementos en Y: 30
+2021-09-21 13:49:47,216 - Empezando Log
+2021-09-21 13:49:47,216 - Comenzando Geom_Arreglo
+2021-09-21 13:49:57,021 - Resultados:
+2021-09-21 13:49:57,021 -  -Ancho de Elevacion  = 10.22374891297352
+2021-09-21 13:49:57,022 -  -Ancho de Azimuth = 17.120458555927854
+2021-09-21 13:49:57,022 - Cantidad de Elementos en Y: 31
+2021-09-21 13:49:57,022 - Empezando Log
+2021-09-21 13:49:57,022 - Comenzando Geom_Arreglo
+2021-09-21 13:50:06,562 - Resultados:
+2021-09-21 13:50:06,562 -  -Ancho de Elevacion  = 10.223151389400051
+2021-09-21 13:50:06,562 -  -Ancho de Azimuth = 17.119524146240416
+2021-09-21 13:50:06,562 - Cantidad de Elementos en Y: 32
+2021-09-21 13:50:06,562 - Empezando Log
+2021-09-21 13:50:06,562 - Comenzando Geom_Arreglo
+2021-09-21 13:50:16,212 - Resultados:
+2021-09-21 13:50:16,212 -  -Ancho de Elevacion  = 10.222591265060895
+2021-09-21 13:50:16,212 -  -Ancho de Azimuth = 17.11864811723678
+2021-09-21 13:50:16,212 - Cantidad de Elementos en Y: 33
+2021-09-21 13:50:16,212 - Empezando Log
+2021-09-21 13:50:16,212 - Comenzando Geom_Arreglo
+2021-09-21 13:50:25,770 - Resultados:
+2021-09-21 13:50:25,770 -  -Ancho de Elevacion  = 10.22206513525159
+2021-09-21 13:50:25,770 -  -Ancho de Azimuth = 17.1178251633318
+2021-09-21 13:50:25,770 - Cantidad de Elementos en Y: 34
+2021-09-21 13:50:25,770 - Empezando Log
+2021-09-21 13:50:25,770 - Comenzando Geom_Arreglo
+2021-09-21 13:50:35,519 - Resultados:
+2021-09-21 13:50:35,519 -  -Ancho de Elevacion  = 10.221569996367627
+2021-09-21 13:50:35,519 -  -Ancho de Azimuth = 17.117050602927826
+2021-09-21 13:50:35,519 - Cantidad de Elementos en Y: 35
+2021-09-21 13:50:35,519 - Empezando Log
+2021-09-21 13:50:35,519 - Comenzando Geom_Arreglo
+2021-09-21 13:50:44,642 - Resultados:
+2021-09-21 13:50:44,642 -  -Ancho de Elevacion  = 10.221103188528744
+2021-09-21 13:50:44,642 -  -Ancho de Azimuth = 17.116320289301242
+2021-09-21 13:50:44,642 - Cantidad de Elementos en Y: 36
+2021-09-21 13:50:44,642 - Empezando Log
+2021-09-21 13:50:44,642 - Comenzando Geom_Arreglo
+2021-09-21 13:50:54,185 - Resultados:
+2021-09-21 13:50:54,185 -  -Ancho de Elevacion  = 10.220662347777264
+2021-09-21 13:50:54,185 -  -Ancho de Azimuth = 17.115630536336198
+2021-09-21 13:50:54,185 - Cantidad de Elementos en Y: 37
+2021-09-21 13:50:54,185 - Empezando Log
+2021-09-21 13:50:54,185 - Comenzando Geom_Arreglo
+2021-09-21 13:51:02,756 - Resultados:
+2021-09-21 13:51:02,756 -  -Ancho de Elevacion  = 10.220245366038974
+2021-09-21 13:51:02,756 -  -Ancho de Azimuth = 17.11497805629915
+2021-09-21 13:51:02,756 - Cantidad de Elementos en Y: 38
+2021-09-21 13:51:02,756 - Empezando Log
+2021-09-21 13:51:02,756 - Comenzando Geom_Arreglo
+2021-09-21 13:51:12,125 - Resultados:
+2021-09-21 13:51:12,125 -  -Ancho de Elevacion  = 10.219850357412803
+2021-09-21 13:51:12,125 -  -Ancho de Azimuth = 17.11435990743457
+2021-09-21 13:51:12,125 - Cantidad de Elementos en Y: 39
+2021-09-21 13:51:12,125 - Empezando Log
+2021-09-21 13:51:12,125 - Comenzando Geom_Arreglo
+2021-09-21 13:51:21,043 - Resultados:
+2021-09-21 13:51:21,043 -  -Ancho de Elevacion  = 10.219475629653225
+2021-09-21 13:51:21,043 -  -Ancho de Azimuth = 17.113773449621533
+2021-09-21 13:51:21,043 - Cantidad de Elementos en Y: 40
+2021-09-21 13:51:21,044 - Empezando Log
+2021-09-21 13:51:21,044 - Comenzando Geom_Arreglo
+2021-09-21 13:51:30,701 - Resultados:
+2021-09-21 13:51:30,701 -  -Ancho de Elevacion  = 10.219119659935394
+2021-09-21 13:51:30,701 -  -Ancho de Azimuth = 17.11321630667932
+2021-09-21 13:51:30,701 - Cantidad de Elementos en Y: 41
+2021-09-21 13:51:30,701 - Empezando Log
+2021-09-21 13:51:30,701 - Comenzando Geom_Arreglo
+2021-09-21 13:51:39,887 - Resultados:
+2021-09-21 13:51:39,887 -  -Ancho de Elevacion  = 10.218781074170511
+2021-09-21 13:51:39,887 -  -Ancho de Azimuth = 17.112686334188226
+2021-09-21 13:51:39,887 - Cantidad de Elementos en Y: 42
+2021-09-21 13:51:39,887 - Empezando Log
+2021-09-21 13:51:39,887 - Comenzando Geom_Arreglo
+2021-09-21 13:51:49,647 - Resultados:
+2021-09-21 13:51:49,647 -  -Ancho de Elevacion  = 10.218458629279805
+2021-09-21 13:51:49,647 -  -Ancho de Azimuth = 17.11218159190605
+2021-09-21 13:51:49,647 - Cantidad de Elementos en Y: 43
+2021-09-21 13:51:49,647 - Empezando Log
+2021-09-21 13:51:49,647 - Comenzando Geom_Arreglo
+2021-09-21 13:51:59,217 - Resultados:
+2021-09-21 13:51:59,217 -  -Ancho de Elevacion  = 10.218151197944184
+2021-09-21 13:51:59,218 -  -Ancho de Azimuth = 17.111700320032675
+2021-09-21 13:51:59,218 - Cantidad de Elementos en Y: 44
+2021-09-21 13:51:59,218 - Empezando Log
+2021-09-21 13:51:59,218 - Comenzando Geom_Arreglo
+2021-09-21 13:52:09,183 - Resultados:
+2021-09-21 13:52:09,183 -  -Ancho de Elevacion  = 10.217857755436068
+2021-09-21 13:52:09,183 -  -Ancho de Azimuth = 17.11124091871006
+2021-09-21 13:52:09,183 - Cantidad de Elementos en Y: 45
+2021-09-21 13:52:09,183 - Empezando Log
+2021-09-21 13:52:09,183 - Comenzando Geom_Arreglo
+2021-09-21 13:52:19,228 - Resultados:
+2021-09-21 13:52:19,228 -  -Ancho de Elevacion  = 10.21757736820831
+2021-09-21 13:52:19,228 -  -Ancho de Azimuth = 17.110801930255256
+2021-09-21 13:52:19,228 - Cantidad de Elementos en Y: 46
+2021-09-21 13:52:19,228 - Empezando Log
+2021-09-21 13:52:19,228 - Comenzando Geom_Arreglo
+2021-09-21 13:52:29,268 - Resultados:
+2021-09-21 13:52:29,268 -  -Ancho de Elevacion  = 10.217309183973622
+2021-09-21 13:52:29,268 -  -Ancho de Azimuth = 17.1103820237106
+2021-09-21 13:52:29,268 - Cantidad de Elementos en Y: 47
+2021-09-21 13:52:29,268 - Empezando Log
+2021-09-21 13:52:29,268 - Comenzando Geom_Arreglo
+2021-09-21 13:52:39,458 - Resultados:
+2021-09-21 13:52:39,458 -  -Ancho de Elevacion  = 10.217052423051264
+2021-09-21 13:52:39,458 -  -Ancho de Azimuth = 17.10997998136495
+2021-09-21 13:52:39,458 - Cantidad de Elementos en Y: 48
+2021-09-21 13:52:39,458 - Empezando Log
+2021-09-21 13:52:39,458 - Comenzando Geom_Arreglo
+2021-09-21 13:52:49,801 - Resultados:
+2021-09-21 13:52:49,801 -  -Ancho de Elevacion  = 10.216806370796515
+2021-09-21 13:52:49,801 -  -Ancho de Azimuth = 17.109594686960257
+2021-09-21 13:52:49,801 - Cantidad de Elementos en Y: 49
+2021-09-21 13:52:49,801 - Empezando Log
+2021-09-21 13:52:49,801 - Comenzando Geom_Arreglo
+2021-09-21 13:53:00,278 - Resultados:
+2021-09-21 13:53:00,278 -  -Ancho de Elevacion  = 10.2165703709579
+2021-09-21 13:53:00,278 -  -Ancho de Azimuth = 17.10922511534087
+2021-09-21 13:53:00,278 - Cantidad de Elementos en Y: 50
+2021-09-21 13:53:00,278 - Empezando Log
+2021-09-21 13:53:00,278 - Comenzando Geom_Arreglo
+2021-09-21 13:53:10,827 - Resultados:
+2021-09-21 13:53:10,827 -  -Ancho de Elevacion  = 10.216343819832932
+2021-09-21 13:53:10,827 -  -Ancho de Azimuth = 17.10887032334611
+2021-09-21 13:53:10,827 - -TT---------Cantidad de Elementos en X 12 -------------
+2021-09-21 13:53:10,827 - Cantidad de Elementos en Y: 10
+2021-09-21 13:53:10,827 - Empezando Log
+2021-09-21 13:53:10,827 - Comenzando Geom_Arreglo
+2021-09-21 13:53:16,277 - Resultados:
+2021-09-21 13:53:16,277 -  -Ancho de Elevacion  = 9.515140204024156
+2021-09-21 13:53:16,277 -  -Ancho de Azimuth = 15.820237240665122
+2021-09-21 13:53:16,277 - Cantidad de Elementos en Y: 11
+2021-09-21 13:53:16,277 - Empezando Log
+2021-09-21 13:53:16,277 - Comenzando Geom_Arreglo
+2021-09-21 13:53:21,924 - Resultados:
+2021-09-21 13:53:21,924 -  -Ancho de Elevacion  = 9.511381925144786
+2021-09-21 13:53:21,924 -  -Ancho de Azimuth = 15.813122400227087
+2021-09-21 13:53:21,924 - Cantidad de Elementos en Y: 12
+2021-09-21 13:53:21,924 - Empezando Log
+2021-09-21 13:53:21,924 - Comenzando Geom_Arreglo
+2021-09-21 13:53:27,628 - Resultados:
+2021-09-21 13:53:27,629 -  -Ancho de Elevacion  = 9.508251479460633
+2021-09-21 13:53:27,629 -  -Ancho de Azimuth = 15.807193234054196
+2021-09-21 13:53:27,629 - Cantidad de Elementos en Y: 13
+2021-09-21 13:53:27,629 - Empezando Log
+2021-09-21 13:53:27,629 - Comenzando Geom_Arreglo
+2021-09-21 13:53:33,641 - Resultados:
+2021-09-21 13:53:33,641 -  -Ancho de Elevacion  = 9.505603689066486
+2021-09-21 13:53:33,641 -  -Ancho de Azimuth = 15.802175898287473
+2021-09-21 13:53:33,641 - Cantidad de Elementos en Y: 14
+2021-09-21 13:53:33,641 - Empezando Log
+2021-09-21 13:53:33,641 - Comenzando Geom_Arreglo
+2021-09-21 13:53:43,140 - Resultados:
+2021-09-21 13:53:43,140 -  -Ancho de Elevacion  = 9.503334888943737
+2021-09-21 13:53:43,140 -  -Ancho de Azimuth = 15.797875072551953
+2021-09-21 13:53:43,140 - Cantidad de Elementos en Y: 15
+2021-09-21 13:53:43,140 - Empezando Log
+2021-09-21 13:53:43,140 - Comenzando Geom_Arreglo
+2021-09-21 13:53:49,276 - Resultados:
+2021-09-21 13:53:49,276 -  -Ancho de Elevacion  = 9.50136915113092
+2021-09-21 13:53:49,276 -  -Ancho de Azimuth = 15.794147500731796
+2021-09-21 13:53:49,276 - Cantidad de Elementos en Y: 16
+2021-09-21 13:53:49,276 - Empezando Log
+2021-09-21 13:53:49,276 - Comenzando Geom_Arreglo
+2021-09-21 13:53:55,703 - Resultados:
+2021-09-21 13:53:55,704 -  -Ancho de Elevacion  = 9.499649553039454
+2021-09-21 13:53:55,704 -  -Ancho de Azimuth = 15.790885730826552
+2021-09-21 13:53:55,704 - Cantidad de Elementos en Y: 17
+2021-09-21 13:53:55,704 - Empezando Log
+2021-09-21 13:53:55,704 - Comenzando Geom_Arreglo
+2021-09-21 13:54:02,173 - Resultados:
+2021-09-21 13:54:02,174 -  -Ancho de Elevacion  = 9.498132587582884
+2021-09-21 13:54:02,174 -  -Ancho de Azimuth = 15.788007586357509
+2021-09-21 13:54:02,174 - Cantidad de Elementos en Y: 18
+2021-09-21 13:54:02,174 - Empezando Log
+2021-09-21 13:54:02,174 - Comenzando Geom_Arreglo
+2021-09-21 13:54:08,976 - Resultados:
+2021-09-21 13:54:08,976 -  -Ancho de Elevacion  = 9.496784430844635
+2021-09-21 13:54:08,976 -  -Ancho de Azimuth = 15.785449147310366
+2021-09-21 13:54:08,976 - Cantidad de Elementos en Y: 19
+2021-09-21 13:54:08,976 - Empezando Log
+2021-09-21 13:54:08,977 - Comenzando Geom_Arreglo
+2021-09-21 13:54:15,799 - Resultados:
+2021-09-21 13:54:15,799 -  -Ancho de Elevacion  = 9.49557839012973
+2021-09-21 13:54:15,799 -  -Ancho de Azimuth = 15.783159947033461
+2021-09-21 13:54:15,800 - Cantidad de Elementos en Y: 20
+2021-09-21 13:54:15,800 - Empezando Log
+2021-09-21 13:54:15,800 - Comenzando Geom_Arreglo
+2021-09-21 13:54:23,084 - Resultados:
+2021-09-21 13:54:23,084 -  -Ancho de Elevacion  = 9.494493118676811
+2021-09-21 13:54:23,084 -  -Ancho de Azimuth = 15.781099609719654
+2021-09-21 13:54:23,084 - Cantidad de Elementos en Y: 21
+2021-09-21 13:54:23,084 - Empezando Log
+2021-09-21 13:54:23,084 - Comenzando Geom_Arreglo
+2021-09-21 13:54:30,136 - Resultados:
+2021-09-21 13:54:30,137 -  -Ancho de Elevacion  = 9.493511341130137
+2021-09-21 13:54:30,137 -  -Ancho de Azimuth = 15.779235448384995
+2021-09-21 13:54:30,137 - Cantidad de Elementos en Y: 22
+2021-09-21 13:54:30,137 - Empezando Log
+2021-09-21 13:54:30,137 - Comenzando Geom_Arreglo
+2021-09-21 13:54:37,553 - Resultados:
+2021-09-21 13:54:37,553 -  -Ancho de Elevacion  = 9.49261892705223
+2021-09-21 13:54:37,553 -  -Ancho de Azimuth = 15.777540717799482
+2021-09-21 13:54:37,553 - Cantidad de Elementos en Y: 23
+2021-09-21 13:54:37,553 - Empezando Log
+2021-09-21 13:54:37,553 - Comenzando Geom_Arreglo
+2021-09-21 13:54:44,777 - Resultados:
+2021-09-21 13:54:44,777 -  -Ancho de Elevacion  = 9.491804206421406
+2021-09-21 13:54:44,777 -  -Ancho de Azimuth = 15.775993323077124
+2021-09-21 13:54:44,777 - Cantidad de Elementos en Y: 24
+2021-09-21 13:54:44,777 - Empezando Log
+2021-09-21 13:54:44,777 - Comenzando Geom_Arreglo
+2021-09-21 13:54:52,183 - Resultados:
+2021-09-21 13:54:52,183 -  -Ancho de Elevacion  = 9.491057456453465
+2021-09-21 13:54:52,183 -  -Ancho de Azimuth = 15.774574851053238
+2021-09-21 13:54:52,183 - Cantidad de Elementos en Y: 25
+2021-09-21 13:54:52,183 - Empezando Log
+2021-09-21 13:54:52,183 - Comenzando Geom_Arreglo
+2021-09-21 13:54:59,577 - Resultados:
+2021-09-21 13:54:59,577 -  -Ancho de Elevacion  = 9.490370511723555
+2021-09-21 13:54:59,577 -  -Ancho de Azimuth = 15.773269834085703
+2021-09-21 13:54:59,577 - Cantidad de Elementos en Y: 26
+2021-09-21 13:54:59,577 - Empezando Log
+2021-09-21 13:54:59,577 - Comenzando Geom_Arreglo
+2021-09-21 13:55:07,018 - Resultados:
+2021-09-21 13:55:07,018 -  -Ancho de Elevacion  = 9.489736464355154
+2021-09-21 13:55:07,018 -  -Ancho de Azimuth = 15.772065183715192
+2021-09-21 13:55:07,018 - Cantidad de Elementos en Y: 27
+2021-09-21 13:55:07,018 - Empezando Log
+2021-09-21 13:55:07,018 - Comenzando Geom_Arreglo
+2021-09-21 13:55:14,824 - Resultados:
+2021-09-21 13:55:14,824 -  -Ancho de Elevacion  = 9.489149430903197
+2021-09-21 13:55:14,824 -  -Ancho de Azimuth = 15.770949750157293
+2021-09-21 13:55:14,824 - Cantidad de Elementos en Y: 28
+2021-09-21 13:55:14,824 - Empezando Log
+2021-09-21 13:55:14,824 - Comenzando Geom_Arreglo
+2021-09-21 13:55:22,782 - Resultados:
+2021-09-21 13:55:22,783 -  -Ancho de Elevacion  = 9.488604369239184
+2021-09-21 13:55:22,783 -  -Ancho de Azimuth = 15.769913976170997
+2021-09-21 13:55:22,783 - Cantidad de Elementos en Y: 29
+2021-09-21 13:55:22,783 - Empezando Log
+2021-09-21 13:55:22,783 - Comenzando Geom_Arreglo
+2021-09-21 13:55:30,259 - Resultados:
+2021-09-21 13:55:30,260 -  -Ancho de Elevacion  = 9.488096933359149
+2021-09-21 13:55:30,260 -  -Ancho de Azimuth = 15.768949622529632
+2021-09-21 13:55:30,260 - Cantidad de Elementos en Y: 30
+2021-09-21 13:55:30,260 - Empezando Log
+2021-09-21 13:55:30,260 - Comenzando Geom_Arreglo
+2021-09-21 13:55:37,958 - Resultados:
+2021-09-21 13:55:37,958 -  -Ancho de Elevacion  = 9.487623357256151
+2021-09-21 13:55:37,958 -  -Ancho de Azimuth = 15.768049548387687
+2021-09-21 13:55:37,958 - Cantidad de Elementos en Y: 31
+2021-09-21 13:55:37,958 - Empezando Log
+2021-09-21 13:55:37,958 - Comenzando Geom_Arreglo
+2021-09-21 13:55:45,448 - Resultados:
+2021-09-21 13:55:45,448 -  -Ancho de Elevacion  = 9.487180361289429
+2021-09-21 13:55:45,448 -  -Ancho de Azimuth = 15.767207534151225
+2021-09-21 13:55:45,448 - Cantidad de Elementos en Y: 32
+2021-09-21 13:55:45,448 - Empezando Log
+2021-09-21 13:55:45,448 - Comenzando Geom_Arreglo
+2021-09-21 13:55:53,050 - Resultados:
+2021-09-21 13:55:53,051 -  -Ancho de Elevacion  = 9.486765076124364
+2021-09-21 13:55:53,051 -  -Ancho de Azimuth = 15.766418137554503
+2021-09-21 13:55:53,051 - Cantidad de Elementos en Y: 33
+2021-09-21 13:55:53,051 - Empezando Log
+2021-09-21 13:55:53,051 - Comenzando Geom_Arreglo
+2021-09-21 13:56:00,386 - Resultados:
+2021-09-21 13:56:00,386 -  -Ancho de Elevacion  = 9.486374980513158
+2021-09-21 13:56:00,386 -  -Ancho de Azimuth = 15.7656765759006
+2021-09-21 13:56:00,386 - Cantidad de Elementos en Y: 34
+2021-09-21 13:56:00,386 - Empezando Log
+2021-09-21 13:56:00,386 - Comenzando Geom_Arreglo
+2021-09-21 13:56:08,024 - Resultados:
+2021-09-21 13:56:08,024 -  -Ancho de Elevacion  = 9.486007850064144
+2021-09-21 13:56:08,024 -  -Ancho de Azimuth = 15.764978629080403
+2021-09-21 13:56:08,025 - Cantidad de Elementos en Y: 35
+2021-09-21 13:56:08,025 - Empezando Log
+2021-09-21 13:56:08,025 - Comenzando Geom_Arreglo
+2021-09-21 13:56:15,225 - Resultados:
+2021-09-21 13:56:15,225 -  -Ancho de Elevacion  = 9.485661714800791
+2021-09-21 13:56:15,225 -  -Ancho de Azimuth = 15.764320559214397
+2021-09-21 13:56:15,225 - Cantidad de Elementos en Y: 36
+2021-09-21 13:56:15,225 - Empezando Log
+2021-09-21 13:56:15,225 - Comenzando Geom_Arreglo
