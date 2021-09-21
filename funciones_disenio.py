@@ -29,27 +29,57 @@ class ConfiguracionEntrada:
         self.frecuencia_disenio = frecuencia_disenio
 
     def mostrar_configuracion(self):
-        print('\nDatos configurados:')
+        print('\nArreglo configurado:')
         print(f'  Disposicion: {self.disposicion}')
         print(f'  Separacion: {self.separacion} [lambda]')
         print(f'  Elementos en X: {self.parametro1} (utilizado en Opciones 2 y 3)')
         print(f'  Elementos en Y: {self.parametro2} (utilizado en Opciones 2 y 3)')
-        print(f'  Apuntamiento: phi={self.apuntamiento[0]}, theta={self.apuntamiento[1]}')
+        print(f'  Apuntamiento:     phi={self.apuntamiento[0]},')
+        print(f'                    theta={self.apuntamiento[1]}')
 
-    def configurar_parametros(self):
-        print('      Disposicion. 1: Rectangular, 2: Circular')
-        self.disposicion = Arreglo_Antena_2D.Disposiciones.CIRCULAR if (input('     Disposicion>>')=='2') else Arreglo_Antena_2D.Disposiciones.RECTANGULAR
-        self.separacion = float(input('     Separacion [lambda]>>'))     
-        print('      Rango de elementos en el eje X')
-        self.rango_parametro1[0] = int(input('     Valor inicial>>'))
-        self.rango_parametro1[1] = int(input('     Valor final>>'))
-        print('      Rango de elementos en el eje Y')
-        self.rango_parametro2[0] = int(input('     Valor inicial>>'))
-        self.rango_parametro2[1] = int(input('     Valor final>>'))
-        self.parametro1 = int(input("     Parametro 1>>"))
-        self.parametro2 = int(input("     Parametro 2>>"))
-        self.apuntamiento[0] = float(input("    Phi>>"))
-        self.apuntamiento[1] = float(input("    Theta>>"))
+    def __configurar_parametros_principal(self):
+        print("Configuracion del Arreglo de Antenas")
+        print("    1. Config. gral: Disposicion, Apuntamiento, Separacion")
+        print("    2. Config. etapa 1: Rangos para generar arreglos")
+        print("    3. Config. etapa 2: Frecuencia y cantidad de elementos para desnormalizar")
+        print("    4. Volver")
+        return input("Que desea configurar? >>")
+    
+    def configurar_parametros(self):        
+        opcion_configuracion = ""
+
+        while(opcion_configuracion != 'q'):
+            opcion_configuracion = self.__configurar_parametros_principal()
+
+            if opcion_configuracion == '1':
+                # Configuracion general (disposicion, apuntamiento,separacion)
+                print('      Disposiciones:')
+                for index, disp in enumerate(Arreglo_Antena_2D.Disposiciones):
+                    print(f'{index}. {disp}')
+                self.disposicion = Arreglo_Antena_2D.Disposiciones(int(input('Disposicion>>'))).name
+                self.apuntamiento[0] = float(input("    Apuntamiento Phi>>"))
+                self.apuntamiento[1] = float(input("    Apuntamiento Theta>>"))
+                self.separacion = float(input('    Separacion [lambda]>>'))
+
+            elif opcion_configuracion == '2':
+                # Configuracion de etapa 1 (parametro 1, parametro 2)
+                print('      Rango de elementos de Parametro 1')
+                self.rango_parametro1[0] = int(input('     Valor inicial>>'))
+                self.rango_parametro1[1] = int(input('     Valor final>>'))
+                print('      Rango de elementos de Parametro 2')
+                self.rango_parametro2[0] = int(input('     Valor inicial>>'))
+                self.rango_parametro2[1] = int(input('     Valor final>>'))
+
+            elif opcion_configuracion == '3':
+                # Configuracion de etapa 2 (frec_disenio, elementos en x, elementos en y)
+                self.parametro1 = int(input("     Parametro 1>>"))
+                self.parametro2 = int(input("     Parametro 2>>"))
+                self.frecuencia_disenio = float(input("     Frecuencia de disenio>>"))
+
+            elif opcion_configuracion == '4':
+                opcion_configuracion = 'q'
+
+            self.mostrar_configuracion()
 
     def configurar_log(self, etapa, separacion_metros=0):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -65,7 +95,7 @@ class ConfiguracionEntrada:
         if etapa == 1:
             logging.info(f'Iniciando Etapa 1. Obtencion de datos para evaluar ancho de haz en funcion de lambda. Configuracion inicial:')
             logging.info(f'Arreglo tipo {self.disposicion}')
-            logging.info(f'  -DR = {self.separacion_metros}')
+            logging.info(f'  -DR = {self.separacion}')
 
         elif etapa == 2:
             logging.info(f'Iniciando Etapa 2. Obtencion de datos para evaluar la respuesta en frecuencia. Configuracion inicial:')
@@ -81,7 +111,7 @@ def etapaUno(configuracion):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-    
+
     configuracion.configurar_log(etapa=1)
     
     for aux_param1 in range(configuracion.rango_parametro1[0],configuracion.rango_parametro1[1]+1):
@@ -118,10 +148,11 @@ def etapaDos(configuracion):
 
 
 def menu_principal(config):
+    print('*Menu Principal*')
     print('1. Etapa 1. Calcular anchos de haz para el config normalizado')
     print('2. Etapa 2. Calcular respuesta en frecuencia para el config desnormalizado')
     print('3. Calcular y graficar el config configurado')
-    print('4. Configurar config')
+    print('4. Configurar arreglo')
     
     config.mostrar_configuracion()
 
@@ -147,6 +178,11 @@ def main():
 
         if opcion == '2':
             etapaDos(config)
+            opcion = 'q'
+
+        if opcion == '3':
+            config.configurar_log(etapa=3)
+            main(config.disposicion, config.separacion, config.parametro1, config.parametro2,graficar=True)
             opcion = 'q'
 
 

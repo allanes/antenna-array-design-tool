@@ -365,12 +365,14 @@ def Unnormalisation_Freq(Freq,D):
 
 def main(disposicion,separacion,param1,param2,graficar=False):
     logging.info('Empezando Log')
-
     logging.info('Comenzando Geom_Arreglo_Rectangular')
-    if disposicion == Disposiciones.RECTANGULAR:
+
+    
+    if disposicion == Disposiciones.RECTANGULAR.name:
         [posiciones,excitaciones] = Geom_Arreglo_Rectangular(separacion, Nx=param1, Ny=param2)
-    elif disposicion == Disposiciones.CIRCULAR: #el arreglo es circular
+    elif disposicion == Disposiciones.CIRCULAR.name: #el arreglo es circular
         [posiciones,excitaciones] = Geom_Arreglo_circular(separacion,Nr=param1,N=param2)
+        print(f'posiciones_type: {type(posiciones)}')
     
     arreglo = ArregloGeneral(posiciones,excitaciones,[patronMonopoloCuartoOnda()])
     phi_apuntado = 50
