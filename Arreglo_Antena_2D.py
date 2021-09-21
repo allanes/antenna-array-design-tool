@@ -295,7 +295,6 @@ def Geom_Arreglo_Circular_2(Nr = 1,n= 1, Dr = 1,Dz =1, Nz = 1):
     return [posiciones, exitaciones]
 #==============================================================================
 def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, graficar=False):
-    print('Entro a ANCHO_HAZ')
     a1 = arreglo #Arreglo variable definida como un objeto de la clase Arreglo general
     THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
     f = lambda x,y: np.abs(a1.directividad(x,y))   #R = np.abs(a1.campo(PHI,THETA))
@@ -442,3 +441,4 @@ def main(disposicion,separacion,param1,param2,graficar=False):
 
 if __name__ == '__main__':
     print('\n**Este modulo debe ser incluido en la sección "imports" para ser usado**')
+    print('Intentar corriendo funciones_disenio.py')
