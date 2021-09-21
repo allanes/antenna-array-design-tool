@@ -388,5 +388,7 @@ def main(disposicion,separacion,param1,param2,graficar=False):
     logging.info('mostrando...')
     if graficar: 
         Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
-        plt.show()    
+        plt.show()
+
+    return [Ancho_Haz_Elevacion,Ancho_Haz_Acimut]
 
