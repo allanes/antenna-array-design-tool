@@ -129,7 +129,7 @@ def etapaUno(configuracion):
                 graficar=False
                 )
             aux_progreso += 1
-            print(f'Progreso: {100*aux_progreso/progreso_maximo}%')
+            print(f'Progreso: {100*aux_progreso/progreso_maximo:.1f}%')
         logging.info("-------------------------------------------")
 
     return dataset
@@ -165,7 +165,7 @@ def etapaDos(configuracion):
         anchos_azimut.append(azim)
     
         aux_progreso += 1
-        print(f'Progreso: {100*aux_progreso/len(Dn)}%')
+        print(f'Progreso: {100*aux_progreso/len(Dn):.1f}%')
     logging.info('Fin de desnormalizacion')
     return dataset
 
