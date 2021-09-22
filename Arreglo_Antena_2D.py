@@ -409,7 +409,7 @@ def Unnormalisation_Freq(Freq,D):
     
 #==============================================================================
 
-def main(disposicion,separacion,param1,param2,graficar=False):
+def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
     logging.info('Empezando Log')
     logging.info('Comenzando Geom_Arreglo_Rectangular')
 
@@ -420,8 +420,8 @@ def main(disposicion,separacion,param1,param2,graficar=False):
     
     patron_elemento = [patronMonopoloCuartoOnda()]
     arreglo = ArregloGeneral(posiciones,excitaciones,patron_elemento)
-    phi_apuntado = 50
-    theta_apuntado = 30
+    phi_apuntado = apuntamiento[0]
+    theta_apuntado = apuntamiento[1]
     
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
     theta = np.linspace(0,np.pi,100)
