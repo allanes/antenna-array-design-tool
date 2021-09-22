@@ -10,7 +10,7 @@ def main(archivo=""):
     valores_azimuth_raw = []
     
     if archivo == "": 
-        archivo = 'logs/log_etapa1_20210921_185956.log'
+        archivo = 'logs/log_etapa1_20210922_132302.log'
 
     with open(archivo, 'r') as f:
         aux_parametro1_actual = 0
@@ -69,11 +69,11 @@ def main(archivo=""):
     texts = heatmap.annotate_heatmap(im, valfmt="{x:.1f}")
     
     # Configura la grilla de la grafica
-    ax.set_xticks(np.arange(len(valores_eje_parametro2)))
-    ax.set_yticks(np.arange(len(valores_eje_parametro1)))
+    ax.set_xlabel('Parametro 2')
+    ax.set_ylabel('Parametro 1')
     ax.set_title('Ancho del patrón de radiación en Elevación')
     fig.tight_layout()
-# ---------------
+    # ---------------
     fig_az, ax_az = plt.subplots()
     im_az = ax_az.imshow(valores_azimuth)
     
@@ -83,45 +83,19 @@ def main(archivo=""):
         col_labels=valores_eje_parametro2,
         ax=ax_az,
         cmap="YlGn", 
-        cbarlabel="ancho_theta"
+        cbarlabel="ancho_phi"
     )
     texts = heatmap.annotate_heatmap(im_az, valfmt="{x:.1f}")
     
     # Configura la grilla de la grafica
-    ax_az.set_xticks(np.arange(len(valores_eje_parametro1)))
-    ax_az.set_yticks(np.arange(len(valores_eje_parametro2)))
     ax_az.set_title('Ancho del patrón de radiación en Azimuth')
+    ax_az.set_xlabel('Parametro 2')
+    ax_az.set_ylabel('Parametro 1')
     fig_az.tight_layout()
-# -----------------
-    """
-    # Configura las etiquetas de las marcas de los ejes
-    ax.set_xticklabels(valores_eje_parametro2)
-    ax.set_yticklabels(valores_eje_parametro1)
-
-    # Rotate the tick labels and set their alignment.
-    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-            rotation_mode="anchor")
-    
-    # Agrega el valor del ancho a cada par de entrada x, y
-    for i in range(len(valores_eje_parametro1)):
-        for j in range(len(valores_eje_parametro2)):
-            text = ax.text(
-                j, 
-                i,
-                '{:.2f}'.format(valores_elevacion[i][j]),
-                ha="center", 
-                va="center", 
-                color="w"
-                )
-    """
-    plt.grid(True)
+    # -----------------
     plt.show()
-
     return
 
 if __name__ == '__main__':
     main()
-    
-
-
     
