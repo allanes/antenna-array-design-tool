@@ -1,32 +1,23 @@
 from datetime import datetime
 import logging
-
 import numpy as np
 import Arreglo_Antena_2D
+import graficar_etapa1
+import graficar_etapa2
 
 class ConfiguracionEntrada:
-    def __init__(
-        self,
-        disposicion=Arreglo_Antena_2D.Disposiciones.CIRCULAR.value,
-        separacion=0.25, 
-        parametro1=10,
-        parametro2=15,
-        apuntamiento=[50,30], 
-        rango_parametro1 = [10,15],
-        rango_parametro2 = [10,50],
-        frecuencia_disenio = 5e6
-        ):
+    def __init__(self):
         """
         
         """
-        self.disposicion = disposicion
-        self.separacion = separacion
-        self.parametro1 = parametro1
-        self.parametro2 = parametro2
-        self.apuntamiento = apuntamiento
-        self.rango_parametro1 = rango_parametro1
-        self.rango_parametro2 = rango_parametro2
-        self.frecuencia_disenio = frecuencia_disenio
+        self.disposicion = Arreglo_Antena_2D.Disposiciones.CIRCULAR.value
+        self.separacion = 0.25
+        self.parametro1 = 10
+        self.parametro2 = 15
+        self.apuntamiento = [50,30]
+        self.rango_parametro1 = [10,15]
+        self.rango_parametro2 = [10,50]
+        self.frecuencia_disenio = 5e6
 
     def mostrar_configuracion(self):
         print('\nArreglo configurado:')
@@ -109,21 +100,33 @@ class ConfiguracionEntrada:
             logging.info(f'Desnormalizando para {self.parametro1} elementos en Parametro 1 y {self.parametro2} elementos en Parametro 2')
             logging.info('----------------Seccion de Datos Generados----------------')
 
+        return filename
 
 def etapaUno(configuracion):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-
-    configuracion.configurar_log(etapa=1)
+    dataset = configuracion.configurar_log(etapa=1)
     
-    for aux_param1 in range(configuracion.rango_parametro1[0],configuracion.rango_parametro1[1]+1):
+    parametro1_valor_inicial = configuracion.rango_parametro1[0]
+    parametro1_valor_final = configuracion.rango_parametro1[1] + 1
+    parametro2_valor_inicial = configuracion.rango_parametro2[0]
+    parametro2_valor_final = configuracion.rango_parametro2[1] + 1
+    progreso_maximo = (
+        (parametro1_valor_inicial - parametro1_valor_final) * 
+        (parametro2_valor_inicial - parametro2_valor_final)
+    )
+    aux_progreso = 0
+    for aux_param1 in range(parametro1_valor_inicial,parametro1_valor_final):
         logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1}')
-        
-        for aux_param2 in range(configuracion.rango_parametro2[0],configuracion.rango_parametro2[1]+1):
+        for aux_param2 in range(parametro2_valor_inicial,parametro2_valor_final):
             logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
             Arreglo_Antena_2D.main(configuracion.disposicion,configuracion.separacion,aux_param1,aux_param2,graficar=False)
+            aux_progreso += 1
+            print(f'Progreso: {100*aux_progreso/progreso_maximo}%')
         logging.info("-------------------------------------------")
+
+    return dataset
 
 
 def etapaDos(configuracion):
@@ -131,15 +134,16 @@ def etapaDos(configuracion):
     ETAPA 2. Evalua la respuesta en frecuencia    
     """
     
-    rango_frecuencias = [configuracion.frecuencia_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6] # 
+    rango_frecuencias = [configuracion.frecuencia_disenio,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6] # 2e6,3e6,4e6,
     freq = np.array(rango_frecuencias)
     Dn,d = Arreglo_Antena_2D.Unnormalisation_Freq(freq,configuracion.separacion)
     
-    configuracion.configurar_log(etapa=2, separacion_metros=d[0])
+    dataset = configuracion.configurar_log(etapa=2, separacion_metros=d[0])
     
     # Recalculo los anchos para las frecuencias desnormalizadas
     anchos_elevacion = []
     anchos_azimut = []
+    aux_progreso = 0
     for index in range(len(Dn)):
         logging.info(f"Distancia en Lambda: {Dn[index]}")
         logging.info(f"Frecuencia: {freq[index]}")
@@ -147,7 +151,10 @@ def etapaDos(configuracion):
         anchos_elevacion.append(elev)
         anchos_azimut.append(azim)
     
+        aux_progreso += 1
+        print(f'Progreso: {100*aux_progreso/len(Dn)}%')
     logging.info('Fin de desnormalizacion')
+    return dataset
 
 
 def menu_principal(config):
@@ -169,18 +176,15 @@ def main():
     while(opcion != 'q'):
         opcion = menu_principal(config)
                 
-        if opcion == '4':
-            config.configurar_parametros()
-            
-        if opcion == '5':
-            opcion = 'q'
 
         if opcion == '1':
-            etapaUno(config)
+            dataset = etapaUno(config)
+            graficar_etapa1.main(dataset)
             opcion = 'q'
 
         if opcion == '2':
-            etapaDos(config)
+            dataset = etapaDos(config)
+            graficar_etapa2.main(dataset)
             opcion = 'q'
 
         if opcion == '3':
@@ -188,6 +192,11 @@ def main():
             Arreglo_Antena_2D.main(config.disposicion, config.separacion, config.parametro1, config.parametro2,graficar=True)
             opcion = 'q'
 
+        if opcion == '4':
+            config.configurar_parametros()
+            
+        if opcion == '5':
+            opcion = 'q'
 
 if __name__ == '__main__':
     main()
