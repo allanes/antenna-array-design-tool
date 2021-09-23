@@ -27,6 +27,7 @@ from datetime import datetime
 class Disposiciones(Enum):
     RECTANGULAR = 0
     CIRCULAR = 1
+    CIRCULAR2 = 2
 
 class ArregloGeneral(object):
     
@@ -248,7 +249,7 @@ def Geom_Arreglo_Circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
     excitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
     return [posiciones, excitaciones]
 #==============================================================================
-def Geom_Arreglo_Circular_2(Nr = 1,n= 1, Dr = 1,Dz =1, Nz = 1):
+def Geom_Arreglo_Circular_2(Dr=1,Nr=1,N=1, Dz=1, Nz=1):
     """
         Posiciona en un plano x,y,z a cada una de las antenas del arreglo
     ----------------------------------------------------------------------------------------------        
@@ -270,8 +271,8 @@ def Geom_Arreglo_Circular_2(Nr = 1,n= 1, Dr = 1,Dz =1, Nz = 1):
 
     for k in pos_z:
         for i in pos_r:
-            N = i*n
-            theta = np.linspace(0,2*np.pi,N+1)
+            elementos_en_anillo_actual = i*N
+            theta = np.linspace(0,2*np.pi,elementos_en_anillo_actual+1)
             #print(np.degrees(theta))
             for j in np.arange(np.size(theta)-1):
                 x = i*Dr*np.cos(theta[j])
@@ -417,6 +418,8 @@ def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
         [posiciones,excitaciones] = Geom_Arreglo_Rectangular(separacion, Nx=param1, Ny=param2)
     elif disposicion == Disposiciones.CIRCULAR.value:
         [posiciones,excitaciones] = Geom_Arreglo_Circular(separacion,Nr=param1,N=param2)
+    elif disposicion == Disposiciones.CIRCULAR2.value:
+        [posiciones,excitaciones] = Geom_Arreglo_Circular_2(separacion,Nr=param1,N=param2)
     
     patron_elemento = [patronMonopoloCuartoOnda()]
     arreglo = ArregloGeneral(posiciones,excitaciones,patron_elemento)
