@@ -160,7 +160,7 @@ class ArregloGeneral(object):
         Directividad = Rmax
         return [Ancho_theta,Ancho_phi,Directividad]
 
-    def plot_3D(self,nombre,posiciones,dx,dy,dz):
+    def plot_3D(self):
         """Realiza la representacion del patron de radiacion del arreglo
         y ubica las antenas en un espacio x,y,z
         
@@ -187,13 +187,14 @@ class ArregloGeneral(object):
         ax.plot_surface(X,Y,Z,rcount=100,ccount=100,facecolors=cm.jet(R/Rmax),shade=False)
         #ax.plot_surface(X,Y,Z,rcount = 100,ccount = 100,color="lightblue",shade=True,lightsource=matplotlib.colors.LightSource(30,70))
         #ax.contour3D(X, Y, Z, 50) #ax.plot_surface(X, Y, Z, rstride=1, cstride=1,cmap='viridis', edgecolor='none')
-        ax.set_title(" "+nombre + " ( Dmax or Emax : %2.2f" % Rmax + ")")
+        # ax.set_title(" "+nombre + " ( Dmax or Emax : %2.2f" % Rmax + ")")
+        ax.set_title("3D Array")
 
         #Rmax = grafica3d(ax,self.directividad,phi,theta,corteLobuloPrincipal=.5)
         
+        [dx,dy,dz] = [0,0,0]
 
-
-        [xi, yi , zi] = 50*np.transpose(posiciones-np.array(((dx,dy,dz))))
+        [xi, yi , zi] = 50*np.transpose(self.posiciones-np.array(((dx,dy,dz))))
         ax.scatter(xi,yi,zi, c = 'green',  marker='+' , linewidth = 2)
         # xi = [:,0] ; yi = [:,1], zi = [:,2]   # selecciona columnas, use la transpuesta de puntos
 
@@ -242,10 +243,12 @@ def Unnormalisation_Freq(Freq,D):
 
     return [D_unnorm,D_unnorm*Lambda]
 #==============================================================================
+def log_widths(theta, phi):
+    logging.info('Resultados:')
+    logging.info(f' -Ancho de Elevacion  = {theta}')
+    logging.info(f' -Ancho de Azimuth = {phi}')
 
 def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
-    logging.info('Empezando Log')
-    logging.info('Comenzando Geom_Arreglo_Rectangular')
 
     [posiciones,excitaciones] = patterns_generators.generate_distribution(disposicion,separacion,param1,param2)
     individual_element_pattern = [patronMonopoloCuartoOnda()]
@@ -256,17 +259,13 @@ def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
     
     arreglo.apuntar(phi_apuntado,theta_apuntado)
     
-    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut, directividad] = arreglo.get_beam_width(graficar)
-    logging.info('Resultados:')
-    logging.info(f' -Ancho de Elevacion  = {Ancho_Haz_Elevacion}')
-    logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')    
+    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(graficar)
     
-    logging.info('mostrando...')
-    if graficar: 
-        arreglo.plot_3D("Arreglo en 2D",posiciones,0,0,0)
-        
+    log_widths(theta=elevation_width, phi=azimut_width)
+    
+    if graficar: arreglo.plot_3D()        
 
-    return [Ancho_Haz_Elevacion,Ancho_Haz_Acimut]
+    return [elevation_width,azimut_width]
 
 if __name__ == '__main__':
     print('\n**Este modulo debe ser incluido en la sección "imports" para ser usado**')

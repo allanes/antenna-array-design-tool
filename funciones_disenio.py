@@ -3,7 +3,7 @@ import logging
 import numpy as np
 
 import antenna_core_functions
-import antenna_geometric_patterns_generators as patterns_generators
+from antenna_geometric_patterns_generators import Disposiciones as disposition_types
 import graficar_etapa1
 import graficar_etapa2
 
@@ -12,18 +12,18 @@ class ConfiguracionEntrada:
         """
         
         """
-        self.disposicion = patterns_generators.Disposiciones.CIRCULAR.value
+        self.disposicion = disposition_types.CIRCULAR.value
         self.separacion = 0.25
         self.parametro1 = 10
         self.parametro2 = 15
         self.apuntamiento = [50,30]
-        self.rango_parametro1 = [10,15]
-        self.rango_parametro2 = [10,50]
+        self.rango_parametro1 = [10,12]
+        self.rango_parametro2 = [10,13]
         self.frecuencia_disenio = 5e6
 
     def mostrar_configuracion(self):
         print('\nArreglo configurado:')
-        print(f'  Disposicion: {patterns_generators.Disposiciones(self.disposicion).name}')
+        print(f'  Disposicion: {disposition_types(self.disposicion).name}')
         print(f'  Separacion: {self.separacion} [lambda]')
         print(f'  Apuntamiento: phi={self.apuntamiento[0]},')
         print(f'                theta={self.apuntamiento[1]}')
@@ -50,7 +50,7 @@ class ConfiguracionEntrada:
             if opcion_configuracion == '1':
                 # Configuracion general (disposicion, apuntamiento,separacion)
                 print('      Disposiciones:')
-                for index, disp in enumerate(patterns_generators.Disposiciones):
+                for index, disp in enumerate(disposition_types):
                     print(f'{index}. {disp}')
                 self.disposicion = int(input('Disposicion>>'))
                 self.apuntamiento[0] = float(input("    Apuntamiento Phi>>"))
