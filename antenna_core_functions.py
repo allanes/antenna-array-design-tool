@@ -1,28 +1,15 @@
-#==============================================================================
-#Titulo:  Arreglo_Antena_2D
-#Autor: Zenon Saavedra 
-#==============================================================================
+"""Here are defined some essential classes and methods for Antenna Arrays 
+analysis. An 'ArregloGeneral' object represents a 3-dimensional Atenna 
+Array and may be used to evaluate Beamforming performance.
 
 """
-    Realiza el BeamForming de un arreglo de antenas. 
-        Geometria del arreglo: en 3 Dimensiones
-        Fuentes/antenas: Radiadores Isotropicos
-        Las distancias se encuentran en funcion de longitude de onda (lambda) de la señal
-        -m pip install --upgrade pip' command.
-Created on Fri Jun 11 14:51:10 2021
-@author: Zenon
-"""
-import matplotlib
-import matplotlib.pyplot as plt
-from matplotlib import cm
 import numpy as np
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
 import math
-import scipy.spatial.distance as distance
-import scipy.integrate as integrate
-from scipy.interpolate import interp1d
 import logging
+import scipy.integrate as integrate
 from enum import Enum
-from datetime import datetime
 
 class Disposiciones(Enum):
     RECTANGULAR = 0
@@ -83,54 +70,6 @@ class ArregloGeneral(object):
     def campo(self,phi,theta):
         campo_vec = np.vectorize(self._campo_dirUnica)
         return campo_vec(phi,theta)
-#==============================================================================
-       
-class Arreglo_2D(object):
-    """
-        Genera el patron de radiacion (campo lejado) de un arreglo de antena en 2D, en funcion
-        de la distribucion geometrica del arreglo y de las excitaciones de cada uno 
-        de los elementos del arreglo
-    
-    """
-    
-    def __init__(self,posiciones,excitaciones):
-        """
-        Inicializador del la clase Arreglo _2D
-        
-            posiciones: Posiciones de los elementos
-            excitacionesws: Excitaciones de cada uno de los elementos
-        """
-        self.posiciones = posiciones  
-        self.excitaciones = excitaciones
-    
-    def apuntar(self,phi,theta):
-        """
-            Modifica las fases de las excitaciones manteniendo sus amplitudes para apuntar el haz principal en la dirección dada
-        
-            phi: ángulo diedro del plano xz al plano xr donde r es la dirección de apuntamiento
-            theta: ángulo del eje z al vector de apuntamiento r
-        """
-        normal = np.array((np.cos(phi)*np.sin(theta),np.sin(phi)*np.sin(theta),np.cos(theta)))
-        fases = -2*np.pi*self.posiciones@normal
-        self.excitaciones = np.abs(self.excitaciones)*np.exp(1j*fases)
-    
-        
-    def _campo_dirUnica(self,phi_i,theta_i):
-        """
-            Determina el campo (E) para una dada direccion phi y theta
-        """
-        V_Normal = np.array((np.cos(phi_i)*np.sin(theta_i),np.sin(phi_i)*np.sin(theta_i),np.cos(theta_i)))
-            
-        fases = 2*np.pi * self.posiciones@V_Normal # fases de cada elemento con respecto al plano que tiene un vector normal (V_Normal)
-        return sum(self.excitaciones * np.exp(1j*fases)) # Campo = excitaciones * Factor de Arreglo
-        
-        
-    def campo(self,phi, theta):    
-        """
-            Determina el patron de campo (E) del arreglo en todas las coordenadas esfericas (phi,theta)
-        """
-        campo_vec = np.vectorize(self._campo_dirUnica)
-        return campo_vec(phi,theta)
 #==============================================================================        
 def amplitudCosElev(posiciones,escala=0.8):
     """
@@ -146,17 +85,17 @@ def amplitudCosElev(posiciones,escala=0.8):
     A = 1+np.cos(np.pi*escala*radios/rmax)
     return A/np.linalg.norm(A)*A.size**.5   
 #==============================================================================        
-def Graficar_2D(arreglo,phi,theta,nombre,posiciones,dx,dy,dz):
+def Graficar_2D(arreglo,nombre,posiciones,dx,dy,dz):
     """
     Realiza la representacion del patron de radiacion del arreglo
             y ubica las antenas en un espacio x,y,z
     """    
-    a1 = arreglo
-    #PHI,THETA = np.meshgrid(phi,theta)
+    theta = np.linspace(0,np.pi,100)
+    phi = np.linspace(-np.pi,np.pi,100)
     THETA, PHI = np.meshgrid(theta,phi)
 
-    f = lambda x,y: np.abs(a1.campo(x,y))   #R = np.abs(a1.campo(PHI,THETA))
-    #f = lambda x,y: np.abs(a1.directividad(x,y))   #R = np.abs(a1.campo(PHI,THETA))
+    f = lambda x,y: np.abs(arreglo.campo(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
+    #f = lambda x,y: np.abs(arreglo.directividad(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
     R = f(PHI,THETA)    
 
     X = R * np.cos(PHI) * np.sin(THETA)
@@ -295,10 +234,11 @@ def Geom_Arreglo_Circular_2(Dr=1,Nr=1,N=1, Dz=1, Nz=1):
     exitaciones = np.array(np.size(posiciones,axis=0)*[1])
     return [posiciones, exitaciones]
 #==============================================================================
-def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, graficar=False):
-    a1 = arreglo #Arreglo variable definida como un objeto de la clase Arreglo general
+def Ancho_Haz(arreglo, graficar=False):
+    theta = np.linspace(0,np.pi,100)
+    phi = np.linspace(-np.pi,np.pi,100)
     THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
-    f = lambda x,y: np.abs(a1.directividad(x,y))   #R = np.abs(a1.campo(PHI,THETA))
+    f = lambda x,y: np.abs(arreglo.directividad(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
     R = f(PHI,THETA) #matriz de 50*50
     
     Rmax = np.max(R)
@@ -309,7 +249,7 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, graficar=False):
     if graficar: fig = plt.figure()    
 
     if graficar: ax1 = fig.add_subplot(2,1,1)
-    y_campo_phi = np.abs(a1.directividad(math.radians(phi_apuntado),theta))
+    y_campo_phi = np.abs(arreglo.directividad(math.radians(phi_apuntado),theta))
     x_theta = np.degrees(theta)
     if graficar: 
         ax1.plot(x_theta,y_campo_phi)
@@ -348,7 +288,7 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, graficar=False):
 
     if graficar: ax1 = fig.add_subplot(2,1,2)
     x_phi = np.degrees(phi)
-    y_campo_theta = np.abs(a1.directividad(phi,math.radians(theta_apuntado)))
+    y_campo_theta = np.abs(arreglo.directividad(phi,math.radians(theta_apuntado)))
     if graficar:
         ax1.plot(x_phi,y_campo_theta)
         ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
@@ -371,10 +311,18 @@ def Ancho_Haz(arreglo, phi, theta, corteLobuloPrincipal, graficar=False):
     R_right = xx[index:-1]
     phi_right = yy[index:-1]
 
-    phi_hp_min = np.interp(Rmax*corteLobuloPrincipal,R_left,phi_left)
-    phi_hp_max = np.interp(-Rmax*corteLobuloPrincipal,-R_right,phi_right)
+    intensidad_media_potencia = Rmax * (2**-0.5)
+    phi_hp_min = np.interp(intensidad_media_potencia,R_left,phi_left)
+    phi_hp_max = np.interp(-intensidad_media_potencia,-R_right,phi_right)
     
-    if graficar: ax1.plot(phi_hp_min,Rmax*corteLobuloPrincipal,'or',phi_hp_max,Rmax*(2**-0.5),'or') 
+    if graficar: ax1.plot(
+        phi_hp_min,
+        intensidad_media_potencia,
+        'or',
+        phi_hp_max,
+        intensidad_media_potencia,
+        'or'
+        ) 
     Ancho_phi = phi_hp_max - phi_hp_min
     Directividad = Rmax
     return [Ancho_theta,Ancho_phi,Directividad]
@@ -427,17 +375,15 @@ def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
     theta_apuntado = apuntamiento[1]
     
     arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
-    theta = np.linspace(0,np.pi,100)
-    phi = np.linspace(-np.pi,np.pi,100)
     
-    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut, directividad] = Ancho_Haz(arreglo, phi, theta, 2**-0.5, graficar)
+    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut, directividad] = Ancho_Haz(arreglo, graficar)
     logging.info('Resultados:')
     logging.info(f' -Ancho de Elevacion  = {Ancho_Haz_Elevacion}')
     logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')    
     
     logging.info('mostrando...')
     if graficar: 
-        Graficar_2D(arreglo, phi, theta,"Arreglo en 2D",posiciones,0,0,0)
+        Graficar_2D(arreglo,"Arreglo en 2D",posiciones,0,0,0)
         plt.show()
 
     return [Ancho_Haz_Elevacion,Ancho_Haz_Acimut]
