@@ -9,12 +9,8 @@ import matplotlib.pyplot as plt
 import math
 import logging
 import scipy.integrate as integrate
-from enum import Enum
 
-class Disposiciones(Enum):
-    RECTANGULAR = 0
-    CIRCULAR = 1
-    CIRCULAR2 = 2
+import antenna_geometric_patterns_generators as patterns_generators
 
 class ArregloGeneral(object):
     
@@ -70,6 +66,138 @@ class ArregloGeneral(object):
     def campo(self,phi,theta):
         campo_vec = np.vectorize(self._campo_dirUnica)
         return campo_vec(phi,theta)
+
+    def get_beam_width(self, graficar=False):
+        theta = np.linspace(0,np.pi,100)
+        phi = np.linspace(-np.pi,np.pi,100)
+        THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
+        f = lambda x,y: np.abs(self.directividad(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
+        R = f(PHI,THETA) #matriz de 50*50
+        
+        Rmax = np.max(R)
+        i_phi,i_theta = np.where(R == Rmax)
+        theta_apuntado = np.degrees(theta[int(i_theta)])
+        phi_apuntado = np.degrees(phi[int(i_phi)])  
+
+        if graficar: fig = plt.figure()    
+
+        if graficar: ax1 = fig.add_subplot(2,1,1)
+        y_campo_phi = np.abs(self.directividad(math.radians(phi_apuntado),theta))
+        x_theta = np.degrees(theta)
+        if graficar: 
+            ax1.plot(x_theta,y_campo_phi)
+            ax1.set_title("Patron $\\theta$"), ax1.grid(True)
+        
+        
+        x = [0]
+        y = [0]
+        
+        Rmax= np.max(y_campo_phi)
+        Rrange = Rmax*0.3
+        for i in np.arange(np.size(y_campo_phi,0)):
+            if (y_campo_phi[i] >= Rrange):
+                x = np.append(x,np.array([y_campo_phi[i]]),axis=0)
+                y = np.append(y,np.array([x_theta[i]]),axis=0)
+        y = y[1:]
+        x = x[1:]
+
+        index_Rmax = np.where( x == Rmax )
+        index = int(index_Rmax[0])
+
+        R_left = x[0:index] 
+        theta_left = y[0:index]
+        R_right = x[index:-1] 
+        theta_right = y[index:-1]
+
+        theta_hp_min = np.interp(Rmax*(2**-0.5),R_left,theta_left)
+        if len(R_right) == 0:
+            theta_hp_max = 90
+        else:
+            theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
+        
+        if graficar: ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
+        Ancho_theta =  theta_hp_max - theta_hp_min
+        
+
+        if graficar: ax1 = fig.add_subplot(2,1,2)
+        x_phi = np.degrees(phi)
+        y_campo_theta = np.abs(self.directividad(phi,math.radians(theta_apuntado)))
+        if graficar:
+            ax1.plot(x_phi,y_campo_theta)
+            ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
+
+        xx = [0]
+        yy = [0]
+        Rmax= np.max(y_campo_theta)
+        Rrange = Rmax*0.3
+        for i in np.arange(np.size(y_campo_theta,0)):
+            if (y_campo_theta[i] >= Rrange):
+                xx = np.append(xx,np.array([y_campo_theta[i]]),axis=0)
+                yy = np.append(yy,np.array([x_phi[i]]),axis=0)
+        yy = yy[1:]
+        xx = xx[1:]
+
+        index_Rmax = np.where( xx == Rmax )
+        index = int(index_Rmax[0])
+        R_left = xx[0:index] 
+        phi_left = yy[0:index]
+        R_right = xx[index:-1]
+        phi_right = yy[index:-1]
+
+        intensidad_media_potencia = Rmax * (2**-0.5)
+        phi_hp_min = np.interp(intensidad_media_potencia,R_left,phi_left)
+        phi_hp_max = np.interp(-intensidad_media_potencia,-R_right,phi_right)
+        
+        if graficar: ax1.plot(
+            phi_hp_min,
+            intensidad_media_potencia,
+            'or',
+            phi_hp_max,
+            intensidad_media_potencia,
+            'or'
+            ) 
+        Ancho_phi = phi_hp_max - phi_hp_min
+        Directividad = Rmax
+        return [Ancho_theta,Ancho_phi,Directividad]
+
+    def plot_3D(self,nombre,posiciones,dx,dy,dz):
+        """Realiza la representacion del patron de radiacion del arreglo
+        y ubica las antenas en un espacio x,y,z
+        
+        """    
+        theta = np.linspace(0,np.pi,100)
+        phi = np.linspace(-np.pi,np.pi,100)
+        THETA, PHI = np.meshgrid(theta,phi)
+
+        f = lambda x,y: np.abs(self.campo(x,y))   #R = np.abs(self.campo(PHI,THETA))
+        #f = lambda x,y: np.abs(self.directividad(x,y))   #R = np.abs(self.campo(PHI,THETA))
+        R = f(PHI,THETA)    
+
+        X = R * np.cos(PHI) * np.sin(THETA)
+        Y = R * np.sin(PHI) * np.sin(THETA)
+        Z = R * np.cos(THETA)
+        Rmax = np.max(R)
+
+        fig = plt.figure()
+        ax = fig.add_subplot(projection = '3d')
+        ax.set_xlim(-Rmax,Rmax)
+        ax.set_ylim(-Rmax,Rmax)
+        ax.set_zlim(-Rmax,Rmax)
+
+        ax.plot_surface(X,Y,Z,rcount=100,ccount=100,facecolors=cm.jet(R/Rmax),shade=False)
+        #ax.plot_surface(X,Y,Z,rcount = 100,ccount = 100,color="lightblue",shade=True,lightsource=matplotlib.colors.LightSource(30,70))
+        #ax.contour3D(X, Y, Z, 50) #ax.plot_surface(X, Y, Z, rstride=1, cstride=1,cmap='viridis', edgecolor='none')
+        ax.set_title(" "+nombre + " ( Dmax or Emax : %2.2f" % Rmax + ")")
+
+        #Rmax = grafica3d(ax,self.directividad,phi,theta,corteLobuloPrincipal=.5)
+        
+
+
+        [xi, yi , zi] = 50*np.transpose(posiciones-np.array(((dx,dy,dz))))
+        ax.scatter(xi,yi,zi, c = 'green',  marker='+' , linewidth = 2)
+        # xi = [:,0] ; yi = [:,1], zi = [:,2]   # selecciona columnas, use la transpuesta de puntos
+
+        plt.show()
 #==============================================================================        
 def amplitudCosElev(posiciones,escala=0.8):
     """
@@ -84,248 +212,6 @@ def amplitudCosElev(posiciones,escala=0.8):
     rmax=np.max(radios)
     A = 1+np.cos(np.pi*escala*radios/rmax)
     return A/np.linalg.norm(A)*A.size**.5   
-#==============================================================================        
-def Graficar_2D(arreglo,nombre,posiciones,dx,dy,dz):
-    """
-    Realiza la representacion del patron de radiacion del arreglo
-            y ubica las antenas en un espacio x,y,z
-    """    
-    theta = np.linspace(0,np.pi,100)
-    phi = np.linspace(-np.pi,np.pi,100)
-    THETA, PHI = np.meshgrid(theta,phi)
-
-    f = lambda x,y: np.abs(arreglo.campo(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
-    #f = lambda x,y: np.abs(arreglo.directividad(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
-    R = f(PHI,THETA)    
-
-    X = R * np.cos(PHI) * np.sin(THETA)
-    Y = R * np.sin(PHI) * np.sin(THETA)
-    Z = R * np.cos(THETA)
-    Rmax = np.max(R)
-
-    fig = plt.figure()
-    ax = fig.add_subplot(projection = '3d')
-    ax.set_xlim(-Rmax,Rmax)
-    ax.set_ylim(-Rmax,Rmax)
-    ax.set_zlim(-Rmax,Rmax)
-
-    ax.plot_surface(X,Y,Z,rcount=100,ccount=100,facecolors=cm.jet(R/Rmax),shade=False)
-    #ax.plot_surface(X,Y,Z,rcount = 100,ccount = 100,color="lightblue",shade=True,lightsource=matplotlib.colors.LightSource(30,70))
-    #ax.contour3D(X, Y, Z, 50) #ax.plot_surface(X, Y, Z, rstride=1, cstride=1,cmap='viridis', edgecolor='none')
-    ax.set_title(" "+nombre + " ( Dmax or Emax : %2.2f" % Rmax + ")")
-
-    #Rmax = grafica3d(ax,arreglo.directividad,phi,theta,corteLobuloPrincipal=.5)
-    
-
-
-    [xi, yi , zi] = 50*np.transpose(posiciones-np.array(((dx,dy,dz))))
-    ax.scatter(xi,yi,zi, c = 'green',  marker='+' , linewidth = 2)
-    # xi = [:,0] ; yi = [:,1], zi = [:,2]   # selecciona columnas, use la transpuesta de puntos
-#==============================================================================
-def Geom_Arreglo_Rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
-    """Posiciona en un plano x,y,z a cada una de las antenas del arreglo
-            
-        Array(n,2) plot Geom_Arreglo_Rectangular( int D, int Nx ,int Ny)
-            Entrada:
-                D: Distancia entre elementos en las direcciones x e y [en Nº long. de onda]
-                Nx: Num  de antenes en la direccion x
-                Ny: Num de antenas en la direccion y
-            Salida: 
-                posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
-                excitaciones: Son las excitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
-    """
-    
-    pos_x = np.arange(Nx)
-    pos_y = np.arange(Ny)
-    pos_z = np.arange(Nz)
-    B = np.array([[0,0,0]])
-    for i in pos_x:
-        for j in pos_y:
-            for k in pos_z:
-                Aux = np.array([[i*D, j*D, k*D]]) 
-                B = np.append(B,Aux,axis=0)
-    
-    posiciones = B[1:]   
-    excitaciones = np.array(Nx*Ny*Nz*[1])
-    
-    return [posiciones, excitaciones]
-#==============================================================================        
-def Geom_Arreglo_Circular(DR = 1,Nr = 1, N = 1,Dz =1, Nz = 1):
-    """
-        Posiciona en un plano x,y,z a cada una de las antenas del arreglo
-    ----------------------------------------------------------------------------------------------        
-        Array(n,2)  Geom_Arreglo_Circular( int Dr, int Nr ,int N, int Dz, int Nz)
-            Entrada:
-                Dr: Distancia entre elementos en las direccion radial [en Nº long. de onda] 
-                Nr: Num de antenas en la direccion radial
-                N: Num de antenas en cada anillo (radio)
-                Dz: Distancia entre elementos en las direccion z [en Nº long. de onda] 
-                Nz: Num de antenas en la direccion z
-            Salida: 
-                posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
-                excitaciones: excitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
-    ----------------------------------------------------------------------------------------------
-    """
-    paso_ang = 360/N
-    pos_r = np.linspace(1,Nr,num=Nr)
-    pos_z = np.arange(Nz)
-    angulo = np.arange(N)
-    B = np.array([[0,0,0]])
-
-    for i in angulo:
-        for j in pos_r:
-            for k in pos_z:   
-                x = (DR*j) * np.cos(math.radians(paso_ang*i))
-                y = (DR*j) * np.sin(math.radians(paso_ang*i))
-                Aux = np.array([[x, y, k*Dz]]) 
-                B = np.append(B,Aux,axis=0)
-    posiciones = B[1:]
-    
-    for k in pos_z:
-        Aux2 = np.array([[0, 0, k*Dz]]) 
-        posiciones = np.append(posiciones,Aux2,axis=0)
-
-    excitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
-    return [posiciones, excitaciones]
-#==============================================================================
-def Geom_Arreglo_Circular_2(Dr=1,Nr=1,N=1, Dz=1, Nz=1):
-    """
-        Posiciona en un plano x,y,z a cada una de las antenas del arreglo
-    ----------------------------------------------------------------------------------------------        
-        Array(n,2)  Geom_Arreglo_Circular( int Nr, int n ,int Dr, int Dz, int Nz)
-            Entrada:
-                Nr: Num de anillos 
-                n: numero de elementos en el primer anillo 
-                Dr: radio del primer anillo 
-                Dz: Distancia entre elementos en las direccion z [en Nº long. de onda] 
-                Nz: Num de antenas en la direccion z
-            Salida: 
-                posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
-                exitaciones: Exitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
-    ----------------------------------------------------------------------------------------------
-    """
-    pos_r = np.arange(Nr)
-    pos_z = np.arange(Nz)
-    B = np.array([[0,0,0]])
-
-    for k in pos_z:
-        for i in pos_r:
-            elementos_en_anillo_actual = i*N
-            theta = np.linspace(0,2*np.pi,elementos_en_anillo_actual+1)
-            #print(np.degrees(theta))
-            for j in np.arange(np.size(theta)-1):
-                x = i*Dr*np.cos(theta[j])
-                y = round(i*Dr*np.sin(theta[j]),5)
-                Aux = np.array([[x, y, k*Dz]]) 
-                B = np.append(B,Aux,axis=0)
-        Aux2 = np.array([[0, 0, k*Dz]]) 
-        B = np.append(B,Aux2,axis=0)
- 
-
-    posiciones = B[1:]
-    #print(np.size(posiciones,axis=0))
-    #print(posiciones)
-    
-    #fig = plt.figure()
-    #ax = fig.add_subplot(projection = '3d')
-    
-    [xi, yi , zi] = 1*np.transpose(posiciones)
-    #ax.scatter(xi,yi,zi, c = 'blue',  marker='o' , linewidth = 2)
-    exitaciones = np.array(np.size(posiciones,axis=0)*[1])
-    return [posiciones, exitaciones]
-#==============================================================================
-def Ancho_Haz(arreglo, graficar=False):
-    theta = np.linspace(0,np.pi,100)
-    phi = np.linspace(-np.pi,np.pi,100)
-    THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
-    f = lambda x,y: np.abs(arreglo.directividad(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
-    R = f(PHI,THETA) #matriz de 50*50
-    
-    Rmax = np.max(R)
-    i_phi,i_theta = np.where(R == Rmax)
-    theta_apuntado = np.degrees(theta[int(i_theta)])
-    phi_apuntado = np.degrees(phi[int(i_phi)])  
-  
-    if graficar: fig = plt.figure()    
-
-    if graficar: ax1 = fig.add_subplot(2,1,1)
-    y_campo_phi = np.abs(arreglo.directividad(math.radians(phi_apuntado),theta))
-    x_theta = np.degrees(theta)
-    if graficar: 
-        ax1.plot(x_theta,y_campo_phi)
-        ax1.set_title("Patron $\\theta$"), ax1.grid(True)
-    
-    
-    x = [0]
-    y = [0]
-    
-    Rmax= np.max(y_campo_phi)
-    Rrange = Rmax*0.3
-    for i in np.arange(np.size(y_campo_phi,0)):
-        if (y_campo_phi[i] >= Rrange):
-            x = np.append(x,np.array([y_campo_phi[i]]),axis=0)
-            y = np.append(y,np.array([x_theta[i]]),axis=0)
-    y = y[1:]
-    x = x[1:]
-
-    index_Rmax = np.where( x == Rmax )
-    index = int(index_Rmax[0])
-
-    R_left = x[0:index] 
-    theta_left = y[0:index]
-    R_right = x[index:-1] 
-    theta_right = y[index:-1]
-
-    theta_hp_min = np.interp(Rmax*(2**-0.5),R_left,theta_left)
-    if len(R_right) == 0:
-        theta_hp_max = 90
-    else:
-        theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
-    
-    if graficar: ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
-    Ancho_theta =  theta_hp_max - theta_hp_min
-    
-
-    if graficar: ax1 = fig.add_subplot(2,1,2)
-    x_phi = np.degrees(phi)
-    y_campo_theta = np.abs(arreglo.directividad(phi,math.radians(theta_apuntado)))
-    if graficar:
-        ax1.plot(x_phi,y_campo_theta)
-        ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
-
-    xx = [0]
-    yy = [0]
-    Rmax= np.max(y_campo_theta)
-    Rrange = Rmax*0.3
-    for i in np.arange(np.size(y_campo_theta,0)):
-        if (y_campo_theta[i] >= Rrange):
-            xx = np.append(xx,np.array([y_campo_theta[i]]),axis=0)
-            yy = np.append(yy,np.array([x_phi[i]]),axis=0)
-    yy = yy[1:]
-    xx = xx[1:]
-
-    index_Rmax = np.where( xx == Rmax )
-    index = int(index_Rmax[0])
-    R_left = xx[0:index] 
-    phi_left = yy[0:index]
-    R_right = xx[index:-1]
-    phi_right = yy[index:-1]
-
-    intensidad_media_potencia = Rmax * (2**-0.5)
-    phi_hp_min = np.interp(intensidad_media_potencia,R_left,phi_left)
-    phi_hp_max = np.interp(-intensidad_media_potencia,-R_right,phi_right)
-    
-    if graficar: ax1.plot(
-        phi_hp_min,
-        intensidad_media_potencia,
-        'or',
-        phi_hp_max,
-        intensidad_media_potencia,
-        'or'
-        ) 
-    Ancho_phi = phi_hp_max - phi_hp_min
-    Directividad = Rmax
-    return [Ancho_theta,Ancho_phi,Directividad]
 #==============================================================================
 def patronMonopoloCuartoOnda():
     self = patronMonopoloCuartoOnda
@@ -355,36 +241,30 @@ def Unnormalisation_Freq(Freq,D):
     D_unnorm = d_real/Lambda
 
     return [D_unnorm,D_unnorm*Lambda]
-    
 #==============================================================================
 
 def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
     logging.info('Empezando Log')
     logging.info('Comenzando Geom_Arreglo_Rectangular')
 
-    if disposicion == Disposiciones.RECTANGULAR.value:
-        [posiciones,excitaciones] = Geom_Arreglo_Rectangular(separacion, Nx=param1, Ny=param2)
-    elif disposicion == Disposiciones.CIRCULAR.value:
-        [posiciones,excitaciones] = Geom_Arreglo_Circular(separacion,Nr=param1,N=param2)
-    elif disposicion == Disposiciones.CIRCULAR2.value:
-        [posiciones,excitaciones] = Geom_Arreglo_Circular_2(separacion,Nr=param1,N=param2)
+    [posiciones,excitaciones] = patterns_generators.generate_distribution(disposicion,separacion,param1,param2)
+    individual_element_pattern = [patronMonopoloCuartoOnda()]
     
-    patron_elemento = [patronMonopoloCuartoOnda()]
-    arreglo = ArregloGeneral(posiciones,excitaciones,patron_elemento)
-    phi_apuntado = apuntamiento[0]
-    theta_apuntado = apuntamiento[1]
+    arreglo = ArregloGeneral(posiciones,excitaciones,individual_element_pattern)
+    phi_apuntado = math.radians(apuntamiento[0])
+    theta_apuntado = math.radians(apuntamiento[1])
     
-    arreglo.apuntar(math.radians(phi_apuntado),math.radians(theta_apuntado))
+    arreglo.apuntar(phi_apuntado,theta_apuntado)
     
-    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut, directividad] = Ancho_Haz(arreglo, graficar)
+    [Ancho_Haz_Elevacion, Ancho_Haz_Acimut, directividad] = arreglo.get_beam_width(graficar)
     logging.info('Resultados:')
     logging.info(f' -Ancho de Elevacion  = {Ancho_Haz_Elevacion}')
     logging.info(f' -Ancho de Azimuth = {Ancho_Haz_Acimut}')    
     
     logging.info('mostrando...')
     if graficar: 
-        Graficar_2D(arreglo,"Arreglo en 2D",posiciones,0,0,0)
-        plt.show()
+        arreglo.plot_3D("Arreglo en 2D",posiciones,0,0,0)
+        
 
     return [Ancho_Haz_Elevacion,Ancho_Haz_Acimut]
 
