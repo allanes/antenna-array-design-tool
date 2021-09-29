@@ -243,33 +243,6 @@ def Unnormalisation_Freq(Freq,D):
     return [D_unnorm,D_unnorm*Lambda]
 #==============================================================================
 
-def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
-
-    # [posiciones,excitaciones] = patterns_generators.generate_distribution(disposicion,separacion,param1,param2)
-    
-    geometrical_array = GeometryArray(distribution_type=disposicion)
-    geometrical_array.populate_array(separacion=separacion, param1=param1, param2=param2)
-    individual_element_pattern = [patronMonopoloCuartoOnda()]
-    
-    arreglo = ArregloGeneral(
-        posiciones=geometrical_array.posiciones,
-        excitaciones=geometrical_array.excitaciones,
-        patron=individual_element_pattern
-    )
-
-    arreglo.apuntar(
-        phi=math.radians(apuntamiento[0]),
-        theta=math.radians(apuntamiento[1])
-    )
-    
-    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=graficar)
-    
-    log_widths(theta=elevation_width, phi=azimut_width)
-    
-    if graficar: arreglo.plot_3D()        
-
-    return [elevation_width,azimut_width]
-
 if __name__ == '__main__':
     print('\n**Este modulo debe ser incluido en la sección "imports" para ser usado**')
     print('Intentar corriendo funciones_disenio.py')
