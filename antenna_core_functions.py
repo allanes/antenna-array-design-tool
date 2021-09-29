@@ -10,10 +10,9 @@ import math
 import logging
 import scipy.integrate as integrate
 
-import antenna_geometric_patterns_generators as patterns_generators
+from antenna_geometric_patterns_generators import GeometryArray
 
-class ArregloGeneral(object):
-    
+class ArregloGeneral(object):    
     def __init__(self,posiciones,excitaciones,patron=None):
         """Arreglo tridimensional
         
@@ -250,14 +249,22 @@ def log_widths(theta, phi):
 
 def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
 
-    [posiciones,excitaciones] = patterns_generators.generate_distribution(disposicion,separacion,param1,param2)
+    # [posiciones,excitaciones] = patterns_generators.generate_distribution(disposicion,separacion,param1,param2)
+    
+    geometrical_array = GeometryArray(distribution_type=disposicion)
+    geometrical_array.populate_array(separacion=separacion, param1=param1, param2=param2)
     individual_element_pattern = [patronMonopoloCuartoOnda()]
     
-    arreglo = ArregloGeneral(posiciones,excitaciones,individual_element_pattern)
-    phi_apuntado = math.radians(apuntamiento[0])
-    theta_apuntado = math.radians(apuntamiento[1])
-    
-    arreglo.apuntar(phi_apuntado,theta_apuntado)
+    arreglo = ArregloGeneral(
+        posiciones=geometrical_array.posiciones,
+        excitaciones=geometrical_array.excitaciones,
+        patron=individual_element_pattern
+    )
+
+    arreglo.apuntar(
+        phi=math.radians(apuntamiento[0]),
+        theta=math.radians(apuntamiento[1])
+    )
     
     [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(graficar)
     

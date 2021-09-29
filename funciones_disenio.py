@@ -1,8 +1,10 @@
 from datetime import datetime
 import logging
 import numpy as np
+import math
 
 import antenna_core_functions
+from antenna_geometric_patterns_generators import GeometryArray
 from antenna_geometric_patterns_generators import Disposiciones as disposition_types
 import graficar_etapa1
 import graficar_etapa2
@@ -12,7 +14,7 @@ class ConfiguracionEntrada:
         """
         
         """
-        self.disposicion = disposition_types.CIRCULAR.value
+        self.disposicion = disposition_types.STAR.value
         self.separacion = 0.25
         self.parametro1 = 10
         self.parametro2 = 15
@@ -91,7 +93,7 @@ class ConfiguracionEntrada:
         if etapa == 1:
             logging.info(f'Iniciando Etapa 1. Obtencion de datos para evaluar ancho de haz en funcion de lambda. Configuracion inicial:')
             logging.info(f'Arreglo tipo {self.disposicion}')
-            logging.info(f'  -DR = {self.separacion}')
+            logging.info(f'  -Separacion: {self.separacion} [lambda]')
 
         elif etapa == 2:
             logging.info(f'Iniciando Etapa 2. Obtencion de datos para evaluar la respuesta en frecuencia. Configuracion inicial:')
@@ -140,8 +142,7 @@ def etapaUno(configuracion):
 def etapaDos(configuracion):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
-    """
-    
+    """    
     rango_frecuencias = [configuracion.frecuencia_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6] # 
     freq = np.array(rango_frecuencias)
     Dn,d = antenna_core_functions.Unnormalisation_Freq(freq,configuracion.separacion)
@@ -169,7 +170,43 @@ def etapaDos(configuracion):
         aux_progreso += 1
         print(f'Progreso: {100*aux_progreso/len(Dn):.1f}%')
     logging.info('Fin de desnormalizacion')
+
     return dataset
+
+def opcionTres(config):
+    filename = config.configurar_log(etapa=3)
+    # --
+    geometrical_array = GeometryArray(distribution_type=config.disposicion)
+    geometrical_array.populate_array(
+        separacion=config.separacion, 
+        param1= config.parametro1, 
+        param2=config.parametro2
+    )
+    individual_element_pattern = [antenna_core_functions.patronMonopoloCuartoOnda()]
+    
+    arreglo = antenna_core_functions.ArregloGeneral(
+        posiciones=geometrical_array.posiciones,
+        excitaciones=geometrical_array.excitaciones,
+        patron=individual_element_pattern
+    )
+
+    arreglo.apuntar(
+        phi=math.radians(config.apuntamiento[0]),
+        theta=math.radians(config.apuntamiento[1])
+    )
+
+    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(graficar=True)
+    # --
+    antenna_core_functions.main(
+        config.disposicion, 
+        config.separacion, 
+        config.parametro1, 
+        config.parametro2,
+        config.apuntamiento,
+        graficar=True
+        )
+
+    return filename
 
 
 def menu_principal(config):
@@ -180,11 +217,10 @@ def menu_principal(config):
     print('4. Configurar arreglo')
     
     config.mostrar_configuracion()
-
     return input('\nSeleccione una opcion>>')
 
-def main():
-    
+
+def main():    
     config = ConfiguracionEntrada()
     opcion = ""
     
@@ -194,23 +230,24 @@ def main():
         if opcion == '1':
             dataset = etapaUno(config)
             graficar_etapa1.main(dataset)
-            opcion = 'q'
+            opcion = ''
 
-        if opcion == '2':
+        elif opcion == '2':
             dataset = etapaDos(config)
             graficar_etapa2.main(dataset)
-            opcion = 'q'
+            opcion = ''
 
-        if opcion == '3':
-            config.configurar_log(etapa=3)
-            antenna_core_functions.main(config.disposicion, config.separacion, config.parametro1, config.parametro2,config.apuntamiento,graficar=True)
-            opcion = 'q'
+        elif opcion == '3':
+            opcionTres(config)
+            opcion = ''
 
-        if opcion == '4':
+        elif opcion == '4':
             config.configurar_parametros()
+            opcion = ''
             
-        if opcion == '5':
+        elif opcion == '5':
             opcion = 'q'
+
 
 if __name__ == '__main__':
     main()
