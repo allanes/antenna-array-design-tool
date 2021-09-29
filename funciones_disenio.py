@@ -3,7 +3,7 @@ import numpy as np
 import math
 
 import antenna_core_functions
-from antenna_geometric_patterns_generators import GeometryArray
+from antenna_geometric_patterns_generators import GeometryArray, get_params_names
 import utilities as utils
 import graficar_etapa1
 import graficar_etapa2
@@ -40,6 +40,7 @@ def etapaUno(cfg):
     """
     dataset = cfg.configurar_log(etapa=1)
     
+    [param1_name, param2_name] = get_params_names(cfg.disposicion)
     progreso_maximo = cfg.get_max_progress()
     aux_progreso = 0
     for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
@@ -123,20 +124,20 @@ def main():
         if opcion == '1':
             dataset = etapaUno(config)
             graficar_etapa1.main(dataset)
-            opcion = ''
+            opcion = 'q'
 
         elif opcion == '2':
             dataset = etapaDos(config)
             graficar_etapa2.main(dataset)
-            opcion = ''
+            opcion = 'q'
 
         elif opcion == '3':
             opcionTres(config)
-            opcion = ''
+            opcion = 'q'
 
         elif opcion == '4':
             config.configurar_parametros()
-            opcion = ''
+            opcion = 'q'
             
         elif opcion == '5':
             opcion = 'q'

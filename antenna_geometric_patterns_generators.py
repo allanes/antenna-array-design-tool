@@ -30,23 +30,24 @@ class GeometryArray():
     def get_excitations(self):
         return self.excitaciones
 
-    def get_params_names(self):
-        param1 = 'Param1'
-        param2 = 'Param2'
 
-        if self.distribution_name == Disposiciones.RECTANGULAR.value:
-            param1 = 'Number of elements along X axis'
-            param2 = 'Number of elements along Y axis'
+def get_params_names(distribution_type):
+    param1 = 'Param1'
+    param2 = 'Param2'
+
+    if distribution_type == Disposiciones.RECTANGULAR.value:
+        param1 = 'Number of elements along X axis'
+        param2 = 'Number of elements along Y axis'
+    
+    elif distribution_type == Disposiciones.STAR.value:
+        param1 = 'Number of elements along Radial Axis (i.e. Rings)'
+        param2 = 'Number of elements per Ring'
+
+    elif distribution_type == Disposiciones.CIRCULAR2.value:
+        param1 = 'Number of elements along Radial Axis (i.e. Rings)'
+        param2 = 'Number of elements for the First Ring'
         
-        elif self.distribution_name == Disposiciones.STAR.value:
-            param1 = 'Number of elements along Radial Axis (i.e. Rings)'
-            param2 = 'Number of elements per Ring'
-
-        elif self.distribution_name == Disposiciones.CIRCULAR2.value:
-            param1 = 'Number of elements along Radial Axis (i.e. Rings)'
-            param2 = 'Number of elements for the First Ring'
-            
-        return [param1, param2]
+    return [param1, param2]
 
 
 def generate_rectangular_geometry(D = 1, Nx = 1, Ny = 1, Nz = 1):
