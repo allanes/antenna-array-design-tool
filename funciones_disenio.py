@@ -4,6 +4,7 @@ import numpy as np
 import math
 
 import antenna_core_functions
+import antenna_geometric_patterns_generators
 from antenna_geometric_patterns_generators import GeometryArray
 from antenna_geometric_patterns_generators import Disposiciones as disposition_types
 import graficar_etapa1
@@ -43,7 +44,7 @@ class ConfiguracionEntrada:
         print("    4. Volver")
         return input("\nQue desea configurar? >>")
     
-    def configurar_parametros(self):        
+    def configurar_parametros(self):
         opcion_configuracion = ""
 
         while(opcion_configuracion != 'q'):
@@ -78,6 +79,24 @@ class ConfiguracionEntrada:
                 opcion_configuracion = 'q'
 
             self.mostrar_configuracion()
+
+    def get_param1_initial_value(self):
+        return self.rango_parametro1[0]
+   
+    def get_param1_final_value(self):
+        return self.rango_parametro1[1] + 1
+    
+    def get_param2_initial_value(self):
+        return self.rango_parametro2[0]
+    
+    def get_param2_final_value(self):
+        return self.rango_parametro2[1] + 1
+
+    def get_max_progress(self):
+        return(
+            (self.get_param1_initial_value() - self.get_param1_final_value()) * 
+            (self.get_param2_initial_value() - self.get_param2_final_value())
+        )
 
     def configurar_log(self, etapa, separacion_metros=0):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -132,35 +151,31 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     )
 
     [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=plot)
-
     if plot: arreglo.plot_3D()
 
-def etapaUno(configuracion):
+    return [elevation_width, azimut_width]
+
+def etapaUno(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-    dataset = configuracion.configurar_log(etapa=1)
+    dataset = cfg.configurar_log(etapa=1)
     
-    parametro1_valor_inicial = configuracion.rango_parametro1[0]
-    parametro1_valor_final = configuracion.rango_parametro1[1] + 1
-    parametro2_valor_inicial = configuracion.rango_parametro2[0]
-    parametro2_valor_final = configuracion.rango_parametro2[1] + 1
-    progreso_maximo = (
-        (parametro1_valor_inicial - parametro1_valor_final) * 
-        (parametro2_valor_inicial - parametro2_valor_final)
-    )
+    progreso_maximo = cfg.get_max_progress()
     aux_progreso = 0
-    for aux_param1 in range(parametro1_valor_inicial,parametro1_valor_final):
+    for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
         logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1}')
-        for aux_param2 in range(parametro2_valor_inicial,parametro2_valor_final):
+        for aux_param2 in range(cfg.get_param2_initial_value(), cfg.get_param2_final_value()):
             logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
-            antenna_core_functions.main(
-                configuracion.disposicion,
-                configuracion.separacion,
-                aux_param1,aux_param2,
-                configuracion.apuntamiento,
-                graficar=False
-                )
+            [elev_w, azim_w] = array_evaluation_process(
+                distribution_type=cfg.disposicion,
+                separation=cfg.separacion,
+                param1=aux_param1,
+                param2=aux_param2,
+                aiming=cfg.apuntamiento,
+                plot=False
+            )
+            cfg.log_widths(theta=elev_w, phi=azim_w)
             aux_progreso += 1
             print(f'Progreso: {100*aux_progreso/progreso_maximo:.1f}%')
         logging.info("-------------------------------------------")
@@ -172,7 +187,7 @@ def etapaDos(configuracion):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
     """    
-    rango_frecuencias = [configuracion.frecuencia_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,16e6,17e6,18e6,19e6,20e6] # 
+    rango_frecuencias = [configuracion.frecuencia_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
     freq = np.array(rango_frecuencias)
     Dn,d = antenna_core_functions.Unnormalisation_Freq(freq,configuracion.separacion)
     
@@ -181,24 +196,25 @@ def etapaDos(configuracion):
     # Recalculo los anchos para las frecuencias desnormalizadas
     anchos_elevacion = []
     anchos_azimut = []
-    aux_progreso = 0
+    aux_progress = 0
     for index in range(len(Dn)):
         logging.info(f"Distancia en Lambda: {Dn[index]}")
         logging.info(f"Frecuencia: {freq[index]}")
-        [elev, azim] = antenna_core_functions.main(
-            configuracion.disposicion, 
-            Dn[index], 
-            configuracion.parametro1, 
-            configuracion.parametro2,
-            configuracion.apuntamiento,
-            graficar=False
-            )        
-        anchos_elevacion.append(elev)
-        anchos_azimut.append(azim)
+        [elev_w, azim_w] = array_evaluation_process(
+            distribution_type=configuracion.disposicion, 
+            separation=Dn[index], 
+            param1=configuracion.parametro1, 
+            param2=configuracion.parametro2,
+            aiming=configuracion.apuntamiento,
+            plot=False
+        )
+
+        anchos_elevacion.append(elev_w)
+        anchos_azimut.append(azim_w)
+        configuracion.log_widths(theta=elev_w, phi=azim_w)
     
-        aux_progreso += 1
-        # config.log_widths(theta=elevation_width, phi=azimut_width)
-        print(f'Progreso: {100*aux_progreso/len(Dn):.1f}%')
+        aux_progress += 1
+        print(f'Progreso: {100*aux_progress/len(Dn):.1f}%')
     logging.info('Fin de desnormalizacion')
 
     return dataset
