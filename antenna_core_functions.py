@@ -66,7 +66,7 @@ class ArregloGeneral(object):
         campo_vec = np.vectorize(self._campo_dirUnica)
         return campo_vec(phi,theta)
 
-    def get_beam_width(self, graficar=False):
+    def get_beam_width(self, plot=False):
         theta = np.linspace(0,np.pi,100)
         phi = np.linspace(-np.pi,np.pi,100)
         THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
@@ -78,12 +78,12 @@ class ArregloGeneral(object):
         theta_apuntado = np.degrees(theta[int(i_theta)])
         phi_apuntado = np.degrees(phi[int(i_phi)])  
 
-        if graficar: fig = plt.figure()    
+        if plot: fig = plt.figure()    
 
-        if graficar: ax1 = fig.add_subplot(2,1,1)
+        if plot: ax1 = fig.add_subplot(2,1,1)
         y_campo_phi = np.abs(self.directividad(math.radians(phi_apuntado),theta))
         x_theta = np.degrees(theta)
-        if graficar: 
+        if plot: 
             ax1.plot(x_theta,y_campo_phi)
             ax1.set_title("Patron $\\theta$"), ax1.grid(True)
         
@@ -114,14 +114,14 @@ class ArregloGeneral(object):
         else:
             theta_hp_max = np.interp(-Rmax*(2**-0.5),-R_right,theta_right)
         
-        if graficar: ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
+        if plot: ax1.plot(theta_hp_min,Rmax*(2**-0.5),'or',theta_hp_max,Rmax*(2**-0.5),'or')
         Ancho_theta =  theta_hp_max - theta_hp_min
         
 
-        if graficar: ax1 = fig.add_subplot(2,1,2)
+        if plot: ax1 = fig.add_subplot(2,1,2)
         x_phi = np.degrees(phi)
         y_campo_theta = np.abs(self.directividad(phi,math.radians(theta_apuntado)))
-        if graficar:
+        if plot:
             ax1.plot(x_phi,y_campo_theta)
             ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
 
@@ -147,7 +147,7 @@ class ArregloGeneral(object):
         phi_hp_min = np.interp(intensidad_media_potencia,R_left,phi_left)
         phi_hp_max = np.interp(-intensidad_media_potencia,-R_right,phi_right)
         
-        if graficar: ax1.plot(
+        if plot: ax1.plot(
             phi_hp_min,
             intensidad_media_potencia,
             'or',
@@ -242,10 +242,6 @@ def Unnormalisation_Freq(Freq,D):
 
     return [D_unnorm,D_unnorm*Lambda]
 #==============================================================================
-def log_widths(theta, phi):
-    logging.info('Resultados:')
-    logging.info(f' -Ancho de Elevacion  = {theta}')
-    logging.info(f' -Ancho de Azimuth = {phi}')
 
 def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
 
@@ -266,7 +262,7 @@ def main(disposicion,separacion,param1,param2,apuntamiento,graficar=False):
         theta=math.radians(apuntamiento[1])
     )
     
-    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(graficar)
+    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=graficar)
     
     log_widths(theta=elevation_width, phi=azimut_width)
     

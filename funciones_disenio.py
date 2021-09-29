@@ -18,7 +18,7 @@ class ConfiguracionEntrada:
         self.separacion = 0.25
         self.parametro1 = 10
         self.parametro2 = 15
-        self.apuntamiento = [50,30]
+        self.apuntamiento = {'phi':50, 'theta':30}
         self.rango_parametro1 = [10,12]
         self.rango_parametro2 = [10,13]
         self.frecuencia_disenio = 5e6
@@ -27,8 +27,8 @@ class ConfiguracionEntrada:
         print('\nArreglo configurado:')
         print(f'  Disposicion: {disposition_types(self.disposicion).name}')
         print(f'  Separacion: {self.separacion} [lambda]')
-        print(f'  Apuntamiento: phi={self.apuntamiento[0]},')
-        print(f'                theta={self.apuntamiento[1]}')
+        print(f'  Apuntamiento: phi={self.apuntamiento["phi"]},')
+        print(f'                theta={self.apuntamiento["theta"]}')
         print(f'  Rango de elementos para X: {self.rango_parametro1}')
         print(f'  Rango de elementos para Y: {self.rango_parametro2}')
         print(f'  Frecuencia de disenio: {self.frecuencia_disenio}')
@@ -55,8 +55,8 @@ class ConfiguracionEntrada:
                 for index, disp in enumerate(disposition_types):
                     print(f'{index}. {disp}')
                 self.disposicion = int(input('Disposicion>>'))
-                self.apuntamiento[0] = float(input("    Apuntamiento Phi>>"))
-                self.apuntamiento[1] = float(input("    Apuntamiento Theta>>"))
+                self.apuntamiento['phi'] = float(input("    Apuntamiento Phi>>"))
+                self.apuntamiento['theta'] = float(input("    Apuntamiento Theta>>"))
                 self.separacion = float(input('    Separacion [lambda]>>'))
 
             elif opcion_configuracion == '2':
@@ -105,6 +105,35 @@ class ConfiguracionEntrada:
             logging.info('----------------Seccion de Datos Generados----------------')
 
         return filename
+
+    def log_widths(self, theta, phi):
+        logging.info('Resultados:')
+        logging.info(f' -Ancho de Elevacion  = {theta}')
+        logging.info(f' -Ancho de Azimuth = {phi}')
+
+def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
+    geometrical_array = GeometryArray(distribution_type=distribution_type)
+    geometrical_array.populate_array(
+        separacion=separation, 
+        param1= param1, 
+        param2=param2
+    )
+    individual_element_pattern = [antenna_core_functions.patronMonopoloCuartoOnda()]
+    
+    arreglo = antenna_core_functions.ArregloGeneral(
+        posiciones=geometrical_array.posiciones,
+        excitaciones=geometrical_array.excitaciones,
+        patron=individual_element_pattern
+    )
+
+    arreglo.apuntar(
+        phi=math.radians(aiming['phi']),
+        theta=math.radians(aiming['theta'])
+    )
+
+    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=plot)
+
+    if plot: arreglo.plot_3D()
 
 def etapaUno(configuracion):
     """
@@ -168,6 +197,7 @@ def etapaDos(configuracion):
         anchos_azimut.append(azim)
     
         aux_progreso += 1
+        # config.log_widths(theta=elevation_width, phi=azimut_width)
         print(f'Progreso: {100*aux_progreso/len(Dn):.1f}%')
     logging.info('Fin de desnormalizacion')
 
@@ -175,35 +205,14 @@ def etapaDos(configuracion):
 
 def opcionTres(config):
     filename = config.configurar_log(etapa=3)
-    # --
-    geometrical_array = GeometryArray(distribution_type=config.disposicion)
-    geometrical_array.populate_array(
-        separacion=config.separacion, 
-        param1= config.parametro1, 
-        param2=config.parametro2
-    )
-    individual_element_pattern = [antenna_core_functions.patronMonopoloCuartoOnda()]
     
-    arreglo = antenna_core_functions.ArregloGeneral(
-        posiciones=geometrical_array.posiciones,
-        excitaciones=geometrical_array.excitaciones,
-        patron=individual_element_pattern
-    )
-
-    arreglo.apuntar(
-        phi=math.radians(config.apuntamiento[0]),
-        theta=math.radians(config.apuntamiento[1])
-    )
-
-    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(graficar=True)
-    # --
-    antenna_core_functions.main(
-        config.disposicion, 
-        config.separacion, 
-        config.parametro1, 
-        config.parametro2,
-        config.apuntamiento,
-        graficar=True
+    array_evaluation_process(
+        distribution_type=config.disposicion, 
+        separation=config.separacion, 
+        param1=config.parametro1, 
+        param2=config.parametro2,
+        aiming=config.apuntamiento,
+        plot=True
         )
 
     return filename
