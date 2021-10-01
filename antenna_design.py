@@ -5,26 +5,25 @@ import math
 import antenna_core_functions
 from antenna_geometric_patterns_generators import GeometryArray, get_params_names
 import utilities as utils
-import graficar_etapa1
-import graficar_etapa2
+import antenna_plotting_tools as plotting_tools
 
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)
     geometrical_array.populate_array(
-        separacion=separation, 
+        separation=separation, 
         param1= param1, 
         param2=param2
     )
-    individual_element_pattern = [antenna_core_functions.patronMonopoloCuartoOnda()]
+    individual_element_pattern = [antenna_core_functions.quarter_wave_monopole_pattern()]
     
-    arreglo = antenna_core_functions.ArregloGeneral(
-        posiciones=geometrical_array.posiciones,
-        excitaciones=geometrical_array.excitaciones,
-        patron=individual_element_pattern
+    arreglo = antenna_core_functions.AntennaArray(
+        positions=geometrical_array.positions,
+        excitations=geometrical_array.excitations,
+        pattern=individual_element_pattern
     )
 
-    arreglo.apuntar(
+    arreglo.aiming(
         phi=math.radians(aiming['phi']),
         theta=math.radians(aiming['theta'])
     )
@@ -35,13 +34,13 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     return [elevation_width, azimut_width]
 
 
-def etapaUno(cfg):
+def option_one(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-    dataset = cfg.configurar_log(etapa=1)
+    dataset = cfg.configure_log(option=1)
     
-    [param1_name, param2_name] = get_params_names(cfg.disposicion)
+    [param1_name, param2_name] = get_params_names(cfg.distribution)
     progreso_maximo = cfg.get_max_progress()
     aux_progreso = 0
     for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
@@ -49,11 +48,11 @@ def etapaUno(cfg):
         for aux_param2 in range(cfg.get_param2_initial_value(), cfg.get_param2_final_value()):
             logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
             [elev_w, azim_w] = array_evaluation_process(
-                distribution_type=cfg.disposicion,
-                separation=cfg.separacion,
+                distribution_type=cfg.distribution,
+                separation=cfg.separation,
                 param1=aux_param1,
                 param2=aux_param2,
-                aiming=cfg.apuntamiento,
+                aiming=cfg.aiming,
                 plot=False
             )
             cfg.log_widths(theta=elev_w, phi=azim_w)
@@ -64,15 +63,15 @@ def etapaUno(cfg):
     return dataset
 
 
-def etapaDos(configuracion):
+def option_two(config):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
     """    
-    rango_frecuencias = [configuracion.frecuencia_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
+    rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
     freq = np.array(rango_frecuencias)
-    Dn,d = antenna_core_functions.Unnormalisation_Freq(freq,configuracion.separacion)
+    Dn,d = antenna_core_functions.denormalise_frequency(freq,config.separation)
     
-    dataset = configuracion.configurar_log(etapa=2, separacion_metros=d[0])
+    dataset = config.configure_log(option=2, separation_m=d[0])
     
     # Recalculo los anchos para las frecuencias desnormalizadas
     anchos_elevacion = []
@@ -82,17 +81,17 @@ def etapaDos(configuracion):
         logging.info(f"Distancia en Lambda: {Dn[index]}")
         logging.info(f"Frecuencia: {freq[index]}")
         [elev_w, azim_w] = array_evaluation_process(
-            distribution_type=configuracion.disposicion, 
+            distribution_type=config.distribution, 
             separation=Dn[index], 
-            param1=configuracion.parametro1, 
-            param2=configuracion.parametro2,
-            aiming=configuracion.apuntamiento,
+            param1=config.parameter1, 
+            param2=config.parameter2,
+            aiming=config.aiming,
             plot=False
         )
 
         anchos_elevacion.append(elev_w)
         anchos_azimut.append(azim_w)
-        configuracion.log_widths(theta=elev_w, phi=azim_w)
+        config.log_widths(theta=elev_w, phi=azim_w)
     
         aux_progress += 1
         print(f'Progreso: {100*aux_progress/len(Dn):.1f}%')
@@ -101,15 +100,15 @@ def etapaDos(configuracion):
     return dataset
 
 
-def opcionTres(config):
-    filename = config.configurar_log(etapa=3)
+def option_three(config):
+    filename = config.configure_log(option=3)
     
     array_evaluation_process(
-        distribution_type=config.disposicion, 
-        separation=config.separacion, 
-        param1=config.parametro1, 
-        param2=config.parametro2,
-        aiming=config.apuntamiento,
+        distribution_type=config.distribution, 
+        separation=config.separation,
+        param1=config.parameter1, 
+        param2=config.parameter2,
+        aiming=config.aiming,
         plot=True
         )
 
@@ -117,32 +116,32 @@ def opcionTres(config):
 
 
 def main():    
-    config = utils.ConfiguracionEntrada()
-    opcion = ""
+    config = utils.InputConfig()
+    option = ""
     
-    while(opcion != 'q'):
-        opcion = config.menu_principal()
+    while(option != 'q'):
+        option = config.main_menu()
                 
-        if opcion == '1':
-            dataset = etapaUno(config)
-            graficar_etapa1.main(dataset)
-            opcion = 'q'
+        if option == '1':
+            dataset = option_one(config)
+            plotting_tools.plot_option_one(dataset)
+            option = 'q'
 
-        elif opcion == '2':
-            dataset = etapaDos(config)
-            graficar_etapa2.main(dataset)
-            opcion = 'q'
+        elif option == '2':
+            dataset = option_two(config)
+            plotting_tools.plot_option_two(dataset)
+            option = 'q'
 
-        elif opcion == '3':
-            opcionTres(config)
-            opcion = 'q'
+        elif option == '3':
+            option_three(config)
+            option = 'q'
 
-        elif opcion == '4':
-            config.configurar_parametros()
-            opcion = 'q'
+        elif option == '4':
+            config.configure_params()
+            option = 'q'
             
-        elif opcion == '5':
-            opcion = 'q'
+        elif option == '5':
+            option = 'q'
 
 
 if __name__ == '__main__':

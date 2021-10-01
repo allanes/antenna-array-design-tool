@@ -1,35 +1,35 @@
 from datetime import datetime
 import logging
 
-from antenna_geometric_patterns_generators import Disposiciones as disposition_types
+from antenna_geometric_patterns_generators import Distributions as disposition_types
 
-class ConfiguracionEntrada:
+class InputConfig:
     def __init__(self):
         """
         
         """
-        self.disposicion = disposition_types.STAR.value
-        self.separacion = 0.25
-        self.parametro1 = 10
-        self.parametro2 = 15
-        self.apuntamiento = {'phi':50, 'theta':30}
-        self.rango_parametro1 = [10,12]
-        self.rango_parametro2 = [10,13]
-        self.frecuencia_disenio = 5e6
+        self.distribution = disposition_types.STAR.value
+        self.separation = 0.25
+        self.parameter1 = 10
+        self.parameter2 = 15
+        self.aiming = {'phi':50, 'theta':30}
+        self.parameter1_range = [10,12]
+        self.parameter2_range = [10,13]
+        self.design_frequency = 5e6
 
-    def mostrar_configuracion(self):
+    def show_config(self):
         print('\nArreglo configurado:')
-        print(f'  Disposicion: {disposition_types(self.disposicion).name}')
-        print(f'  Separacion: {self.separacion} [lambda]')
-        print(f'  Apuntamiento: phi={self.apuntamiento["phi"]},')
-        print(f'                theta={self.apuntamiento["theta"]}')
-        print(f'  Rango de elementos para X: {self.rango_parametro1}')
-        print(f'  Rango de elementos para Y: {self.rango_parametro2}')
-        print(f'  Frecuencia de disenio: {self.frecuencia_disenio}')
-        print(f'  Elementos en X: {self.parametro1} (utilizado en Opciones 2 y 3)')
-        print(f'  Elementos en Y: {self.parametro2} (utilizado en Opciones 2 y 3)')
+        print(f'  Disposicion: {disposition_types(self.distribution).name}')
+        print(f'  Separacion: {self.separation} [lambda]')
+        print(f'  Apuntamiento: phi={self.aiming["phi"]},')
+        print(f'                theta={self.aiming["theta"]}')
+        print(f'  Rango de elementos para X: {self.parameter1_range}')
+        print(f'  Rango de elementos para Y: {self.parameter2_range}')
+        print(f'  Frecuencia de disenio: {self.design_frequency}')
+        print(f'  Elementos en X: {self.parameter1} (utilizado en Opciones 2 y 3)')
+        print(f'  Elementos en Y: {self.parameter2} (utilizado en Opciones 2 y 3)')
 
-    def __configurar_parametros_principal(self):
+    def __params_config_menu(self):
         print("Configuracion del Arreglo de Antenas")
         print("    1. Config. gral: Disposicion, Apuntamiento, Separacion")
         print("    2. Config. etapa 1: Rangos para generar arreglos")
@@ -37,53 +37,53 @@ class ConfiguracionEntrada:
         print("    4. Volver")
         return input("\nQue desea configurar? >>")
     
-    def configurar_parametros(self):
+    def configure_params(self):
         opcion_configuracion = ""
 
         while(opcion_configuracion != 'q'):
-            opcion_configuracion = self.__configurar_parametros_principal()
+            opcion_configuracion = self.__params_config_menu()
 
             if opcion_configuracion == '1':
                 # Configuracion general (disposicion, apuntamiento,separacion)
                 print('      Disposiciones:')
                 for index, disp in enumerate(disposition_types):
                     print(f'{index}. {disp}')
-                self.disposicion = int(input('Disposicion>>'))
-                self.apuntamiento['phi'] = float(input("    Apuntamiento Phi>>"))
-                self.apuntamiento['theta'] = float(input("    Apuntamiento Theta>>"))
-                self.separacion = float(input('    Separacion [lambda]>>'))
+                self.distribution = int(input('Disposicion>>'))
+                self.aiming['phi'] = float(input("    Apuntamiento Phi>>"))
+                self.aiming['theta'] = float(input("    Apuntamiento Theta>>"))
+                self.separation = float(input('    Separacion [lambda]>>'))
 
             elif opcion_configuracion == '2':
                 # Configuracion de etapa 1 (parametro 1, parametro 2)
                 print('      Rango de elementos de Parametro 1')
-                self.rango_parametro1[0] = int(input('     Valor inicial>>'))
-                self.rango_parametro1[1] = int(input('     Valor final>>'))
+                self.parameter1_range[0] = int(input('     Valor inicial>>'))
+                self.parameter1_range[1] = int(input('     Valor final>>'))
                 print('      Rango de elementos de Parametro 2')
-                self.rango_parametro2[0] = int(input('     Valor inicial>>'))
-                self.rango_parametro2[1] = int(input('     Valor final>>'))
+                self.parameter2_range[0] = int(input('     Valor inicial>>'))
+                self.parameter2_range[1] = int(input('     Valor final>>'))
 
             elif opcion_configuracion == '3':
                 # Configuracion de etapa 2 (frec_disenio, elementos en x, elementos en y)
-                self.parametro1 = int(input("     Parametro 1>>"))
-                self.parametro2 = int(input("     Parametro 2>>"))
-                self.frecuencia_disenio = float(input("     Frecuencia de disenio>>"))
+                self.parameter1 = int(input("     Parametro 1>>"))
+                self.parameter2 = int(input("     Parametro 2>>"))
+                self.design_frequency = float(input("     Frecuencia de disenio>>"))
 
             elif opcion_configuracion == '4':
                 opcion_configuracion = 'q'
 
-            self.mostrar_configuracion()
+            self.show_config()
 
     def get_param1_initial_value(self):
-        return self.rango_parametro1[0]
+        return self.parameter1_range[0]
    
     def get_param1_final_value(self):
-        return self.rango_parametro1[1] + 1
+        return self.parameter1_range[1] + 1
     
     def get_param2_initial_value(self):
-        return self.rango_parametro2[0]
+        return self.parameter2_range[0]
     
     def get_param2_final_value(self):
-        return self.rango_parametro2[1] + 1
+        return self.parameter2_range[1] + 1
 
     def get_max_progress(self):
         return(
@@ -91,9 +91,9 @@ class ConfiguracionEntrada:
             (self.get_param2_initial_value() - self.get_param2_final_value())
         )
 
-    def configurar_log(self, etapa, separacion_metros=0):
+    def configure_log(self, option, separation_m=0):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename=f'logs/log_etapa{etapa}_{timestamp}.log'
+        filename=f'logs/log_etapa{option}_{timestamp}.log'
         logging.basicConfig(
             filename=filename,
             level=logging.INFO,
@@ -102,18 +102,18 @@ class ConfiguracionEntrada:
         )
         print(f'Archivo creado: {filename}')
         # Logueo los datos:
-        if etapa == 1:
+        if option == 1:
             logging.info(f'Iniciando Etapa 1. Obtencion de datos para evaluar ancho de haz en funcion de lambda. Configuracion inicial:')
-            logging.info(f'Arreglo tipo {self.disposicion}')
-            logging.info(f'  -Separacion: {self.separacion} [lambda]')
+            logging.info(f'Arreglo tipo {self.distribution}')
+            logging.info(f'  -Separacion: {self.separation} [lambda]')
 
-        elif etapa == 2:
+        elif option == 2:
             logging.info(f'Iniciando Etapa 2. Obtencion de datos para evaluar la respuesta en frecuencia. Configuracion inicial:')
-            logging.info(f'Arreglo tipo {self.disposicion}')
-            logging.info(f'Separacion entre elementos: {self.separacion} [lambda]')
-            logging.info(f"Separacion entre elementos: {separacion_metros} [m]")
-            logging.info(f'Desnormalizando para frecuencia de disenio f = {self.frecuencia_disenio} [Hz]')
-            logging.info(f'Desnormalizando para {self.parametro1} elementos en Parametro 1 y {self.parametro2} elementos en Parametro 2')
+            logging.info(f'Arreglo tipo {self.distribution}')
+            logging.info(f'Separacion entre elementos: {self.separation} [lambda]')
+            logging.info(f"Separacion entre elementos: {separation_m} [m]")
+            logging.info(f'Desnormalizando para frecuencia de disenio f = {self.design_frequency} [Hz]')
+            logging.info(f'Desnormalizando para {self.parameter1} elementos en Parametro 1 y {self.parameter2} elementos en Parametro 2')
             logging.info('----------------Seccion de Datos Generados----------------')
 
         return filename
@@ -123,12 +123,12 @@ class ConfiguracionEntrada:
         logging.info(f' -Ancho de Elevacion  = {theta}')
         logging.info(f' -Ancho de Azimuth = {phi}')
 
-    def menu_principal(self):
+    def main_menu(self):
         print('*Menu Principal*')
         print('1. Etapa 1. Calcular anchos de haz para el config normalizado')
         print('2. Etapa 2. Calcular respuesta en frecuencia para el config desnormalizado')
         print('3. Calcular y graficar el config configurado')
         print('4. Configurar arreglo')
         
-        self.mostrar_configuracion()
+        self.show_config()
         return input('\nSeleccione una opcion>>')
