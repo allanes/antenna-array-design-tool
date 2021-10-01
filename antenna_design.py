@@ -5,8 +5,7 @@ import math
 import antenna_core_functions
 from antenna_geometric_patterns_generators import GeometryArray, get_params_names
 import utilities as utils
-import graficar_etapa1
-import graficar_etapa2
+import antenna_plotting_tools as plotting_tools
 
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
@@ -125,12 +124,12 @@ def main():
                 
         if option == '1':
             dataset = option_one(config)
-            graficar_etapa1.main(dataset)
+            plotting_tools.plot_option_one(dataset)
             option = 'q'
 
         elif option == '2':
             dataset = option_two(config)
-            graficar_etapa2.main(dataset)
+            plotting_tools.plot_option_two(dataset)
             option = 'q'
 
         elif option == '3':
