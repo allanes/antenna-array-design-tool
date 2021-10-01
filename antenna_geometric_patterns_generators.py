@@ -3,54 +3,50 @@ import math
 from enum import Enum
 
 
-class Disposiciones(Enum):
+class Distributions(Enum):
     RECTANGULAR = 0
     STAR = 1
     CIRCULAR2 = 2
 
 class GeometryArray():
-    def __init__(self, distribution_type=Disposiciones.RECTANGULAR):
+    def __init__(self, distribution_type=Distributions.RECTANGULAR):
         self.distribution_name = distribution_type
-        self.posiciones = []
-        self.excitaciones = []
+        self.positions = []
+        self.excitations = []
 
-    def populate_array(self, separacion, param1, param2):
-        if self.distribution_name == Disposiciones.RECTANGULAR.value:
-            [self.posiciones, self.excitaciones] = generate_rectangular_geometry(D=separacion, Nx=param1, Ny=param2)
+    def populate_array(self, separation, param1, param2):
+        if self.distribution_name == Distributions.RECTANGULAR.value:
+            [self.positions, self.excitations] = generate_geometry_rectangular(D=separation, Nx=param1, Ny=param2)
         
-        elif self.distribution_name == Disposiciones.STAR.value:
-            [self.posiciones, self.excitaciones] = generate_star_geometry(DR=separacion, Nr=param1, N=param2)
+        elif self.distribution_name == Distributions.STAR.value:
+            [self.positions, self.excitations] = generate_geometry_star(radial_distance=separation, elements_radial_dir=param1, elements_per_ring=param2)
 
-        elif self.distribution_name == Disposiciones.CIRCULAR2.value:
-            [self.posiciones, self.excitaciones] = generate_circular2_geometry(Dr=separacion, Nr=param1, N=param2)
+        elif self.distribution_name == Distributions.CIRCULAR2.value:
+            [self.positions, self.excitations] = generate_geometry_circular2(first_ring_radius=separation, rings=param1, first_ring_elements=param2)
 
-    def get_positions(self):
-        return self.posiciones
-
-    def get_excitations(self):
-        return self.excitaciones
+        return self.excitations
 
 
 def get_params_names(distribution_type):
     param1 = 'Param1'
     param2 = 'Param2'
 
-    if distribution_type == Disposiciones.RECTANGULAR.value:
+    if distribution_type == Distributions.RECTANGULAR.value:
         param1 = 'Number of elements along X axis'
         param2 = 'Number of elements along Y axis'
     
-    elif distribution_type == Disposiciones.STAR.value:
+    elif distribution_type == Distributions.STAR.value:
         param1 = 'Number of elements along Radial Axis (i.e. Rings)'
         param2 = 'Number of elements per Ring'
 
-    elif distribution_type == Disposiciones.CIRCULAR2.value:
+    elif distribution_type == Distributions.CIRCULAR2.value:
         param1 = 'Number of elements along Radial Axis (i.e. Rings)'
         param2 = 'Number of elements for the First Ring'
         
     return [param1, param2]
 
 
-def generate_rectangular_geometry(D = 1, Nx = 1, Ny = 1, Nz = 1):
+def generate_geometry_rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
     """Posiciona en un plano x,y,z a cada una de las antenas del arreglo
             
     Array(n,2) plot Geom_Arreglo_Rectangular( int D, int Nx ,int Ny)
@@ -73,12 +69,12 @@ def generate_rectangular_geometry(D = 1, Nx = 1, Ny = 1, Nz = 1):
                 Aux = np.array([[i*D, j*D, k*D]]) 
                 B = np.append(B,Aux,axis=0)
     
-    posiciones = B[1:]
-    excitaciones = np.array(Nx*Ny*Nz*[1])    
-    return [posiciones, excitaciones]
+    positions = B[1:]
+    excitations = np.array(Nx*Ny*Nz*[1])    
+    return [positions, excitations]
         
             
-def generate_star_geometry(DR=1, Nr=1, N=1, Dz=1, Nz=1):
+def generate_geometry_star(radial_distance=1, elements_radial_dir=1, elements_per_ring=1, vertical_distance=1, elements_vertical_dir=1):
     """Posiciona en un plano x,y,z a cada una de las antenas del arreglo
 
     Array(n,2)  Geom_Arreglo_Circular( int Dr, int Nr ,int N, int Dz, int Nz)
@@ -92,65 +88,62 @@ def generate_star_geometry(DR=1, Nr=1, N=1, Dz=1, Nz=1):
         posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
         excitaciones: excitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
     """
-    paso_ang = 360/N
-    pos_r = np.linspace(1,Nr,num=Nr)
-    pos_z = np.arange(Nz)
-    angulo = np.arange(N)
+    angular_step = 360/elements_per_ring
+    pos_r = np.linspace(1,elements_radial_dir,num=elements_radial_dir)
+    pos_z = np.arange(elements_vertical_dir)
+    angle = np.arange(elements_per_ring)
     B = np.array([[0,0,0]])
 
-    for i in angulo:
+    for i in angle:
         for j in pos_r:
             for k in pos_z:   
-                x = (DR*j) * np.cos(math.radians(paso_ang*i))
-                y = (DR*j) * np.sin(math.radians(paso_ang*i))
-                Aux = np.array([[x, y, k*Dz]]) 
-                B = np.append(B,Aux,axis=0)
-    posiciones = B[1:]
+                x = (radial_distance*j) * np.cos(math.radians(angular_step*i))
+                y = (radial_distance*j) * np.sin(math.radians(angular_step*i))
+                aux = np.array([[x, y, k*vertical_distance]]) 
+                B = np.append(B,aux,axis=0)
+    positions = B[1:]
     
     for k in pos_z:
-        Aux2 = np.array([[0, 0, k*Dz]]) 
-        posiciones = np.append(posiciones,Aux2,axis=0)
+        aux2 = np.array([[0, 0, k*vertical_distance]]) 
+        positions = np.append(positions,aux2,axis=0)
 
-    excitaciones = np.array(((Nz*Nr*N)+Nz)*[1])
-    return [posiciones, excitaciones]
+    excitations = np.array(((elements_vertical_dir*elements_radial_dir*elements_per_ring)+elements_vertical_dir)*[1])
+    return [positions, excitations]
 
 
-def generate_circular2_geometry(Dr=1, Nr=1, N=1, Dz=1, Nz=1):
+def generate_geometry_circular2(first_ring_radius=1, rings=1, first_ring_elements=1, Dz=1, Nz=1):
+    """Posiciona en un plano x,y,z a cada una de las antenas del arreglo
+    Array(n,2)  Geom_Arreglo_Circular( int Nr, int n ,int Dr, int Dz, int Nz)
+        Entrada:
+            Nr: Num de anillos 
+            n: numero de elementos en el primer anillo 
+            Dr: radio del primer anillo 
+            Dz: Distancia entre elementos en las direccion z [en Nº long. de onda] 
+            Nz: Num de antenas en la direccion z
+        Salida: 
+            posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
+            exitaciones: Exitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
     """
-        Posiciona en un plano x,y,z a cada una de las antenas del arreglo
-    ----------------------------------------------------------------------------------------------        
-        Array(n,2)  Geom_Arreglo_Circular( int Nr, int n ,int Dr, int Dz, int Nz)
-            Entrada:
-                Nr: Num de anillos 
-                n: numero de elementos en el primer anillo 
-                Dr: radio del primer anillo 
-                Dz: Distancia entre elementos en las direccion z [en Nº long. de onda] 
-                Nz: Num de antenas en la direccion z
-            Salida: 
-                posiciones: Posiciones Geo. de cada elemento en un plano x,y,z
-                exitaciones: Exitaciones de cada uno de los elemnentos (en este caso tipo isotropicos)
-    ----------------------------------------------------------------------------------------------
-    """
-    pos_r = np.arange(Nr)
+    pos_r = np.arange(rings)
     pos_z = np.arange(Nz)
     B = np.array([[0,0,0]])
 
     for k in pos_z:
         for i in pos_r:
-            elementos_en_anillo_actual = i*N
-            theta = np.linspace(0,2*np.pi,elementos_en_anillo_actual+1)
+            current_ring_elements = i*first_ring_elements
+            theta = np.linspace(0,2*np.pi,current_ring_elements+1)
             #print(np.degrees(theta))
             for j in np.arange(np.size(theta)-1):
-                x = i*Dr*np.cos(theta[j])
-                y = round(i*Dr*np.sin(theta[j]),5)
-                Aux = np.array([[x, y, k*Dz]]) 
-                B = np.append(B,Aux,axis=0)
-        Aux2 = np.array([[0, 0, k*Dz]]) 
-        B = np.append(B,Aux2,axis=0)
+                x = i*first_ring_radius*np.cos(theta[j])
+                y = round(i*first_ring_radius*np.sin(theta[j]),5)
+                aux = np.array([[x, y, k*Dz]]) 
+                B = np.append(B,aux,axis=0)
+        aux2 = np.array([[0, 0, k*Dz]]) 
+        B = np.append(B,aux2,axis=0)
 
-    posiciones = B[1:]
-    [xi, yi , zi] = 1*np.transpose(posiciones)
+    positions = B[1:]
+    [xi, yi , zi] = 1*np.transpose(positions)
     
-    exitaciones = np.array(np.size(posiciones,axis=0)*[1])
-    return [posiciones, exitaciones]
+    excitations = np.array(np.size(positions,axis=0)*[1])
+    return [positions, excitations]
     

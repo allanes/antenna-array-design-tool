@@ -1,7 +1,7 @@
 from datetime import datetime
 import logging
 
-from antenna_geometric_patterns_generators import Disposiciones as disposition_types
+from antenna_geometric_patterns_generators import Distributions as disposition_types
 
 class ConfiguracionEntrada:
     def __init__(self):

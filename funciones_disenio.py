@@ -12,15 +12,15 @@ import graficar_etapa2
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)
     geometrical_array.populate_array(
-        separacion=separation, 
+        separation=separation, 
         param1= param1, 
         param2=param2
     )
     individual_element_pattern = [antenna_core_functions.patronMonopoloCuartoOnda()]
     
     arreglo = antenna_core_functions.ArregloGeneral(
-        posiciones=geometrical_array.posiciones,
-        excitaciones=geometrical_array.excitaciones,
+        posiciones=geometrical_array.positions,
+        excitaciones=geometrical_array.excitations,
         patron=individual_element_pattern
     )
 
