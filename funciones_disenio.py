@@ -16,15 +16,15 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
         param1= param1, 
         param2=param2
     )
-    individual_element_pattern = [antenna_core_functions.patronMonopoloCuartoOnda()]
+    individual_element_pattern = [antenna_core_functions.quarter_wave_monopole_pattern()]
     
-    arreglo = antenna_core_functions.ArregloGeneral(
-        posiciones=geometrical_array.positions,
-        excitaciones=geometrical_array.excitations,
-        patron=individual_element_pattern
+    arreglo = antenna_core_functions.AntennaArray(
+        positions=geometrical_array.positions,
+        excitations=geometrical_array.excitations,
+        pattern=individual_element_pattern
     )
 
-    arreglo.apuntar(
+    arreglo.aiming(
         phi=math.radians(aiming['phi']),
         theta=math.radians(aiming['theta'])
     )
@@ -70,7 +70,7 @@ def etapaDos(configuracion):
     """    
     rango_frecuencias = [configuracion.frecuencia_disenio,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
     freq = np.array(rango_frecuencias)
-    Dn,d = antenna_core_functions.Unnormalisation_Freq(freq,configuracion.separacion)
+    Dn,d = antenna_core_functions.denormalise_frequency(freq,configuracion.separacion)
     
     dataset = configuracion.configurar_log(etapa=2, separacion_metros=d[0])
     
