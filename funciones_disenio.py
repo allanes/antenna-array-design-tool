@@ -34,6 +34,7 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
 
     return [elevation_width, azimut_width]
 
+
 def etapaUno(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
@@ -98,6 +99,7 @@ def etapaDos(configuracion):
     logging.info('Fin de desnormalizacion')
 
     return dataset
+
 
 def opcionTres(config):
     filename = config.configurar_log(etapa=3)

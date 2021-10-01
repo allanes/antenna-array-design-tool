@@ -7,10 +7,7 @@ import numpy as np
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import math
-import logging
 import scipy.integrate as integrate
-
-from antenna_geometric_patterns_generators import GeometryArray
 
 class ArregloGeneral(object):    
     def __init__(self,posiciones,excitaciones,patron=None):
@@ -232,7 +229,7 @@ def patronMonopoloCuartoOnda():
         self.patron = patron
     return self.patron
 #==============================================================================
-def Unnormalisation_Freq(Freq,D):    
+def Unnormalisation_Freq(Freq,D):
     C = 3e8 # Speed Light
     n = np.size(Freq)
     Dn = np.zeros(n)
