@@ -35,7 +35,7 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     return [elevation_width, azimut_width]
 
 
-def etapaUno(cfg):
+def option_one(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
     """
@@ -64,7 +64,7 @@ def etapaUno(cfg):
     return dataset
 
 
-def etapaDos(configuracion):
+def option_two(configuracion):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
     """    
@@ -101,7 +101,7 @@ def etapaDos(configuracion):
     return dataset
 
 
-def opcionTres(config):
+def option_three(config):
     filename = config.configurar_log(etapa=3)
     
     array_evaluation_process(
@@ -117,32 +117,32 @@ def opcionTres(config):
 
 
 def main():    
-    config = utils.ConfiguracionEntrada()
-    opcion = ""
+    config = utils.InputConfig()
+    option = ""
     
-    while(opcion != 'q'):
-        opcion = config.menu_principal()
+    while(option != 'q'):
+        option = config.main_menu()
                 
-        if opcion == '1':
-            dataset = etapaUno(config)
+        if option == '1':
+            dataset = option_one(config)
             graficar_etapa1.main(dataset)
-            opcion = 'q'
+            option = 'q'
 
-        elif opcion == '2':
-            dataset = etapaDos(config)
+        elif option == '2':
+            dataset = option_two(config)
             graficar_etapa2.main(dataset)
-            opcion = 'q'
+            option = 'q'
 
-        elif opcion == '3':
-            opcionTres(config)
-            opcion = 'q'
+        elif option == '3':
+            option_three(config)
+            option = 'q'
 
-        elif opcion == '4':
-            config.configurar_parametros()
-            opcion = 'q'
+        elif option == '4':
+            config.configure_params()
+            option = 'q'
             
-        elif opcion == '5':
-            opcion = 'q'
+        elif option == '5':
+            option = 'q'
 
 
 if __name__ == '__main__':
