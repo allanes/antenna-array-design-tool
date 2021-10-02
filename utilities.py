@@ -119,15 +119,16 @@ class InputConfig:
         return filename
 
     def log_widths(self, widths):
-        for aux_param1 in range(self.get_param1_initial_value(), self.get_param1_final_value()):
-            logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1}')
-            for aux_param2 in range(self.get_param2_initial_value(), self.get_param2_final_value()):
-                delta_param1 = aux_param1 - self.get_param1_initial_value()
-                delta_param2 = aux_param2 - self.get_param2_initial_value()
-                logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
+        param1_total_elements = self.get_param1_final_value() - self.get_param1_initial_value()
+        param2_total_elements = self.get_param2_final_value() - self.get_param2_initial_value()
+        for aux_param1 in range(param1_total_elements):
+            logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1+self.get_param1_initial_value()}')
+            for aux_param2 in range(param2_total_elements):
+                index = aux_param1 * (param2_total_elements) + aux_param2
+                logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2+self.get_param2_initial_value()} -------------')
                 logging.info('Resultados:')
-                logging.info(f' -Ancho de Elevacion  = {widths[delta_param1+delta_param2]["elevation"]}')
-                logging.info(f' -Ancho de Azimuth = {widths[delta_param1+delta_param2]["azimut"]}')
+                logging.info(f' -Ancho de Elevacion  = {widths[index]["elevation"]}')
+                logging.info(f' -Ancho de Azimuth = {widths[index]["azimut"]}')
             logging.info("-------------------------------------------")
     def main_menu(self):
         print('*Menu Principal*')
