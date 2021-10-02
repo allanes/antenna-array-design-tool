@@ -42,15 +42,13 @@ def option_one(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-    dataset = cfg.configure_log(option=1)
-    
-    progreso_maximo = cfg.get_max_progress()
-    aux_progreso = 0
+    parallelize = False
+    maximum_progress = cfg.get_max_progress()
+    aux_progress = 0
     delayed_widths = []
     for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
-        logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1}')
+        
         for aux_param2 in range(cfg.get_param2_initial_value(), cfg.get_param2_final_value()):
-            logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
             width = dask.delayed(array_evaluation_process)(
                 distribution_type=cfg.distribution,
                 separation=cfg.separation,
@@ -59,12 +57,12 @@ def option_one(cfg):
                 aiming=cfg.aiming,
                 plot=False
             )
-            delayed_widths.append(width)
-            # log = cfg.log_widths(theta=width['elevation'], phi=width['azimut'])
-            aux_progreso += 1
-            print(f'Progreso: {100*aux_progreso/progreso_maximo:.1f}%')
-        logging.info("-------------------------------------------")
-    dask.visualize(*delayed_widths)
+
+            delayed_widths.append(width)            
+            aux_progress += 1
+            print(f'Progrss: {100*aux_progress/maximum_progress:.1f}%')
+    
+    # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
     
     return widths
@@ -131,10 +129,10 @@ def main():
         option = config.main_menu()
                 
         if option == '1':
+            dataset = config.configure_log(option=1)
             widths = option_one(config)
-            for width in widths:
-                print(f'ancho_elev: {width["elevation"]}')
-            # plotting_tools.plot_option_one(dataset)
+            config.log_widths(widths=widths)
+            plotting_tools.plot_option_one(dataset)
             option = 'q'
 
         elif option == '2':

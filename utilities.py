@@ -118,11 +118,17 @@ class InputConfig:
 
         return filename
 
-    def log_widths(self, theta, phi):
-        logging.info('Resultados:')
-        logging.info(f' -Ancho de Elevacion  = {theta}')
-        logging.info(f' -Ancho de Azimuth = {phi}')
-
+    def log_widths(self, widths):
+        for aux_param1 in range(self.get_param1_initial_value(), self.get_param1_final_value()):
+            logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1}')
+            for aux_param2 in range(self.get_param2_initial_value(), self.get_param2_final_value()):
+                delta_param1 = aux_param1 - self.get_param1_initial_value()
+                delta_param2 = aux_param2 - self.get_param2_initial_value()
+                logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
+                logging.info('Resultados:')
+                logging.info(f' -Ancho de Elevacion  = {widths[delta_param1+delta_param2]["elevation"]}')
+                logging.info(f' -Ancho de Azimuth = {widths[delta_param1+delta_param2]["azimut"]}')
+            logging.info("-------------------------------------------")
     def main_menu(self):
         print('*Menu Principal*')
         print('1. Etapa 1. Calcular anchos de haz para el config normalizado')
