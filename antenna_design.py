@@ -1,12 +1,16 @@
 import logging
 import numpy as np
 import math
+from dask.distributed import Client
+import dask.delayed
 
 import antenna_core_functions
 from antenna_geometric_patterns_generators import GeometryArray, get_params_names
 import utilities as utils
 import antenna_plotting_tools as plotting_tools
 
+# import os
+# os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin/'
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)
@@ -31,7 +35,7 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=plot)
     if plot: arreglo.plot_3D()
 
-    return [elevation_width, azimut_width]
+    return {'elevation':elevation_width, 'azimut': azimut_width}
 
 
 def option_one(cfg):
@@ -40,14 +44,14 @@ def option_one(cfg):
     """
     dataset = cfg.configure_log(option=1)
     
-    [param1_name, param2_name] = get_params_names(cfg.distribution)
     progreso_maximo = cfg.get_max_progress()
     aux_progreso = 0
+    delayed_widths = []
     for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
         logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1}')
         for aux_param2 in range(cfg.get_param2_initial_value(), cfg.get_param2_final_value()):
             logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2} -------------')
-            [elev_w, azim_w] = array_evaluation_process(
+            width = dask.delayed(array_evaluation_process)(
                 distribution_type=cfg.distribution,
                 separation=cfg.separation,
                 param1=aux_param1,
@@ -55,12 +59,15 @@ def option_one(cfg):
                 aiming=cfg.aiming,
                 plot=False
             )
-            cfg.log_widths(theta=elev_w, phi=azim_w)
+            delayed_widths.append(width)
+            # log = cfg.log_widths(theta=width['elevation'], phi=width['azimut'])
             aux_progreso += 1
             print(f'Progreso: {100*aux_progreso/progreso_maximo:.1f}%')
         logging.info("-------------------------------------------")
-
-    return dataset
+    dask.visualize(*delayed_widths)
+    widths = dask.compute(*delayed_widths)
+    
+    return widths
 
 
 def option_two(config):
@@ -115,7 +122,8 @@ def option_three(config):
     return filename
 
 
-def main():    
+def main():
+    client = Client()
     config = utils.InputConfig()
     option = ""
     
@@ -123,8 +131,10 @@ def main():
         option = config.main_menu()
                 
         if option == '1':
-            dataset = option_one(config)
-            plotting_tools.plot_option_one(dataset)
+            widths = option_one(config)
+            for width in widths:
+                print(f'ancho_elev: {width["elevation"]}')
+            # plotting_tools.plot_option_one(dataset)
             option = 'q'
 
         elif option == '2':
