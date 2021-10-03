@@ -85,10 +85,10 @@ class InputConfig:
     def get_param2_final_value(self):
         return self.parameter2_range[1] + 1
 
-    def get_max_progress(self):
+    def get_max_passes(self):
         return(
-            (self.get_param1_initial_value() - self.get_param1_final_value()) * 
-            (self.get_param2_initial_value() - self.get_param2_final_value())
+            (self.get_param1_final_value() - self.get_param1_initial_value()) * 
+            (self.get_param2_final_value() - self.get_param2_initial_value())
         )
 
     def configure_log(self, option, separation_m=0):

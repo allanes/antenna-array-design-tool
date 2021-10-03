@@ -38,8 +38,8 @@ def stage_one(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-    maximum_progress = cfg.get_max_progress()
-    aux_progress = 0
+    maximum_progress = cfg.get_max_passes()
+    current_pass = 0
     delayed_widths = []
     for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
         
@@ -54,8 +54,8 @@ def stage_one(cfg):
             )
 
             delayed_widths.append(width)            
-            aux_progress += 1
-            print(f'Progrss: {100*aux_progress/maximum_progress:.1f}%')
+            current_pass += 1
+            print(f'Evaluating pass {current_pass}/{cfg.get_max_passes()}...')
     
     dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
