@@ -133,3 +133,7 @@ def plot_option_two(filename=""):
     plt.show()
 
     return
+
+def plot_by_option(option, filename=""):
+    if option == 1: return plot_option_one(filename=filename)
+    if option == 2: return plot_option_two(filename=filename)

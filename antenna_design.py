@@ -1,16 +1,12 @@
-import logging
 import numpy as np
 import math
 from dask.distributed import Client
 import dask.delayed
 
-import antenna_core_functions
+import antenna_core_functions as core_functions
 from antenna_geometric_patterns_generators import GeometryArray, get_params_names
 import utilities as utils
 import antenna_plotting_tools as plotting_tools
-
-# import os
-# os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin/'
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)
@@ -19,9 +15,9 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
         param1= param1, 
         param2=param2
     )
-    individual_element_pattern = [antenna_core_functions.quarter_wave_monopole_pattern()]
+    individual_element_pattern = [core_functions.quarter_wave_monopole_pattern()]
     
-    arreglo = antenna_core_functions.AntennaArray(
+    arreglo = core_functions.AntennaArray(
         positions=geometrical_array.positions,
         excitations=geometrical_array.excitations,
         pattern=individual_element_pattern
@@ -38,11 +34,10 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     return {'elevation':elevation_width, 'azimut': azimut_width}
 
 
-def option_one(cfg):
+def stage_one(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-    parallelize = False
     maximum_progress = cfg.get_max_progress()
     aux_progress = 0
     delayed_widths = []
@@ -62,30 +57,28 @@ def option_one(cfg):
             aux_progress += 1
             print(f'Progrss: {100*aux_progress/maximum_progress:.1f}%')
     
-    # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
+    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
     
     return widths
 
 
-def option_two(config):
+def stage_two(config):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
     """    
     rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
     freq = np.array(rango_frecuencias)
-    Dn,d = antenna_core_functions.denormalise_frequency(freq,config.separation)
-    
-    dataset = config.configure_log(option=2, separation_m=d[0])
+    Dn = core_functions.denormalise_frequencies(
+        frequencies_list=freq, 
+        distance_reference=config.separation
+        )
     
     # Recalculo los anchos para las frecuencias desnormalizadas
-    anchos_elevacion = []
-    anchos_azimut = []
+    delayed_widths = []
     aux_progress = 0
     for index in range(len(Dn)):
-        logging.info(f"Distancia en Lambda: {Dn[index]}")
-        logging.info(f"Frecuencia: {freq[index]}")
-        [elev_w, azim_w] = array_evaluation_process(
+        width = dask.delayed(array_evaluation_process)(
             distribution_type=config.distribution, 
             separation=Dn[index], 
             param1=config.parameter1, 
@@ -93,19 +86,18 @@ def option_two(config):
             aiming=config.aiming,
             plot=False
         )
+        delayed_widths.append(width)
 
-        anchos_elevacion.append(elev_w)
-        anchos_azimut.append(azim_w)
-        config.log_widths(theta=elev_w, phi=azim_w)
-    
         aux_progress += 1
         print(f'Progreso: {100*aux_progress/len(Dn):.1f}%')
-    logging.info('Fin de desnormalizacion')
+    
+    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
+    widths = dask.compute(*delayed_widths)
 
-    return dataset
+    return widths
 
 
-def option_three(config):
+def just_plot(config):
     filename = config.configure_log(option=3)
     
     array_evaluation_process(
@@ -120,6 +112,13 @@ def option_three(config):
     return filename
 
 
+def stage_handler(option, config):
+    dataset = config.configure_log(option=option)
+    widths = stage_one(config)
+    config.log_widths(widths=widths)
+    plotting_tools.plot_by_option(dataset=dataset, option=option)
+
+
 def main():
     client = Client()
     config = utils.InputConfig()
@@ -129,19 +128,21 @@ def main():
         option = config.main_menu()
                 
         if option == '1':
-            dataset = config.configure_log(option=1)
-            widths = option_one(config)
+            dataset = config.configure_log(option=1, config=config)
+            widths = stage_one(config)
             config.log_widths(widths=widths)
             plotting_tools.plot_option_one(dataset)
             option = 'q'
 
         elif option == '2':
-            dataset = option_two(config)
+            dataset = config.configure_log(option=2)
+            widths = stage_two(config)
+            config.log_widths(widths=widths)
             plotting_tools.plot_option_two(dataset)
             option = 'q'
 
         elif option == '3':
-            option_three(config)
+            just_plot(config)
             option = 'q'
 
         elif option == '4':

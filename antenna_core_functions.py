@@ -220,14 +220,22 @@ def quarter_wave_monopole_pattern():
     return self.pattern
 
 
-def denormalise_frequency(frequencies_list,distance_reference):
+def denormalise_frequencies(frequencies_list,distance_reference):
     C = 3e8 # Speed Light
     n = np.size(frequencies_list)
     _lambda = C/frequencies_list
     d_real = distance_reference*_lambda[0]
     denormalised_distance = d_real/_lambda
 
-    return [denormalised_distance, denormalised_distance*_lambda]
+    return denormalised_distance
+
+def denormalise_distance(frequencies_list,distance_reference):
+    C = 3e8 # Speed Light
+    _lambda = C/frequencies_list
+    d_real = distance_reference*_lambda[0]
+    denormalised_distance = d_real/_lambda
+    ret = denormalised_distance*_lambda
+    return ret[0]
 
 
 if __name__ == '__main__':
