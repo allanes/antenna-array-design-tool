@@ -138,4 +138,4 @@ class InputConfig:
         print('4. Configurar arreglo')
         
         self.show_config()
-        return input('\nSeleccione una opcion>>')
+        return int(input('\nSeleccione una opcion>>'))

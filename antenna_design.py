@@ -116,41 +116,22 @@ def stage_handler(option, config):
     dataset = config.configure_log(option=option)
     widths = stage_one(config)
     config.log_widths(widths=widths)
-    plotting_tools.plot_by_option(dataset=dataset, option=option)
+    plotting_tools.plot_by_option(filename=dataset, option=option)
 
 
 def main():
     client = Client()
     config = utils.InputConfig()
     option = ""
+
+    option = config.main_menu()
     
-    while(option != 'q'):
-        option = config.main_menu()
-                
-        if option == '1':
-            dataset = config.configure_log(option=1, config=config)
-            widths = stage_one(config)
-            config.log_widths(widths=widths)
-            plotting_tools.plot_option_one(dataset)
-            option = 'q'
-
-        elif option == '2':
-            dataset = config.configure_log(option=2)
-            widths = stage_two(config)
-            config.log_widths(widths=widths)
-            plotting_tools.plot_option_two(dataset)
-            option = 'q'
-
-        elif option == '3':
-            just_plot(config)
-            option = 'q'
-
-        elif option == '4':
-            config.configure_params()
-            option = 'q'
-            
-        elif option == '5':
-            option = 'q'
+    if (option==1 or option==2): 
+        stage_handler(option=option,config=config)    
+    elif option == 3: 
+        just_plot(config)
+    elif option == 4: 
+        config.configure_params()
 
 
 if __name__ == '__main__':
