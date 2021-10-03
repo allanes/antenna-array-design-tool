@@ -118,25 +118,28 @@ class InputConfig:
 
         return filename
 
-    def log_widths(self, option, widths, extra_params=None):
-        param1_total_elements = self.get_param1_final_value() - self.get_param1_initial_value()
-        param2_total_elements = self.get_param2_final_value() - self.get_param2_initial_value()
-        for aux_param1 in range(param1_total_elements):
-            if (option==1):logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1+self.get_param1_initial_value()}')
-            for aux_param2 in range(param2_total_elements):
-                index = aux_param1 * (param2_total_elements) + aux_param2
-                if option == 1:
-                    logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2+self.get_param2_initial_value()} -------------')
-                    
-                if option == 2:
-                    logging.info(f"Distancia en Lambda: {extra_params[index]['distance']}")
-                    logging.info(f"Frecuencia: {extra_params[index]['frequency']}")
+    def _log_width(self,width):
+        logging.info('Resultados:')
+        logging.info(f' -Ancho de Elevacion  = {width["elevation"]}')
+        logging.info(f' -Ancho de Azimuth = {width["azimut"]}')            
+        logging.info("-------------------------------------------")
 
-                logging.info('Resultados:')
-                logging.info(f' -Ancho de Elevacion  = {widths[index]["elevation"]}')
-                logging.info(f' -Ancho de Azimuth = {widths[index]["azimut"]}')
-            
-            logging.info("-------------------------------------------")
+    def log_width_results(self, option, widths, extra_params=None):
+        if option==1:
+            param1_total_elements = self.get_param1_final_value() - self.get_param1_initial_value()
+            param2_total_elements = self.get_param2_final_value() - self.get_param2_initial_value()
+            for aux_param1 in range(param1_total_elements):
+                logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1+self.get_param1_initial_value()}')
+                for aux_param2 in range(param2_total_elements):
+                    index = aux_param1 * (param2_total_elements) + aux_param2
+                    logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2+self.get_param2_initial_value()} -------------')
+                    self._log_width(width=widths[index])
+                    
+        if option == 2:
+            for index in range(len(extra_params)):
+                logging.info(f"Distancia en Lambda: {extra_params[index]['distance']}")
+                logging.info(f"Frecuencia: {extra_params[index]['frequency']}")
+                self._log_width(width=widths[index])
         
 
     def main_menu(self):

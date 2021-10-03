@@ -124,13 +124,13 @@ def main():
     if option==1:
         dataset = config.configure_log(option=option)
         widths = stage_one(config)
-        config.log_widths(option, widths=widths)
+        config.log_width_results(option, widths=widths)
         plotting_tools.plot_option_one(filename=dataset)
     
     elif option==2:
         dataset = config.configure_log(option=option)
         widths, denorm_params = stage_two(config)
-        config.log_widths(option, widths=widths, extra_params=denorm_params)
+        config.log_width_results(option, widths=widths, extra_params=denorm_params)
         plotting_tools.plot_option_two(filename=dataset)
     
     elif option == 3: 
