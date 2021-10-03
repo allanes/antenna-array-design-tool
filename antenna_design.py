@@ -4,7 +4,7 @@ from dask.distributed import Client
 import dask.delayed
 
 import antenna_core_functions as core_functions
-from antenna_geometric_patterns_generators import GeometryArray, get_params_names
+from antenna_geometric_patterns_generators import GeometryArray
 import utilities as utils
 import antenna_plotting_tools as plotting_tools
 
@@ -38,7 +38,6 @@ def stage_one(cfg):
     """
     ETAPA 1. Genera datos para Heatmap
     """
-    maximum_progress = cfg.get_max_passes()
     current_pass = 0
     delayed_widths = []
     for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
@@ -57,7 +56,7 @@ def stage_one(cfg):
             current_pass += 1
             print(f'Evaluating pass {current_pass}/{cfg.get_max_passes()}...')
     
-    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
+    # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
     
     return widths
@@ -96,7 +95,7 @@ def stage_two(config):
         current_pass += 1
         print(f'Evaluating pass {current_pass}/{len(Dn)}')
     
-    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
+    # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
     
     return widths, denormalising_params
