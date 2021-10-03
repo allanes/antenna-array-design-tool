@@ -17,7 +17,7 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     )
     individual_element_pattern = [core_functions.quarter_wave_monopole_pattern()]
     
-    arreglo = core_functions.AntennaArray(
+    arreglo = core_functions.BaseAntennaArray(
         positions=geometrical_array.positions,
         excitations=geometrical_array.excitations,
         pattern=individual_element_pattern
@@ -66,7 +66,7 @@ def stage_two(config):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
     """    
-    rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
+    rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6]#,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
     freq = np.array(rango_frecuencias)
     Dn = core_functions.denormalise_frequencies(
         frequencies_list=freq, 
@@ -95,7 +95,7 @@ def stage_two(config):
         current_pass += 1
         print(f'Evaluating pass {current_pass}/{len(Dn)}')
     
-    # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
+    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
     
     return widths, denormalising_params

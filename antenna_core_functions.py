@@ -10,7 +10,7 @@ import math
 from numpy.lib.function_base import average
 import scipy.integrate as integrate
 
-class AntennaArray(object):
+class BaseAntennaArray(object):
     """Core object for evaluating antenna arrays.
 
     This is used to represent an arbitrary array of atennas and perform analysis
