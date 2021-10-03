@@ -118,18 +118,27 @@ class InputConfig:
 
         return filename
 
-    def log_widths(self, widths):
+    def log_widths(self, option, widths, extra_params=None):
         param1_total_elements = self.get_param1_final_value() - self.get_param1_initial_value()
         param2_total_elements = self.get_param2_final_value() - self.get_param2_initial_value()
         for aux_param1 in range(param1_total_elements):
-            logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1+self.get_param1_initial_value()}')
+            if (option==1):logging.info(f'Cantidad de Elementos en Parametro 1: {aux_param1+self.get_param1_initial_value()}')
             for aux_param2 in range(param2_total_elements):
                 index = aux_param1 * (param2_total_elements) + aux_param2
-                logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2+self.get_param2_initial_value()} -------------')
+                if option == 1:
+                    logging.info(f'----------Cantidad de Elementos en Parametro 2: {aux_param2+self.get_param2_initial_value()} -------------')
+                    
+                if option == 2:
+                    logging.info(f"Distancia en Lambda: {extra_params[index]['distance']}")
+                    logging.info(f"Frecuencia: {extra_params[index]['frequency']}")
+
                 logging.info('Resultados:')
                 logging.info(f' -Ancho de Elevacion  = {widths[index]["elevation"]}')
                 logging.info(f' -Ancho de Azimuth = {widths[index]["azimut"]}')
+            
             logging.info("-------------------------------------------")
+        
+
     def main_menu(self):
         print('*Menu Principal*')
         print('1. Etapa 1. Calcular anchos de haz para el config normalizado')

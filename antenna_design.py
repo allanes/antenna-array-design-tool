@@ -72,10 +72,11 @@ def stage_two(config):
     Dn = core_functions.denormalise_frequencies(
         frequencies_list=freq, 
         distance_reference=config.separation
-        )
+    )
     
     # Recalculo los anchos para las frecuencias desnormalizadas
     delayed_widths = []
+    denormalising_params = []
     current_pass = 0
     for index in range(len(Dn)):
         width = dask.delayed(array_evaluation_process)(
@@ -86,15 +87,19 @@ def stage_two(config):
             aiming=config.aiming,
             plot=False
         )
+        denormalising_params.append({
+            'distance': Dn[index],
+            'frequency': freq[index]
+        })
         delayed_widths.append(width)
 
         current_pass += 1
-        print(f'Evaluating pass {current_pass}/{len(Dn):.1f}%')
+        print(f'Evaluating pass {current_pass}/{len(Dn)}')
     
     dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
-
-    return widths
+    
+    return widths, denormalising_params
 
 
 def just_plot(config):
@@ -112,24 +117,26 @@ def just_plot(config):
     return filename
 
 
-def stage_handler(option, config):
-    dataset = config.configure_log(option=option)
-    widths = stage_one(config)
-    config.log_widths(widths=widths)
-    plotting_tools.plot_by_option(filename=dataset, option=option)
-
-
 def main():
     client = Client()
     config = utils.InputConfig()
-    option = ""
-
     option = config.main_menu()
     
-    if (option==1 or option==2): 
-        stage_handler(option=option,config=config)    
+    if option==1:
+        dataset = config.configure_log(option=option)
+        widths = stage_one(config)
+        config.log_widths(option, widths=widths)
+        plotting_tools.plot_option_one(filename=dataset)
+    
+    elif option==2:
+        dataset = config.configure_log(option=option)
+        widths, denorm_params = stage_two(config)
+        config.log_widths(option, widths=widths, extra_params=denorm_params)
+        plotting_tools.plot_option_two(filename=dataset)
+    
     elif option == 3: 
         just_plot(config)
+    
     elif option == 4: 
         config.configure_params()
 
