@@ -76,7 +76,7 @@ def stage_two(config):
     
     # Recalculo los anchos para las frecuencias desnormalizadas
     delayed_widths = []
-    aux_progress = 0
+    current_pass = 0
     for index in range(len(Dn)):
         width = dask.delayed(array_evaluation_process)(
             distribution_type=config.distribution, 
@@ -88,8 +88,8 @@ def stage_two(config):
         )
         delayed_widths.append(width)
 
-        aux_progress += 1
-        print(f'Progreso: {100*aux_progress/len(Dn):.1f}%')
+        current_pass += 1
+        print(f'Evaluating pass {current_pass}/{len(Dn):.1f}%')
     
     dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
