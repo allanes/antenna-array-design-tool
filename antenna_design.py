@@ -8,13 +8,15 @@ from antenna_geometric_patterns_generators import GeometryArray
 import utilities as utils
 import antenna_plotting_tools as plotting_tools
 
-def initialize_evaluation_process(distribution_type, separation, param1, param2, aiming):
+
+def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)
     geometrical_array.populate_array(
         separation=separation, 
         param1= param1, 
         param2=param2
     )
+
     individual_element_pattern = [core_functions.quarter_wave_monopole_pattern()]
     
     arreglo = core_functions.AntennaArray(
@@ -27,43 +29,26 @@ def initialize_evaluation_process(distribution_type, separation, param1, param2,
         phi=math.radians(aiming['phi']),
         theta=math.radians(aiming['theta'])
     )
-
-    return arreglo
-
-def array_evaluation_process(array,distribution_type, separation, param1, param2, aiming, plot=False):
-    # geometrical_array = GeometryArray(distribution_type=distribution_type)
-    # geometrical_array.populate_array(
-    #     separation=separation, 
-    #     param1= param1, 
-    #     param2=param2
-    # )
-    # individual_element_pattern = [core_functions.quarter_wave_monopole_pattern()]
     
-    # arreglo = core_functions.AntennaArray(
-    #     positions=geometrical_array.positions,
-    #     excitations=geometrical_array.excitations,
-    #     pattern=individual_element_pattern
-    # )
+    elevation_width = arreglo.get_elevation_width(plot=plot)
+    azimut_width = arreglo.get_azimut_width(plot=plot)
+    
+    width = dask.delayed(
+        {
+            'elevation': elevation_width, 
+            'azimut': azimut_width
+        }
+    )
 
-    # arreglo.aiming(
-    #     phi=math.radians(aiming['phi']),
-    #     theta=math.radians(aiming['theta'])
-    # )
-    # -------------------
-    
-    
-    elevation_width = array.get_elevation_width(plot=plot)
-    azimut_width = array.get_azimut_width(plot=plot)
-    
-    # if plot:
-    #     origin = [0,0,0]
-    #     if geometrical_array.distribution_name == 0:
-    #         dx = separation*(param1 - 1) / 2
-    #         dy = separation*(param2 - 1) / 2
-    #         origin = [dx, dy, 0]
-    #     arreglo.plot_3D(origin)
+    if plot:
+        origin = [0,0,0]
+        if geometrical_array.distribution_name == 0:
+            dx = separation*(param1 - 1) / 2
+            dy = separation*(param2 - 1) / 2
+            origin = [dx, dy, 0]
+        arreglo.plot_3D(origin)
 
-    return {'elevation':elevation_width, 'azimut': azimut_width}
+    return width
 
 
 def stage_one(cfg):
@@ -71,29 +56,24 @@ def stage_one(cfg):
     ETAPA 1. Genera datos para Heatmap
     """
     current_pass = 0
-    delayed_widths = []
-    for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
-        
+    widths = []
+    for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):        
         for aux_param2 in range(cfg.get_param2_initial_value(), cfg.get_param2_final_value()):
-            arreglo = initialize_evaluation_process(
+            width = array_evaluation_process(
                 distribution_type=cfg.distribution,
                 separation=cfg.separation,
                 param1=aux_param1,
                 param2=aux_param2,
                 aiming=cfg.aiming,
+                plot=False
             )
-
-            elevation_width = dask.delayed(arreglo.get_elevation_width)(plot=False)
-            azimut_width = dask.delayed(arreglo.get_azimut_width)(plot=False)
-            width = dask.delayed({'elevation': elevation_width, 'azimut': azimut_width})
-            delayed_widths.append(width)
+            widths.append(width)
 
             current_pass += 1
-            print(f'Evaluating pass {current_pass}/{cfg.get_max_passes()}...')
-        
+            print(f'Evaluating pass {current_pass}/{cfg.get_max_passes()}...')        
     
-    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
-    widths = dask.compute(*delayed_widths)
+    dask.visualize(*widths) # Generates 'mydask.png' Task Graph 
+    widths = dask.compute(*widths)
     
     return widths
 
@@ -114,24 +94,39 @@ def stage_two(config):
     denormalising_params = []
     current_pass = 0
     for index in range(len(Dn)):
-        width = dask.delayed(array_evaluation_process)(
-            distribution_type=config.distribution, 
-            separation=Dn[index], 
-            param1=config.parameter1, 
-            param2=config.parameter2,
-            aiming=config.aiming,
-            plot=False
-        )
         denormalising_params.append({
             'distance': Dn[index],
             'frequency': freq[index]
         })
+        # -------------------------------
+        # width = dask.delayed(array_evaluation_process)(
+        #     distribution_type=config.distribution, 
+        #     separation=Dn[index], 
+        #     param1=config.parameter1, 
+        #     param2=config.parameter2,
+        #     aiming=config.aiming,
+        #     plot=False
+        # )        
+        # delayed_widths.append(width)
+        # ------------
+        arreglo = initialize_evaluation_process(
+            distribution_type=config.distribution,
+            separation=Dn[index],
+            param1=config.parameter1, 
+            param2=config.parameter2,
+            aiming=config.aiming,
+        )
+
+        elevation_width = arreglo.get_elevation_width(plot=False)
+        azimut_width = arreglo.get_azimut_width(plot=False)
+        width = dask.delayed({'elevation': elevation_width, 'azimut': azimut_width})
         delayed_widths.append(width)
+        # --------------------------------
 
         current_pass += 1
         print(f'Evaluating pass {current_pass}/{len(Dn)}')
     
-    # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
+    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
     
     return widths, denormalising_params

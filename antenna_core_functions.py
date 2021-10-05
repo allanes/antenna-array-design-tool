@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import math
 from numpy.lib.function_base import average
 import scipy.integrate as integrate
+import dask.delayed
 
 class AntennaArray(object):
     """Core object for evaluating antenna arrays.
@@ -103,6 +104,7 @@ class AntennaArray(object):
         campo_vec = np.vectorize(self._unique_direction_field)
         return campo_vec(phi,theta)
 
+    @dask.delayed
     def get_azimut_width(self, plot):
         theta = np.linspace(0,np.pi,100)
         phi = np.linspace(-np.pi,np.pi,100)
@@ -160,6 +162,7 @@ class AntennaArray(object):
 
         return azim_width
 
+    @dask.delayed
     def get_elevation_width(self, plot):
         theta = np.linspace(0,np.pi,100)
         phi = np.linspace(-np.pi,np.pi,100)
