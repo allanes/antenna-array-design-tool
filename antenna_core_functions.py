@@ -10,14 +10,28 @@ import math
 from numpy.lib.function_base import average
 import scipy.integrate as integrate
 
-class AntennaArray(object):    
+class AntennaArray(object):
+    """Core object for evaluating antenna arrays.
+
+    This is used to represent an arbitrary array of atennas and perform analysis
+    of antennas systems for applications in HF radar systems.
+    
+
+    """
     def __init__(self,positions,excitations,pattern=None):
-        """Arreglo tridimensional
-        
-           posiciones:  matriz real n*3 cuyos vectores fila son las posiciones x,y,z de las fuentes del arreglo
-           excitaciones: vector complejo de n elementos representando la amplitud y fase de excitación de cada fuente del arreglo
-           patron: patron en 3D de un elemento 
-           """
+        """Initializer.
+
+        Parameters
+        ----------
+        positions : array_like
+            Array of [x,y,z] tupples mapping all elements of any antenna array
+        excitations : array_like
+            Array of excitation complex values for all elements of the given
+            antenna array
+        pattern : array_like, optional
+            Radiation pattern of an isolated radiator from the antenna array.
+            Defaults to an isotropic radiator.      
+        """
         self.positions = positions
         self.excitations = excitations
         if pattern is not None: 
@@ -26,10 +40,22 @@ class AntennaArray(object):
             self.pattern = [lambda phi,theta:1]
     
     def aiming(self,phi,theta):
-        """Modifica las fases de las excitaciones manteniendo sus amplitudes para apuntar el haz principal en la dirección dada
+        """Aims the main beam towards a desired directon.
+
+        Use this to modify the `excitation`s phases so that main lobe points
+        toward the given direction.
         
-        @param phi ángulo diedro del plano xz al plano xr donde r es la dirección de apuntamiento
-        @param theta ángulo del eje z al vector de apuntamiento r
+        Parameters
+        ----------
+        phi : array_like
+            ángulo diedro del plano xz al plano xr donde r es la dirección de apuntamiento
+        theta : array_like
+            ángulo del eje z al vector de apuntamiento r
+
+        Notes
+        -----
+        Only the phase is modified, not the amplitud.
+        
         """
         normal = np.array((np.cos(phi)*np.sin(theta),np.sin(phi)*np.sin(theta),np.cos(theta)))
         phases = -2*np.pi*self.positions@normal

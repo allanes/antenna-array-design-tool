@@ -62,14 +62,14 @@ def generate_geometry_rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
     pos_x = np.arange(Nx)
     pos_y = np.arange(Ny)
     pos_z = np.arange(Nz)
-    B = np.array([[0,0,0]])
+    _B = np.array([[0,0,0]])
     for i in pos_x:
         for j in pos_y:
             for k in pos_z:
-                Aux = np.array([[i*D, j*D, k*D]]) 
-                B = np.append(B,Aux,axis=0)
+                aux = np.array([[i*D, j*D, k*D]]) 
+                _B = np.append(_B,aux,axis=0)
     
-    positions = B[1:]
+    positions = _B[1:]
     excitations = np.array(Nx*Ny*Nz*[1])    
     return [positions, excitations]
         
