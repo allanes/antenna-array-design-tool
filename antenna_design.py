@@ -11,10 +11,7 @@ import antenna_plotting_tools as plotting_tools
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)
-    geometrical_array.populate_array(
-        separation=separation, 
-        param1= param1, 
-        param2=param2
+    geometrical_array.populate_array(separation=separation, param1= param1, param2=param2
     )
 
     individual_element_pattern = [core_functions.quarter_wave_monopole_pattern()]
@@ -25,28 +22,14 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
         pattern=individual_element_pattern
     )
 
-    arreglo.aiming(
-        phi=math.radians(aiming['phi']),
-        theta=math.radians(aiming['theta'])
-    )
+    arreglo.aiming(coordinates=aiming)
     
     elevation_width = arreglo.get_elevation_width(plot=plot)
     azimut_width = arreglo.get_azimut_width(plot=plot)
     
-    width = dask.delayed(
-        {
-            'elevation': elevation_width, 
-            'azimut': azimut_width
-        }
-    )
+    width = dask.delayed({'elevation': elevation_width, 'azimut': azimut_width})
 
-    if plot:
-        origin = [0,0,0]
-        if geometrical_array.distribution_name == 0:
-            dx = separation*(param1 - 1) / 2
-            dy = separation*(param2 - 1) / 2
-            origin = [dx, dy, 0]
-        arreglo.plot_3D(origin)
+    if plot: arreglo.plot_3D(origin=geometrical_array.origin)
 
     return width
 
@@ -90,7 +73,7 @@ def stage_two(config):
     )
     
     # Recalculo los anchos para las frecuencias desnormalizadas
-    delayed_widths = []
+    widths = []
     denormalising_params = []
     current_pass = 0
     for index in range(len(Dn)):
@@ -98,36 +81,22 @@ def stage_two(config):
             'distance': Dn[index],
             'frequency': freq[index]
         })
-        # -------------------------------
-        # width = dask.delayed(array_evaluation_process)(
-        #     distribution_type=config.distribution, 
-        #     separation=Dn[index], 
-        #     param1=config.parameter1, 
-        #     param2=config.parameter2,
-        #     aiming=config.aiming,
-        #     plot=False
-        # )        
-        # delayed_widths.append(width)
-        # ------------
-        arreglo = initialize_evaluation_process(
-            distribution_type=config.distribution,
-            separation=Dn[index],
+        
+        width = dask.delayed(array_evaluation_process)(
+            distribution_type=config.distribution, 
+            separation=Dn[index], 
             param1=config.parameter1, 
             param2=config.parameter2,
             aiming=config.aiming,
-        )
-
-        elevation_width = arreglo.get_elevation_width(plot=False)
-        azimut_width = arreglo.get_azimut_width(plot=False)
-        width = dask.delayed({'elevation': elevation_width, 'azimut': azimut_width})
-        delayed_widths.append(width)
-        # --------------------------------
+            plot=False
+        )        
+        widths.append(width)        
 
         current_pass += 1
         print(f'Evaluating pass {current_pass}/{len(Dn)}')
     
-    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
-    widths = dask.compute(*delayed_widths)
+    dask.visualize(*widths) # Generates 'mydask.png' Task Graph 
+    widths = dask.compute(*widths)
     
     return widths, denormalising_params
 

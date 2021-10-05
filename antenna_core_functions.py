@@ -40,7 +40,7 @@ class AntennaArray(object):
         else:
             self.pattern = [lambda phi,theta:1]
     
-    def aiming(self,phi,theta):
+    def aiming(self,coordinates):
         """Aims the main beam towards a desired directon.
 
         Use this to modify the `excitation`s phases so that main lobe points
@@ -58,6 +58,8 @@ class AntennaArray(object):
         Only the phase is modified, not the amplitud.
         
         """
+        phi = math.radians(coordinates['phi'])
+        theta = math.radians(coordinates['theta'])
         normal = np.array((np.cos(phi)*np.sin(theta),np.sin(phi)*np.sin(theta),np.cos(theta)))
         phases = -2*np.pi*self.positions@normal
         self.excitations = np.abs(self.excitations)*np.exp(1j*phases)

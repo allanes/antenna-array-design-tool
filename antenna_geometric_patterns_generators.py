@@ -13,16 +13,34 @@ class GeometryArray():
         self.distribution_name = distribution_type
         self.positions = []
         self.excitations = []
+        self.origin = [0,0,0]        
 
     def populate_array(self, separation, param1, param2):
         if self.distribution_name == Distributions.RECTANGULAR.value:
-            [self.positions, self.excitations] = generate_geometry_rectangular(D=separation, Nx=param1, Ny=param2)
+            [self.positions, self.excitations] = generate_geometry_rectangular(
+                separation=separation, 
+                Nx=param1, 
+                Ny=param2
+            )
+            self.origin = [
+                separation*(param1 - 1) / 2,
+                separation*(param2 - 1) / 2,
+                0
+            ]
         
         elif self.distribution_name == Distributions.STAR.value:
-            [self.positions, self.excitations] = generate_geometry_star(radial_distance=separation, elements_radial_dir=param1, elements_per_ring=param2)
+            [self.positions, self.excitations] = generate_geometry_star(
+                radial_distance=separation, 
+                elements_radial_dir=param1, 
+                elements_per_ring=param2
+            )
 
         elif self.distribution_name == Distributions.CIRCULAR2.value:
-            [self.positions, self.excitations] = generate_geometry_circular2(first_ring_radius=separation, rings=param1, first_ring_elements=param2)
+            [self.positions, self.excitations] = generate_geometry_circular2(
+                first_ring_radius=separation, 
+                rings=param1, 
+                first_ring_elements=param2
+            )
 
         return self.excitations
 
@@ -46,7 +64,7 @@ def get_params_names(distribution_type):
     return [param1, param2]
 
 
-def generate_geometry_rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
+def generate_geometry_rectangular(separation = 1, Nx = 1, Ny = 1, Nz = 1):
     """Posiciona en un plano x,y,z a cada una de las antenas del arreglo
             
     Array(n,2) plot Geom_Arreglo_Rectangular( int D, int Nx ,int Ny)
@@ -66,7 +84,7 @@ def generate_geometry_rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
     for i in pos_x:
         for j in pos_y:
             for k in pos_z:
-                aux = np.array([[i*D, j*D, k*D]]) 
+                aux = np.array([[i*separation, j*separation, k*separation]]) 
                 _B = np.append(_B,aux,axis=0)
     
     positions = _B[1:]
