@@ -29,7 +29,12 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     )
 
     [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=plot)
-    if plot: arreglo.plot_3D()
+    origin = [0,0,0]
+    if geometrical_array.distribution_name == 0:
+        dx = separation*(param1 - 1) / 2
+        dy = separation*(param2 - 1) / 2
+        origin = [dx, dy, 0]
+    if plot: arreglo.plot_3D(origin)
 
     return {'elevation':elevation_width, 'azimut': azimut_width}
 
@@ -66,7 +71,7 @@ def stage_two(config):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
     """    
-    rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6] # ,16e6,17e6,18e6,19e6,20e6
+    rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6, 16e6,17e6,18e6,19e6,20e6]
     freq = np.array(rango_frecuencias)
     Dn = core_functions.denormalise_frequencies(
         frequencies_list=freq, 
@@ -121,6 +126,10 @@ def main():
     config = utils.InputConfig()
     option = config.main_menu()
     
+    while option == 4:
+        config.configure_params()
+        option = config.main_menu()
+
     if option==1:
         dataset = config.configure_log(option=option)
         widths = stage_one(config)
@@ -135,9 +144,6 @@ def main():
     
     elif option == 3: 
         just_plot(config)
-    
-    elif option == 4: 
-        config.configure_params()
 
 
 if __name__ == '__main__':

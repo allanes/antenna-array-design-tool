@@ -154,7 +154,7 @@ class AntennaArray(object):
 
         return [elev_width, azim_width, directivity]
 
-    def plot_3D(self):
+    def plot_3D(self, origin=[0,0,0]):
         """Realiza la representacion del patron de radiacion del arreglo
         y ubica las antenas en un espacio x,y,z
         
@@ -179,7 +179,8 @@ class AntennaArray(object):
         ax.plot_surface(_X,_Y,_Z,rcount=100,ccount=100,facecolors=cm.jet(_R/Rmax),shade=False)
         ax.set_title("3D Array")
         [dx,dy,dz] = [0,0,0]
-        [xi, yi , zi] = 50*np.transpose(self.positions-np.array(((dx,dy,dz))))
+        # [xi, yi , zi] = 50*np.transpose(self.positions-np.array(((dx,dy,dz))))
+        [xi, yi , zi] = 50*np.transpose(self.positions-np.array(((origin[0],origin[1],origin[2]))))
         ax.scatter(xi,yi,zi, c = 'green',  marker='+' , linewidth = 2)
 
         plt.show()
