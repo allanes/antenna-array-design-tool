@@ -4,3 +4,4 @@ logs/log_*
 __pycache__/*
 dask-worker-space/*
 mydask.png
+profile.html

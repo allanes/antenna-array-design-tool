@@ -1,6 +1,7 @@
 import numpy as np
 import math
 from dask.distributed import Client
+from dask.diagnostics import Profiler, ResourceProfiler, CacheProfiler, visualize
 import dask.delayed
 
 import antenna_core_functions as core_functions
@@ -54,7 +55,7 @@ def stage_one(cfg):
             current_pass += 1
             print(f'Evaluating pass {current_pass}/{cfg.get_max_passes()}...')        
     
-    dask.visualize(*widths) # Generates 'mydask.png' Task Graph 
+    # dask.visualize(*widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*widths)
     
     return widths
@@ -76,10 +77,7 @@ def stage_two(config):
     denormalising_params = []
     current_pass = 0
     for index in range(len(Dn)):
-        denormalising_params.append({
-            'distance': Dn[index],
-            'frequency': freq[index]
-        })
+        denormalising_params.append({'distance': Dn[index],'frequency': freq[index]})
         
         width = array_evaluation_process(
             distribution_type=config.distribution, 
@@ -113,7 +111,6 @@ def just_plot(config):
         )
 
     return filename
-
 
 def main():
     client = Client()
