@@ -11,8 +11,7 @@ import antenna_plotting_tools as plotting_tools
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)
-    geometrical_array.populate_array(separation=separation, param1= param1, param2=param2
-    )
+    geometrical_array.populate_array(separation=separation, param1= param1, param2=param2)
 
     individual_element_pattern = [core_functions.quarter_wave_monopole_pattern()]
     
@@ -65,7 +64,7 @@ def stage_two(config):
     """
     ETAPA 2. Evalua la respuesta en frecuencia    
     """    
-    rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6, 16e6,17e6,18e6,19e6,20e6]
+    rango_frecuencias = [config.design_frequency,2e6,3e6,4e6,5e6,6e6,7e6,8e6,9e6,10e6,11e6,12e6,13e6,14e6,15e6,] # 16e6,17e6,18e6,19e6,20e6]
     freq = np.array(rango_frecuencias)
     Dn = core_functions.denormalise_frequencies(
         frequencies_list=freq, 
@@ -82,7 +81,7 @@ def stage_two(config):
             'frequency': freq[index]
         })
         
-        width = dask.delayed(array_evaluation_process)(
+        width = array_evaluation_process(
             distribution_type=config.distribution, 
             separation=Dn[index], 
             param1=config.parameter1, 
