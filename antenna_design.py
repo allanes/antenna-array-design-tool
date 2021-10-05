@@ -138,7 +138,7 @@ def main():
 
         elif option == '4':
             config.configure_params()
-            option = 'q'
+            option = ''
             
         elif option == '5':
             option = 'q'
