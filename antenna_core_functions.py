@@ -62,6 +62,22 @@ class AntennaArray(object):
         self.excitations = np.abs(self.excitations)*np.exp(1j*phases)
 
     def _unique_direction_field(self,phi_i,theta_i):
+        """Aims the main beam towards a desired directon.
+
+       
+        
+        Parameters
+        ----------
+        phi_i : 
+            
+        theta_i : 
+            
+
+        Notes
+        -----
+        
+        
+        """
         normal = np.array((np.cos(phi_i)*np.sin(theta_i),np.sin(phi_i)*np.sin(theta_i),np.cos(theta_i)))
         phases = 2*np.pi*self.positions@normal  
 
@@ -87,7 +103,7 @@ class AntennaArray(object):
         campo_vec = np.vectorize(self._unique_direction_field)
         return campo_vec(phi,theta)
 
-    def get_beam_width(self, plot=False):
+    def get_azimut_width(self, plot):
         theta = np.linspace(0,np.pi,100)
         phi = np.linspace(-np.pi,np.pi,100)
         THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
@@ -97,8 +113,65 @@ class AntennaArray(object):
         _Rmax = np.max(_R)
         i_phi,i_theta = np.where(_R == _Rmax)
         theta_apuntado = np.degrees(theta[int(i_theta)])
-        phi_apuntado = np.degrees(phi[int(i_phi)])  
+        phi_apuntado = np.degrees(phi[int(i_phi)])
+        # -------
+        x_phi = np.degrees(phi)
+        y_campo_theta = np.abs(self.directivity(phi,math.radians(theta_apuntado)))
 
+        if plot: 
+            fig = plt.figure()
+            ax1 = fig.add_subplot(2,1,2)
+            ax1.plot(x_phi,y_campo_theta)
+            ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
+
+        xx = [0]
+        yy = [0]
+        _Rmax= np.max(y_campo_theta)
+        _Rrange = _Rmax*0.3
+        for i in np.arange(np.size(y_campo_theta,0)):
+            if (y_campo_theta[i] >= _Rrange):
+                xx = np.append(xx,np.array([y_campo_theta[i]]),axis=0)
+                yy = np.append(yy,np.array([x_phi[i]]),axis=0)
+        yy = yy[1:]
+        xx = xx[1:]
+
+        index_Rmax = np.where( xx == _Rmax )
+        index = int(index_Rmax[0])
+        
+        R_left = xx[0:index] 
+        phi_left = yy[0:index]
+        R_right = xx[index:-1]
+        phi_right = yy[index:-1]
+
+        intensidad_media_potencia = _Rmax * (2**-0.5)
+        phi_hp_min = np.interp(intensidad_media_potencia,R_left,phi_left)
+        phi_hp_max = np.interp(-intensidad_media_potencia,-R_right,phi_right)
+        
+        if plot: ax1.plot(
+            phi_hp_min,
+            intensidad_media_potencia,
+            'or',
+            phi_hp_max,
+            intensidad_media_potencia,
+            'or'
+            ) 
+
+        azim_width = phi_hp_max - phi_hp_min
+
+        return azim_width
+
+    def get_elevation_width(self, plot):
+        theta = np.linspace(0,np.pi,100)
+        phi = np.linspace(-np.pi,np.pi,100)
+        THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
+        f = lambda x,y: np.abs(self.directivity(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
+        _R = f(PHI,THETA)
+        
+        _Rmax = np.max(_R)
+        i_phi,i_theta = np.where(_R == _Rmax)
+        theta_apuntado = np.degrees(theta[int(i_theta)])
+        phi_apuntado = np.degrees(phi[int(i_phi)])
+        # -------
         y_campo_phi = np.abs(self.directivity(math.radians(phi_apuntado),theta))
         x_theta = np.degrees(theta)
 
@@ -134,51 +207,25 @@ class AntennaArray(object):
         else:
             theta_hp_max = np.interp(-_Rmax*(2**-0.5),-R_right,theta_right)
         
-        if plot: ax1.plot(theta_hp_min,_Rmax*(2**-0.5),'or',theta_hp_max,_Rmax*(2**-0.5),'or')
+        if plot: ax1.plot(theta_hp_min,_Rmax*(2**-0.5),'or',theta_hp_max,_Rmax*(2**-0.5),'or')        
         
-        elev_width = theta_hp_max - theta_hp_min        
-        x_phi = np.degrees(phi)
-        y_campo_theta = np.abs(self.directivity(phi,math.radians(theta_apuntado)))
+        elev_width = theta_hp_max - theta_hp_min
 
-        if plot: 
-            ax1 = fig.add_subplot(2,1,2)
-            ax1.plot(x_phi,y_campo_theta)
-            ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
+        return elev_width
 
-        xx = [0]
-        yy = [0]
-        _Rmax= np.max(y_campo_theta)
-        _Rrange = _Rmax*0.3
-        for i in np.arange(np.size(y_campo_theta,0)):
-            if (y_campo_theta[i] >= _Rrange):
-                xx = np.append(xx,np.array([y_campo_theta[i]]),axis=0)
-                yy = np.append(yy,np.array([x_phi[i]]),axis=0)
-        yy = yy[1:]
-        xx = xx[1:]
+    def get_beam_width(self, coordinate, plot=False):
+        if coordinate == 'elevation': return self.get_elevation_width(plot)
+        if coordinate == 'azimut': return self.get_azimut_width(plot)
 
-        index_Rmax = np.where( xx == _Rmax )
-        index = int(index_Rmax[0])
-        R_left = xx[0:index] 
-        phi_left = yy[0:index]
-        R_right = xx[index:-1]
-        phi_right = yy[index:-1]
-
-        intensidad_media_potencia = _Rmax * (2**-0.5)
-        phi_hp_min = np.interp(intensidad_media_potencia,R_left,phi_left)
-        phi_hp_max = np.interp(-intensidad_media_potencia,-R_right,phi_right)
+    def _get_maximum_directivity(self):
+        theta = np.linspace(0,np.pi,100)
+        phi = np.linspace(-np.pi,np.pi,100)
+        THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
+        f = lambda x,y: np.abs(self.directivity(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
+        _R = f(PHI,THETA)
         
-        if plot: ax1.plot(
-            phi_hp_min,
-            intensidad_media_potencia,
-            'or',
-            phi_hp_max,
-            intensidad_media_potencia,
-            'or'
-            ) 
-        azim_width = phi_hp_max - phi_hp_min
-        directivity = _Rmax
+        return np.max(_R)
 
-        return [elev_width, azim_width, directivity]
 
     def plot_3D(self, origin=[0,0,0]):
         """Realiza la representacion del patron de radiacion del arreglo
@@ -198,14 +245,12 @@ class AntennaArray(object):
 
         fig = plt.figure()
         ax = fig.add_subplot(projection = '3d')
+        ax.set_title("3D Array")
         ax.set_xlim(-Rmax,Rmax)
         ax.set_ylim(-Rmax,Rmax)
         ax.set_zlim(-Rmax,Rmax)
 
         ax.plot_surface(_X,_Y,_Z,rcount=100,ccount=100,facecolors=cm.jet(_R/Rmax),shade=False)
-        ax.set_title("3D Array")
-        [dx,dy,dz] = [0,0,0]
-        # [xi, yi , zi] = 50*np.transpose(self.positions-np.array(((dx,dy,dz))))
         [xi, yi , zi] = 50*np.transpose(self.positions-np.array(((origin[0],origin[1],origin[2]))))
         ax.scatter(xi,yi,zi, c = 'green',  marker='+' , linewidth = 2)
 

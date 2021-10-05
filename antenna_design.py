@@ -27,14 +27,17 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
         phi=math.radians(aiming['phi']),
         theta=math.radians(aiming['theta'])
     )
-
-    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=plot)
-    origin = [0,0,0]
-    if geometrical_array.distribution_name == 0:
-        dx = separation*(param1 - 1) / 2
-        dy = separation*(param2 - 1) / 2
-        origin = [dx, dy, 0]
-    if plot: arreglo.plot_3D(origin)
+    
+    elevation_width = arreglo.get_elevation_width(plot=plot)
+    azimut_width = arreglo.get_azimut_width(plot=plot)
+    
+    if plot:
+        origin = [0,0,0]
+        if geometrical_array.distribution_name == 0:
+            dx = separation*(param1 - 1) / 2
+            dy = separation*(param2 - 1) / 2
+            origin = [dx, dy, 0]
+        arreglo.plot_3D(origin)
 
     return {'elevation':elevation_width, 'azimut': azimut_width}
 
@@ -61,7 +64,7 @@ def stage_one(cfg):
             current_pass += 1
             print(f'Evaluating pass {current_pass}/{cfg.get_max_passes()}...')
     
-    # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
+    dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
     
     return widths
