@@ -2,15 +2,16 @@ from datetime import datetime
 import logging
 from tkinter import *
 from tkinter import ttk
+from tkinter.font import names
 
-from antenna_geometric_patterns_generators import Distributions as disposition_types
+from antenna_geometric_patterns_generators import Distributions
 
 class InputConfig():
     def __init__(self):
         """
         
         """
-        self.distribution = disposition_types.STAR.value
+        self.distribution = Distributions.STAR.value
         self.separation = 0.25
         self.parameter1 = 10
         self.parameter2 = 15
@@ -21,7 +22,7 @@ class InputConfig():
 
     def show_config(self):
         print('\nArreglo configurado:')
-        print(f'  Disposicion: {disposition_types(self.distribution).name}')
+        print(f'  Disposicion: {Distributions(self.distribution).name}')
         print(f'  Separacion: {self.separation} [lambda]')
         print(f'  Apuntamiento: phi={self.aiming["phi"]},')
         print(f'                theta={self.aiming["theta"]}')
@@ -48,7 +49,7 @@ class InputConfig():
             if opcion_configuracion == '1':
                 # Configuracion general (disposicion, apuntamiento,separacion)
                 print('      Disposiciones:')
-                for index, disp in enumerate(disposition_types):
+                for index, disp in enumerate(Distributions):
                     print(f'{index}. {disp}')
                 self.distribution = int(input('Disposicion>>'))
                 self.aiming['phi'] = float(input("    Apuntamiento Phi>>"))
@@ -156,10 +157,21 @@ class InputConfig():
 
 class InputConfigGUI():
     def __init__(self):
+        self.distribution = Distributions.STAR.value
+        self.separation = 0.25
+        self.parameter1 = 10
+        self.parameter2 = 15
+        self.aiming_phi = 50
+        self.aiming_theta = 30
+        self.aiming = {'phi':self.aiming_phi, 'theta':self.aiming_theta}
+        self.parameter1_range = [10,12]
+        self.parameter2_range = [10,13]
+        self.design_frequency = 5e6
         # Setup main app window
         root = Tk()
         root.title('Antenna Design Utility')
         root.geometry('500x500')
+        self.validate_separation_wrapper = (root.register(self.validate_separation), '%P')
         # Creates Main Content Frame
         mainframe = ttk.Frame(root)
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
@@ -177,21 +189,24 @@ class InputConfigGUI():
         # Make it start the Event Loop
         root.mainloop()
 
+    def validate_separation(self, newval):
+        print(f'New val: {newval}')
+        return True
+
     def _calculate():
         pass
 
     def add_base_frame(self, parent_frame, col, row):
         # Declare variables
-        distribution = StringVar()
-        separation = StringVar()
-        parameter1 = StringVar()
-        parameter2 = StringVar()
-        aiming_phi = StringVar()
-        aiming_theta = StringVar(value=30)
-        
+        distribution_var = StringVar()
+        separation_var = DoubleVar()
+        aiming_phi_var = IntVar()
+        aiming_theta_var = IntVar()
+        parameter1_var = IntVar()
+        parameter2_var = IntVar()
+        # Declare base frame
         base_frame = ttk.Frame(parent_frame)
-        base_frame.grid(column=col, row=row)
-        
+        base_frame.grid(column=col, row=row)        
         # Declare and place labels
         ttk.Label(base_frame, text="Distribution").grid(column=0, row=1)
         ttk.Label(base_frame, text="Separation").grid(column=0, row=2)
@@ -200,24 +215,32 @@ class InputConfigGUI():
         ttk.Label(base_frame, text="theta").grid(column=3, row=3)
         ttk.Label(base_frame, text="Param 1").grid(column=0, row=4)
         ttk.Label(base_frame, text="Param 2").grid(column=0, row=5)
-
-        # Declare and place entries
-        distribution_entry = ttk.Entry(base_frame, width=10, textvariable=distribution)
-        separation_entry = ttk.Entry(base_frame, width=10, textvariable=separation)
-        aiming_phi_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_phi)
-        aiming_theta_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_theta)
-        parameter1_entry = ttk.Entry(base_frame, width=10, textvariable=parameter1)
-        parameter2_entry = ttk.Entry(base_frame, width=10, textvariable=parameter2)
-        
+        # Declare entries
+        distribution_entry = ttk.Combobox(base_frame, width=10, textvariable=distribution_var)
+        distribution_entry['values'] = [Distributions(index).name for index, dist in enumerate(Distributions)]
+        distribution_entry.state(['readonly'])
+        separation_entry = ttk.Entry(base_frame, width=10, textvariable=separation_var, validate='key', validatecommand=self.validate_separation_wrapper)
+        aiming_phi_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_phi_var)
+        aiming_theta_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_theta_var)
+        parameter1_entry = ttk.Entry(base_frame, width=10, textvariable=parameter1_var)
+        parameter2_entry = ttk.Entry(base_frame, width=10, textvariable=parameter2_var)
+        # Place entries
         distribution_entry.grid(column=1, row=1, columnspan=3, sticky=(N,S,W,E))
         separation_entry.grid(column=1, row=2, columnspan=2)
         aiming_phi_entry.grid(column=2, row=3)
         aiming_theta_entry.grid(column=4, row=3)
         parameter1_entry.grid(column=1, row=4, columnspan=2)
         parameter2_entry.grid(column=1, row=5, columnspan=2)
-
+        # Set entries to default
+        distribution_var.set(Distributions(self.distribution))
+        separation_var.set(0.25)
+        aiming_phi_var.set(50)
+        aiming_theta_var.set(self.aiming_theta)
+        parameter1_var.set(self.parameter1)
+        parameter2_var.set(self.parameter2)
+        # Declare and place action Button
         button = ttk.Button(base_frame, text="Evaluate", command=self._calculate)
-        button.grid(column=1, row=7, sticky=(N, S, W, E), rowspan=2, columnspan=3)
+        button.grid(column=1, row=10, sticky=(N, S, W, E), rowspan=2, columnspan=3)
 
         return base_frame
 
@@ -227,6 +250,29 @@ class InputConfigGUI():
 
     def add_stage_one_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=1, row=0)
+        # Declare stage one exclusive variables
+        param1_from_var = IntVar()
+        param1_to_var = IntVar()
+        param2_from_var = IntVar()
+        param2_to_var = IntVar()
+        # Declare and place labels
+        ttk.Label(base_frame, text="Parameter 1").grid(column=0, row=6)
+        ttk.Label(base_frame, text="from").grid(column=1, row=6)
+        ttk.Label(base_frame, text="to").grid(column=3, row=6)
+        ttk.Label(base_frame, text="Parameter 2").grid(column=0, row=7)
+        ttk.Label(base_frame, text="from").grid(column=1, row=7)
+        ttk.Label(base_frame, text="to").grid(column=3, row=7)
+        # Declare entries
+        param1_from_entry = ttk.Entry(base_frame, width=5, textvariable=param1_from_var)
+        param1_to_entry = ttk.Entry(base_frame, width=5, textvariable=param1_to_var)
+        param2_from_entry = ttk.Entry(base_frame, width=5, textvariable=param2_from_var)
+        param2_to_entry = ttk.Entry(base_frame, width=5, textvariable=param2_to_var)
+        # Place entries
+        param1_from_entry.grid(column=2, row=6)
+        param1_to_entry.grid(column=4, row=6)
+        param2_from_entry.grid(column=2, row=7)
+        param2_to_entry.grid(column=4, row=7)
+
         return base_frame
 
     def add_stage_two_frame(self, parent_frame):
