@@ -159,27 +159,32 @@ class InputConfigGUI():
         # Setup main app window
         root = Tk()
         root.title('Antenna Design Utility')
+        root.geometry('500x500')
         # Creates Main Content Frame
         mainframe = ttk.Frame(root, padding='3 3 12 20')
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1) 
-        # Creates sub Content Frames
-        self.add_plot_frame(parent_frame=mainframe)
-        self.add_stage_one_frame(parent_frame=mainframe)
-        self.add_stage_two_frame(parent_frame=mainframe)
-        
+        # Create Tab Control
+        tab_control = ttk.Notebook(mainframe)
+        tab_control.grid(column=0, row=0)
+        plot_tab = self.add_plot_frame(parent_frame=tab_control)
+        stage_one_tab = self.add_stage_one_frame(parent_frame=tab_control)
+        stage_two_tab = self.add_stage_two_frame(parent_frame=tab_control)
+        # Creates sub Content Frames        
+        tab_control.add(plot_tab, text='Plot 3D')
+        tab_control.add(stage_one_tab, text='Stage 1')
+        tab_control.add(stage_two_tab, text='Stage 2')        
 
         # Add some polish
-        for child in mainframe.winfo_children(): 
-            child.grid_configure(padx=5, pady=5)
+        # for child in mainframe.winfo_children(): 
+        #     child.grid_configure(padx=5, pady=5)
+
         # Make it start the Event Loop
         root.mainloop()
 
     def _calculate():
         pass
 
-    def add_base_frame(self, parent_frame, col, row, title):
+    def add_base_frame(self, parent_frame, col, row):
         # Declare variables
         distribution = StringVar()
         separation = StringVar()
@@ -187,12 +192,11 @@ class InputConfigGUI():
         parameter2 = StringVar()
         aiming_phi = StringVar()
         aiming_theta = StringVar(value='30')
-        # self.aiming = {'phi':50, 'theta':30}
-
-        base_frame = ttk.Frame(parent_frame, padding='3 3 12 20')
-        base_frame = base_frame.grid(column=col, row=row)
+        
+        base_frame = ttk.Frame(parent_frame)
+        base_frame.grid(column=col, row=row)
+        
         # Declare and place labels
-        ttk.Label(base_frame, text=title, justify='right').grid(column=0, row=0, columnspan=2, sticky=(W, E))
         ttk.Label(base_frame, text="Distribution").grid(column=0, row=1, sticky=(W, E))
         ttk.Label(base_frame, textvariable="Separation").grid(column=0, row=2, sticky=(W, E))
         ttk.Label(base_frame, text="Pointing phi").grid(column=0, row=3, sticky=(W, E))
@@ -214,20 +218,19 @@ class InputConfigGUI():
         aiming_phi_entry = aiming_phi_entry.grid(column=1, row=5, sticky=(N,S))
         aiming_theta_entry = aiming_theta_entry.grid(column=1, row=6, sticky=(N,S))
 
-        # ttk.Button(plot_frame, text="Calculate", command=self._calculate).grid(column=3, row=3, sticky=W)
+        ttk.Button(base_frame, text="Evaluate", command=self._calculate).grid(column=0, row=7, sticky=(N, S))
         return base_frame
 
     def add_plot_frame(self, parent_frame):
-        base_frame = self.add_base_frame(parent_frame, col=0, row=0, title='Plot 3D')
-
+        base_frame = self.add_base_frame(parent_frame, col=0, row=0)
         return base_frame
 
     def add_stage_one_frame(self, parent_frame):
-        base_frame = self.add_base_frame(parent_frame, col=1, row=0, title='Stage 1')
+        base_frame = self.add_base_frame(parent_frame, col=1, row=0)
         return base_frame
 
     def add_stage_two_frame(self, parent_frame):
-        base_frame = self.add_base_frame(parent_frame, col=2, row=0, title='Stage 2')
+        base_frame = self.add_base_frame(parent_frame, col=2, row=0)
         return base_frame
 
 
