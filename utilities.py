@@ -161,10 +161,10 @@ class InputConfigGUI():
         root.title('Antenna Design Utility')
         root.geometry('500x500')
         # Creates Main Content Frame
-        mainframe = ttk.Frame(root, padding='3 3 12 20')
+        mainframe = ttk.Frame(root)
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
         # Create Tab Control
-        tab_control = ttk.Notebook(mainframe)
+        tab_control = ttk.Notebook(mainframe, width=400, height=200)
         tab_control.grid(column=0, row=0)
         plot_tab = self.add_plot_frame(parent_frame=tab_control)
         stage_one_tab = self.add_stage_one_frame(parent_frame=tab_control)
@@ -173,10 +173,6 @@ class InputConfigGUI():
         tab_control.add(plot_tab, text='Plot 3D')
         tab_control.add(stage_one_tab, text='Stage 1')
         tab_control.add(stage_two_tab, text='Stage 2')        
-
-        # Add some polish
-        # for child in mainframe.winfo_children(): 
-        #     child.grid_configure(padx=5, pady=5)
 
         # Make it start the Event Loop
         root.mainloop()
@@ -191,34 +187,38 @@ class InputConfigGUI():
         parameter1 = StringVar()
         parameter2 = StringVar()
         aiming_phi = StringVar()
-        aiming_theta = StringVar(value='30')
+        aiming_theta = StringVar(value=30)
         
         base_frame = ttk.Frame(parent_frame)
         base_frame.grid(column=col, row=row)
         
         # Declare and place labels
-        ttk.Label(base_frame, text="Distribution").grid(column=0, row=1, sticky=(W, E))
-        ttk.Label(base_frame, textvariable="Separation").grid(column=0, row=2, sticky=(W, E))
-        ttk.Label(base_frame, text="Pointing phi").grid(column=0, row=3, sticky=(W, E))
-        ttk.Label(base_frame, text="Pointing theta").grid(column=0, row=4, sticky=(W, E))
-        ttk.Label(base_frame, text="Param 1").grid(column=0, row=5, sticky=(W, E))
-        ttk.Label(base_frame, text="Param 2").grid(column=0, row=6, sticky=(W, E))
+        ttk.Label(base_frame, text="Distribution").grid(column=0, row=1)
+        ttk.Label(base_frame, text="Separation").grid(column=0, row=2)
+        ttk.Label(base_frame, text="Pointing:").grid(column=0, row=3)
+        ttk.Label(base_frame, text="phi").grid(column=1, row=3)
+        ttk.Label(base_frame, text="theta").grid(column=3, row=3)
+        ttk.Label(base_frame, text="Param 1").grid(column=0, row=4)
+        ttk.Label(base_frame, text="Param 2").grid(column=0, row=5)
 
         # Declare and place entries
         distribution_entry = ttk.Entry(base_frame, width=10, textvariable=distribution)
         separation_entry = ttk.Entry(base_frame, width=10, textvariable=separation)
+        aiming_phi_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_phi)
+        aiming_theta_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_theta)
         parameter1_entry = ttk.Entry(base_frame, width=10, textvariable=parameter1)
         parameter2_entry = ttk.Entry(base_frame, width=10, textvariable=parameter2)
-        aiming_phi_entry = ttk.Entry(base_frame, width=10, textvariable=aiming_phi)
-        aiming_theta_entry = ttk.Entry(base_frame, width=10, textvariable=aiming_theta)
-        distribution_entry = distribution_entry.grid(column=1, row=1, sticky=(N,S))
-        separation_entry = separation_entry.grid(column=1, row=2, sticky=(N,S))
-        parameter1_entry = parameter1_entry.grid(column=1, row=3, sticky=(N,S))
-        parameter2_entry = parameter2_entry.grid(column=1, row=4, sticky=(N,S))
-        aiming_phi_entry = aiming_phi_entry.grid(column=1, row=5, sticky=(N,S))
-        aiming_theta_entry = aiming_theta_entry.grid(column=1, row=6, sticky=(N,S))
+        
+        distribution_entry.grid(column=1, row=1, columnspan=3, sticky=(N,S,W,E))
+        separation_entry.grid(column=1, row=2, columnspan=2)
+        aiming_phi_entry.grid(column=2, row=3)
+        aiming_theta_entry.grid(column=4, row=3)
+        parameter1_entry.grid(column=1, row=4, columnspan=2)
+        parameter2_entry.grid(column=1, row=5, columnspan=2)
 
-        ttk.Button(base_frame, text="Evaluate", command=self._calculate).grid(column=0, row=7, sticky=(N, S))
+        button = ttk.Button(base_frame, text="Evaluate", command=self._calculate)
+        button.grid(column=1, row=7, sticky=(N, S, W, E), rowspan=2, columnspan=3)
+
         return base_frame
 
     def add_plot_frame(self, parent_frame):
