@@ -143,7 +143,6 @@ class InputConfig():
                 logging.info(f"Distancia en Lambda: {extra_params[index]['distance']}")
                 logging.info(f"Frecuencia: {extra_params[index]['frequency']}")
                 self._log_width(width=widths[index])
-        
 
     def main_menu(self):
         print('*Menu Principal*')
@@ -250,6 +249,7 @@ class InputConfigGUI():
 
     def add_stage_one_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=1, row=0)
+        print(base_frame.winfo_children)
         # Declare stage one exclusive variables
         param1_from_var = IntVar()
         param1_to_var = IntVar()
@@ -277,6 +277,15 @@ class InputConfigGUI():
 
     def add_stage_two_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=2, row=0)
+        # Declare stage one exclusive variables
+        design_frequency_var = DoubleVar()
+        # Declare and place labels
+        ttk.Label(base_frame, text="Design Frequency").grid(column=0, row=6)
+        # Declare entries
+        design_freq_entry = ttk.Entry(base_frame, width=5, textvariable=design_frequency_var)
+        # Place entries
+        design_freq_entry.grid(column=1, row=6, columnspan=2)
+        
         return base_frame
 
 

@@ -39,27 +39,27 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
     return {'elevation':elevation_width, 'azimut': azimut_width}
 
 
-def stage_one(cfg):
+def stage_one(config):
     """
     ETAPA 1. Genera datos para Heatmap
     """
     current_pass = 0
     delayed_widths = []
-    for aux_param1 in range(cfg.get_param1_initial_value(), cfg.get_param1_final_value()):
+    for aux_param1 in range(config.get_param1_initial_value(), config.get_param1_final_value()):
         
-        for aux_param2 in range(cfg.get_param2_initial_value(), cfg.get_param2_final_value()):
+        for aux_param2 in range(config.get_param2_initial_value(), config.get_param2_final_value()):
             width = dask.delayed(array_evaluation_process)(
-                distribution_type=cfg.distribution,
-                separation=cfg.separation,
+                distribution_type=config.distribution,
+                separation=config.separation,
                 param1=aux_param1,
                 param2=aux_param2,
-                aiming=cfg.aiming,
+                aiming=config.aiming,
                 plot=False
             )
 
             delayed_widths.append(width)            
             current_pass += 1
-            print(f'Evaluating pass {current_pass}/{cfg.get_max_passes()}...')
+            print(f'Evaluating pass {current_pass}/{config.get_max_passes()}...')
     
     # dask.visualize(*delayed_widths) # Generates 'mydask.png' Task Graph 
     widths = dask.compute(*delayed_widths)
