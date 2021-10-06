@@ -1,9 +1,11 @@
 from datetime import datetime
 import logging
+from tkinter import *
+from tkinter import ttk
 
 from antenna_geometric_patterns_generators import Distributions as disposition_types
 
-class InputConfig:
+class InputConfig():
     def __init__(self):
         """
         
@@ -151,3 +153,75 @@ class InputConfig:
         
         self.show_config()
         return int(input('\nSeleccione una opcion>>'))
+
+class InputConfigGUI():
+    def __init__(self):
+        # Setup main app window
+        root = Tk()
+        root.title('Antenna Design Utility')
+        # Creates Main Content Frame
+        mainframe = ttk.Frame(root, padding='3 3 12 20')
+        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1) 
+        # Creates sub Content Frames
+        just_plot_frame = self.add_plot_frame(parent_frame=mainframe)
+        stage_one_frame = self.add_stage_one_frame(parent_frame=mainframe)
+        
+
+        # Add some polish
+        for child in mainframe.winfo_children(): 
+            child.grid_configure(padx=5, pady=5)
+        # Make it start the Event Loop
+        root.mainloop()
+
+    def _calculate():
+        pass
+
+    def add_base_frame(self, parent_frame):
+        # Declare variables
+        self.distribution = StringVar(value=disposition_types.STAR.value)
+        self.separation = StringVar(value=0.25)
+        self.parameter1 = StringVar(value=10)
+        self.parameter2 = StringVar(value=15)
+        self.aiming_phi = StringVar(value=50)
+        self.aiming_theta = StringVar(value=30)
+        # self.aiming = {'phi':50, 'theta':30}
+
+        plot_frame = ttk.Frame(parent_frame, padding='3 3 12 20')
+        plot_frame = plot_frame.grid(column=0, row=0)
+        # Declare and place labels
+        ttk.Label(plot_frame, text="Distribution").grid(column=0, row=1, sticky=(W, E))
+        ttk.Label(plot_frame, textvariable="Separation").grid(column=0, row=2, sticky=(W, E))
+        ttk.Label(plot_frame, text="Pointing phi").grid(column=0, row=3, sticky=(W, E))
+        ttk.Label(plot_frame, text="Pointing theta").grid(column=0, row=4, sticky=(W, E))
+        ttk.Label(plot_frame, text="Param 1").grid(column=0, row=5, sticky=(W, E))
+        ttk.Label(plot_frame, text="Param 2").grid(column=0, row=6, sticky=(W, E))
+
+        # Declare and place entries
+        distribution_entry = ttk.Entry(plot_frame, width=7, textvariable=self.distribution)
+        separation_entry = ttk.Entry(plot_frame, width=7, textvariable=self.separation)
+        parameter1_entry = ttk.Entry(plot_frame, width=7, textvariable=self.parameter1)
+        parameter2_entry = ttk.Entry(plot_frame, width=7, textvariable=self.parameter2)
+        aiming_phi_entry = ttk.Entry(plot_frame, width=7, textvariable=self.aiming_phi)
+        aiming_theta_entry = ttk.Entry(plot_frame, width=7, textvariable=self.aiming_theta)
+        distribution_entry = distribution_entry.grid(column=1, row=1, sticky=(N,S))
+        separation_entry = separation_entry.grid(column=1, row=2, sticky=(N,S))
+        parameter1_entry = parameter1_entry.grid(column=1, row=3, sticky=(N,S))
+        parameter2_entry = parameter2_entry.grid(column=1, row=4, sticky=(N,S))
+        aiming_phi_entry = aiming_phi_entry.grid(column=1, row=5, sticky=(N,S))
+        aiming_theta_entry = aiming_theta_entry.grid(column=1, row=6, sticky=(N,S))
+
+        # ttk.Button(plot_frame, text="Calculate", command=self._calculate).grid(column=3, row=3, sticky=W)
+        return plot_frame
+
+    def add_plot_frame(self, parent_frame):
+        base_frame = self.add_base_frame(parent_frame)
+        return base_frame
+
+    def add_stage_one_frame(self, parent_frame):
+        pass
+
+
+if __name__ == '__main__':
+    icfg = InputConfigGUI()
