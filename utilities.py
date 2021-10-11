@@ -166,6 +166,7 @@ class InputConfigGUI():
         self.parameter1_range = [10,12]
         self.parameter2_range = [10,13]
         self.design_frequency = 5e6
+        
         # Setup main app window
         root = Tk()
         root.title('Antenna Design Utility')
@@ -177,6 +178,24 @@ class InputConfigGUI():
         # Create Tab Control
         tab_control = ttk.Notebook(mainframe, width=400, height=200)
         tab_control.grid(column=0, row=0)
+        # Create linked variables
+        # -Base frame variables
+        self.distribution_var = StringVar()
+        self.separation_var = DoubleVar()
+        self.aiming_phi_var = IntVar()
+        self.aiming_theta_var = IntVar()
+        self.parameter1_var = IntVar()
+        self.parameter2_var = IntVar()
+        self.param1_name_var = StringVar()
+        self.param2_name_var = StringVar()
+        # -Stage one variables
+        self.param1_from_var = IntVar()
+        self.param1_to_var = IntVar()
+        self.param2_from_var = IntVar()
+        self.param2_to_var = IntVar()
+        # -Stage two variables
+        self.design_frequency_var = DoubleVar()
+        # Add individual tabs
         plot_tab = self.add_plot_frame(parent_frame=tab_control)
         stage_one_tab = self.add_stage_one_frame(parent_frame=tab_control)
         stage_two_tab = self.add_stage_two_frame(parent_frame=tab_control)
@@ -196,13 +215,6 @@ class InputConfigGUI():
         pass
 
     def add_base_frame(self, parent_frame, col, row):
-        # Declare variables
-        distribution_var = StringVar()
-        separation_var = DoubleVar()
-        aiming_phi_var = IntVar()
-        aiming_theta_var = IntVar()
-        parameter1_var = IntVar()
-        parameter2_var = IntVar()
         # Declare base frame
         base_frame = ttk.Frame(parent_frame)
         base_frame.grid(column=col, row=row)        
@@ -212,17 +224,17 @@ class InputConfigGUI():
         ttk.Label(base_frame, text="Pointing:").grid(column=0, row=3)
         ttk.Label(base_frame, text="phi").grid(column=1, row=3)
         ttk.Label(base_frame, text="theta").grid(column=3, row=3)
-        ttk.Label(base_frame, text="Param 1").grid(column=0, row=4)
-        ttk.Label(base_frame, text="Param 2").grid(column=0, row=5)
+        ttk.Label(base_frame, textvariable=self.param1_name_var).grid(column=0, row=4)
+        ttk.Label(base_frame, textvariable=self.param2_name_var).grid(column=0, row=5)
         # Declare entries
-        distribution_entry = ttk.Combobox(base_frame, width=10, textvariable=distribution_var)
+        distribution_entry = ttk.Combobox(base_frame, width=10, textvariable=self.distribution_var)
         distribution_entry['values'] = [Distributions(index).name for index, dist in enumerate(Distributions)]
         distribution_entry.state(['readonly'])
-        separation_entry = ttk.Entry(base_frame, width=10, textvariable=separation_var, validate='key', validatecommand=self.validate_separation_wrapper)
-        aiming_phi_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_phi_var)
-        aiming_theta_entry = ttk.Entry(base_frame, width=5, textvariable=aiming_theta_var)
-        parameter1_entry = ttk.Entry(base_frame, width=10, textvariable=parameter1_var)
-        parameter2_entry = ttk.Entry(base_frame, width=10, textvariable=parameter2_var)
+        separation_entry = ttk.Entry(base_frame, width=10, textvariable=self.separation_var, validate='key', validatecommand=self.validate_separation_wrapper)
+        aiming_phi_entry = ttk.Entry(base_frame, width=5, textvariable=self.aiming_phi_var)
+        aiming_theta_entry = ttk.Entry(base_frame, width=5, textvariable=self.aiming_theta_var)
+        parameter1_entry = ttk.Entry(base_frame, width=10, textvariable=self.parameter1_var)
+        parameter2_entry = ttk.Entry(base_frame, width=10, textvariable=self.parameter2_var)
         # Place entries
         distribution_entry.grid(column=1, row=1, columnspan=3, sticky=(N,S,W,E))
         separation_entry.grid(column=1, row=2, columnspan=2)
@@ -231,30 +243,32 @@ class InputConfigGUI():
         parameter1_entry.grid(column=1, row=4, columnspan=2)
         parameter2_entry.grid(column=1, row=5, columnspan=2)
         # Set entries to default
-        distribution_var.set(Distributions(self.distribution))
-        separation_var.set(0.25)
-        aiming_phi_var.set(50)
-        aiming_theta_var.set(self.aiming_theta)
-        parameter1_var.set(self.parameter1)
-        parameter2_var.set(self.parameter2)
+       
+        print("var's set")
         # Declare and place action Button
         button = ttk.Button(base_frame, text="Evaluate", command=self._calculate)
         button.grid(column=1, row=10, sticky=(N, S, W, E), rowspan=2, columnspan=3)
 
         return base_frame
 
+    def set_base_defaults(self, base_frame):
+        self.distribution_var.set(Distributions(self.distribution).name)
+        self.separation_var.set(value=self.separation)
+        self.aiming_phi_var.set(value=self.aiming_phi)
+        self.aiming_theta_var.set(value=self.aiming_theta)
+        self.parameter1_var.set(value=self.parameter1)
+        self.parameter2_var.set(value=self.parameter2)
+        
+
     def add_plot_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=0, row=0)
+        self.set_base_defaults(base_frame=base_frame)
         return base_frame
 
     def add_stage_one_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=1, row=0)
         print(base_frame.winfo_children)
-        # Declare stage one exclusive variables
-        param1_from_var = IntVar()
-        param1_to_var = IntVar()
-        param2_from_var = IntVar()
-        param2_to_var = IntVar()
+        
         # Declare and place labels
         ttk.Label(base_frame, text="Parameter 1").grid(column=0, row=6)
         ttk.Label(base_frame, text="from").grid(column=1, row=6)
@@ -263,10 +277,10 @@ class InputConfigGUI():
         ttk.Label(base_frame, text="from").grid(column=1, row=7)
         ttk.Label(base_frame, text="to").grid(column=3, row=7)
         # Declare entries
-        param1_from_entry = ttk.Entry(base_frame, width=5, textvariable=param1_from_var)
-        param1_to_entry = ttk.Entry(base_frame, width=5, textvariable=param1_to_var)
-        param2_from_entry = ttk.Entry(base_frame, width=5, textvariable=param2_from_var)
-        param2_to_entry = ttk.Entry(base_frame, width=5, textvariable=param2_to_var)
+        param1_from_entry = ttk.Entry(base_frame, width=5, textvariable=self.param1_from_var)
+        param1_to_entry = ttk.Entry(base_frame, width=5, textvariable=self.param1_to_var)
+        param2_from_entry = ttk.Entry(base_frame, width=5, textvariable=self.param2_from_var)
+        param2_to_entry = ttk.Entry(base_frame, width=5, textvariable=self.param2_to_var)
         # Place entries
         param1_from_entry.grid(column=2, row=6)
         param1_to_entry.grid(column=4, row=6)
@@ -278,11 +292,11 @@ class InputConfigGUI():
     def add_stage_two_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=2, row=0)
         # Declare stage one exclusive variables
-        design_frequency_var = DoubleVar()
+        
         # Declare and place labels
         ttk.Label(base_frame, text="Design Frequency").grid(column=0, row=6)
         # Declare entries
-        design_freq_entry = ttk.Entry(base_frame, width=5, textvariable=design_frequency_var)
+        design_freq_entry = ttk.Entry(base_frame, width=5, textvariable=self.design_frequency_var)
         # Place entries
         design_freq_entry.grid(column=1, row=6, columnspan=2)
         
