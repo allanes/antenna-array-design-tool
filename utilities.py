@@ -112,9 +112,12 @@ class InputConfigGUI():
         # Creates Main Content Frame
         mainframe = ttk.Frame(root)
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        # Add image
+        image = PhotoImage(file='title.gif')
+        ttk.Label(mainframe, image=image).grid(column=0, row=0, sticky=(W,E,N,S))
         # Create Tab Control
         tab_control = ttk.Notebook(mainframe, width=400, height=200)
-        tab_control.grid(column=0, row=0)
+        tab_control.grid(column=0, row=1)
         tab_control.bind('<<NotebookTabChanged>>', func=self.set_current_option)
         # Create linked variables
         # -Base frame variables
