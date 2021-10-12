@@ -5,7 +5,6 @@ import dask.delayed
 
 import antenna_core_functions as core_functions
 from antenna_geometric_patterns_generators import GeometryArray
-import utilities as utils
 import antenna_plotting_tools as plotting_tools
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
@@ -107,7 +106,7 @@ def stage_two(config):
 
 
 def just_plot(config):
-    filename = config.configure_log(option=3)
+    # filename = config.configure_log(option=3)
     
     array_evaluation_process(
         distribution_type=config.distribution, 
@@ -118,32 +117,33 @@ def just_plot(config):
         plot=True
         )
 
-    return filename
+    # return filename
 
 
 def main():
-    client = Client()
-    config = utils.InputConfig()
-    option = config.main_menu()
+    # client = Client()
+    # config = utils.InputConfig()
+    # option = config.main_menu()
     
-    while option == 4:
-        config.configure_params()
-        option = config.main_menu()
+    # while option == 4:
+    #     config.configure_params()
+    #     option = config.main_menu()
 
-    if option==1:
-        dataset = config.configure_log(option=option)
-        widths = stage_one(config)
-        config.log_width_results(option, widths=widths)
-        plotting_tools.plot_option_one(filename=dataset)
+    # if option==1:
+    #     dataset = config.configure_log(option=option)
+    #     widths = stage_one(config)
+    #     config.log_width_results(option, widths=widths)
+    #     plotting_tools.plot_option_one(filename=dataset)
     
-    elif option==2:
-        dataset = config.configure_log(option=option)
-        widths, denorm_params = stage_two(config)
-        config.log_width_results(option, widths=widths, extra_params=denorm_params)
-        plotting_tools.plot_option_two(filename=dataset)
+    # elif option==2:
+    #     dataset = config.configure_log(option=option)
+    #     widths, denorm_params = stage_two(config)
+    #     config.log_width_results(option, widths=widths, extra_params=denorm_params)
+    #     plotting_tools.plot_option_two(filename=dataset)
     
-    elif option == 3: 
-        just_plot(config)
+    # elif option == 3: 
+    #     just_plot(config)
+    pass
 
 
 if __name__ == '__main__':

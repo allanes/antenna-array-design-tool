@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter.font import names
 
 from antenna_geometric_patterns_generators import Distributions, get_params_names
+from antenna_design import just_plot, stage_one, stage_two
 
 class InputConfig():
     def __init__(self):
@@ -222,9 +223,11 @@ class InputConfigGUI():
     def _calculate(self):
         if self.current_option == 0: # Plot Only
             print('Plot Only')
+            just_plot(self)
             pass
         elif self.current_option == 1: # Stage One
             print('Evaluate Stage 1')
+            
             pass
         elif self.current_option == 2: # Stage Two
             print('Evaluate Stage 2')
