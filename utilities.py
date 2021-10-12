@@ -109,7 +109,6 @@ class InputConfigGUI():
         root = Tk()
         root.title('Antenna Design Utility')
         root.geometry('500x500')
-        self.validate_separation_wrapper = (root.register(self.validate_separation), '%P')
         # Creates Main Content Frame
         mainframe = ttk.Frame(root)
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
@@ -152,10 +151,6 @@ class InputConfigGUI():
         indexed_tab = notebook.index(notebook.select())
         self.current_option = indexed_tab
 
-    def validate_separation(self, newval):
-        print(f'New val: {newval}')
-        return True
-
     def _calculate(self):
         # Setup config object with current values
         self.config.distribution = self.distribution_var.get()
@@ -194,8 +189,7 @@ class InputConfigGUI():
             widths, denorm_params = stage_two(self.config)
             self.config.log_width_results(2, widths=widths, extra_params=denorm_params)
             plotting_tools.plot_option_two(filename=dataset)
-            
-
+    
     def set_parameters_names(self, option=None):
         dist = self.distribution_var.get()
         params_names = get_params_names(Distributions[dist].value)
@@ -217,7 +211,7 @@ class InputConfigGUI():
         distribution_entry['values'] = [Distributions(index).name for index, dist in enumerate(Distributions)]
         distribution_entry.state(['readonly'])
         distribution_entry.bind('<<ComboboxSelected>>', self.set_parameters_names)
-        separation_entry = ttk.Entry(base_frame, width=10, textvariable=self.separation_var, validate='key', validatecommand=self.validate_separation_wrapper)
+        separation_entry = ttk.Entry(base_frame, width=10, textvariable=self.separation_var)
         aiming_phi_entry = ttk.Entry(base_frame, width=5, textvariable=self.aiming_phi_var)
         aiming_theta_entry = ttk.Entry(base_frame, width=5, textvariable=self.aiming_theta_var)
         # Place entries
