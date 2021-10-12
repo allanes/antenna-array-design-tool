@@ -5,7 +5,7 @@ import dask.delayed
 
 import antenna_core_functions as core_functions
 from antenna_geometric_patterns_generators import GeometryArray
-import antenna_plotting_tools as plotting_tools
+
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
     geometrical_array = GeometryArray(distribution_type=distribution_type)

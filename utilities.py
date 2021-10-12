@@ -5,7 +5,9 @@ from tkinter import ttk
 from tkinter.font import names
 
 from antenna_geometric_patterns_generators import Distributions, get_params_names
+from antenna_design import main as initialize_dask
 from antenna_design import just_plot, stage_one, stage_two
+import antenna_plotting_tools as plotting_tools
 
 class InputConfig():
     def __init__(self):
@@ -174,17 +176,25 @@ class InputConfigGUI():
             }
         self.config.design_frequency = 5e6
         #--
+        initialize_dask()
         if self.current_option == 0: # Plot Only
             print('Plot Only')
             just_plot(self.config)
             pass
         elif self.current_option == 1: # Stage One
             print('Evaluate Stage 1')
+            dataset = self.config.configure_log(option=1)
             widths = stage_one(self.config)
-            pass
+            self.config.log_width_results(option=1, widths=widths)
+            plotting_tools.plot_option_one(filename=dataset)
+            
         elif self.current_option == 2: # Stage Two
             print('Evaluate Stage 2')
-            pass
+            dataset = self.config.configure_log(option=2)
+            widths, denorm_params = stage_two(self.config)
+            self.config.log_width_results(2, widths=widths, extra_params=denorm_params)
+            plotting_tools.plot_option_two(filename=dataset)
+            
 
     def set_parameters_names(self, option=None):
         dist = self.distribution_var.get()
