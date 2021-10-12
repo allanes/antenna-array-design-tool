@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.font import names
 
-from antenna_geometric_patterns_generators import Distributions
+from antenna_geometric_patterns_generators import Distributions, get_params_names
 
 class InputConfig():
     def __init__(self):
@@ -163,8 +163,8 @@ class InputConfigGUI():
         self.aiming_phi = 50
         self.aiming_theta = 30
         self.aiming = {'phi':self.aiming_phi, 'theta':self.aiming_theta}
-        self.parameter1_range = [10,12]
-        self.parameter2_range = [10,13]
+        self.parameter1_range = {'from': 10, 'to': 12}
+        self.parameter2_range = {'from': 11, 'to': 14}
         self.design_frequency = 5e6
         
         # Setup main app window
@@ -199,6 +199,7 @@ class InputConfigGUI():
         plot_tab = self.add_plot_frame(parent_frame=tab_control)
         stage_one_tab = self.add_stage_one_frame(parent_frame=tab_control)
         stage_two_tab = self.add_stage_two_frame(parent_frame=tab_control)
+        self.set_all_defaults()
         # Creates sub Content Frames        
         tab_control.add(plot_tab, text='Plot 3D')
         tab_control.add(stage_one_tab, text='Stage 1')
@@ -213,6 +214,12 @@ class InputConfigGUI():
 
     def _calculate():
         pass
+
+    def set_parameters_names(self, option=None):
+        dist = self.distribution_var.get()
+        params_names = get_params_names(Distributions[dist].value)
+        self.param1_name_var.set(value=params_names[0])
+        self.param2_name_var.set(value=params_names[1])
 
     def add_base_frame(self, parent_frame, col, row):
         # Declare base frame
@@ -230,6 +237,7 @@ class InputConfigGUI():
         distribution_entry = ttk.Combobox(base_frame, width=10, textvariable=self.distribution_var)
         distribution_entry['values'] = [Distributions(index).name for index, dist in enumerate(Distributions)]
         distribution_entry.state(['readonly'])
+        distribution_entry.bind('<<ComboboxSelected>>', self.set_parameters_names)
         separation_entry = ttk.Entry(base_frame, width=10, textvariable=self.separation_var, validate='key', validatecommand=self.validate_separation_wrapper)
         aiming_phi_entry = ttk.Entry(base_frame, width=5, textvariable=self.aiming_phi_var)
         aiming_theta_entry = ttk.Entry(base_frame, width=5, textvariable=self.aiming_theta_var)
@@ -251,18 +259,24 @@ class InputConfigGUI():
 
         return base_frame
 
-    def set_base_defaults(self, base_frame):
+    def set_all_defaults(self):
         self.distribution_var.set(Distributions(self.distribution).name)
         self.separation_var.set(value=self.separation)
         self.aiming_phi_var.set(value=self.aiming_phi)
         self.aiming_theta_var.set(value=self.aiming_theta)
         self.parameter1_var.set(value=self.parameter1)
         self.parameter2_var.set(value=self.parameter2)
-        
+        self.set_parameters_names()
+        # Stage-One-Only
+        self.param1_from_var.set(value=self.parameter1_range['from'])
+        self.param1_to_var.set(value=self.parameter1_range['to'])
+        self.param2_from_var.set(value=self.parameter2_range['from'])
+        self.param2_to_var.set(value=self.parameter2_range['to'])
+        # Stage-Two-Only
+        self.design_frequency_var.set(value=self.design_frequency)
 
     def add_plot_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=0, row=0)
-        self.set_base_defaults(base_frame=base_frame)
         return base_frame
 
     def add_stage_one_frame(self, parent_frame):
@@ -298,7 +312,7 @@ class InputConfigGUI():
         # Declare entries
         design_freq_entry = ttk.Entry(base_frame, width=5, textvariable=self.design_frequency_var)
         # Place entries
-        design_freq_entry.grid(column=1, row=6, columnspan=2)
+        design_freq_entry.grid(column=1, row=6, columnspan=3, sticky=(N,S,E,W))
         
         return base_frame
 

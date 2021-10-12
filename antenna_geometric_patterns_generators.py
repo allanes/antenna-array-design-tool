@@ -32,16 +32,16 @@ def get_params_names(distribution_type):
     param2 = 'Param2'
 
     if distribution_type == Distributions.RECTANGULAR.value:
-        param1 = 'Number of elements along X axis'
-        param2 = 'Number of elements along Y axis'
+        param1 = 'Elements in X axis'
+        param2 = 'Elements in Y axis'
     
     elif distribution_type == Distributions.STAR.value:
-        param1 = 'Number of elements along Radial Axis (i.e. Rings)'
-        param2 = 'Number of elements per Ring'
+        param1 = 'Rings'
+        param2 = 'Elements per Ring'
 
     elif distribution_type == Distributions.CIRCULAR2.value:
-        param1 = 'Number of elements along Radial Axis (i.e. Rings)'
-        param2 = 'Number of elements for the First Ring'
+        param1 = 'Rings'
+        param2 = 'Elements in First Ring'
         
     return [param1, param2]
 
