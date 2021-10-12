@@ -206,6 +206,7 @@ class InputConfigGUI():
         # Declare and place labels
         ttk.Label(base_frame, text="Distribution").grid(column=0, row=1)
         ttk.Label(base_frame, text="Separation").grid(column=0, row=2)
+        ttk.Label(base_frame, text='[' + u'\u03bb' + ']').grid(column=3, row=2)
         ttk.Label(base_frame, text="Pointing:").grid(column=0, row=3)
         ttk.Label(base_frame, text="phi").grid(column=1, row=3)
         ttk.Label(base_frame, text="theta").grid(column=3, row=3)
