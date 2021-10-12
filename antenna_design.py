@@ -106,7 +106,6 @@ def stage_two(config):
 
 
 def just_plot(config):
-    # filename = config.configure_log(option=3)
     
     array_evaluation_process(
         distribution_type=config.distribution, 
@@ -117,11 +116,9 @@ def just_plot(config):
         plot=True
         )
 
-    # return filename
-
 
 def main():
-    # client = Client()
+    client = Client()
     # config = utils.InputConfig()
     # option = config.main_menu()
     

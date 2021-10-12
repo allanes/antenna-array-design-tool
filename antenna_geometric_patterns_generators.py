@@ -15,13 +15,13 @@ class GeometryArray():
         self.excitations = []
 
     def populate_array(self, separation, param1, param2):
-        if self.distribution_name == Distributions.RECTANGULAR.value:
+        if self.distribution_name == Distributions.RECTANGULAR.name:
             [self.positions, self.excitations] = generate_geometry_rectangular(D=separation, Nx=param1, Ny=param2)
         
-        elif self.distribution_name == Distributions.STAR.value:
+        elif self.distribution_name == Distributions.STAR.name:
             [self.positions, self.excitations] = generate_geometry_star(radial_distance=separation, elements_radial_dir=param1, elements_per_ring=param2)
 
-        elif self.distribution_name == Distributions.CIRCULAR2.value:
+        elif self.distribution_name == Distributions.CIRCULAR2.name:
             [self.positions, self.excitations] = generate_geometry_circular2(first_ring_radius=separation, rings=param1, first_ring_elements=param2)
 
         return self.excitations
