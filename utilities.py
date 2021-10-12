@@ -244,12 +244,11 @@ class InputConfigGUI():
         separation_entry.grid(column=1, row=2, columnspan=2)
         aiming_phi_entry.grid(column=2, row=3)
         aiming_theta_entry.grid(column=4, row=3)
-        # Set entries to default
-       
-        print("var's set")
-        # Declare and place action Button
-        button = ttk.Button(base_frame, text="Evaluate", command=self._calculate)
-        button.grid(column=1, row=10, sticky=(N, S, W, E), rowspan=2, columnspan=3)
+        # Declare and place action and defaults Buttons
+        evaluate_button = ttk.Button(base_frame, text="Evaluate", command=self._calculate)
+        evaluate_button.grid(column=1, row=10, sticky=(N, S, W, E), rowspan=2, columnspan=3)
+        defaults_button = ttk.Button(base_frame, text="Defaults", command=self.set_all_defaults)
+        defaults_button.grid(column=1, row=12, sticky=(N, S, W, E), rowspan=2, columnspan=3)
 
         return base_frame
 
