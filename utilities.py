@@ -166,6 +166,7 @@ class InputConfigGUI():
         self.parameter1_range = {'from': 10, 'to': 12}
         self.parameter2_range = {'from': 11, 'to': 14}
         self.design_frequency = 5e6
+        self.current_option = None
         
         # Setup main app window
         root = Tk()
@@ -178,6 +179,7 @@ class InputConfigGUI():
         # Create Tab Control
         tab_control = ttk.Notebook(mainframe, width=400, height=200)
         tab_control.grid(column=0, row=0)
+        tab_control.bind('<<NotebookTabChanged>>', func=self.set_current_option)
         # Create linked variables
         # -Base frame variables
         self.distribution_var = StringVar()
@@ -208,12 +210,25 @@ class InputConfigGUI():
         # Make it start the Event Loop
         root.mainloop()
 
+    def set_current_option(self, obj):
+        notebook = obj.widget
+        indexed_tab = notebook.index(notebook.select())
+        self.current_option = indexed_tab
+
     def validate_separation(self, newval):
         print(f'New val: {newval}')
         return True
 
-    def _calculate():
-        pass
+    def _calculate(self):
+        if self.current_option == 0: # Plot Only
+            print('Plot Only')
+            pass
+        elif self.current_option == 1: # Stage One
+            print('Evaluate Stage 1')
+            pass
+        elif self.current_option == 2: # Stage Two
+            print('Evaluate Stage 2')
+            pass
 
     def set_parameters_names(self, option=None):
         dist = self.distribution_var.get()
@@ -285,7 +300,6 @@ class InputConfigGUI():
 
     def add_stage_one_frame(self, parent_frame):
         base_frame = self.add_base_frame(parent_frame, col=1, row=0)
-        print(base_frame.winfo_children)
         
         # Declare and place labels
         ttk.Label(base_frame, text="Parameter 1").grid(column=0, row=6)
