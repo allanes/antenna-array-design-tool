@@ -174,7 +174,6 @@ class InputConfigGUI():
             }
         self.config.design_frequency = 5e6
         #--
-        initialize_dask()
         if self.current_option == 0: # Plot Only
             print('Plot Only')
             just_plot(self.config)
@@ -299,4 +298,5 @@ class InputConfigGUI():
 
 
 if __name__ == '__main__':
+    initialize_dask()
     icfg = InputConfigGUI()
