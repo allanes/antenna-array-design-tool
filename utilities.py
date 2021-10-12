@@ -271,6 +271,8 @@ class InputConfigGUI():
         ttk.Label(base_frame, text="Parameter 2").grid(column=0, row=7)
         ttk.Label(base_frame, text="from").grid(column=1, row=7)
         ttk.Label(base_frame, text="to").grid(column=3, row=7)
+        ttk.Label(base_frame, textvariable=self.param1_name_var).grid(column=5, row=6, columnspan=3)
+        ttk.Label(base_frame, textvariable=self.param2_name_var).grid(column=5, row=7, columnspan=3)
         # Declare entries
         param1_from_entry = ttk.Entry(base_frame, width=5, textvariable=self.param1_from_var)
         param1_to_entry = ttk.Entry(base_frame, width=5, textvariable=self.param1_to_var)
