@@ -15,13 +15,13 @@ class GeometryArray():
         self.excitations = []
 
     def populate_array(self, separation, param1, param2):
-        if self.distribution_name == Distributions.RECTANGULAR.value:
+        if self.distribution_name == Distributions.RECTANGULAR.name:
             [self.positions, self.excitations] = generate_geometry_rectangular(D=separation, Nx=param1, Ny=param2)
         
-        elif self.distribution_name == Distributions.STAR.value:
+        elif self.distribution_name == Distributions.STAR.name:
             [self.positions, self.excitations] = generate_geometry_star(radial_distance=separation, elements_radial_dir=param1, elements_per_ring=param2)
 
-        elif self.distribution_name == Distributions.CIRCULAR2.value:
+        elif self.distribution_name == Distributions.CIRCULAR2.name:
             [self.positions, self.excitations] = generate_geometry_circular2(first_ring_radius=separation, rings=param1, first_ring_elements=param2)
 
         return self.excitations
@@ -32,16 +32,16 @@ def get_params_names(distribution_type):
     param2 = 'Param2'
 
     if distribution_type == Distributions.RECTANGULAR.value:
-        param1 = 'Number of elements along X axis'
-        param2 = 'Number of elements along Y axis'
+        param1 = 'Elements in X axis'
+        param2 = 'Elements in Y axis'
     
     elif distribution_type == Distributions.STAR.value:
-        param1 = 'Number of elements along Radial Axis (i.e. Rings)'
-        param2 = 'Number of elements per Ring'
+        param1 = 'Rings'
+        param2 = 'Elements per Ring'
 
     elif distribution_type == Distributions.CIRCULAR2.value:
-        param1 = 'Number of elements along Radial Axis (i.e. Rings)'
-        param2 = 'Number of elements for the First Ring'
+        param1 = 'Rings'
+        param2 = 'Elements in First Ring'
         
     return [param1, param2]
 
@@ -62,14 +62,14 @@ def generate_geometry_rectangular(D = 1, Nx = 1, Ny = 1, Nz = 1):
     pos_x = np.arange(Nx)
     pos_y = np.arange(Ny)
     pos_z = np.arange(Nz)
-    B = np.array([[0,0,0]])
+    _B = np.array([[0,0,0]])
     for i in pos_x:
         for j in pos_y:
             for k in pos_z:
-                Aux = np.array([[i*D, j*D, k*D]]) 
-                B = np.append(B,Aux,axis=0)
+                aux = np.array([[i*D, j*D, k*D]]) 
+                _B = np.append(_B,aux,axis=0)
     
-    positions = B[1:]
+    positions = _B[1:]
     excitations = np.array(Nx*Ny*Nz*[1])    
     return [positions, excitations]
         
