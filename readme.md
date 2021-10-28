@@ -5,6 +5,13 @@ Instrucciones para instalar las librerias necesarias para correr este software:
 3. Activar el ambiente y ejecutar:
     pip install -r requirements.txt
 
+Para iniciar la aplicacion, ejecutar:
+    `utilities.py`
+
+
+
+Overview:
+
 Para correr graficar los datos simulados para este informe, correr:
     -Para graficar el heatmap correspondiente a la etapa 1: graficar_etapa1.py
     -Para graficar el plot X-Y correspondiente a la etapa 2: graficar_etapa2.py
