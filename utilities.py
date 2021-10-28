@@ -15,7 +15,7 @@ class InputConfig():
         
         """
         self.distribution = Distributions.STAR.value
-        self.separation = 0.25
+        self.separation = 0.15
         self.parameter1 = 10
         self.parameter2 = 15
         self.aiming = {'phi':50, 'theta':30}
