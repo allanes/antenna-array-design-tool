@@ -12,7 +12,7 @@ Además, partes de esta herramienta serán reutilizadas para la construcción de
 Para instalar las librerias necesarias para correr este software:
 
 1. Descargar el repositorio
-2. Crear un ambiente virtual en la carpeta del repositorio
+2. Crear un ambiente virtual con Python 3.6 o superior en la carpeta del repositorio
 3. Activar el ambiente y ejecutar:
     pip install -r requirements.txt
 
