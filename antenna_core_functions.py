@@ -138,14 +138,11 @@ class AntennaArray(object):
             indice_campo_derecho = encontrar_puntos_media_potencia(izquierdo=False, campo=campo)
             ancho_media_potencia = angulo[indice_campo_derecho] - angulo[indice_campo_izquierdo]
             ancho_media_potencia = np.abs(ancho_media_potencia)
-            print(f'Ancho de media potencia formula nueva: {ancho_media_potencia}')
+            
             return ancho_media_potencia, indice_campo_izquierdo, indice_campo_derecho
          
         ancho_theta, indice_izq_theta, indice_der_theta = calcular_ancho_media_potencia(angulo=np.degrees(theta),campo=y_campo_phi)
         ancho_phi, indice_izq_phi, indice_der_phi = calcular_ancho_media_potencia(angulo=np.degrees(phi),campo=y_campo_theta)
-        
-        print(f'Ancho phi formula nueva: {ancho_phi}')
-        print(f'Ancho theta formula nueva: {ancho_theta}')
         
         if plot: 
             fig = plt.figure()    
