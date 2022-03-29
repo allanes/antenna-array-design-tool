@@ -88,6 +88,16 @@ class AntennaArray(object):
         return campo_vec(phi,theta)
 
     def get_beam_width(self, plot=False):
+        """Esta funcion debe calcular el ancho de haz en az. y elevacion
+
+        Args:
+            plot (bool, optional): _description_. Defaults to False.
+
+        Returns:
+            _type_: _description_
+        """
+        ## Calculo del patron 3d del arreglo
+        # Preparacion
         theta = np.linspace(0,np.pi,100)
         phi = np.linspace(-np.pi,np.pi,100)
         THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
@@ -100,85 +110,60 @@ class AntennaArray(object):
         phi_apuntado = np.degrees(phi[int(i_phi)])  
 
         y_campo_phi = np.abs(self.directivity(math.radians(phi_apuntado),theta))
-        x_theta = np.degrees(theta)
+        y_campo_theta = np.abs(self.directivity(phi,math.radians(theta_apuntado)))
 
+        def encontrar_puntos_media_potencia(izquierdo, campo):
+            _Rmax= np.max(campo)
+            indice_campo_Rmax = int(np.where(campo == _Rmax)[0])
+            Robjetivo = 0.7 * _Rmax
+            
+            indice_campo_media_potencia = indice_campo_Rmax
+            i = 0
+            nuevo_R = _Rmax
+            if izquierdo == True:
+                while (nuevo_R > Robjetivo):
+                    i += 1
+                    nuevo_R = campo[indice_campo_Rmax - i]
+                indice_campo_media_potencia = indice_campo_media_potencia - i
+            else:
+                while (nuevo_R > Robjetivo):
+                    i += 1
+                    nuevo_R = campo[indice_campo_Rmax + i]
+                indice_campo_media_potencia = indice_campo_media_potencia + i
+            
+            return indice_campo_media_potencia
+        
+        def calcular_ancho_media_potencia(angulo, campo):
+            indice_campo_izquierdo = encontrar_puntos_media_potencia(izquierdo=True, campo=campo)
+            indice_campo_derecho = encontrar_puntos_media_potencia(izquierdo=False, campo=campo)
+            ancho_media_potencia = angulo[indice_campo_derecho] - angulo[indice_campo_izquierdo]
+            ancho_media_potencia = np.abs(ancho_media_potencia)
+            
+            return ancho_media_potencia, indice_campo_izquierdo, indice_campo_derecho
+         
+        ancho_theta, indice_izq_theta, indice_der_theta = calcular_ancho_media_potencia(angulo=np.degrees(theta),campo=y_campo_phi)
+        ancho_phi, indice_izq_phi, indice_der_phi = calcular_ancho_media_potencia(angulo=np.degrees(phi),campo=y_campo_theta)
+        
         if plot: 
             fig = plt.figure()    
             ax1 = fig.add_subplot(2,1,1)
-            ax1.plot(x_theta,y_campo_phi)
+            ax1.plot(np.degrees(theta),y_campo_phi)
             ax1.set_title("Patron $\\theta$"), ax1.grid(True)
         
-        x = [0]
-        y = [0]
-        
-        _Rmax= np.max(y_campo_phi)
-        _Rrange = _Rmax*0.3
-        for i in np.arange(np.size(y_campo_phi,0)):
-            if (y_campo_phi[i] >= _Rrange):
-                x = np.append(x,np.array([y_campo_phi[i]]),axis=0)
-                y = np.append(y,np.array([x_theta[i]]),axis=0)
-        y = y[1:]
-        x = x[1:]
-
-        index_Rmax = np.where( x == _Rmax )
-        index = int(index_Rmax[0])
-
-        R_left = x[0:index] 
-        theta_left = y[0:index]
-        R_right = x[index:-1] 
-        theta_right = y[index:-1]
-
-        theta_hp_min = np.interp(_Rmax*(2**-0.5),R_left,theta_left)
-        if len(R_right) == 0:
-            theta_hp_max = 90
-        else:
-            theta_hp_max = np.interp(-_Rmax*(2**-0.5),-R_right,theta_right)
-        
-        if plot: ax1.plot(theta_hp_min,_Rmax*(2**-0.5),'or',theta_hp_max,_Rmax*(2**-0.5),'or')
-        
-        elev_width = theta_hp_max - theta_hp_min        
-        x_phi = np.degrees(phi)
-        y_campo_theta = np.abs(self.directivity(phi,math.radians(theta_apuntado)))
-
-        if plot: 
             ax1 = fig.add_subplot(2,1,2)
-            ax1.plot(x_phi,y_campo_theta)
+            ax1.plot(np.degrees(phi),y_campo_theta)
             ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
 
-        xx = [0]
-        yy = [0]
-        _Rmax= np.max(y_campo_theta)
-        _Rrange = _Rmax*0.3
-        for i in np.arange(np.size(y_campo_theta,0)):
-            if (y_campo_theta[i] >= _Rrange):
-                xx = np.append(xx,np.array([y_campo_theta[i]]),axis=0)
-                yy = np.append(yy,np.array([x_phi[i]]),axis=0)
-        yy = yy[1:]
-        xx = xx[1:]
+            ax1.plot(
+                np.degrees(phi[indice_izq_phi]),
+                0.7 * np.max(y_campo_theta),
+                'or',
+                np.degrees(phi[indice_der_phi]),
+                0.7 * np.max(y_campo_theta),
+                'or'
+            )
 
-        index_Rmax = np.where( xx == _Rmax )
-        index = int(index_Rmax[0])
-        R_left = xx[0:index] 
-        phi_left = yy[0:index]
-        R_right = xx[index:-1]
-        phi_right = yy[index:-1]
-
-        intensidad_media_potencia = _Rmax * (2**-0.5)
-        phi_hp_min = np.interp(intensidad_media_potencia,R_left,phi_left)
-        phi_hp_max = np.interp(-intensidad_media_potencia,-R_right,phi_right)
-        
-        if plot: ax1.plot(
-            phi_hp_min,
-            intensidad_media_potencia,
-            'or',
-            phi_hp_max,
-            intensidad_media_potencia,
-            'or'
-            ) 
-        azim_width = phi_hp_max - phi_hp_min
-        directivity = _Rmax
-
-        return [elev_width, azim_width, directivity]
+        return [ancho_theta, ancho_phi, _Rmax]
 
     def plot_3D(self, origin=[0,0,0]):
         """Realiza la representacion del patron de radiacion del arreglo
