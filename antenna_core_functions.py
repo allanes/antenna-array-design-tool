@@ -88,6 +88,16 @@ class AntennaArray(object):
         return campo_vec(phi,theta)
 
     def get_beam_width(self, plot=False):
+        """Esta funcion debe calcular el ancho de haz en az. y elevacion
+
+        Args:
+            plot (bool, optional): _description_. Defaults to False.
+
+        Returns:
+            _type_: _description_
+        """
+        ## Calculo del patron 3d del arreglo
+        # Preparacion
         theta = np.linspace(0,np.pi,100)
         phi = np.linspace(-np.pi,np.pi,100)
         THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
@@ -100,6 +110,7 @@ class AntennaArray(object):
         phi_apuntado = np.degrees(phi[int(i_phi)])  
 
         y_campo_phi = np.abs(self.directivity(math.radians(phi_apuntado),theta))
+        y_campo_theta = np.abs(self.directivity(phi,math.radians(theta_apuntado)))
         x_theta = np.degrees(theta)
 
         if plot: 
@@ -112,6 +123,42 @@ class AntennaArray(object):
         y = [0]
         
         _Rmax= np.max(y_campo_phi)
+        
+        def encontrar_puntos_media_potencia(izquierdo, campo):
+            _Rmax= np.max(campo)
+            indice_campo_Rmax = int(np.where(campo == _Rmax)[0])
+            Robjetivo = 0.7 * _Rmax
+            
+            indice_campo_media_potencia = indice_campo_Rmax
+            i = 0
+            nuevo_R = _Rmax
+            if izquierdo == True:
+                while (nuevo_R >= Robjetivo):
+                    i += 1
+                    nuevo_R = campo[indice_campo_Rmax - i]
+                indice_campo_media_potencia = indice_campo_media_potencia - i
+            else:
+                while (nuevo_R >= Robjetivo):
+                    i += 1
+                    nuevo_R = campo[indice_campo_Rmax + i]
+                indice_campo_media_potencia = indice_campo_media_potencia + i
+            
+            valor_media_potencia = campo[indice_campo_media_potencia]
+            return indice_campo_media_potencia
+        
+        def calcular_ancho_media_potencia(angulo, campo):
+            campo_izquierdo = encontrar_puntos_media_potencia(izquierdo=True, campo=campo)
+            campo_derecho = encontrar_puntos_media_potencia(izquierdo=False, campo=campo)
+            ancho_media_potencia = angulo[campo_derecho] - angulo[campo_izquierdo]
+            print(f'Ancho de media potencia formula nueva: {ancho_media_potencia}')
+            return ancho_media_potencia
+         
+        ancho_theta = calcular_ancho_media_potencia(angulo=np.degrees(theta),campo=y_campo_phi)
+        ancho_phi = calcular_ancho_media_potencia(angulo=np.degrees(phi),campo=y_campo_theta)
+        
+        print(f'Ancho phi formula nueva: {ancho_phi}')
+        print(f'Ancho theta formula nueva: {ancho_theta}')
+        
         _Rrange = _Rmax*0.3
         for i in np.arange(np.size(y_campo_phi,0)):
             if (y_campo_phi[i] >= _Rrange):
