@@ -27,7 +27,7 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
         theta=math.radians(aiming['theta'])
     )
 
-    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=plot)
+    (elevation_width, azimut_width) = arreglo.get_beam_width(plot=plot)
     origin = [0,0,0]
     if geometrical_array.distribution_name == 0:
         dx = separation*(param1 - 1) / 2
@@ -119,3 +119,5 @@ def just_plot(config):
 
 def main():
     client = Client()
+    # client = Client(processes=False)
+    

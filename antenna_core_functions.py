@@ -34,6 +34,9 @@ class AntennaArray(object):
         """
         self.positions = positions
         self.excitations = excitations
+        resolicion_dominio = 100
+        self.dominio_theta = np.linspace(0,np.pi,resolicion_dominio)
+        self.dominio_phi = np.linspace(-np.pi,np.pi,resolicion_dominio)
         if pattern is not None: 
             self.pattern = pattern
         else:
@@ -75,7 +78,7 @@ class AntennaArray(object):
         average = integrate.dblquad(lambda phi,theta: self._power_density(phi,theta)*np.sin(theta),0,np.pi,-np.pi,np.pi,epsabs=1.49e-03, epsrel=50*1.49e-03)[0]/(4*np.pi)
         return average
     
-    def directivity(self,phi,theta):
+    def _directivity(self,phi,theta):
         average = self._half_power()        
         def directividad_dirUnica(phi_i,theta_i):
             return self._power_density(phi_i,theta_i)/average
@@ -83,9 +86,32 @@ class AntennaArray(object):
         directividad_vec = np.vectorize(directividad_dirUnica)
         return directividad_vec(phi,theta)
   
-    def vectorial_field(self,phi,theta):
+    def _vectorial_field(self,phi,theta):
         campo_vec = np.vectorize(self._unique_direction_field)
-        return campo_vec(phi,theta)
+        return campo_vec(phi,theta)  
+    
+    def obtener_patron_directividad(self):
+        THETA, PHI = np.meshgrid(self.dominio_theta, self.dominio_phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
+        f = lambda x,y: np.abs(self._directivity(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
+        _R = f(PHI,THETA)
+        
+        return _R
+    
+    def obtener_directividad_max(self):
+        _R = self.obtener_patron_directividad()
+        _Rmax = np.max(_R)        
+        return _Rmax
+    
+    def obtener_angulo_apuntamiento_max(self):
+        patron_directividad = self.obtener_patron_directividad()
+        direct_max = np.max(patron_directividad)
+        
+        i_phi, i_theta = np.where(patron_directividad == direct_max)
+        print(f'i_theta: {i_theta}, i_phi: {i_phi}')
+        theta_apuntado = np.degrees(self.dominio_theta[int(i_theta)])
+        phi_apuntado = np.degrees(self.dominio_phi[int(i_phi)])
+        return (theta_apuntado, phi_apuntado)
+        # return (np.degrees(i_theta), np.degrees(i_phi))
 
     def get_beam_width(self, plot=False):
         """Esta funcion debe calcular el ancho de haz en az. y elevacion
@@ -98,19 +124,10 @@ class AntennaArray(object):
         """
         ## Calculo del patron 3d del arreglo
         # Preparacion
-        theta = np.linspace(0,np.pi,100)
-        phi = np.linspace(-np.pi,np.pi,100)
-        THETA, PHI = np.meshgrid(theta,phi) #En THETA y PHI se guardan los valores de forma matricial de las coordenadas theta,phi
-        f = lambda x,y: np.abs(self.directivity(x,y))   #R = np.abs(arreglo.campo(PHI,THETA))
-        _R = f(PHI,THETA)
-        
-        _Rmax = np.max(_R)
-        i_phi,i_theta = np.where(_R == _Rmax)
-        theta_apuntado = np.degrees(theta[int(i_theta)])
-        phi_apuntado = np.degrees(phi[int(i_phi)])  
+        theta_apuntado, phi_apuntado = self.obtener_angulo_apuntamiento_max()  
 
-        y_campo_phi = np.abs(self.directivity(math.radians(phi_apuntado),theta))
-        y_campo_theta = np.abs(self.directivity(phi,math.radians(theta_apuntado)))
+        y_campo_phi = np.abs(self._directivity(math.radians(phi_apuntado),self.dominio_theta))
+        y_campo_theta = np.abs(self._directivity(self.dominio_phi,math.radians(theta_apuntado)))
 
         def encontrar_puntos_media_potencia(izquierdo, campo):
             _Rmax= np.max(campo)
@@ -120,17 +137,12 @@ class AntennaArray(object):
             indice_campo_media_potencia = indice_campo_Rmax
             i = 0
             nuevo_R = _Rmax
-            if izquierdo == True:
-                while (nuevo_R > Robjetivo):
-                    i += 1
-                    nuevo_R = campo[indice_campo_Rmax - i]
-                indice_campo_media_potencia = indice_campo_media_potencia - i
-            else:
-                while (nuevo_R > Robjetivo):
-                    i += 1
-                    nuevo_R = campo[indice_campo_Rmax + i]
-                indice_campo_media_potencia = indice_campo_media_potencia + i
+            signo = -1 if izquierdo else 1
+            while (nuevo_R > Robjetivo):
+                i += 1
+                nuevo_R = campo[indice_campo_Rmax + signo * i]
             
+            indice_campo_media_potencia = indice_campo_Rmax + signo * i            
             return indice_campo_media_potencia
         
         def calcular_ancho_media_potencia(angulo, campo):
@@ -141,29 +153,29 @@ class AntennaArray(object):
             
             return ancho_media_potencia, indice_campo_izquierdo, indice_campo_derecho
          
-        ancho_theta, indice_izq_theta, indice_der_theta = calcular_ancho_media_potencia(angulo=np.degrees(theta),campo=y_campo_phi)
-        ancho_phi, indice_izq_phi, indice_der_phi = calcular_ancho_media_potencia(angulo=np.degrees(phi),campo=y_campo_theta)
+        ancho_theta, indice_izq_theta, indice_der_theta = calcular_ancho_media_potencia(angulo=np.degrees(self.dominio_theta),campo=y_campo_phi)
+        ancho_phi, indice_izq_phi, indice_der_phi = calcular_ancho_media_potencia(angulo=np.degrees(self.dominio_phi),campo=y_campo_theta)
         
         if plot: 
             fig = plt.figure()    
             ax1 = fig.add_subplot(2,1,1)
-            ax1.plot(np.degrees(theta),y_campo_phi)
+            ax1.plot(np.degrees(self.dominio_theta),y_campo_phi)
             ax1.set_title("Patron $\\theta$"), ax1.grid(True)
         
             ax1 = fig.add_subplot(2,1,2)
-            ax1.plot(np.degrees(phi),y_campo_theta)
+            ax1.plot(np.degrees(self.dominio_phi),y_campo_theta)
             ax1.set_title("Patron $\\varphi$ "), ax1.grid(True)
 
             ax1.plot(
-                np.degrees(phi[indice_izq_phi]),
+                np.degrees(self.dominio_phi[indice_izq_phi]),
                 0.7 * np.max(y_campo_theta),
                 'or',
-                np.degrees(phi[indice_der_phi]),
+                np.degrees(self.dominio_phi[indice_der_phi]),
                 0.7 * np.max(y_campo_theta),
                 'or'
             )
 
-        return [ancho_theta, ancho_phi, _Rmax]
+        return (ancho_theta, ancho_phi)
 
     def plot_3D(self, origin=[0,0,0]):
         """Realiza la representacion del patron de radiacion del arreglo
@@ -173,7 +185,7 @@ class AntennaArray(object):
         theta = np.linspace(0,np.pi,100)
         phi = np.linspace(-np.pi,np.pi,100)
         THETA, PHI = np.meshgrid(theta,phi)
-        f = lambda x,y: np.abs(self.vectorial_field(x,y))        
+        f = lambda x,y: np.abs(self._vectorial_field(x,y))        
         _R = f(PHI,THETA)    
 
         _X = _R * np.cos(PHI) * np.sin(THETA)
