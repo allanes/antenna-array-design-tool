@@ -3,8 +3,8 @@ import math
 from dask.distributed import Client
 import dask.delayed
 
-import antenna_core_functions as core_functions
-from antenna_geometric_patterns_generators import GeometryArray
+import arreglo_antenas_core.antenna_core_functions as core_functions
+from arreglo_antenas_core.antenna_geometric_patterns_generators import GeometryArray
 
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
