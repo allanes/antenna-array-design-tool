@@ -2,9 +2,8 @@ from datetime import datetime
 import logging
 from tkinter import *
 from tkinter import ttk
-from tkinter.font import names
 
-from antenna_geometric_patterns_generators import Distributions, get_params_names
+from arreglo_antenas_core.antenna_geometric_patterns_generators import Distributions, get_params_names
 from antenna_design import main as initialize_dask
 from antenna_design import just_plot, stage_one, stage_two
 import antenna_plotting_tools as plotting_tools

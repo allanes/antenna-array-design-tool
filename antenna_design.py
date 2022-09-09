@@ -3,8 +3,8 @@ import math
 from dask.distributed import Client
 import dask.delayed
 
-import antenna_core_functions as core_functions
-from antenna_geometric_patterns_generators import GeometryArray
+import arreglo_antenas_core.antenna_core_functions as core_functions
+from arreglo_antenas_core.antenna_geometric_patterns_generators import GeometryArray
 
 
 def array_evaluation_process(distribution_type, separation, param1, param2, aiming, plot=False):
@@ -27,12 +27,13 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
         theta=math.radians(aiming['theta'])
     )
 
-    [elevation_width, azimut_width, directividad] = arreglo.get_beam_width(plot=plot)
+    (elevation_width, azimut_width) = arreglo.get_beam_width(plot=plot)
     origin = [0,0,0]
     if geometrical_array.distribution_name == 0:
         dx = separation*(param1 - 1) / 2
         dy = separation*(param2 - 1) / 2
         origin = [dx, dy, 0]
+    
     if plot: arreglo.plot_3D(origin)
 
     return {'elevation':elevation_width, 'azimut': azimut_width}
@@ -119,3 +120,5 @@ def just_plot(config):
 
 def main():
     client = Client()
+    # client = Client(processes=False)
+    
