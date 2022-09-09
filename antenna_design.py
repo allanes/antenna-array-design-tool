@@ -33,6 +33,7 @@ def array_evaluation_process(distribution_type, separation, param1, param2, aimi
         dx = separation*(param1 - 1) / 2
         dy = separation*(param2 - 1) / 2
         origin = [dx, dy, 0]
+    
     if plot: arreglo.plot_3D(origin)
 
     return {'elevation':elevation_width, 'azimut': azimut_width}

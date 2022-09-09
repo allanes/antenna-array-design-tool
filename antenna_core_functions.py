@@ -7,8 +7,9 @@ import numpy as np
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import math
-from numpy.lib.function_base import average
 import scipy.integrate as integrate
+
+RESOLUCION_DEL_DOMINIO = 100
 
 class AntennaArray(object):
     """Core object for evaluating antenna arrays.
@@ -18,7 +19,7 @@ class AntennaArray(object):
     
 
     """
-    def __init__(self,positions,excitations,pattern=None):
+    def __init__(self,positions,excitations,pattern):
         """Initializer.
 
         Parameters
@@ -34,13 +35,10 @@ class AntennaArray(object):
         """
         self.positions = positions
         self.excitations = excitations
-        resolicion_dominio = 100
-        self.dominio_theta = np.linspace(0,np.pi,resolicion_dominio)
-        self.dominio_phi = np.linspace(-np.pi,np.pi,resolicion_dominio)
+        self.dominio_theta = np.linspace(0,np.pi,RESOLUCION_DEL_DOMINIO)
+        self.dominio_phi = np.linspace(-np.pi,np.pi,RESOLUCION_DEL_DOMINIO)
         if pattern is not None: 
             self.pattern = pattern
-        else:
-            self.pattern = [lambda phi,theta:1]
     
     def aiming(self,phi,theta):
         """Aims the main beam towards a desired directon.
@@ -61,8 +59,28 @@ class AntennaArray(object):
         
         """
         normal = np.array((np.cos(phi)*np.sin(theta),np.sin(phi)*np.sin(theta),np.cos(theta)))
-        phases = -2*np.pi*self.positions@normal
-        self.excitations = np.abs(self.excitations)*np.exp(1j*phases)
+        phases = 1j*2*np.pi*self.positions@normal
+        self.excitations = np.abs(self.excitations)*np.exp(-1*phases)
+        
+    def fases(self, phi, theta, rad_or_deg=False):
+        """Calcula las fases
+
+        Args:
+            phi (_type_): _description_
+            theta (_type_): _description_
+            rad_or_deg (bool, optional): _description_. Defaults to False.
+
+        Returns:
+            _type_: _description_
+        """
+        if not rad_or_deg:
+            phi = np.deg2rad(phi)
+            theta = np.deg2rad(theta)
+
+        normal = np.array((np.cos(phi)*np.sin(theta),np.sin(phi)*np.sin(theta),np.cos(theta)))
+        fases = (1j*2*np.pi)*self.positions@normal
+        phases = np.exp(fases)
+        return phases
 
     def _unique_direction_field(self,phi_i,theta_i):
         normal = np.array((np.cos(phi_i)*np.sin(theta_i),np.sin(phi_i)*np.sin(theta_i),np.cos(theta_i)))
@@ -111,7 +129,6 @@ class AntennaArray(object):
         theta_apuntado = np.degrees(self.dominio_theta[int(i_theta)])
         phi_apuntado = np.degrees(self.dominio_phi[int(i_phi)])
         return (theta_apuntado, phi_apuntado)
-        # return (np.degrees(i_theta), np.degrees(i_phi))
 
     def get_beam_width(self, plot=False):
         """Esta funcion debe calcular el ancho de haz en az. y elevacion
