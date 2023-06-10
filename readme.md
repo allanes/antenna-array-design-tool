@@ -7,6 +7,26 @@ El informe presentado se encuentra en la carpeta `/Informe`
 
 Además, partes de esta herramienta serán reutilizadas para la construcción de un simulador de Radares OTH, enmarcado en el proyecto PIDDEF 03/2020.
 
+## Preview
+
+La interfaz de usuario permite mostrar (Plot3d) y evaluar arreglos en dos etapas (Stage 1 y Stage 2).
+
+| ![Imagen 1](imagenes/ss_plot.png) | ![Imagen 2](imagenes/ss_stage1.png) | ![Imagen 3](imagenes/ss_stage2.png) |
+|:---:|:---:|:---:|
+| Interfaz de usuario - Plot | Interfaz de usuario - Etapa 1 | Interfaz de usuario - Etapa 2 |
+
+| ![Imagen 6](imagenes/patron3D_rectangular.jpg) | ![Imagen 7](imagenes/patron3D_circular.jpg) |
+|:---:|:---:|
+| Patrón 3D de arreglo rectangular 18 x 16 | Patrón 3D de arreglo rectangular 13 x 17 |
+
+| ![Imagen 8](imagenes/respuesta_en_frecuencia_rectangular.jpg) | ![Imagen 9](imagenes/respuesta_en_frecuencia_circular.jpg) |
+|:---:|:---:|
+| Respuesta en frecuencia de arreglo rectangular 18 x 16 | Respuesta en frecuencia de arreglo rectangular 13 x 17 |
+
+<!-- | ![Imagen 4](imagenes/plot_arreglo_rectangular_18x16.png) | ![Imagen 5](imagenes/plot_arreglo_circular_13x17.png) |
+|:---:|:---:|
+| Plot de arreglo rectangular 18 x 16 | Plot de arreglo rectangular 13 x 17 | -->
+
 ## Pre-requisitos
 
 Este proyecto depende de un paquete alojado en un repositorio privado, `arreglo_antenas_core`. Para instalar este paquete, necesitarás obtener acceso al repositorio privado. 

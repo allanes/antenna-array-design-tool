@@ -193,7 +193,7 @@ class InputConfigGUI():
     
     def set_parameters_names(self, option=None):
         dist = self.distribution_var.get()
-        params_names = get_params_names(Distributions[dist].value)
+        params_names = get_params_names(Distributions[dist].name)
         self.param1_name_var.set(value=params_names[0])
         self.param2_name_var.set(value=params_names[1])
 
@@ -210,7 +210,7 @@ class InputConfigGUI():
         ttk.Label(base_frame, text="theta").grid(column=3, row=3)
         # Declare entries
         distribution_entry = ttk.Combobox(base_frame, width=10, textvariable=self.distribution_var)
-        distribution_entry['values'] = [Distributions(dist).name for index, dist in enumerate(Distributions)]
+        distribution_entry['values'] = [Distributions(dist).value for index, dist in enumerate(Distributions)]
         distribution_entry.state(['readonly'])
         distribution_entry.bind('<<ComboboxSelected>>', self.set_parameters_names)
         separation_entry = ttk.Entry(base_frame, width=10, textvariable=self.separation_var)
