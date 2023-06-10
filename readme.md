@@ -17,11 +17,11 @@ La interfaz de usuario permite mostrar (Plot3d) y evaluar arreglos en dos etapas
 
 | ![Imagen 6](imagenes/patron3D_rectangular.jpg) | ![Imagen 7](imagenes/patron3D_circular.jpg) |
 |:---:|:---:|
-| Patrón 3D de arreglo rectangular 18 x 16 | Patrón 3D de arreglo rectangular 13 x 17 |
+| Patrón 3D de arreglo rectangular 18 x 16 | Patrón 3D de arreglo circular 13 x 17 |
 
 | ![Imagen 8](imagenes/respuesta_en_frecuencia_rectangular.jpg) | ![Imagen 9](imagenes/respuesta_en_frecuencia_circular.jpg) |
 |:---:|:---:|
-| Respuesta en frecuencia de arreglo rectangular 18 x 16 | Respuesta en frecuencia de arreglo rectangular 13 x 17 |
+| Respuesta en frecuencia de arreglo rectangular 18 x 16 | Respuesta en frecuencia de arreglo circular 13 x 17 |
 
 <!-- | ![Imagen 4](imagenes/plot_arreglo_rectangular_18x16.png) | ![Imagen 5](imagenes/plot_arreglo_circular_13x17.png) |
 |:---:|:---:|
