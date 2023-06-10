@@ -112,7 +112,7 @@ class InputConfigGUI():
         mainframe = ttk.Frame(root)
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
         # Add image
-        image = PhotoImage(file='title.gif')
+        image = PhotoImage(file='imagenes\\title.gif')
         ttk.Label(mainframe, image=image).grid(column=0, row=0, sticky=(W,E,N,S))
         # Create Tab Control
         tab_control = ttk.Notebook(mainframe, width=400, height=200)
@@ -210,7 +210,7 @@ class InputConfigGUI():
         ttk.Label(base_frame, text="theta").grid(column=3, row=3)
         # Declare entries
         distribution_entry = ttk.Combobox(base_frame, width=10, textvariable=self.distribution_var)
-        distribution_entry['values'] = [Distributions(index).name for index, dist in enumerate(Distributions)]
+        distribution_entry['values'] = [Distributions(dist).name for index, dist in enumerate(Distributions)]
         distribution_entry.state(['readonly'])
         distribution_entry.bind('<<ComboboxSelected>>', self.set_parameters_names)
         separation_entry = ttk.Entry(base_frame, width=10, textvariable=self.separation_var)

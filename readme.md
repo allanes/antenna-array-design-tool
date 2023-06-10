@@ -7,20 +7,40 @@ El informe presentado se encuentra en la carpeta `/Informe`
 
 Además, partes de esta herramienta serán reutilizadas para la construcción de un simulador de Radares OTH, enmarcado en el proyecto PIDDEF 03/2020.
 
+## Pre-requisitos
+
+Este proyecto depende de un paquete alojado en un repositorio privado, `arreglo_antenas_core`. Para instalar este paquete, necesitarás obtener acceso al repositorio privado. 
+
+Cuando tengas acceso, podras usar tu usuario para la instalación.
+
 ## Instalación
 
-Para instalar las librerias necesarias para correr este software:
+1. Abrir una terminal en el directorio deseado y clonar este repositorio:
+   ```
+   git clone https://github.com/allanes/antenna-array-design-tool.git
+   ```
 
-1. Descargar el repositorio
-2. Crear un ambiente virtual con Python 3.6 o superior en la carpeta del repositorio
-3. Activar el ambiente y ejecutar:
-    pip install -r requirements.txt
+2. Crear un nuevo ambiente virtual. Se muestran las instrucciones para Windows:
+    ```   
+    cd pothole-detector-gui
+    python -m venv .venv
+    .venv\Scripts\activate
+    python -m pip install -U pip
+    ``` 
 
-Para iniciar la aplicacion, ejecutar:
-
-`python utilities.py`
+3. Instalar los requerimientos en el nuevo ambiente:
+    ```
+    pip install -r requirements.txt    
+    pip install git+https://tu-usuario-bitbucket@bitbucket.org/radaresfacet/arreglo_antenas_core.git
+    ```
 
 ## Instrucciones de uso
+
+Iniciar la aplicación:
+    ```
+    python utilities.py
+    ```
+
 El software presente en este repositorio está separado en 3 partes:
 
 ***Plot3d***: Pestaña que permite configurar un arreglo de prueba y muestra su:
